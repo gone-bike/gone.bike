@@ -1,0 +1,28 @@
+---
+/**
+ * This wrapper allows urls to be written in the form of:
+ *
+ * `/photos/<uuid>/name.ext`
+ */
+
+import config from "@utils/config";
+import directus from "@utils/directus.js";
+
+let [uuid,filename_disk] = Astro.params.any?.split('/');
+try {
+    let data = await directus.files.readOne(uuid);
+
+    if (data?.filename_disk == filename_disk) {
+        let url = `${config.DIRECTUS_URI}/assets/${uuid}?access_token=${config.DIRECTUS_TOKEN}`
+        return await fetch(url)
+
+    } else {
+        throw new Error("Not Found");
+
+    }
+} catch (e) {
+    return await config.http404();
+}
+
+
+---

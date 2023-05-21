@@ -1,0 +1,40 @@
+{
+	"name": "gone-bike",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/mdx": "^0.19.1",
+		"@astrojs/node": "^5.0.4",
+		"@astrojs/tailwind": "^3.0.1",
+		"@astrojs/vue": "^2.0.1",
+		"@directus/sdk": "^10.3.3",
+		"@headlessui/vue": "^1.7.10",
+		"@sentry/node": "^7.42.0",
+		"@sentry/tracing": "^7.42.0",
+		"astro": "^2.0.16",
+		"astro-i18next": "^1.0.0-beta.21",
+	    "astro-seo": "^0.7.0",
+		"cache-manager": "^5.1.7",
+		"cache-manager-redis-store": "^3.0.1",
+		"express": "^4.18.2",
+		"knex": "^2.4.2",
+		"morgan": "^1.10.0",
+		"pg": "^8.9.0",
+		"redis": "^4.6.5",
+		"tailwindcss": "^3.2.7",
+		"url-pattern": "^1.0.3",
+		"vue": "^3.2.47",
+		"vue3-carousel": "^0.2.13"
+	},
+	"devDependencies": {
+		"@tailwindcss/forms": "^0.5.3",
+		"tailwindcss-pseudo-elements": "^2.0.0"
+	}
+}
