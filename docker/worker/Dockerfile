@@ -1,10 +1,10 @@
 FROM python:3.8-alpine
 
 # Install dependencies
-# RUN apk add --update \
-#     build-base \
-#     postgresql-client \
-#     postgresql-dev
+RUN apk add --update \
+    build-base \
+    libffi-dev
+
 
 RUN mkdir /app
 WORKDIR /app

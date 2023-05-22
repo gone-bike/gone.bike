@@ -9,10 +9,10 @@ import config from "@utils/config";
 import directus from "@utils/directus.js";
 
 let [uuid,filename_disk] = Astro.params.any?.split('/');
+
 try {
     let data = await directus.files.readOne(uuid);
-
-    if (data?.filename_disk == filename_disk) {
+    if (data?.filename_disk == filename_disk || typeof(filename_disk) == 'undefined') {
         let url = `${config.DIRECTUS_URI}/assets/${uuid}?access_token=${config.DIRECTUS_TOKEN}`
         return await fetch(url)
 
@@ -21,6 +21,7 @@ try {
 
     }
 } catch (e) {
+console.log(e)
     return await config.http404();
 }
 
