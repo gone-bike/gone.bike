@@ -7,6 +7,19 @@ import config from "@utils/config"
 type Report = {
     id: ID;
     status: string;
+    description: string;
+    location: object;
+    theft_date: Date;
+    theft_timeframe: string;
+    theft_location_type: string;
+    colors: string[];
+    serial_number: string;
+    approximate_value: number;
+    approximate_value_currency: string;
+
+    lock_type: string;
+    lock_anchor: string;
+
     photos: {
         directus_files_id: {
             id: ID;
@@ -47,6 +60,9 @@ type GoneBike = {
 const directus = new Directus<GoneBike>(config.DIRECTUS_URI, {
     auth: {
         staticToken: config.DIRECTUS_TOKEN
+    },
+    transport: {
+        timeout: 2000
     }
 });
 

@@ -34,6 +34,17 @@ try {
             fields: [
                 "id",
                 "status",
+                "description",
+                "location",
+                "theft_date",
+                "theft_timeframe",
+                "theft_location_type",
+                "colors",
+                "serial_number",
+                "approximate_value",
+                "approximate_value_currency",
+                "lock_type",
+                "lock_anchor",
                 "photos.directus_files_id.id",
                 "photos.directus_files_id.filename_disk",
                 "photos.directus_files_id.type",
@@ -66,7 +77,18 @@ try {
 
 ---
 <BaseLayout title={t('test.x')} description="test">
-    <!-- <img src=`/photos/${data.main_photo.id}`> -->
+    <div>
+        <h1>{data['id']}</h1>
+    { Object.keys(data).map( (e) => typeof(data[e]) == 'string' && (
+            <div>
+                <b>{e}</b>: {data[e]}
+            </div>
+        )
 
-    <Debug data={data}/>
+    ) }
+    yy
+    </div>
+    <!-- <img src=`/photos/${data.main_photo.id}/${data.main_photo.filename_disk}`> -->
+
+    <!-- <Debug data={data}/> -->
 </BaseLayout>

@@ -1,0 +1,6 @@
+celery==5.2.7
+flower==1.0.0
+redis==4.3.3
+requests==2.27.1
+python-dotenv==0.20.0
+psycopg2-binary==2.9.5
