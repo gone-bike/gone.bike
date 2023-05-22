@@ -1,0 +1,157 @@
+---
+version: '3.4'
+services:
+  # weaviate:
+  #   volumes:
+  #     - .data/weaviate:/var/lib/weaviate
+  #   command:
+  #   - --host
+  #   - 0.0.0.0
+  #   - --port
+  #   - '8080'
+  #   - --scheme
+  #   - http
+  #   image: semitechnologies/weaviate:1.19.4
+  #   ports:
+  #   - 8080:8080
+  #   restart: on-failure:0
+  #   environment:
+  #     IMAGE_INFERENCE_API: 'http://i2v-neural:8080'
+  #     QUERY_DEFAULTS_LIMIT: 25
+  #     AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+  #     PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+  #     DEFAULT_VECTORIZER_MODULE: 'img2vec-neural'
+  #     ENABLE_MODULES: 'img2vec-neural'
+  #     CLUSTER_HOSTNAME: 'node1'
+  # i2v-neural:
+  #   image: semitechnologies/img2vec-pytorch:resnet50
+  #   environment:
+  #     ENABLE_CUDA: '0'
+
+  postgresql:
+    image: postgis/postgis
+    container_name: gone.bike.postgresql
+    restart: always
+    shm_size: '2gb'
+    volumes:
+      - .data/postgresql:/var/lib/postgresql/data
+      #- .config/postgresql.conf:/etc/postgresql/postgresql.conf
+      #- .config/pg_hba.conf:/etc/postgresql/pg_hba.conf
+    ports:
+      - ${POSTGRES_LISTEN:-127.0.0.1:5432}:5432
+    #command: postgres -c 'config_file=/etc/postgresql/postgresql.conf'
+    environment:
+      POSTGRES_PASSWORD:
+      POSTGRES_DB:
+      POSTGRES_USER:
+      POSTGRES_HOST_AUTH_METHOD: ${POSTGRES_HOST_AUTH_METHOD:-trust}
+    logging:
+      options:
+        max-size: ${DOCKER_LOG_MAX_SIZE:-10m}
+        max-file: ${DOCKER_LOG_MAX_FILE:-3}
+
+  redis:
+    image: redis
+    restart: always
+    container_name: gone.bike.redis
+    ports:
+      - "${REDIS_LISTEN:-127.0.0.1:6379}:6379"
+    volumes:
+      - .config/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    logging:
+      options:
+        max-size: ${DOCKER_LOG_MAX_SIZE:-10m}
+        max-file: ${DOCKER_LOG_MAX_FILE:-3}
+
+  directus:
+    container_name: gone.bike.directus
+    restart: always
+    image: directus/directus:${DIRECTUS_VERSION:-10.1.1}
+    ports:
+      - ${DIRECTUS_LISTEN:-8055}:8055
+    volumes:
+      - .data/directus:/directus/uploads
+    env_file:
+      - ${DIRECTUS_ENV_FILE:-.directus.env}
+    environment:
+      KEY: ${DIRECTUS_ENV_KEY:-key}
+      SECRET: ${DIRECTUS_ENV_SECRET:-secret}
+      DB_CLIENT: pg
+      DB_HOST: ${DIRECTUS_ENV_DB_HOST:-postgresql}
+      DB_PORT: ${DIRECTUS_ENV_DB_PORT:-5432}
+      DB_DATABASE: ${DIRECTUS_ENV_DB_DATABASE:-postgres}
+      DB_USER: ${DIRECTUS_ENV_DB_USER:-postgres}
+      DB_PASSWORD: ${DIRECTUS_ENV_DB_PASSWORD:-postgres}
+      PUBLIC_URL: ${DIRECTUS_BASE_URI:-http://localhost:8055}
+      AUTH_PROVIDERS: ${DIRECTUS_AUTH_PROVIDERS:-}
+      CACHE_ENABLED: 'true'
+      CACHE_TTL: 7d
+      CACHE_AUTO_PURGE: 'true'
+      CACHE_STORE: redis
+      CACHE_REDIS: ${DIRECTUS_ENV_CACHE_REDIS:-redis://redis:6379/2}
+      CACHE_NAMESPACE: gone-bike
+    logging:
+      options:
+        max-size: ${DOCKER_LOG_MAX_SIZE:-10m}
+        max-file: ${DOCKER_LOG_MAX_FILE:-3}
+
+
+  web:
+    image: node:18
+    restart: unless-stopped
+    volumes:
+      - ./:/app
+    working_dir: /app
+    environment:
+      REDIS_URI: ${REDIS_URI:-redis://redis:6379}
+      DB_HOST: ${DB_HOST:-postgresql}
+    ports:
+      - ${WEB_LISTEN:-127.0.0.1:80}:6001/tcp
+    logging:
+      options:
+        max-size: ${DOCKER_LOG_MAX_SIZE:-10m}
+        max-file: ${DOCKER_LOG_MAX_FILE:-3}
+    command: node ./express-server.js ${ASTO_ROUTING_FILE:-./routing.json}
+
+
+
+  worker:
+    build: ./docker/worker
+    restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+    env_file:
+      - ${WORKER_ENV_FILE:-.worker.env}
+
+    environment:
+      ENV: ${ENV:-dev}
+
+      WORKER_DB_URI: ${WORKER_DB_URI:-postgresql://postgres:postgres@postgresql:5432/postgres}
+      WORKER_DIRECTUS_URI: ${WORKER_DIRECTUS_URI:-http://directus:8055}
+      WORKER_DIRECTUS_TOKEN: ${WORKER_DIRECTUS_URI:-token}
+
+      CELERYD_CONCURRENCY: ${CELERYD_CONCURRENCY:-1}
+      BROKER_URL: "redis://redis:6379"
+      BROKER_POOL_LIMIT: ${BROKER_POOL_LIMIT:-0} # the connection pool will be disabled and connections will be established and closed for every use.
+
+      BROKER_TRANSPORT_OPTTION_VISIBILITY_TIMEOUT: ${BROKER_TRANSPORT_OPTTION_VISIBILITY_TIMEOUT:-30}
+      BROKER_TRANSPORT_OPTION_MAX_RETRIES: ${BROKER_TRANSPORT_OPTION_MAX_RETRIES:-1}
+      WORKER_PREFETCH_MULTIPLIER: ${WORKER_PREFETCH_MULTIPLIER:-1}
+
+      TASK_TIME_LIMIT: ${TASK_TIME_LIMIT:-60}
+      TASK_SOFT_TIME_LIMIT: ${TASK_SOFT_TIME_LIMIT:-10}
+      WORKER_CONCURRENCY: ${WORKER_CONCURRENCY:-1}
+      WORKER_DISABLE_RATE_LIMITS: ${WORKER_DISABLE_RATE_LIMITS:-true}
+
+      TASK_ACKS_LATE: ${TASK_ACKS_LATE:-false}
+
+    command: celery --app=tasks worker --uid 1 -n %h-${VERSION:-1}@${HOSTNAME:-worker} -l ${LOG_LEVEL:-INFO}
+    volumes:
+      - ./worker:/app
+    working_dir: /app
+    logging:
+     options:
+        max-size: ${DOCKER_LOG_MAX_SIZE:-10m}
+        max-file: ${DOCKER_LOG_MAX_FILE:-3}
