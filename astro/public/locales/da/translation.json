@@ -1,6 +1,57 @@
 {
-  "test": null,
   "homepage": {
     "title": "Stjålet cykelsøgning og rapport"
+  },
+  "pages": {
+    "report_form": {
+      "title": "Cykeltyverirapport",
+      "subtitle": "Indsæt cykeltyveri relaterede data, de vil blive tilføjet til søgemotoren."
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "Stjålet cykelmærke"
+        },
+        "bike_model": {
+          "title": "Stjålet cykelmodel"
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": null
+        },
+        "approximate_value": {
+          "title": "Omtrentlig værdi"
+        },
+        "theft_date": {
+          "title": "Tyveridato."
+        },
+        "location_type": {
+          "title": "Hvor var cyklen?"
+        },
+        "lock_type": {
+          "title": "Låsetype"
+        },
+        "lock_anchor": {
+          "title": null
+        },
+        "location": {
+          "title": "Adresse og koordinater.",
+          "subtitle": "Vælg et kortpunkt, hvor tyveriet fandt sted."
+        },
+        "main_photo": {
+          "title": "Stjålet cykel hovedfoto"
+        },
+        "photos": {
+          "title": "Du kan tilføje op til {{n}} billeder."
+        },
+        "description": {
+          "title": "Beskriv hvad der skete."
+        }
+      }
+    }
   }
 }

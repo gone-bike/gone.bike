@@ -1,6 +1,57 @@
 {
-  "test": "यह एक परीक्षण है।",
   "homepage": {
     "title": "चोरी हुई बाइक की खोज और रिपोर्ट करें।"
+  },
+  "pages": {
+    "report_form": {
+      "title": "बाइक चोरी की रिपोर्ट",
+      "subtitle": "बाइक चोरी से संबंधित डेटा डालें, वे खोज इंजन में जोड़े जाएंगे।"
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "चोरी हुई बाइक ब्रांड।"
+        },
+        "bike_model": {
+          "title": "चोरी हुई बाइक मॉडल"
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": "क्या यह एक इलेक्ट्रिक बाइक है?"
+        },
+        "approximate_value": {
+          "title": "अनुमानित मूल्य"
+        },
+        "theft_date": {
+          "title": "चोरी की तारीख"
+        },
+        "location_type": {
+          "title": "बाइक कहाँ थी?"
+        },
+        "lock_type": {
+          "title": "लॉक प्रकार"
+        },
+        "lock_anchor": {
+          "title": "एंकर पॉइंट"
+        },
+        "location": {
+          "title": "पता और निर्देशांक",
+          "subtitle": "चोरी हुई जगह का चिह्नित बिंदु चुनें।"
+        },
+        "main_photo": {
+          "title": "चोरी हुई बाइक की फोटो मुख्य है।"
+        },
+        "photos": {
+          "title": "आप {{n}} तक फोटो जोड़ सकते हैं।"
+        },
+        "description": {
+          "title": "वर्णन कीजिए कि क्या हुआ।"
+        }
+      }
+    }
   }
 }

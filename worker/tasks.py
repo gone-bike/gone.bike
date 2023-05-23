@@ -143,3 +143,57 @@ def test(self, *args, **kwargs):
     return "OK"
 
 
+
+@app.task(bind=True, acks_late=False)
+def new_report(self, *args, **kwargs):
+    ret = []
+    for e in ['q42_main_photo', 'q44_photos_1','q45_photos_2', 'q46_photos_3']:
+
+        if kwargs[e] is not None and kwargs[e] != "":
+            photo = json.loads(kwargs[e])
+            photo = photo['widget_metadata']['value'][0]
+            photo =  f'https://eu.jotform.com/{photo["url"]}'
+
+            photo_data = requests.get(photo)
+
+            print(photo_data.headers)
+            # def upload_engagement_file(filepath):
+
+            #     url = API_ENDPOINT + "/api/files"  # add any URL parameters if needed
+            #     hdr = {"Authorization": "Bearer %s" % access_token}
+            #     with open(filepath, "rb") as fobj:
+            #         file_obj = fobj.read()
+            #         file_basename = os.path.basename(filepath)
+            #         file_to_upload = {"file": (str(file_basename), file_obj)}
+            #         finfo = {"fullPath": filepath}
+            #         upload_response = requests.post(url, headers=hdr, files=file_to_upload, data=finfo)
+            #         fobj.close()
+            #     # print("Status Code ", upload_response.status_code)
+            #     # print("JSON Response ", upload_response.json())
+            #     return upload_response
+
+
+            # print(f"Importing {photo}")
+
+
+            # url = f'{os.environ["WORKER_DIRECTUS_URI"]}/files/import?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
+            # data = requests.post(url, json={
+            #     "url": photo,
+            #     "data": {
+            #         "folder": "fa2b1d0e-2e58-4897-af16-eab29f26117d" if e == 'q42_main_photo' else "21f79529-85a1-4797-b4a1-7ddefdef654f",
+            #         "tags": [ kwargs['slug'] ]
+            #     }
+            # })
+            # print(data.content)
+
+            # ret.append(data.status_code)
+            # {'widget_metadata': {'type': 'imagelinks', 'value': [{'name': '15a28d52-0028-4551-85ad-c1e19ec67876.jpeg', 'url': '/widget-uploads/imagepreview/231414376042044/5f562e515a28d52-0028-4551-85ad-c1e19ec67876646ba65f5f019.jpeg'}]}}
+
+
+    return 'ok'
+
+
+#     // POST /files/import
+
+
+#     print(kwargs)

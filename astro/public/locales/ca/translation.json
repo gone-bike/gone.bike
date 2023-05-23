@@ -1,6 +1,57 @@
 {
-  "test": "Això és una prova.",
   "homepage": {
     "title": "Cerca i denúncia de bicicletes robades."
+  },
+  "pages": {
+    "report_form": {
+      "title": "Informe de robatoris de bicicletes.",
+      "subtitle": "Insereix les dades relacionades amb el robatori de bicicletes, seran afegides al cercador."
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "Bicicleta robada marca"
+        },
+        "bike_model": {
+          "title": "Bicicleta robada de model"
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": "És una bicicleta elèctrica?"
+        },
+        "approximate_value": {
+          "title": "Valor aproximat."
+        },
+        "theft_date": {
+          "title": "Data de robatori"
+        },
+        "location_type": {
+          "title": "On estava la bicicleta?"
+        },
+        "lock_type": {
+          "title": "Tipus de bloqueig."
+        },
+        "lock_anchor": {
+          "title": "Punt d'ancoratge"
+        },
+        "location": {
+          "title": "Adreça i coordenades.",
+          "subtitle": "Seleccioneu un punt del mapa on va succeir el robatori."
+        },
+        "main_photo": {
+          "title": "Bicicleta robada foto principal"
+        },
+        "photos": {
+          "title": "Podeu afegir fins a {{n}} fotos."
+        },
+        "description": {
+          "title": "Descriu el que va passar."
+        }
+      }
+    }
   }
 }

@@ -1,6 +1,57 @@
 {
-  "test": "aceasta este un test",
   "homepage": {
     "title": "Căutare și raportare a bicicletelor furate."
+  },
+  "pages": {
+    "report_form": {
+      "title": "Raport de furt de biciclete.",
+      "subtitle": "Inserați datele legate de furturile de biciclete, acestea vor fi adăugate în motorul de căutare."
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "Bicicletă furată marcă"
+        },
+        "bike_model": {
+          "title": "Model de bicicletă furată"
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": "Este o bicicletă electrică?"
+        },
+        "approximate_value": {
+          "title": "Valoare aproximativă."
+        },
+        "theft_date": {
+          "title": "Data furtului."
+        },
+        "location_type": {
+          "title": "Unde era bicicleta?"
+        },
+        "lock_type": {
+          "title": "Tipul de blocare"
+        },
+        "lock_anchor": {
+          "title": "Punct de ancorare."
+        },
+        "location": {
+          "title": "Adresă și coordonate",
+          "subtitle": "Selectați un punct de pe hartă unde a avut loc furtul."
+        },
+        "main_photo": {
+          "title": "Fotografia principală a bicicletei furate"
+        },
+        "photos": {
+          "title": "Poți adăuga până la {{n}} fotografii."
+        },
+        "description": {
+          "title": "Descrie ce s-a întâmplat."
+        }
+      }
+    }
   }
 }

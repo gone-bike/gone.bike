@@ -1,6 +1,57 @@
 {
-  "test": "Đây là một bài kiểm tra.",
   "homepage": {
     "title": "Tìm kiếm và báo cáo xe đạp bị mất"
+  },
+  "pages": {
+    "report_form": {
+      "title": "Báo cáo mất xe đạp",
+      "subtitle": "Thêm dữ liệu liên quan đến việc mất trộm xe đạp, chúng sẽ được thêm vào công cụ tìm kiếm."
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "Xe đạp thương hiệu bị đánh cắp."
+        },
+        "bike_model": {
+          "title": "Xe đạp bị đánh cắp, mẫu {{X}}."
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": "Đây có phải là một chiếc xe đạp điện không?"
+        },
+        "approximate_value": {
+          "title": "Giá trị xấp xỉ."
+        },
+        "theft_date": {
+          "title": "Ngày bị trộm trên tài sản"
+        },
+        "location_type": {
+          "title": "Xe đạp ở đâu?"
+        },
+        "lock_type": {
+          "title": "Loại khóa"
+        },
+        "lock_anchor": {
+          "title": "Điểm neo"
+        },
+        "location": {
+          "title": "Địa chỉ và tọa độ",
+          "subtitle": "Chọn một điểm trên bản đồ nơi xảy ra vụ trộm."
+        },
+        "main_photo": {
+          "title": "Ảnh chính của chiếc xe đạp bị đánh cắp"
+        },
+        "photos": {
+          "title": "Bạn có thể thêm lên đến {{n}} ảnh."
+        },
+        "description": {
+          "title": "Mô tả những gì đã xảy ra."
+        }
+      }
+    }
   }
 }

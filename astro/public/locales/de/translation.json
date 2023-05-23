@@ -1,6 +1,57 @@
 {
-  "test": "Dies ist ein Test.",
   "homepage": {
     "title": "Gestohlene Fahrradsuche und Bericht."
+  },
+  "pages": {
+    "report_form": {
+      "title": "Fahrraddiebstahlbericht",
+      "subtitle": null
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "Gestohlenes Fahrrad-Marke"
+        },
+        "bike_model": {
+          "title": "Gestohlenes Fahrradmodell"
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": null
+        },
+        "approximate_value": {
+          "title": "Ungefährer Wert"
+        },
+        "theft_date": {
+          "title": "Diebstahldatum"
+        },
+        "location_type": {
+          "title": "Wo war das Fahrrad?"
+        },
+        "lock_type": {
+          "title": "Schlosstyp"
+        },
+        "lock_anchor": {
+          "title": "Ankerpunkt"
+        },
+        "location": {
+          "title": "Adresse und Koordinaten",
+          "subtitle": "Wählen Sie einen Kartenausschnitt aus, an dem der Diebstahl stattgefunden hat."
+        },
+        "main_photo": {
+          "title": "Gestohlenes Fahrrad Hauptfoto"
+        },
+        "photos": {
+          "title": "Sie können bis zu {{n}} Fotos hinzufügen."
+        },
+        "description": {
+          "title": "Beschreiben Sie, was passiert ist."
+        }
+      }
+    }
   }
 }

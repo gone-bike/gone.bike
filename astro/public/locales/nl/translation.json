@@ -1,6 +1,57 @@
 {
-  "test": "Dit is een test.",
   "homepage": {
     "title": "Gestolen fiets zoeken en rapporteren."
+  },
+  "pages": {
+    "report_form": {
+      "title": "Fietsdiefstalrapport",
+      "subtitle": "Voeg fietsdiefstal gerelateerde gegevens toe, ze worden toegevoegd aan de zoekmachine."
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "Gestolen fietsmerk"
+        },
+        "bike_model": {
+          "title": "Gestolen fietsmodel"
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": "Is het een elektrische fiets?"
+        },
+        "approximate_value": {
+          "title": "Ongeveer waarde"
+        },
+        "theft_date": {
+          "title": "Diefstal datum"
+        },
+        "location_type": {
+          "title": "Waar was de fiets?"
+        },
+        "lock_type": {
+          "title": "Type slot"
+        },
+        "lock_anchor": {
+          "title": "Ankerpunt."
+        },
+        "location": {
+          "title": "Adres en coördinaten",
+          "subtitle": "Selecteer een kaartpunt waar de diefstal heeft plaatsgevonden."
+        },
+        "main_photo": {
+          "title": "Gestolen fiets hoofdfoto"
+        },
+        "photos": {
+          "title": "Je kunt maximaal {{n}} foto's toevoegen."
+        },
+        "description": {
+          "title": "Beschrijf wat er is gebeurd."
+        }
+      }
+    }
   }
 }

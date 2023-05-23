@@ -1,6 +1,57 @@
 {
-  "test": "this is a test",
   "homepage": {
     "title": "Stolen bike search and report"
+  },
+  "pages": {
+    "report_form": {
+      "title": "Bike theft report",
+      "subtitle": "Insert bike theft related data, they will be added to the search engine"
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "Stolen bike brand"
+        },
+        "bike_model": {
+          "title": "Stolen bike model"
+        },
+        "colors": {
+          "title": "Bike main colors\n"
+        },
+        "is_electric": {
+          "title": "Is it an electric bike?"
+        },
+        "approximate_value": {
+          "title": "Approximate value"
+        },
+        "theft_date": {
+          "title": "Theft date"
+        },
+        "location_type": {
+          "title": "Where was the bike?"
+        },
+        "lock_type": {
+          "title": "Lock type"
+        },
+        "lock_anchor": {
+          "title": "Anchor point"
+        },
+        "location": {
+          "title": "Address and coordinates",
+          "subtitle": "Select a map point where the theft happened."
+        },
+        "main_photo": {
+          "title": "Stolen bike main photo"
+        },
+        "photos": {
+          "title": "You can add up to {{n}} photos"
+        },
+        "description": {
+          "title": "Describe what happened"
+        }
+      }
+    }
   }
 }

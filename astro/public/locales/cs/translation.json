@@ -1,6 +1,57 @@
 {
-  "test": "Toto je test.",
   "homepage": {
     "title": "Hledání a hlášení odcizeného kola"
+  },
+  "pages": {
+    "report_form": {
+      "title": "Zpráva o krádeži jízdního kola",
+      "subtitle": "Vložte údaje týkající se krádeže kol, budou přidány do vyhledávače."
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "Ukradené kolo značky."
+        },
+        "bike_model": {
+          "title": "Ukradené kolo modelu"
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": "Je to elektrické kolo?"
+        },
+        "approximate_value": {
+          "title": "Přibližná hodnota"
+        },
+        "theft_date": {
+          "title": "Datum krádeže"
+        },
+        "location_type": {
+          "title": "Kde bylo kolo?"
+        },
+        "lock_type": {
+          "title": "Typ zámku"
+        },
+        "lock_anchor": {
+          "title": "Kotvicí bod"
+        },
+        "location": {
+          "title": "Adresa a souřadnice",
+          "subtitle": "Vyberte bod na mapě, kde došlo k odcizení."
+        },
+        "main_photo": {
+          "title": "Odcizené kolo hlavní foto."
+        },
+        "photos": {
+          "title": "Můžete přidat až {{n}} fotografií."
+        },
+        "description": {
+          "title": "Popište, co se stalo."
+        }
+      }
+    }
   }
 }

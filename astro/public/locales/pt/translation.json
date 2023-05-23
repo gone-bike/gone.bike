@@ -1,6 +1,57 @@
 {
-  "test": "Este é um teste.",
   "homepage": {
     "title": "Pesquisa e relatório de bicicleta roubada."
+  },
+  "pages": {
+    "report_form": {
+      "title": "Relatório de roubo de bicicleta",
+      "subtitle": "Insira dados relacionados a roubo de bicicletas, eles serão adicionados ao motor de busca."
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "Bicicleta roubada da marca."
+        },
+        "bike_model": {
+          "title": "Modelo de bicicleta roubada"
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": "É uma bicicleta elétrica?"
+        },
+        "approximate_value": {
+          "title": "Valor aproximado"
+        },
+        "theft_date": {
+          "title": "Data do roubo."
+        },
+        "location_type": {
+          "title": "Onde estava a bicicleta?"
+        },
+        "lock_type": {
+          "title": "Tipo de bloqueio"
+        },
+        "lock_anchor": {
+          "title": "Ponto de ancoragem."
+        },
+        "location": {
+          "title": "Endereço e coordenadas.",
+          "subtitle": "Selecione um ponto no mapa onde ocorreu o roubo."
+        },
+        "main_photo": {
+          "title": "Foto principal da bicicleta roubada"
+        },
+        "photos": {
+          "title": "Você pode adicionar até {{n}} fotos."
+        },
+        "description": {
+          "title": "Descreva o que aconteceu."
+        }
+      }
+    }
   }
 }

@@ -1,6 +1,57 @@
 {
-  "test": "Bu bir test.",
   "homepage": {
     "title": "Çalınan bisiklet arama ve raporlama"
+  },
+  "pages": {
+    "report_form": {
+      "title": "Bisiklet hırsızlık raporu",
+      "subtitle": "Bisiklet hırsızlığıyla ilgili verileri ekleyin, bunlar arama motoruna eklenecektir."
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "Çalınan bisiklet markası"
+        },
+        "bike_model": {
+          "title": "Çalınmış bisiklet modeli"
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": "Elektrikli bir bisiklet mi?"
+        },
+        "approximate_value": {
+          "title": "Yaklaşık değer"
+        },
+        "theft_date": {
+          "title": "Hırsızlık tarihi"
+        },
+        "location_type": {
+          "title": "Bisiklet neredeydi?"
+        },
+        "lock_type": {
+          "title": "Kilit türü"
+        },
+        "lock_anchor": {
+          "title": "Bağlantı noktası"
+        },
+        "location": {
+          "title": "Adres ve koordinatlar",
+          "subtitle": "Hırsızlığın gerçekleştiği harita noktasını seçin."
+        },
+        "main_photo": {
+          "title": "Çalınmış bisiklet ana fotoğrafı"
+        },
+        "photos": {
+          "title": "{{n}} fotoğraf ekleyebilirsiniz."
+        },
+        "description": {
+          "title": "Ne olduğunu açıklayın."
+        }
+      }
+    }
   }
 }

@@ -1,6 +1,57 @@
 {
-  "test": "Ceci est un test.",
   "homepage": {
     "title": "Recherche et signalement de vélo volé."
+  },
+  "pages": {
+    "report_form": {
+      "title": "Rapport de vol de vélo",
+      "subtitle": "Insérez les données liées au vol de vélos, elles seront ajoutées au moteur de recherche."
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "Vélo volé de la marque."
+        },
+        "bike_model": {
+          "title": "Vélo volé modèle"
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": null
+        },
+        "approximate_value": {
+          "title": "Valeur approximative"
+        },
+        "theft_date": {
+          "title": "Date de vol"
+        },
+        "location_type": {
+          "title": "Où était le vélo?"
+        },
+        "lock_type": {
+          "title": "Type de verrouillage"
+        },
+        "lock_anchor": {
+          "title": "Point d'ancrage"
+        },
+        "location": {
+          "title": "Adresse et coordonnées.",
+          "subtitle": "Sélectionnez un point de carte où le vol a eu lieu."
+        },
+        "main_photo": {
+          "title": "Vélo volé photo principale"
+        },
+        "photos": {
+          "title": "Vous pouvez ajouter jusqu'à {{n}} photos."
+        },
+        "description": {
+          "title": "Décrivez ce qui s'est passé."
+        }
+      }
+    }
   }
 }

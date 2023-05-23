@@ -1,6 +1,57 @@
 {
-  "test": "Ovo je test.",
   "homepage": {
     "title": "Pretraživanje ukradenog bicikla i prijava."
+  },
+  "pages": {
+    "report_form": {
+      "title": "Izvještaj o krađi bicikla",
+      "subtitle": "Unesite podatke povezane s krađom bicikla, dodat će se u pretraživač."
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": null
+        },
+        "bike_model": {
+          "title": "''Stolen bike model'' would be translated to ''Model ukradenog bicikla'' in Croatian language."
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": "Je li to električni bicikl?"
+        },
+        "approximate_value": {
+          "title": "Okvirna vrijednost"
+        },
+        "theft_date": {
+          "title": "Datum krađe"
+        },
+        "location_type": {
+          "title": "Gdje je bio bicikl?"
+        },
+        "lock_type": {
+          "title": "Vrsta brave"
+        },
+        "lock_anchor": {
+          "title": "Sidrišna točka"
+        },
+        "location": {
+          "title": "Adresa i koordinate",
+          "subtitle": "Odaberite točku na karti gdje se dogodila krađa."
+        },
+        "main_photo": {
+          "title": "Ukradena bicikla glavna fotografija"
+        },
+        "photos": {
+          "title": "Možete dodati do {{n}} fotografija."
+        },
+        "description": {
+          "title": "Opišite što se dogodilo."
+        }
+      }
+    }
   }
 }

@@ -1,6 +1,57 @@
 {
-  "test": "questo è un test",
   "homepage": {
     "title": "Ricerca e segnalazione di biciclette rubate"
+  },
+  "pages": {
+    "report_form": {
+      "title": "Rapporto di furto di biciclette",
+      "subtitle": "Inserire i dati correlati al furto di biciclette, saranno aggiunti al motore di ricerca"
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "Marca della bicicletta rubata"
+        },
+        "bike_model": {
+          "title": "Modello di bicicletta rubata"
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": "È una bicicletta elettrica?"
+        },
+        "approximate_value": {
+          "title": "Valore approssimativo"
+        },
+        "theft_date": {
+          "title": "Data di furto"
+        },
+        "location_type": {
+          "title": "Dov'era la bici?"
+        },
+        "lock_type": {
+          "title": "Tipo di blocco"
+        },
+        "lock_anchor": {
+          "title": "Punto di ancoraggio."
+        },
+        "location": {
+          "title": "Indirizzo e coordinate.",
+          "subtitle": "Seleziona un punto sulla mappa dove è avvenuto il furto."
+        },
+        "main_photo": {
+          "title": "Foto principale della bici rubata."
+        },
+        "photos": {
+          "title": "Puoi aggiungere fino a {{n}} foto."
+        },
+        "description": {
+          "title": "Descrivi cosa è successo."
+        }
+      }
+    }
   }
 }

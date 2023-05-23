@@ -1,6 +1,57 @@
 {
-  "test": "to tylko test",
   "homepage": {
     "title": "Poszukiwanie skradzionego roweru i zgłoszenie."
+  },
+  "pages": {
+    "report_form": {
+      "title": "Raport o kradzieży roweru.",
+      "subtitle": "Wprowadź dane dotyczące kradzieży rowerów, zostaną one dodane do wyszukiwarki."
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "Skradziony rower marki"
+        },
+        "bike_model": {
+          "title": "Stolen bike model\" - \"Model skradzionego roweru"
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": "Czy to rower elektryczny?"
+        },
+        "approximate_value": {
+          "title": "Orientacyjna wartość"
+        },
+        "theft_date": {
+          "title": "Data kradzieży"
+        },
+        "location_type": {
+          "title": "Gdzie był rower?"
+        },
+        "lock_type": {
+          "title": "Typ zamka"
+        },
+        "lock_anchor": {
+          "title": "Punkt kotwiczenia"
+        },
+        "location": {
+          "title": "Adres i koordynaty.",
+          "subtitle": "Wybierz punkt na mapie, w którym doszło do kradzieży."
+        },
+        "main_photo": {
+          "title": "Skradziony rower główne zdjęcie."
+        },
+        "photos": {
+          "title": "Możesz dodać do {{n}} zdjęć."
+        },
+        "description": {
+          "title": "Opisz, co się stało."
+        }
+      }
+    }
   }
 }

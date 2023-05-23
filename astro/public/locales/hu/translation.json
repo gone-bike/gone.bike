@@ -1,6 +1,57 @@
 {
-  "test": "ez egy teszt",
   "homepage": {
     "title": "Lopott kerékpár keresés és bejelentés."
+  },
+  "pages": {
+    "report_form": {
+      "title": "Kerékpártolvajlás jelentés",
+      "subtitle": "Illessze be a kerékpárlopással kapcsolatos adatokat, azokat hozzáadjuk a keresőmotorhoz."
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "Lopott kerékpár márka"
+        },
+        "bike_model": {
+          "title": "Lopott kerékpár modell"
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": "Az egy elektromos kerékpár?"
+        },
+        "approximate_value": {
+          "title": "Körülbelüli érték."
+        },
+        "theft_date": {
+          "title": "Lopási dátum."
+        },
+        "location_type": {
+          "title": "Hol volt a bicikli?"
+        },
+        "lock_type": {
+          "title": "Zártípus"
+        },
+        "lock_anchor": {
+          "title": "Horgonyzó pont."
+        },
+        "location": {
+          "title": "Cím és koordináták.",
+          "subtitle": "Válasszon egy térképpontot, ahol a lopás történt."
+        },
+        "main_photo": {
+          "title": "Ellopott kerékpár fő fényképe"
+        },
+        "photos": {
+          "title": "Akár {{n}} fotót is hozzáadhatsz."
+        },
+        "description": {
+          "title": "Mi történt?"
+        }
+      }
+    }
   }
 }

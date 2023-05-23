@@ -1,6 +1,57 @@
 {
-  "test": "これはテストです。",
   "homepage": {
     "title": "盗まれた自転車の捜索と報告"
+  },
+  "pages": {
+    "report_form": {
+      "title": "自転車盗難の報告書",
+      "subtitle": "自転車盗難関連データを挿入し、検索エンジンに追加されます。"
+    }
+  },
+  "forms": {
+    "report": {
+      "questions": {
+        "bike_brand": {
+          "title": "盗まれた自転車のブランド"
+        },
+        "bike_model": {
+          "title": "盗まれた自転車のモデル"
+        },
+        "colors": {
+          "title": null
+        },
+        "is_electric": {
+          "title": "電動自転車ですか？"
+        },
+        "approximate_value": {
+          "title": "おおよその値"
+        },
+        "theft_date": {
+          "title": "盗難日付"
+        },
+        "location_type": {
+          "title": "自転車はどこでしたか？"
+        },
+        "lock_type": {
+          "title": "ロックタイプ"
+        },
+        "lock_anchor": {
+          "title": "アンカーポイント"
+        },
+        "location": {
+          "title": "住所と座標",
+          "subtitle": "盗難事件が起こった地図上のポイントを選択してください。"
+        },
+        "main_photo": {
+          "title": "盗まれた自転車のメイン写真"
+        },
+        "photos": {
+          "title": "{{n}}枚の写真を追加できます。"
+        },
+        "description": {
+          "title": "何が起こったかを説明してください。"
+        }
+      }
+    }
   }
 }
