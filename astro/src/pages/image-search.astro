@@ -1,10 +1,64 @@
 ---
-
 ---
 
+<div class="flex items-center justify-center h-screen">
+  <form
+    enctype="multipart/form-data"
+    action="/api/input/form"
+    method="post"
+    class="border-2 border-color: #dfe1e5; shadow-xl rounded-full flex justify-center items-center pr-3 pl-3"
+  >
+    <button
+      type="submit"
+      name="submit"
+      class="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700 dark:text-neutral-200 float-left mr-2"
+      id="basic-addon2"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        class="h-5 w-5"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
 
-<form enctype="multipart/form-data" action="/api/input/form" method="post">
-  <input id="name" type="text" />
-  <input id="data" name="file" type="file" />
-  <button type="submit" name="submit">Search</button>
-</form>
+    <input
+      id="name"
+      type="text"
+      placeholder="Search"
+      class="mr-3 p-2 !outline-none"
+    />
+
+    <div class="relative mr-4">
+      <label for="file-input" class="cursor-pointer py-2 px-4 rounded">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="23"
+          height="23"
+          fill="currentColor"
+          class="bi bi-fullscreen"
+          viewBox="0 0 16 16"
+          id="IconChangeColor"
+        >
+          <path
+            d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"
+            id="mainIconPathAttribute"
+            stroke-width="1.2"
+            stroke="#000000">
+          </path>
+        </svg>
+      </label>
+      <input
+        id="data"
+        name="file"
+        type="file"
+        class="absolute inset-0 opacity-0 z-10"
+      />
+    </div>
+  </form>
+</div>
