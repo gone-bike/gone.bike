@@ -1,0 +1,30 @@
+---
+import i18next, { t } from "i18next";
+import BaseLayout from "@layouts/Base.astro";
+import Form from "@components/Form.vue"
+
+const args = {
+    locale: Astro.url.searchParams.get("locale") || "en",
+    id: Astro.url.searchParams.get("id") || 0,
+};
+
+await i18next.changeLanguage(args.locale);
+function generateLocaleText(str: string) {
+    return t(`forms.report.questions.${str}.title`);
+}
+---
+
+<BaseLayout title={t("pages.report_form.title")} description="">
+    <div class="container max-w-3xl mx-auto mt-10">
+        <div class="border">
+            <div class="p-4 text-center">
+                <h1 class="text-2xl">{t("pages.report_form.title")}</h1>
+                <p class="mt-2">{t("pages.report_form.subtitle")}</p>
+            </div>
+            <div class="w-full h-[1px] bg-gray-200"></div>
+            <div class="p-4">
+                <Form client:load/>                
+            </div>
+        </div>
+    </div>
+</BaseLayout>
