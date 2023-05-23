@@ -3,6 +3,7 @@
 - Worker manages sync between databases
 - Testing image search with simple file upload
 - Report schema definition
+- Tried and failed to use Jotform to avoid form implementation. Unable to fetch attachment via jotform API.
 
 # 2023-06-21 - Git setup, staging setup
 - Created https://github.com/gone-bike
