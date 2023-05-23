@@ -1,4 +1,7 @@
-# 2022-06-22 Triggers, automation, dataflow
+# 2023-06-23 Translations
+- Started pusing translations
+
+# 2023-06-22 Triggers, automation, dataflow
 - Setup with Directus-to-Celery flow when editing reports
 - Worker manages sync between databases
 - Testing image search with simple file upload
@@ -24,11 +27,11 @@
 - VPN setup (will be used to access the dabase)
 
 # 2023-06-19 - Team buildup, initial config
-Job posting on Upwork, looking for collaborators, paid and voluntary.
-`docker-compose.yml` template to spin up a SQL server and a Directus instance.
+- Job posting on Upwork, looking for collaborators, paid and voluntary.
+- `docker-compose.yml` template to spin up a SQL server and a Directus instance.
 
 # 2023-05-18 - Start
-Project start. Domain name picked: gone.bike (lost.bike, missing.bike taken, as usual)
+- Project start. Domain name picked: gone.bike (lost.bike, missing.bike taken, as usual)
 
 
 
