@@ -144,7 +144,7 @@ function nextPage() {
             <label for="location" class="text-lg">{{ t("location") }}</label>
             <p class="text-sm text-gray-500 mb-2 font-semibold">{{ i18next("forms.report.questions.location.subtitle") }}
             </p>
-            <GoogleMap/>
+            <iframe src="/mapFrame" height="500" width="500" frameborder="0"></iframe>
         </div>
         <div class="flex w-full justify-between">
             <button @click="currentPage--"
