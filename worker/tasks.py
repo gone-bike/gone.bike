@@ -67,7 +67,7 @@ def test(self, *args, **kwargs):
                     uuid=payload['main_photo'],
                 )
                 pass
-            if 'photos' in payload and len(payload['photos']['create']) > 0:
+            if 'photos' in payload and 'create' in payload['photos'] and len(payload['photos']['create']) > 0:
                 for e in payload['photos']['create']:
                     phid = e['directus_files_id']['id']
                     b64 = fetch_picture(phid)
@@ -145,49 +145,102 @@ def test(self, *args, **kwargs):
 
 
 @app.task(bind=True, acks_late=False)
-def new_report(self, *args, **kwargs):
-    ret = []
-    for e in ['q42_main_photo', 'q44_photos_1','q45_photos_2', 'q46_photos_3']:
-
-        if kwargs[e] is not None and kwargs[e] != "":
-            photo = json.loads(kwargs[e])
-            photo = photo['widget_metadata']['value'][0]
-            photo =  f'https://eu.jotform.com/{photo["url"]}'
-
-            photo_data = requests.get(photo)
-
-            print(photo_data.headers)
-            # def upload_engagement_file(filepath):
-
-            #     url = API_ENDPOINT + "/api/files"  # add any URL parameters if needed
-            #     hdr = {"Authorization": "Bearer %s" % access_token}
-            #     with open(filepath, "rb") as fobj:
-            #         file_obj = fobj.read()
-            #         file_basename = os.path.basename(filepath)
-            #         file_to_upload = {"file": (str(file_basename), file_obj)}
-            #         finfo = {"fullPath": filepath}
-            #         upload_response = requests.post(url, headers=hdr, files=file_to_upload, data=finfo)
-            #         fobj.close()
-            #     # print("Status Code ", upload_response.status_code)
-            #     # print("JSON Response ", upload_response.json())
-            #     return upload_response
+def report_submit(self, *args, **kwargs):
 
 
-            # print(f"Importing {photo}")
+    uploads = {}
+    for pid in range(0,9):
+        e = 'main_photo' if pid == 0 else f'photo_{pid}'
+
+        if e in kwargs and kwargs[e] is not None and kwargs[e] != "":
+            photo = f'{os.environ["WORKER_PUBLIC_TMP_URL"]}/{kwargs[e]["upload"]}.{kwargs[e]["name"]}'
+
+            print(f"Importing {photo}")
 
 
-            # url = f'{os.environ["WORKER_DIRECTUS_URI"]}/files/import?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
-            # data = requests.post(url, json={
-            #     "url": photo,
-            #     "data": {
-            #         "folder": "fa2b1d0e-2e58-4897-af16-eab29f26117d" if e == 'q42_main_photo' else "21f79529-85a1-4797-b4a1-7ddefdef654f",
-            #         "tags": [ kwargs['slug'] ]
-            #     }
-            # })
-            # print(data.content)
+            url = f'{os.environ["WORKER_DIRECTUS_URI"]}/files/import?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
+            data = requests.post(url, json={
+                "url": photo,
+                "data": {
+                    "folder": "fa2b1d0e-2e58-4897-af16-eab29f26117d" if e == 'main_photo' else "21f79529-85a1-4797-b4a1-7ddefdef654f",
+                    "tags": [ 'test' ],
+                    "title": kwargs[e]["name"]
+                }
+            })
+            response = data.json()
+            uploads[e] = response["data"]["id"]
+        # "bike_brand_model":{
+        #     "bike_brand": {
+        #         "key":"aa",
+        #         "name":"bb"
+        #     },
+        #     "name":"xcccc"
+        # }
 
-            # ret.append(data.status_code)
-            # {'widget_metadata': {'type': 'imagelinks', 'value': [{'name': '15a28d52-0028-4551-85ad-c1e19ec67876.jpeg', 'url': '/widget-uploads/imagepreview/231414376042044/5f562e515a28d52-0028-4551-85ad-c1e19ec67876646ba65f5f019.jpeg'}]}}
+    bike_brand = None
+    bike_model = None
+    if "bike_brand" in kwargs:
+        url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
+        if kwargs["bike_brand"]["status"] == "new":
+            bike_brand = requests.post(url, json={ "name": kwargs["bike_brand"]["value"] }).json()
+            bike_brand = bike_brand["data"]["id"]
+        else:
+            bike_brand = requests.get(f'{url}&filter[id][_eq]={ kwargs["bike_brand"]["value"]}')
+            if bike_brand.status_code != 200:
+                return {"status": "fail", "input": kwargs }
+            bike_brand = bike_brand.json()
+            if len(bike_brand["data"]) == 0:
+                return {"status": "fail", "input": kwargs }
+
+            bike_brand = bike_brand["data"][0]["id"]
+            # bike_brand = kwargs["bike_brand"]["value"]
+
+    if "bike_model" in kwargs:
+        url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand_model?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
+        bike_model = requests.get(f'{url}&filter[name][_eq]={ kwargs["bike_model"]["value"]}')
+        if bike_model.status_code != 200:
+            return {"status": "fail", "input": kwargs }
+        bike_model = bike_model.json()
+        if len(bike_model["data"]) == 0 and kwargs["bike_model"]["status"] == "new":
+            bike_model = requests.post(url, json={ "bike_brand": bike_brand, "name": kwargs["bike_model"]["value"] }).json()
+            print(bike_model)
+            bike_model = bike_model["data"]["id"]
+        else:
+            bike_model = bike_model["data"][0]["id"]
+
+
+    entry = {
+        "bike_brand_model": bike_model,
+
+        "bike_details": kwargs["bike_details"],
+
+        "approximate_value": kwargs["approximate_value"],
+        "approximate_value_currency": kwargs["approximate_value_currency"],
+        "colors": kwargs["colors"].split(','),
+        "is_electric": bool(kwargs["is_electric"]),
+        "theft_date": kwargs["theft_date"],
+        "theft_timeframe": kwargs["theft_timeframe"],
+        "theft_location_type": kwargs["theft_location_type"],
+        "lock_type": kwargs["lock_type"],
+        "lock_anchor": kwargs["lock_anchor"],
+        "location_address": kwargs["location_address"],
+
+        "location_details": kwargs["location_details"],
+        "location": { "coordinates": [ kwargs["location_coords"]['lat'], kwargs["location_coords"]['lng'] ], "type": "Point"},
+        "main_photo": uploads['main_photo'] if 'main_photo' in uploads else None,
+
+        "photos": [ uploads[x] for x in uploads if x != 'main_photo' ],
+
+        "description": kwargs["description"],
+        "mail": kwargs["mail"],
+    }
+    print(entry)
+
+    url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/report?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
+    data = requests.post(url, json=entry)
+
+    print(data.status_code)
+    print(data.json())
 
 
     return 'ok'

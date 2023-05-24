@@ -3,3 +3,5 @@
 .env
 .directus.env
 .worker.env
+.astro.env
+

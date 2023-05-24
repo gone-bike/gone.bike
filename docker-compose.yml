@@ -68,6 +68,8 @@ services:
     container_name: gone.bike.directus
     restart: always
     image: directus/directus:${DIRECTUS_VERSION:-10.1.1}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - ${DIRECTUS_LISTEN:-8055}:8055
     volumes:
