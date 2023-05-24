@@ -9,9 +9,6 @@ const args = {
 };
 
 await i18next.changeLanguage(args.locale);
-function generateLocaleText(str: string) {
-    return t(`forms.report.questions.${str}.title`);
-}
 ---
 
 <BaseLayout title={t("pages.report_form.title")} description="">
