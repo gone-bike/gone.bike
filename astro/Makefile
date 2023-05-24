@@ -31,3 +31,8 @@ generate-locales: split-locales ## ## Merges sub-languages with parent languages
 			jq -s '.[0] * .[1]' public/locales/$$l/translation.json public/locales/$$PARENT/translation.json > public/locales/$$l/.tmp.json && \
 			mv public/locales/$$l/.tmp.json public/locales/$$l/translation.json; \
 	done
+
+build:
+	npm i
+	# this is to fix a build bug FFS! - build needs to happen within container to set proper paths
+	docker-compose run -it --rm web npm run build
