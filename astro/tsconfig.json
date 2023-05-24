@@ -26,6 +26,9 @@
       ],
       "@pages/*": [
         "pages/*"
+      ],
+      "@styles/*": [
+        "styles/*"
       ]
     }
 

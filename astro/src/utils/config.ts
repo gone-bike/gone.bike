@@ -8,6 +8,11 @@ let celery_redis = new URL(process.env.CELERY_REDIS_URI || import.meta.env.CELER
  */
 
 const config = {
+
+    IMG_MAX_H: process.env.IMG_MAX_H || import.meta.env.IMG_MAX_H || 2048,
+    IMG_MAX_W: process.env.IMG_MAX_W || import.meta.env.IMG_MAX_W || 2048,
+
+
     WEAVIATE_URI: weaviate,
 
     CELERY_REDIS_URI: celery_redis,

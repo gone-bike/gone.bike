@@ -101,18 +101,17 @@ services:
     image: node:18
     restart: unless-stopped
     volumes:
-      - ./:/app
+      - ./astro:/app
     working_dir: /app
-    environment:
-      REDIS_URI: ${REDIS_URI:-redis://redis:6379}
-      DB_HOST: ${DB_HOST:-postgresql}
+    env_file:
+      - .astro.env
     ports:
-      - ${WEB_LISTEN:-127.0.0.1:80}:6001/tcp
+      - ${WEB_LISTEN:-127.0.0.1:80}:3000/tcp
     logging:
       options:
         max-size: ${DOCKER_LOG_MAX_SIZE:-10m}
         max-file: ${DOCKER_LOG_MAX_FILE:-3}
-    command: node ./express-server.js ${ASTO_ROUTING_FILE:-./routing.json}
+    command: node ./express-server.js
 
 
 
