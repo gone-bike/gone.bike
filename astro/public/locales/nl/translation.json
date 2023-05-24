@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Fietsdiefstalrapport",
-      "subtitle": "Voeg fietsdiefstal gerelateerde gegevens toe, ze worden toegevoegd aan de zoekmachine."
+      "subtitle": "Voeg fietsdiefstal gerelateerde gegevens toe, ze worden toegevoegd aan de zoekmachine.",
+      "buttons": {
+        "next": "Nederlands",
+        "back": "Terug"
+      }
     }
   },
   "forms": {

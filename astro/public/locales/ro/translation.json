@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Raport de furt de biciclete.",
-      "subtitle": "Inserați datele legate de furturile de biciclete, acestea vor fi adăugate în motorul de căutare."
+      "subtitle": "Inserați datele legate de furturile de biciclete, acestea vor fi adăugate în motorul de căutare.",
+      "buttons": {
+        "next": "Următorul.",
+        "back": "Înapoi."
+      }
     }
   },
   "forms": {

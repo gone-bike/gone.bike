@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Bike theft report",
-      "subtitle": "Insert bike theft related data, they will be added to the search engine"
+      "subtitle": "Insert bike theft related data, they will be added to the search engine",
+      "buttons": {
+        "next": "Next.",
+        "back": "Back"
+      }
     }
   },
   "forms": {

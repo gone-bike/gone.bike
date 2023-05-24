@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Raport o kradzieży roweru.",
-      "subtitle": "Wprowadź dane dotyczące kradzieży rowerów, zostaną one dodane do wyszukiwarki."
+      "subtitle": "Wprowadź dane dotyczące kradzieży rowerów, zostaną one dodane do wyszukiwarki.",
+      "buttons": {
+        "next": "Następny",
+        "back": "Back"
+      }
     }
   },
   "forms": {

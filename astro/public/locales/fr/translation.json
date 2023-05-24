@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Rapport de vol de vélo",
-      "subtitle": "Insérez les données liées au vol de vélos, elles seront ajoutées au moteur de recherche."
+      "subtitle": "Insérez les données liées au vol de vélos, elles seront ajoutées au moteur de recherche.",
+      "buttons": {
+        "next": "Suivant",
+        "back": "Retour"
+      }
     }
   },
   "forms": {

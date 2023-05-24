@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Fahrraddiebstahlbericht",
-      "subtitle": "Fügen Sie die Daten zur Fahrraddiebstahl hinzu, sie werden zur Suchmaschine hinzugefügt."
+      "subtitle": "Fügen Sie die Daten zur Fahrraddiebstahl hinzu, sie werden zur Suchmaschine hinzugefügt.",
+      "buttons": {
+        "next": "Nächstes.",
+        "back": "Zurück"
+      }
     }
   },
   "forms": {

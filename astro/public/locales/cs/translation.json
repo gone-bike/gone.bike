@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Zpráva o krádeži jízdního kola",
-      "subtitle": "Vložte údaje týkající se krádeže kol, budou přidány do vyhledávače."
+      "subtitle": "Vložte údaje týkající se krádeže kol, budou přidány do vyhledávače.",
+      "buttons": {
+        "next": "Následující",
+        "back": "Zpět"
+      }
     }
   },
   "forms": {

@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Kerékpártolvajlás jelentés",
-      "subtitle": "Illessze be a kerékpárlopással kapcsolatos adatokat, azokat hozzáadjuk a keresőmotorhoz."
+      "subtitle": "Illessze be a kerékpárlopással kapcsolatos adatokat, azokat hozzáadjuk a keresőmotorhoz.",
+      "buttons": {
+        "next": "Nincs további információ.",
+        "back": "Vissza"
+      }
     }
   },
   "forms": {

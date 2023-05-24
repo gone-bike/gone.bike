@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Izvještaj o krađi bicikla",
-      "subtitle": "Unesite podatke povezane s krađom bicikla, dodat će se u pretraživač."
+      "subtitle": "Unesite podatke povezane s krađom bicikla, dodat će se u pretraživač.",
+      "buttons": {
+        "next": "Sljedeći",
+        "back": "Natrag"
+      }
     }
   },
   "forms": {

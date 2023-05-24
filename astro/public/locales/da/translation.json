@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Cykeltyverirapport",
-      "subtitle": "Indsæt cykeltyveri relaterede data, de vil blive tilføjet til søgemotoren."
+      "subtitle": "Indsæt cykeltyveri relaterede data, de vil blive tilføjet til søgemotoren.",
+      "buttons": {
+        "next": "Næste",
+        "back": "Tilbage"
+      }
     }
   },
   "forms": {

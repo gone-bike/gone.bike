@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Informe de robatoris de bicicletes.",
-      "subtitle": "Insereix les dades relacionades amb el robatori de bicicletes, seran afegides al cercador."
+      "subtitle": "Insereix les dades relacionades amb el robatori de bicicletes, seran afegides al cercador.",
+      "buttons": {
+        "next": "Següent.",
+        "back": "End"
+      }
     }
   },
   "forms": {

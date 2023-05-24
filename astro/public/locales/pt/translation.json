@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Relatório de roubo de bicicleta",
-      "subtitle": "Insira dados relacionados a roubo de bicicletas, eles serão adicionados ao motor de busca."
+      "subtitle": "Insira dados relacionados a roubo de bicicletas, eles serão adicionados ao motor de busca.",
+      "buttons": {
+        "next": "Próximo",
+        "back": "De volta."
+      }
     }
   },
   "forms": {

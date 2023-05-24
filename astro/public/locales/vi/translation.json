@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Báo cáo mất xe đạp",
-      "subtitle": "Thêm dữ liệu liên quan đến việc mất trộm xe đạp, chúng sẽ được thêm vào công cụ tìm kiếm."
+      "subtitle": "Thêm dữ liệu liên quan đến việc mất trộm xe đạp, chúng sẽ được thêm vào công cụ tìm kiếm.",
+      "buttons": {
+        "next": null,
+        "back": null
+      }
     }
   },
   "forms": {

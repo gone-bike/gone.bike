@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Bisiklet hırsızlık raporu",
-      "subtitle": "Bisiklet hırsızlığıyla ilgili verileri ekleyin, bunlar arama motoruna eklenecektir."
+      "subtitle": "Bisiklet hırsızlığıyla ilgili verileri ekleyin, bunlar arama motoruna eklenecektir.",
+      "buttons": {
+        "next": null,
+        "back": null
+      }
     }
   },
   "forms": {

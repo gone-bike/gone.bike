@@ -5,7 +5,11 @@
   "pages": {
     "report_form": {
       "title": "Rapporto di furto di biciclette",
-      "subtitle": "Inserire i dati correlati al furto di biciclette, saranno aggiunti al motore di ricerca"
+      "subtitle": "Inserire i dati correlati al furto di biciclette, saranno aggiunti al motore di ricerca",
+      "buttons": {
+        "next": "Prossimo",
+        "back": "Indietro"
+      }
     }
   },
   "forms": {
