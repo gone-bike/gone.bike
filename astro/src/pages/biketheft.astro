@@ -2,6 +2,7 @@
 import i18next, { t } from "i18next";
 import BaseLayout from "@layouts/Base.astro";
 import Form from "@components/Form.vue"
+import GoogleMap from "@components/GoogleMap.vue"
 
 const args = {
     locale: Astro.url.searchParams.get("locale") || "en",
@@ -10,7 +11,6 @@ const args = {
 
 await i18next.changeLanguage(args.locale);
 ---
-
 <BaseLayout title={t("pages.report_form.title")} description="">
     <div class="container max-w-3xl mx-auto mt-10">
         <div class="border">

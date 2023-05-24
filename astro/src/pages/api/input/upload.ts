@@ -16,8 +16,7 @@ export async function post({ request }: APIContext) {
   // @TODO implement file size limit check
 
   try {
-
-    let file = formData.get('file');
+    let file = formData.get('file') as File;
     let buf = await file.arrayBuffer();
     let uuid = uuidv4();
 
@@ -43,7 +42,7 @@ export async function post({ request }: APIContext) {
     return {
       body: JSON.stringify(upload)
     };
-  } catch (err) {
+  } catch (err:any){
       return new Response(JSON.stringify({ error: err.message }), {
         status: 500,
         headers: {
