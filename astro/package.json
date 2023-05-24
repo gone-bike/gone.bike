@@ -15,6 +15,7 @@
 		"@astrojs/tailwind": "^3.0.1",
 		"@astrojs/vue": "^2.0.1",
 		"@directus/sdk": "^10.3.3",
+		"@googlemaps/js-api-loader": "^1.15.2",
 		"@headlessui/vue": "^1.7.10",
 		"@sentry/node": "^7.42.0",
 		"@sentry/tracing": "^7.42.0",
@@ -31,6 +32,7 @@
 		"morgan": "^1.10.0",
 		"pg": "^8.9.0",
 		"redis": "^4.6.5",
+		"sharp": "^0.32.1",
 		"tailwindcss": "^3.2.7",
 		"url-pattern": "^1.0.3",
 		"uuid": "^9.0.0",
@@ -42,6 +44,8 @@
 	},
 	"devDependencies": {
 		"@tailwindcss/forms": "^0.5.3",
+		"@types/google.maps": "^3.53.1",
+		"@types/uuid": "^9.0.1",
 		"tailwindcss-pseudo-elements": "^2.0.0"
 	}
 }
