@@ -5,7 +5,7 @@
   "pages": {
     "report_form": {
       "title": "Fahrraddiebstahlbericht",
-      "subtitle": null
+      "subtitle": "Fügen Sie die Daten zur Fahrraddiebstahl hinzu, sie werden zur Suchmaschine hinzugefügt."
     }
   },
   "forms": {
@@ -18,7 +18,7 @@
           "title": "Gestohlenes Fahrradmodell"
         },
         "colors": {
-          "title": null
+          "title": "Fahrrad Hauptfarben."
         },
         "is_electric": {
           "title": null

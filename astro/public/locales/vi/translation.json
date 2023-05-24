@@ -18,7 +18,7 @@
           "title": "Xe đạp bị đánh cắp, mẫu {{X}}."
         },
         "colors": {
-          "title": null
+          "title": "Màu chính của xe đạp"
         },
         "is_electric": {
           "title": "Đây có phải là một chiếc xe đạp điện không?"
