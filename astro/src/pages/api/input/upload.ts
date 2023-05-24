@@ -2,8 +2,8 @@ import type { APIContext } from 'astro';
 import { v4 as uuidv4 } from 'uuid';
 import fs from 'fs/promises';
 import path from 'path'
-
-
+import sharp from 'sharp'
+import config from '@utils/config'
 
 // File routes export a get() function, which gets called to generate the file.
 // Return an object with `body` to save the file contents in your final build.
@@ -15,22 +15,40 @@ export async function post({ request }: APIContext) {
 
   // @TODO implement file size limit check
 
+  try {
 
-  let file = formData.get('file');
-  let buf = await file.arrayBuffer();
-  let uuid = uuidv4();
-  await fs.writeFile(`${targetFolder}/${uuid}.${file.name}`, Buffer.from( new Int8Array(buf) ));
-  let upload = {
-    upload: uuid,
-    lastModified: file.lastModified,
-    name: file.name,
-    size: file.size,
-    type: file.type,
-    href: `/tmp/${uuid}.${file.name}`
-  };
+    let file = formData.get('file');
+    let buf = await file.arrayBuffer();
+    let uuid = uuidv4();
 
+    let output = await sharp(buf)
+      .resize(config.IMG_MAX_W, config.IMG_MAX_H, {
+        fit: sharp.fit.inside,
+        withoutEnlargement: true
+      })
+      .toFormat('jpeg', { "quality": 100 })
+      .toFile(`${targetFolder}/${uuid}.${file.name}`)
 
-  return {
-    body: JSON.stringify(upload)
-  };
+    let upload = {
+      upload: uuid,
+      lastModified: file.lastModified,
+      name: file.name,
+      size: output.size,
+      type: output.format,
+      width: output.width,
+      height: output.height,
+      href: `/tmp/${uuid}.${file.name}`
+    };
+
+    return {
+      body: JSON.stringify(upload)
+    };
+  } catch (err) {
+      return new Response(JSON.stringify({ error: err.message }), {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+  }
 }
