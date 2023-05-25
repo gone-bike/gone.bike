@@ -47,6 +47,7 @@ type Report = {
         width: Number;
         // height: Number;
     };
+    getPhotos: Function;
 };
 
 type GoneBike = {

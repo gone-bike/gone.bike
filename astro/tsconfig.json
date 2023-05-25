@@ -9,6 +9,9 @@
       "@types/*": [
         "types/"
       ],
+      "@models/*": [
+        "models/*"
+      ],
       "@utils/*": [
         "utils/*"
       ],

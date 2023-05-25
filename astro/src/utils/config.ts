@@ -9,6 +9,8 @@ let celery_redis = new URL(process.env.CELERY_REDIS_URI || import.meta.env.CELER
 
 const config = {
 
+    DEV_DATA_MODE: process.env.DEV_DATA_MODE || import.meta.env.DEV_DATA_MODE || 0,
+
     IMG_MAX_H: process.env.IMG_MAX_H || import.meta.env.IMG_MAX_H || 2048,
     IMG_MAX_W: process.env.IMG_MAX_W || import.meta.env.IMG_MAX_W || 2048,
 

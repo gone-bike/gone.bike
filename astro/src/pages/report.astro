@@ -1,89 +1,47 @@
 ---
+import { Debug } from 'astro/components';
+
 import i18next, { t } from "i18next";
 
 import BaseLayout from "@layouts/Base.astro";
-import { Debug } from 'astro/components';
+import config from "@utils/config";
 
-import cache from "@utils/cache.js";
-import config from "@utils/config.js";
-import directus from "@utils/directus.js";
+import Report from "@models/report";
 
 const args = {
     locale: Astro.url.searchParams.get("locale") || 'en',
     id: Astro.url.searchParams.get("id") || 0
 }
+
 if (!args.id) {
     return await config.http404();
 }
 
+let report = await Report(args.id);
 
-
-await i18next.changeLanguage(args.locale)
-
-let data = [];
-
-try {
-    let query = await directus.items('report').readByQuery({
-        filter: {
-            id: {
-                _eq: args.id
-            }
-        },
-        fields: [
-            "id",
-            "status",
-            "description",
-            "location",
-            "theft_date",
-            "theft_timeframe",
-            "theft_location_type",
-            "colors",
-            "serial_number",
-            "approximate_value",
-            "approximate_value_currency",
-            "lock_type",
-            "lock_anchor",
-            "photos.directus_files_id.id",
-            "photos.directus_files_id.filename_disk",
-            "photos.directus_files_id.type",
-            "photos.directus_files_id.width",
-            "photos.directus_files_id.height",
-            "bike_brand_model.name",
-            "bike_brand_model.bike_brand.name",
-            "bike_brand_model.bike_brand.key",
-            "language.locale_code",
-            "main_photo.id",
-            "main_photo.filename_disk",
-            "main_photo.type",
-            "main_photo.width",
-            "main_photo.height"
-        ]
-    });
-    data = query && query.data && query.data.length == 1 ? query.data[0] : []
-
-
-    if (!data || data.length == 0) {
-        return await config.http404()
-    }
-
-} catch (e) {
-    throw e
+if (! report ) {
+    return await config.http404();
 }
 
+console.log(report)
+
+await i18next.changeLanguage(args.locale)
 ---
 <BaseLayout title={t('test.x')} description="test">
-    <div>
-        <h1>{data['id']}</h1>
-    { Object.keys(data).map( (e) => typeof(data[e]) == 'string' && (
+    <div class="container mx-auto">
+        <h1>{report.bike_brand_model.bike_brand.name } / {report.bike_brand_model.name }</h1>
+        <img src={report.getPhotos()[0]} >
+
+    { Object.keys(report).map( (e) => typeof(report[e]) == 'string' && (
             <div>
-                <b>{e}</b>: {data[e]}
+                <b>{e}</b>: {report[e]}
             </div>
         )
 
     ) }
     yy
     </div>
-    <!-- <img src=`/photos/${data.main_photo.id}/${data.main_photo.filename_disk}`> -->
+    <!-- <img src=`/photos/${report.main_photo.id}/${data.main_photo.filename_disk}`> -->
 
     <!-- <Debug data={data}/> -->
 </BaseLayout>
