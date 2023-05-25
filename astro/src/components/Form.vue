@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { t as i18next } from "i18next"
-import { reactive, ref, watch } from "vue"
+import { onMounted, reactive, ref, toRaw, watch } from "vue"
 import VueDatePicker from "@vuepic/vue-datepicker"
 import '@vuepic/vue-datepicker/dist/main.css'
 
@@ -10,9 +10,11 @@ import EmailIcon from "@components/icons/Email.vue"
 import AutoComplete from "./AutoComplete.vue"
 import InputField from "./InputField.vue"
 import SelectField from "./SelectField.vue"
+import FileUpload from "./FileUpload.vue"
+
+import GoogleMap from "./GoogleMap.vue"
 
 import Divider from "./Divider.vue"
-import GoogleMap from "./GoogleMap.vue"
 
 let bikeModelsApi: { key: string, value: string }[] = [{ "key": "key-0", "value": "value-0" }, { "key": "key-1", "value": "value-1" }, { "key": "key-2", "value": "value-2" }, { "key": "key-3", "value": "value-3" }, { "key": "key-4", "value": "value-4" }, { "key": "key-5", "value": "value-5" }, { "key": "key-6", "value": "value-6" }, { "key": "key-7", "value": "value-7" }, { "key": "key-8", "value": "value-8" }, { "key": "key-9", "value": "value-9" }, { "key": "key-10", "value": "value-10" }, { "key": "key-11", "value": "value-11" }, { "key": "key-12", "value": "value-12" }, { "key": "key-13", "value": "value-13" }, { "key": "key-14", "value": "value-14" }, { "key": "key-15", "value": "value-15" }, { "key": "key-16", "value": "value-16" }, { "key": "key-17", "value": "value-17" }, { "key": "key-18", "value": "value-18" }, { "key": "key-19", "value": "value-19" }, { "key": "key-20", "value": "value-20" }, { "key": "key-21", "value": "value-21" }, { "key": "key-22", "value": "value-22" }, { "key": "key-23", "value": "value-23" }, { "key": "key-24", "value": "Value-24" }]
 let bikeBrandApi: { key: string, value: string }[] = [{ "key": "key-0", "value": "value-0" }, { "key": "key-1", "value": "value-1" }, { "key": "key-2", "value": "value-2" }, { "key": "key-3", "value": "value-3" }, { "key": "key-4", "value": "value-4" }, { "key": "key-5", "value": "value-5" }, { "key": "key-6", "value": "value-6" }, { "key": "key-7", "value": "value-7" }, { "key": "key-8", "value": "value-8" }, { "key": "key-9", "value": "value-9" }, { "key": "key-10", "value": "value-10" }, { "key": "key-11", "value": "value-11" }, { "key": "key-12", "value": "value-12" }, { "key": "key-13", "value": "value-13" }, { "key": "key-14", "value": "value-14" }, { "key": "key-15", "value": "value-15" }, { "key": "key-16", "value": "value-16" }, { "key": "key-17", "value": "value-17" }, { "key": "key-18", "value": "value-18" }, { "key": "key-19", "value": "value-19" }, { "key": "key-20", "value": "value-20" }, { "key": "key-21", "value": "value-21" }, { "key": "key-22", "value": "value-22" }, { "key": "key-23", "value": "value-23" }, { "key": "key-24", "value": "Value-24" }]
@@ -20,22 +22,27 @@ let bikeBrandApi: { key: string, value: string }[] = [{ "key": "key-0", "value":
 let theftDateUnformated = ref("")
 
 let formValue = reactive({
-    bike_brand: {
-        status: '',
-        value: ''
-    },
-    bike_model: {
-        status: '',
-        value: ''
-    },
+    bike_brand: '',
+    bike_brand_id: '',
+    bike_model: '',
+    bike_model_id: '',
     bike_details: '',
     approximate_value: "",
     approximate_value_currency: '',
     color: '',
-    location_type: '',
+    theft_location_type: '',
     lock_type: '',
     theft_date: '',
     lock_anchor: '',
+    location_address: '',
+    location_details: {
+        city: "",
+        zip: ""
+    },
+    location_coords: {
+        lat: 0,
+        lng: 0
+    }
 })
 
 watch(theftDateUnformated, function (e) {
@@ -55,6 +62,18 @@ let mainImagePreviewDimensions = reactive({
 })
 
 let mainImagePreviewEl = ref<HTMLInputElement>()
+
+onMounted(() => {
+    if (window) {
+        window.addEventListener("message", (event) => {
+            if (event.data.type === "resize") {
+                console.log(event.data)
+                const iframe = document.querySelector("iframe")!;
+                iframe.height = event.data.value + "px";
+            }
+        }, false);
+    }
+})
 
 let mainPhotoFileUpload = ref<HTMLInputElement>()
 function t(str: string, param?: {}) {
@@ -99,16 +118,16 @@ function removeMainFile() {
     mainImageFile.value = undefined
 }
 
-let currentPage = ref(2)
+let currentPage = ref(3)
 function nextPage() {
     currentPage.value++
-    console.log(formValue)
+    console.log(toRaw(formValue))
 }
 </script>
 <template>
     <div class="flex flex-col gap-12 w-full" v-show="currentPage === 1">
-        <AutoComplete v-model="formValue.bike_model" :api="bikeModelsApi" title="bike_model" />
-        <AutoComplete v-model="formValue.bike_brand" :api="bikeBrandApi" title="bike_brand" />
+        <AutoComplete v-model:listed="formValue.bike_model_id"  v-model:new-item="formValue.bike_model" :api="bikeModelsApi" title="bike_model" />
+        <AutoComplete v-model:new-item="formValue.bike_brand" v-model:listed="formValue.bike_brand_id" :api="bikeBrandApi" title="bike_brand" />
         <InputField v-model="formValue.color" title="colors" />
         <div class="ml-2">
             <label for="is_electric" class="mb-2 text-lg">{{ t("is_electric") }}</label>
@@ -137,19 +156,21 @@ function nextPage() {
             <label for="theft_date" class="mb-2 text-lg">{{ t("theft_date") }}</label>
             <VueDatePicker v-model="theftDateUnformated" />
         </div>
-        <SelectField v-model="formValue.location_type" title="location_type" :list='["street", "park", "garage", "home"]' />
+        <SelectField v-model="formValue.theft_location_type" title="location_type"
+            :list='["street", "park", "garage", "home"]' />
         <SelectField v-model="formValue.lock_type" title="lock_type" :list='["nobody", "chain", "unlock", "cable"]' />
         <InputField v-model="formValue.lock_anchor" title="lock_anchor" />
         <div class="flex flex-col ml-2">
             <label for="location" class="text-lg">{{ t("location") }}</label>
             <p class="text-sm text-gray-500 mb-2 font-semibold">{{ i18next("forms.report.questions.location.subtitle") }}
             </p>
-            <iframe src="/mapFrame" height="500" width="500" frameborder="0"></iframe>
+            <!-- <GoogleMap v-model:address="formValue.location_address" v-model:coords="formValue.location_coords"
+                v-model:details="formValue.location_details" /> -->
         </div>
         <div class="flex w-full justify-between">
             <button @click="currentPage--"
                 class="bg-purple-600 px-4 rounded-md active:bg-purple-700 hover:bg-purple-700 font-semibold py-2 text-white">Back</button>
-            <button @click="currentPage++"
+            <button @click="nextPage"
                 class="bg-purple-600 px-4 rounded-md active:bg-purple-700 hover:bg-purple-700 font-semibold py-2 text-white">Next</button>
         </div>
     </div>
@@ -180,6 +201,7 @@ function nextPage() {
             <button
                 class="bg-purple-500 text-white hover:bg-purple-600 rounded-md shadow-md mt-2 focus:bg-purple-600 px-4 py-3">Upload</button>
         </div>
+        <FileUpload/>
         <div class="flex w-full justify-between">
             <button @click="currentPage--"
                 class="bg-purple-600 px-4 rounded-md active:bg-purple-700 hover:bg-purple-700 font-semibold py-2 text-white">Back</button>

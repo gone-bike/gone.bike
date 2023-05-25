@@ -23,6 +23,7 @@
 		"astro": "^2.0.16",
 		"astro-i18next": "^1.0.0-beta.21",
 		"astro-seo": "^0.7.0",
+		"axios": "^1.4.0",
 		"cache-manager": "^5.1.7",
 		"cache-manager-redis-store": "^3.0.1",
 		"express": "^4.18.2",

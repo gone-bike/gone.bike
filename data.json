@@ -1,0 +1,89 @@
+{
+   "street_address": {
+      "address_components": {
+         "street_number": "277",
+         "route": "Bedford Avenue",
+         "neighborhood-political": "Williamsburg",
+         "political-sublocality-sublocality_level_1": "Brooklyn",
+         "administrative_area_level_2-political": "Kings County",
+         "administrative_area_level_1-political": "New York",
+         "country-political": "United States",
+         "postal_code": "11211"
+      },
+      "formatted_address": "277 Bedford Ave, Brooklyn, NY 11211, USA"
+   },
+   "premise": {
+      "address_components": {
+         "street_number": "279",
+         "route": "Bedford Avenue",
+         "neighborhood-political": "Williamsburg",
+         "political-sublocality-sublocality_level_1": "Brooklyn",
+         "administrative_area_level_2-political": "Kings County",
+         "administrative_area_level_1-political": "New York",
+         "country-political": "United States",
+         "postal_code": "11211",
+         "postal_code_suffix": "4203"
+      },
+      "formatted_address": "279 Bedford Ave, Brooklyn, NY 11211, USA"
+   },
+   "neighborhood-political": {
+      "address_components": {
+         "neighborhood-political": "Williamsburg",
+         "political-sublocality-sublocality_level_1": "Brooklyn",
+         "administrative_area_level_2-political": "Kings County",
+         "administrative_area_level_1-political": "New York",
+         "country-political": "United States"
+      },
+      "formatted_address": "Williamsburg, Brooklyn, NY, USA"
+   },
+   "postal_code": {
+      "address_components": {
+         "postal_code": "11211",
+         "political-sublocality-sublocality_level_1": "Brooklyn",
+         "locality-political": "New York",
+         "administrative_area_level_1-political": "New York",
+         "country-political": "United States"
+      },
+      "formatted_address": "Brooklyn, NY 11211, USA",
+      "place_id": "ChIJvbEjlVdZwokR4KapM3WCFRw"
+   },
+   "administrative_area_level_2-political": {
+      "address_components": {
+         "administrative_area_level_2-political": "Kings County",
+         "political-sublocality-sublocality_level_1": "Brooklyn",
+         "administrative_area_level_1-political": "New York",
+         "country-political": "United States"
+      },
+      "formatted_address": "Kings County, Brooklyn, NY, USA"
+   },
+   "political-sublocality-sublocality_level_1": {
+      "address_components": {
+         "political-sublocality-sublocality_level_1": "Brooklyn",
+         "administrative_area_level_2-political": "Kings County",
+         "administrative_area_level_1-political": "New York",
+         "country-political": "United States"
+      },
+      "formatted_address": "Brooklyn, NY, USA"
+   },
+   "locality-political": {
+      "address_components": {
+         "locality-political": "New York",
+         "administrative_area_level_1-political": "New York",
+         "country-political": "United States"
+      },
+      "formatted_address": "New York, NY, USA"
+   },
+   "administrative_area_level_1-political": {
+      "address_components": {
+         "administrative_area_level_1-political": "New York",
+         "country-political": "United States"
+      },
+      "formatted_address": "New York, USA"
+   },
+   "country-political": {
+      "address_components": {
+         "country-political": "United States"
+      },
+      "formatted_address": "United States"
+   }
+}

@@ -4,23 +4,39 @@ import { t } from 'i18next'
 
 import DownIcon from "./icons/Down.vue"
 
-const props = defineProps<{ api: { key: string, value: string }[], modelValue: { status: string, value: string }, title: string }>()
-const emit = defineEmits(['update:modelValue'])
+const props = defineProps<{ api: { key: string, value: string }[], title: string, listed: string, newItem: string }>()
+const emit = defineEmits(['update:listed', 'update:newItem'])
 const isOther = ref(false)
 const isOpen = ref(false)
 function toggleOpen() {
     isOpen.value = !isOpen.value
 }
+const displayValue = ref("")
 const searchQuery = ref("")
 const queryResults = computed(() => {
     return props.api.filter(q => q.value.toLowerCase().includes(searchQuery.value.toLowerCase()))
 })
 function autoComplete(str: string) {
     isOpen.value = false
-    emit("update:modelValue", { status: 'listed', value: str })
+    let id = ""
+    for (let cur of props.api) {
+        if (cur.value === str) {
+            id = cur.key
+            break
+        }
+    }
+    emit("update:listed", id)
+    displayValue.value = str
+    if (props.newItem) {
+        emit("update:newItem", "")
+    }
 }
 function handleChange(e: any) {
-    emit("update:modelValue", { status: 'new', value: (e as { target: HTMLInputElement }).target.value })
+    emit("update:newItem", (e as { target: HTMLInputElement }).target.value)
+    displayValue.value = (e as { target: HTMLInputElement }).target.value
+    if (props.listed) {
+        emit("update:listed", "")
+    }
 }
 </script>
 <template>
@@ -31,7 +47,7 @@ function handleChange(e: any) {
                 }}</label>
                 <div
                     :class="['border border-[#6b7280] mt-2 relative w-full h-fit py-2 px-3', isOther ? 'bg-gray-100' : '']">
-                    <span v-if="props.modelValue.value">{{ props.modelValue.value }}</span>
+                    <span v-if="displayValue">{{ displayValue }}</span>
                     <span class="text-gray-400" v-else>Select Here</span>
                     <DownIcon class="absolute right-2 top-1/2 -translate-y-1/2" />
                 </div>
@@ -52,7 +68,7 @@ function handleChange(e: any) {
 
                 <input v-if="isOther" type="text"
                     :class="['w-52', !isOther ? 'border-gray-500 bg-gray-100 pointer-events-none' : '']"
-                    :value="props.modelValue.value" @input="handleChange">
+                    :value="props.newItem" @input="handleChange">
             </div>
         </div>
     </div>
