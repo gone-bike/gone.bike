@@ -1,11 +1,12 @@
-/** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors')
 const plugin = require('tailwindcss/plugin')
 
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
+	plugins: [require("@tailwindcss/forms")({
+		strategy: "base"
+	})],
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-
 	theme: {
 		extend: {
 			colors: {
