@@ -54,8 +54,19 @@
         },
         "description": {
           "title": "Descrie ce s-a întâmplat."
+        },
+        "theft_timeframe": {
+          "choices": {
+            "morning": "Dimineață.",
+            "afternoon": "După-amiaza",
+            "evening": "Seara",
+            "night": "Noapte"
+          }
         }
       }
+    },
+    "report_form": {
+      "you_choose": "\"Select\" translates to \"Selectați\" in Romanian."
     }
   }
 }

@@ -54,8 +54,19 @@
         },
         "description": {
           "title": "Descriu el que va passar."
+        },
+        "theft_timeframe": {
+          "choices": {
+            "morning": "Matí",
+            "afternoon": "Tarda.",
+            "evening": null,
+            "night": "Nit"
+          }
         }
       }
+    },
+    "report_form": {
+      "you_choose": "Seleccionar"
     }
   }
 }

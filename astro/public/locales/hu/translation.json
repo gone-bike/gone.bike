@@ -54,8 +54,19 @@
         },
         "description": {
           "title": "Mi történt?"
+        },
+        "theft_timeframe": {
+          "choices": {
+            "morning": "Reggel.",
+            "afternoon": "Délután",
+            "evening": "Est",
+            "night": "Éjszaka"
+          }
         }
       }
+    },
+    "report_form": {
+      "you_choose": "Kiválasztás"
     }
   }
 }

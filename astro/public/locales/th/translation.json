@@ -54,8 +54,19 @@
         },
         "description": {
           "title": "อธิบายว่าเกิดอะไรขึ้น"
+        },
+        "theft_timeframe": {
+          "choices": {
+            "morning": "สวัสดีตอนเช้า",
+            "afternoon": "บ่าย",
+            "evening": "ค่ำนี้",
+            "night": "{{คืน}}"
+          }
         }
       }
+    },
+    "report_form": {
+      "you_choose": "เลือก"
     }
   }
 }

@@ -54,8 +54,19 @@
         },
         "description": {
           "title": "Opišite što se dogodilo."
+        },
+        "theft_timeframe": {
+          "choices": {
+            "morning": "Jutro",
+            "afternoon": "Popodne",
+            "evening": "Večer",
+            "night": "Noć"
+          }
         }
       }
+    },
+    "report_form": {
+      "you_choose": "Odaberi"
     }
   }
 }

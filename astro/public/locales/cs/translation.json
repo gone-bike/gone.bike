@@ -54,8 +54,19 @@
         },
         "description": {
           "title": "Popište, co se stalo."
+        },
+        "theft_timeframe": {
+          "choices": {
+            "morning": null,
+            "afternoon": "Odpoledne.",
+            "evening": "Večer",
+            "night": "Noc"
+          }
         }
       }
+    },
+    "report_form": {
+      "you_choose": "Vyberte"
     }
   }
 }

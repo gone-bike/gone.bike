@@ -54,8 +54,19 @@
         },
         "description": {
           "title": "何が起こったかを説明してください。"
+        },
+        "theft_timeframe": {
+          "choices": {
+            "morning": "朝",
+            "afternoon": "午後",
+            "evening": "夜",
+            "night": "夜"
+          }
         }
       }
+    },
+    "report_form": {
+      "you_choose": "選択する"
     }
   }
 }

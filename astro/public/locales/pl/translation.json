@@ -54,8 +54,19 @@
         },
         "description": {
           "title": "Opisz, co się stało."
+        },
+        "theft_timeframe": {
+          "choices": {
+            "morning": "Dzień dobry.",
+            "afternoon": "Po południu",
+            "evening": "Wieczór",
+            "night": "Noc"
+          }
         }
       }
+    },
+    "report_form": {
+      "you_choose": "Wybierz."
     }
   }
 }

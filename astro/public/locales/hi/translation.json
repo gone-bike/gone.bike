@@ -54,8 +54,19 @@
         },
         "description": {
           "title": "वर्णन कीजिए कि क्या हुआ।"
+        },
+        "theft_timeframe": {
+          "choices": {
+            "morning": "सुबह",
+            "afternoon": "दोपहर",
+            "evening": "शाम",
+            "night": "रात"
+          }
         }
       }
+    },
+    "report_form": {
+      "you_choose": "चुनें।"
     }
   }
 }

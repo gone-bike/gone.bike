@@ -7,8 +7,8 @@
       "title": "Bisiklet hırsızlık raporu",
       "subtitle": "Bisiklet hırsızlığıyla ilgili verileri ekleyin, bunlar arama motoruna eklenecektir.",
       "buttons": {
-        "next": null,
-        "back": null
+        "next": "Sonraki",
+        "back": "Geri dönünüz."
       }
     }
   },
@@ -54,8 +54,19 @@
         },
         "description": {
           "title": "Ne olduğunu açıklayın."
+        },
+        "theft_timeframe": {
+          "choices": {
+            "morning": "Sabah",
+            "afternoon": "Öğleden sonra",
+            "evening": "Akşam",
+            "night": "Gece"
+          }
         }
       }
+    },
+    "report_form": {
+      "you_choose": "Seçiniz"
     }
   }
 }

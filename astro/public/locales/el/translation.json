@@ -25,7 +25,7 @@
           "title": "Κύρια χρώματα ποδηλάτου"
         },
         "is_electric": {
-          "title": null
+          "title": "Είναι ένα ηλεκτρικό ποδήλατο;"
         },
         "approximate_value": {
           "title": "Περίπου τιμή."
@@ -54,8 +54,19 @@
         },
         "description": {
           "title": "Περιγράψτε τι συνέβη."
+        },
+        "theft_timeframe": {
+          "choices": {
+            "morning": "Πρωί",
+            "afternoon": "Απόγευμα",
+            "evening": "Βράδυ",
+            "night": "Νύχτα"
+          }
         }
       }
+    },
+    "report_form": {
+      "you_choose": "Επιλέξτε"
     }
   }
 }

@@ -7,8 +7,8 @@
       "title": "Báo cáo mất xe đạp",
       "subtitle": "Thêm dữ liệu liên quan đến việc mất trộm xe đạp, chúng sẽ được thêm vào công cụ tìm kiếm.",
       "buttons": {
-        "next": null,
-        "back": null
+        "next": "Trang sau",
+        "back": "Quay lại"
       }
     }
   },
@@ -54,8 +54,19 @@
         },
         "description": {
           "title": "Mô tả những gì đã xảy ra."
+        },
+        "theft_timeframe": {
+          "choices": {
+            "morning": "Sáng",
+            "afternoon": "Buổi chiều",
+            "evening": "Buổi tối",
+            "night": "Đêm"
+          }
         }
       }
+    },
+    "report_form": {
+      "you_choose": "Lựa chọn"
     }
   }
 }

@@ -54,8 +54,19 @@
         },
         "description": {
           "title": "Опишите, что произошло."
+        },
+        "theft_timeframe": {
+          "choices": {
+            "morning": "Утро",
+            "afternoon": "Послеобеденное время",
+            "evening": "Вечер",
+            "night": "Ночь"
+          }
         }
       }
+    },
+    "report_form": {
+      "you_choose": "Выбрать"
     }
   }
 }

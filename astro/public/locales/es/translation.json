@@ -54,8 +54,19 @@
         },
         "description": {
           "title": "Describir lo que sucedió."
+        },
+        "theft_timeframe": {
+          "choices": {
+            "morning": "Mañana",
+            "afternoon": "Tarde",
+            "evening": "Noche.",
+            "night": "Noche"
+          }
         }
       }
+    },
+    "report_form": {
+      "you_choose": "Seleccionar"
     }
   }
 }
