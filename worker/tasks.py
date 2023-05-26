@@ -1,4 +1,6 @@
 import sys, os, json, logging, time, requests, psycopg2, base64
+
+from slugify import slugify
 from time import time as tm
 from urllib.parse import urlparse
 
@@ -11,13 +13,21 @@ import weaviate
 from weaviate.util import generate_uuid5
 
 
+from geopy.geocoders import Nominatim
+from geopy.extra.rate_limiter import RateLimiter
+
 # take environment variables from .env.
 #
 from dotenv import load_dotenv
 #load_dotenv()
 
+geolocator = Nominatim(user_agent="gone.bike")
+geocode = RateLimiter(geolocator.geocode, min_delay_seconds=10, error_wait_seconds=20)
+
+
 app = Celery('tasks')
 app.config_from_object({
+    'worker_prefetch_multiplier': os.environ["WORKER_PREFETCH_MULTIPLIER"],
     'broker_transport_options': {
         'visibility_timeout': 30, # BROKER_TRANSPORT_OPTTION_VISIBILITY_TIMEOUT
         'max_retries': 1
@@ -146,21 +156,21 @@ def test(self, *args, **kwargs):
 
 @app.task(bind=True, acks_late=False)
 def report_submit(self, *args, **kwargs):
-
+    print(kwargs)
 
     bike_brand = None
     bike_model = None
 
     if "bike_brand" in kwargs:
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
-        bike_brand = requests.get(f'{url}&filter[name][_eq]={ kwargs["bike_brand"]}')
+        bike_brand_slug = slugify(kwargs['bike_brand'])
+        bike_brand = requests.get(f'{url}&filter[key][_eq]={ bike_brand_slug }')
         if bike_brand.status_code != 200:
             return {"status": "fail", "input": kwargs, "output": bike_brand.content }
         bike_brand = bike_brand.json()
 
         if len(bike_brand["data"]) == 0:
-            bike_brand = requests.post(url, json={ "name": kwargs["bike_brand"] }).json()
-            print(bike_brand)
+            bike_brand = requests.post(url, json={ "key": bike_brand_slug, "name": kwargs["bike_brand"] }).json()
             bike_brand = bike_brand["data"]["id"]
 
         else:
@@ -170,17 +180,68 @@ def report_submit(self, *args, **kwargs):
     if "bike_model" in kwargs:
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand_model?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
 
-        bike_model = requests.get(f'{url}&filter[name][_eq]={ kwargs["bike_model"]}')
+        bike_model_slug = slugify(kwargs['bike_model'])
+
+        bike_model = requests.get(f'{url}&filter[key][_eq]={ bike_model_slug }')
         if bike_model.status_code != 200:
             return {"status": "fail", "input": kwargs }
         bike_model = bike_model.json()
         if len(bike_model["data"]) == 0:
-            bike_model = requests.post(url, json={ "bike_brand": bike_brand, "name": kwargs["bike_model"] }).json()
-            print(bike_model)
+            bike_model = requests.post(url, json={ "bike_brand": bike_brand, "key": bike_model_slug, "name": kwargs["bike_model"] }).json()
             bike_model = bike_model["data"]["id"]
         else:
             bike_model = bike_model["data"][0]["id"]
 
+
+    try:
+        colors = kwargs.get("colors","").replace('/',',').replace( 'and ', ',').split(',') if 'colors' in kwargs else []
+        colors = list(map(lambda c : slugify(c) , colors))
+    except Exception as e:
+        colors = []
+
+    entry = {
+        "bike_brand_model": bike_model,
+
+        "bike_details": kwargs.get("bike_details"),
+
+        "approximate_value": kwargs.get("approximate_value"),
+        "approximate_value_currency": kwargs.get("approximate_value_currency"),
+        "colors": colors,
+        "is_electric": bool(kwargs.get("is_electric")) if kwargs.get('is_electrict') else None,
+        "theft_date": kwargs.get("theft_date"),
+        "theft_timeframe": kwargs.get("theft_timeframe"),
+        "theft_location_type": kwargs.get("theft_location_type"),
+        "lock_type": kwargs.get("lock_type"),
+        "lock_anchor": kwargs.get("lock_anchor"),
+        "location_address": kwargs.get("location_address"),
+
+        "location_details": kwargs.get("location_details"),
+        "description": kwargs.get("description"),
+        "email": kwargs.get("email"),
+        "ref_url": kwargs.get("ref_url"),
+
+    }
+
+    if kwargs.get('location_coords'):
+        entry['location'] = { "coordinates": [ kwargs.get("location_coords",{}).get('lng'), kwargs.get("location_coords",{}).get('lat') ], "type": "Point"},
+
+    elif kwargs.get('location_address_raw'):
+
+
+        location = geocode(kwargs.get('location_address_raw'))
+        try:
+            entry['location_address'] = location.address
+            entry['location_details'] = location.raw
+            entry['location_details']['_input'] = kwargs.get('location_address_raw')
+            entry['location'] = { "coordinates": [ location.longitude, location.latitude ], "type": "Point"}
+        except Exception as e:
+            entry['location_details'] = {
+                "_input": kwargs.get('location_address_raw')
+            }
+
+
+
+    # return 'ok'
 
     uploads = {}
     for pid in range(0,9):
@@ -203,7 +264,7 @@ def report_submit(self, *args, **kwargs):
                 "url": photo_url,
                 "data": {
                     "folder": "fa2b1d0e-2e58-4897-af16-eab29f26117d" if e == 'main_photo' else "21f79529-85a1-4797-b4a1-7ddefdef654f",
-                    "tags": [ 'test' ],
+                    "tags": [ photo_url ],
                     "title": photo_name
                 }
             })
@@ -218,37 +279,12 @@ def report_submit(self, *args, **kwargs):
         # }
 
 
+    entry["main_photo"] = uploads.get('main_photo')
+    entry["photos"] = [ uploads[x] for x in uploads if x != 'main_photo' ]
 
 
-    entry = {
-        "bike_brand_model": bike_model,
+    # print(json.dumps(entry))
 
-        "bike_details": kwargs.get("bike_details"),
-
-        "approximate_value": kwargs.get("approximate_value"),
-        "approximate_value_currency": kwargs.get("approximate_value_currency"),
-        "colors": kwargs.get("colors").split(',') if 'colors' in kwargs else [],
-        "is_electric": bool(kwargs.get("is_electric")),
-        "theft_date": kwargs.get("theft_date"),
-        "theft_timeframe": kwargs.get("theft_timeframe"),
-        "theft_location_type": kwargs.get("theft_location_type"),
-        "lock_type": kwargs.get("lock_type"),
-        "lock_anchor": kwargs.get("lock_anchor"),
-        "location_address": kwargs.get("location_address"),
-
-        "location_details": kwargs.get("location_details"),
-        "main_photo": uploads.get('main_photo'),
-
-        "photos": [ uploads[x] for x in uploads if x != 'main_photo' ],
-
-        "description": kwargs.get("description"),
-        "mail": kwargs.get("mail"),
-    }
-    if kwargs.get('location_coords'):
-        entry['location'] = { "coordinates": [ kwargs.get("location_coords",{}).get('lat'), kwargs.get("location_coords",{}).get('lng') ], "type": "Point"},
-
-
-    print(entry)
 
     url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/report?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
     data = requests.post(url, json=entry)

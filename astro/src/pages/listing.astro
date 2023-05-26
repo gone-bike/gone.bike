@@ -1,0 +1,38 @@
+---
+import { Debug } from 'astro/components';
+
+import ListingEntry from "@components/listing/entry.astro";
+
+import i18next, { t } from "i18next";
+
+import BaseLayout from "@layouts/Base.astro";
+import config from "@utils/config";
+
+import Listing from "@models/listing";
+
+const args = {
+  locale: Astro.url.searchParams.get("locale") || 'en',
+}
+
+let listing = await Listing();
+
+// console.log(listing)
+
+if (! listing ) {
+  return await config.http404();
+}
+
+
+await i18next.changeLanguage(args.locale)
+---
+<BaseLayout title={t('test.x')} description="test">
+
+
+  <div class="container mx-auto grid grid-cols-1 gap-y-2 sm:grid-cols-4 sm:gap-4 ">
+  { listing.map( (report) => (
+    <ListingEntry {report}></ListingEntry>
+  )) }
+
+
+  </div>
+</BaseLayout>

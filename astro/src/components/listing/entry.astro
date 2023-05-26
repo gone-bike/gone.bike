@@ -1,0 +1,16 @@
+---
+export interface Props {
+	report: Object;
+}
+
+const report = Astro.props.report
+---
+
+<div class="border-2">
+    <div class="p-4 ">
+    <img src={`/photos/${report.main_photo.id}`}>
+    <strong>{report.bike_brand_model.bike_brand.name } / {report.bike_brand_model.name }</strong>
+    <small>{report.theft_date}</small>
+    <a class="block underline text-blue-500 hover:text-blue-800" href={`/report?id=${report.id}`}>link</a>
+    </div>
+</div>
