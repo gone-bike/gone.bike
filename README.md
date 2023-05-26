@@ -37,7 +37,7 @@ The search part with `elasticsearch` and `weaviate` to support image search and 
 1. Ensure you have a *redis* connection, and access to a directus instance containing the related db
 2. Create a `astro/.env` as follow
 ```
-WEAVIATE_URI=http://localhost:8080,
+WEAVIATE_URI=http://localhost:8080
 CELERY_REDIS_URI=redis://localhost:6379/0
 REDIS_URI=redis://localhost:6379/0
 DIRECTUS_URI=http://directus-url
