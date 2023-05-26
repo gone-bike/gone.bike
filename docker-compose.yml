@@ -149,7 +149,7 @@ services:
 
       TASK_ACKS_LATE: ${TASK_ACKS_LATE:-false}
 
-    command: celery --app=tasks worker --uid 1 -n %h-${VERSION:-1}@${HOSTNAME:-worker} -l ${LOG_LEVEL:-INFO}
+    command: celery --app=tasks worker --concurrency=${WORKER_CONCURRENCY:-1} --uid 1 -n %h-${VERSION:-1}@${HOSTNAME:-worker} -l ${LOG_LEVEL:-INFO}
     volumes:
       - ./worker:/app
     working_dir: /app
