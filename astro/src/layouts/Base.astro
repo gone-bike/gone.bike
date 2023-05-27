@@ -1,6 +1,7 @@
 ---
 import { SEO } from "astro-seo";
 import Footer from "@components/Footer.astro";
+import Navbar from "@components/Navbar.astro";
 
 export interface Props {
   title: string;
@@ -29,6 +30,7 @@ const { title, description } = Astro.props;
     <SEO title={title} description={description} />
   </head>
   <body>
+    <Navbar />
     <slot />
     <Footer />
 
