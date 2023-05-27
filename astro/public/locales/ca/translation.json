@@ -40,7 +40,10 @@
           "title": "Tipus de bloqueig."
         },
         "lock_anchor": {
-          "title": "Punt d'ancoratge"
+          "title": "Punt d'ancoratge",
+          "choices": {
+            "tree": "Arbre"
+          }
         },
         "location": {
           "title": "Adreça i coordenades.",

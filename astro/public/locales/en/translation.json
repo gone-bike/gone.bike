@@ -40,7 +40,10 @@
           "title": "Lock type"
         },
         "lock_anchor": {
-          "title": "Anchor point"
+          "title": "Anchor point",
+          "choices": {
+            "tree": "Tree"
+          }
         },
         "location": {
           "title": "Address and coordinates",

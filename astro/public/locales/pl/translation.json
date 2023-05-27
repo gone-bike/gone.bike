@@ -40,7 +40,10 @@
           "title": "Typ zamka"
         },
         "lock_anchor": {
-          "title": "Punkt kotwiczenia"
+          "title": "Punkt kotwiczenia",
+          "choices": {
+            "tree": "Drzewo"
+          }
         },
         "location": {
           "title": "Adres i koordynaty.",

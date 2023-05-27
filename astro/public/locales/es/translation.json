@@ -40,7 +40,10 @@
           "title": "Tipo de cerradura"
         },
         "lock_anchor": {
-          "title": "Punto de anclaje"
+          "title": "Punto de anclaje",
+          "choices": {
+            "tree": "Árbol"
+          }
         },
         "location": {
           "title": "Dirección y coordenadas.",

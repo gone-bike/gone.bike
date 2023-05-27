@@ -40,7 +40,10 @@
           "title": "Type slot"
         },
         "lock_anchor": {
-          "title": "Ankerpunt."
+          "title": "Ankerpunt.",
+          "choices": {
+            "tree": "Boom"
+          }
         },
         "location": {
           "title": "Adres en coördinaten",

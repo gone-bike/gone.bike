@@ -40,7 +40,10 @@
           "title": "Type de verrouillage"
         },
         "lock_anchor": {
-          "title": "Point d'ancrage"
+          "title": "Point d'ancrage",
+          "choices": {
+            "tree": "Arbre"
+          }
         },
         "location": {
           "title": "Adresse et coordonnées.",

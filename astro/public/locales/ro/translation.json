@@ -40,7 +40,10 @@
           "title": "Tipul de blocare"
         },
         "lock_anchor": {
-          "title": "Punct de ancorare."
+          "title": "Punct de ancorare.",
+          "choices": {
+            "tree": "Copac"
+          }
         },
         "location": {
           "title": "Adresă și coordonate",

@@ -16,7 +16,7 @@
     "report": {
       "questions": {
         "bike_brand": {
-          "title": null
+          "title": "Ukradena bicikla marka."
         },
         "bike_model": {
           "title": "''Stolen bike model'' would be translated to ''Model ukradenog bicikla'' in Croatian language."
@@ -40,7 +40,10 @@
           "title": "Vrsta brave"
         },
         "lock_anchor": {
-          "title": "Sidrišna točka"
+          "title": "Sidrišna točka",
+          "choices": {
+            "tree": "Drvo"
+          }
         },
         "location": {
           "title": "Adresa i koordinate",

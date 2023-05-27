@@ -40,7 +40,10 @@
           "title": "Typ zámku"
         },
         "lock_anchor": {
-          "title": "Kotvicí bod"
+          "title": "Kotvicí bod",
+          "choices": {
+            "tree": "Strom"
+          }
         },
         "location": {
           "title": "Adresa a souřadnice",

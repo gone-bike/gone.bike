@@ -40,7 +40,10 @@
           "title": "लॉक प्रकार"
         },
         "lock_anchor": {
-          "title": "एंकर पॉइंट"
+          "title": "एंकर पॉइंट",
+          "choices": {
+            "tree": "पेड़"
+          }
         },
         "location": {
           "title": "पता और निर्देशांक",

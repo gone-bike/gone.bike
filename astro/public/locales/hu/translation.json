@@ -40,7 +40,10 @@
           "title": "Zártípus"
         },
         "lock_anchor": {
-          "title": "Horgonyzó pont."
+          "title": "Horgonyzó pont.",
+          "choices": {
+            "tree": "Fa"
+          }
         },
         "location": {
           "title": "Cím és koordináták.",

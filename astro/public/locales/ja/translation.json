@@ -22,7 +22,7 @@
           "title": "盗まれた自転車のモデル"
         },
         "colors": {
-          "title": null
+          "title": "バイクの主な色"
         },
         "is_electric": {
           "title": "電動自転車ですか？"
@@ -40,7 +40,10 @@
           "title": "ロックタイプ"
         },
         "lock_anchor": {
-          "title": "アンカーポイント"
+          "title": "アンカーポイント",
+          "choices": {
+            "tree": "木"
+          }
         },
         "location": {
           "title": "住所と座標",

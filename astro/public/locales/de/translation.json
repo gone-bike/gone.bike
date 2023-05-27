@@ -40,7 +40,10 @@
           "title": "Schlosstyp"
         },
         "lock_anchor": {
-          "title": "Ankerpunkt"
+          "title": "Ankerpunkt",
+          "choices": {
+            "tree": "Baum"
+          }
         },
         "location": {
           "title": "Adresse und Koordinaten",

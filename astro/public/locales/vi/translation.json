@@ -40,7 +40,10 @@
           "title": "Loại khóa"
         },
         "lock_anchor": {
-          "title": "Điểm neo"
+          "title": "Điểm neo",
+          "choices": {
+            "tree": "Cây"
+          }
         },
         "location": {
           "title": "Địa chỉ và tọa độ",

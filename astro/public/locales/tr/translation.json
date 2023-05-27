@@ -40,7 +40,10 @@
           "title": "Kilit türü"
         },
         "lock_anchor": {
-          "title": "Bağlantı noktası"
+          "title": "Bağlantı noktası",
+          "choices": {
+            "tree": "Ağaç"
+          }
         },
         "location": {
           "title": "Adres ve koordinatlar",

@@ -40,7 +40,10 @@
           "title": "Tipo di blocco"
         },
         "lock_anchor": {
-          "title": "Punto di ancoraggio."
+          "title": "Punto di ancoraggio.",
+          "choices": {
+            "tree": "Albero"
+          }
         },
         "location": {
           "title": "Indirizzo e coordinate.",

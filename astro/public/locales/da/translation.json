@@ -40,7 +40,10 @@
           "title": "Låsetype"
         },
         "lock_anchor": {
-          "title": null
+          "title": null,
+          "choices": {
+            "tree": "Træ"
+          }
         },
         "location": {
           "title": "Adresse og koordinater.",
