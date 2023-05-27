@@ -7,7 +7,7 @@
       "title": "Bike theft report",
       "subtitle": "Insert bike theft related data, they will be added to the search engine",
       "buttons": {
-        "next": "Next.",
+        "next": "Next",
         "back": "Back"
       }
     }
