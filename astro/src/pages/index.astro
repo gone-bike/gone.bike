@@ -23,15 +23,10 @@ import BaseLayout from "@layouts/Base.astro";
       );
     }
   </style>
-  <script>
-    document.getElementById("listing-button").addEventListener("click", () => {
-      window.location.href = "/listing";
-    });
-  </script>
   <div class="w-full">
     <div class="hero w-full h-[50vh] flex flex-col items-center justify-center">
       <div class="pre-cta text-lg font-bold">
-        Discover the truth. Track down stolen bikes with our epic image search.
+        {t("pages.homepage.pre_cta")}
       </div>
       <div class="cta text-6xl font-extrabold">Did your bike get stolen?</div>
       <div
@@ -50,7 +45,7 @@ import BaseLayout from "@layouts/Base.astro";
       </div>
       <button
         class="list-button text-white bg-[#2DA771] rounded py-2 px-4"
-        id="listing-button">List Your Stolen Bike</button
+        id="listing-button"><a href="/listing">List Your Stolen Bike</a></button
       >
     </div>
     <div class="listing"></div>
