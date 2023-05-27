@@ -11,7 +11,7 @@ const args = {
 await i18next.changeLanguage(args.locale);
 
 
-let fff:{ dat:{ key: string; value: string }[] }= await (
+let fff:{ data:{ key: string; value: string }[] }= await (
   await fetch(`${new URL(Astro.url).origin}/api/bike_brand.json`)
 ).json();
 ---
@@ -25,7 +25,7 @@ let fff:{ dat:{ key: string; value: string }[] }= await (
       </div>
       <div class="w-full h-[1px] bg-gray-200"></div>
       <div class="p-4">
-        <Form client:load bikeBrand={fff.dat} />
+        <Form client:load bikeBrand={fff.data} />
       </div>
     </div>
   </div>
