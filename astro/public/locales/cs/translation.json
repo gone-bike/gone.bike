@@ -8,7 +8,8 @@
       "subtitle": "Vložte údaje týkající se krádeže kol, budou přidány do vyhledávače.",
       "buttons": {
         "next": "Následující",
-        "back": "Zpět"
+        "back": "Zpět",
+        "submit": "Odeslat zprávu"
       }
     },
     "homepage": {
@@ -19,13 +20,15 @@
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Ukradené kolo značky."
+          "title": "Ukradené kolo značky.",
+          "subtitle": "Hledejte název značky, pokud ho nenajdete, můžete jej napsat. Pokud ho neznáte, nechte toto pole prázdné."
         },
         "bike_model": {
           "title": "Ukradené kolo modelu"
         },
         "colors": {
-          "title": "Hlavní barvy jízdních kol"
+          "title": "Hlavní barvy jízdních kol",
+          "subtitle": "Barvy rámů kol, přidejte každou barvu oddělenou čárkou."
         },
         "is_electric": {
           "title": "Je to elektrické kolo?",
@@ -35,7 +38,8 @@
           }
         },
         "approximate_value": {
-          "title": "Přibližná hodnota"
+          "title": "Přibližná hodnota",
+          "subtitle": "Zadejte přibližnou hodnotu kola v {{měna}}."
         },
         "theft_date": {
           "title": "Datum krádeže"
@@ -47,7 +51,8 @@
             "park": "Park",
             "cellar": "Sklep",
             "garage": "Garáž",
-            "train": "Vlak"
+            "train": "Vlak",
+            "garden": "Zahrada"
           }
         },
         "lock_type": {
@@ -78,7 +83,17 @@
             "afternoon": "Odpoledne.",
             "evening": "Večer",
             "night": "Noc"
-          }
+          },
+          "title": "Den denní rámec.",
+          "subtitle": "Vyberte přibližný časový rámec, kdy bylo vaše kolo odcizeno."
+        },
+        "bike_details": {
+          "title": "Detaily kola",
+          "subtitle": "Přidejte jakékoliv detaily, které mohou pomoci vaší kolo identifikovat."
+        },
+        "enter_email": {
+          "title": "E-mailová adresa.",
+          "subtitle": "Pošleme vám ověřovací odkaz a vaši e-mailovou adresu použijeme pouze pro přísně související komunikaci."
         }
       }
     },

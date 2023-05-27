@@ -8,24 +8,27 @@
       "subtitle": "Insérez les données liées au vol de vélos, elles seront ajoutées au moteur de recherche.",
       "buttons": {
         "next": "Suivant",
-        "back": "Retour"
+        "back": "Retour",
+        "submit": "Soumettre le rapport."
       }
     },
     "homepage": {
-      "pre_cta": "Découvrez la vérité. Retrouvez les vélos volés avec notre recherche d'images épique."
+      "pre_cta": "Découvrez la vérité. Poursuivez les vélos volés avec notre recherche d'images épique."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Vélo volé de la marque."
+          "title": "Vélo volé de la marque.",
+          "subtitle": "Recherchez le nom de la marque, si vous ne le trouvez pas, vous pouvez le taper. Si vous ne le connaissez pas, laissez ce champ vide."
         },
         "bike_model": {
           "title": "Vélo volé modèle"
         },
         "colors": {
-          "title": "Les principales couleurs de vélo."
+          "title": "Les principales couleurs de vélo.",
+          "subtitle": "Couleurs de cadre de vélo, ajouter chaque couleur séparée par une virgule."
         },
         "is_electric": {
           "title": "Est-ce un vélo électrique ?",
@@ -35,7 +38,8 @@
           }
         },
         "approximate_value": {
-          "title": "Valeur approximative"
+          "title": "Valeur approximative",
+          "subtitle": "Entrez une valeur approximative du vélo en {{devise}}"
         },
         "theft_date": {
           "title": "Date de vol"
@@ -47,7 +51,8 @@
             "park": "Parc",
             "cellar": "Cave",
             "garage": "Garage",
-            "train": "Train"
+            "train": "Train",
+            "garden": "Jardin"
           }
         },
         "lock_type": {
@@ -78,7 +83,17 @@
             "afternoon": "Après-midi",
             "evening": "Soirée",
             "night": "Nuit"
-          }
+          },
+          "title": "Journée plage.",
+          "subtitle": "Sélectionnez une période de temps approximative lorsque votre vélo a été volé."
+        },
+        "bike_details": {
+          "title": "Détails du vélo",
+          "subtitle": "Ajoutez tout détail qui peut aider à reconnaître votre vélo."
+        },
+        "enter_email": {
+          "title": "Adresse e-mail",
+          "subtitle": "Nous vous enverrons un lien de vérification et utiliserons votre adresse e-mail uniquement pour une communication strictement liée."
         }
       }
     },

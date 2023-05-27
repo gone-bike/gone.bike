@@ -8,24 +8,27 @@
       "subtitle": "Insira dados relacionados a roubo de bicicletas, eles serão adicionados ao motor de busca.",
       "buttons": {
         "next": "Próximo",
-        "back": "De volta."
+        "back": "De volta.",
+        "submit": "Enviar relatório."
       }
     },
     "homepage": {
-      "pre_cta": "Descubra a verdade. Rastreie bicicletas roubadas com nossa incrível busca de imagens."
+      "pre_cta": "Descubra a verdade. Rastreie bicicletas roubadas com nossa épica busca por imagens."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Bicicleta roubada da marca."
+          "title": "Bicicleta roubada da marca.",
+          "subtitle": "Pesquise o nome da marca, se você não encontrá-la, pode digitá-la. Se não souber, deixe este campo em branco."
         },
         "bike_model": {
           "title": "Modelo de bicicleta roubada"
         },
         "colors": {
-          "title": "Cores principais da bicicleta"
+          "title": "Cores principais da bicicleta",
+          "subtitle": "Cores do quadro da bicicleta, adicione cada cor separada por vírgula."
         },
         "is_electric": {
           "title": "É uma bicicleta elétrica?",
@@ -35,7 +38,8 @@
           }
         },
         "approximate_value": {
-          "title": "Valor aproximado"
+          "title": "Valor aproximado",
+          "subtitle": "Digite um valor aproximado da bicicleta, em {{currency}}."
         },
         "theft_date": {
           "title": "Data do roubo."
@@ -47,7 +51,8 @@
             "park": "Parque",
             "cellar": "Porão",
             "garage": "Garagem",
-            "train": "Trem"
+            "train": "Trem",
+            "garden": "Jardim"
           }
         },
         "lock_type": {
@@ -78,7 +83,17 @@
             "afternoon": "Tarde",
             "evening": "Noite.",
             "night": "Noite."
-          }
+          },
+          "title": "Período diurno",
+          "subtitle": "Selecione um intervalo de tempo aproximado quando sua bicicleta foi roubada."
+        },
+        "bike_details": {
+          "title": "Detalhes da bicicleta",
+          "subtitle": "Adicione qualquer detalhe que possa ajudar a tornar sua bicicleta reconhecível."
+        },
+        "enter_email": {
+          "title": "Endereço de e-mail",
+          "subtitle": "Enviaremos um link de verificação e usaremos seu e-mail apenas para comunicação estritamente relacionada."
         }
       }
     },

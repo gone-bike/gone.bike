@@ -8,7 +8,8 @@
       "subtitle": "Fügen Sie die Daten zur Fahrraddiebstahl hinzu, sie werden zur Suchmaschine hinzugefügt.",
       "buttons": {
         "next": "Nächstes.",
-        "back": "Zurück"
+        "back": "Zurück",
+        "submit": "Einreichen des Berichts"
       }
     },
     "homepage": {
@@ -19,13 +20,15 @@
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Gestohlenes Fahrrad-Marke"
+          "title": "Gestohlenes Fahrrad-Marke",
+          "subtitle": "Suchen Sie den Markennamen. Wenn Sie ihn nicht finden, können Sie ihn eingeben. Wenn Sie es nicht wissen, lassen Sie dieses Feld leer."
         },
         "bike_model": {
           "title": "Gestohlenes Fahrradmodell"
         },
         "colors": {
-          "title": "Fahrrad Hauptfarben."
+          "title": "Fahrrad Hauptfarben.",
+          "subtitle": "Fahrradrahmenfarben, fügen Sie jede Farbe durch ein Komma getrennt hinzu."
         },
         "is_electric": {
           "title": "Ist es ein Elektrofahrrad?",
@@ -35,7 +38,8 @@
           }
         },
         "approximate_value": {
-          "title": "Ungefährer Wert"
+          "title": "Ungefährer Wert",
+          "subtitle": "Geben Sie einen ungefähren Wert des Fahrrads in {{currency}} ein."
         },
         "theft_date": {
           "title": "Diebstahldatum"
@@ -47,7 +51,8 @@
             "park": "Park",
             "cellar": "Keller",
             "garage": "Garage",
-            "train": "Zug"
+            "train": "Zug",
+            "garden": "Garten"
           }
         },
         "lock_type": {
@@ -78,7 +83,17 @@
             "afternoon": "Nachmittag",
             "evening": "Abend",
             "night": "Nacht"
-          }
+          },
+          "title": "Tageszeitfenster",
+          "subtitle": "Wählen Sie einen ungefähren Zeitraum aus, wann Ihr Fahrrad gestohlen wurde."
+        },
+        "bike_details": {
+          "title": "Fahrraddetails",
+          "subtitle": "Fügen Sie Details hinzu, die dazu beitragen können, dass Ihr Fahrrad erkennbar ist."
+        },
+        "enter_email": {
+          "title": "E-Mail-Adresse",
+          "subtitle": "Wir werden Ihnen einen Verifizierungslink senden und Ihre E-Mail nur für streng verwandte Kommunikation verwenden."
         }
       }
     },

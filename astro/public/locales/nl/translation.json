@@ -8,24 +8,27 @@
       "subtitle": "Voeg fietsdiefstal gerelateerde gegevens toe, ze worden toegevoegd aan de zoekmachine.",
       "buttons": {
         "next": "Nederlands",
-        "back": "Terug"
+        "back": "Terug",
+        "submit": "Indienen van rapport"
       }
     },
     "homepage": {
-      "pre_cta": "Ontdek de waarheid. Vind gestolen fietsen op met onze epische afbeeldingzoekfunctie."
+      "pre_cta": "Ontdek de waarheid. Volg gestolen fietsen op met onze epische afbeeldingszoekfunctie."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Gestolen fietsmerk"
+          "title": "Gestolen fietsmerk",
+          "subtitle": "Zoek naar de merknaam, als je het niet kunt vinden, kun je het typen. Als je het niet weet, laat dit veld dan leeg."
         },
         "bike_model": {
           "title": "Gestolen fietsmodel"
         },
         "colors": {
-          "title": "Fiets hoofdkleuren"
+          "title": "Fiets hoofdkleuren",
+          "subtitle": "Fietsframe kleuren, voeg elke kleur toe gescheiden door een komma."
         },
         "is_electric": {
           "title": "Is het een elektrische fiets?",
@@ -35,7 +38,8 @@
           }
         },
         "approximate_value": {
-          "title": "Ongeveer waarde"
+          "title": "Ongeveer waarde",
+          "subtitle": "Geef een bij benadering waarde van de fiets, in {{currency}}."
         },
         "theft_date": {
           "title": "Diefstal datum"
@@ -47,7 +51,8 @@
             "park": "Park",
             "cellar": "Kelder",
             "garage": "Garage",
-            "train": "Trein"
+            "train": "Trein",
+            "garden": "Tuin"
           }
         },
         "lock_type": {
@@ -78,7 +83,17 @@
             "afternoon": "Middag",
             "evening": "Avond",
             "night": "Nacht"
-          }
+          },
+          "title": "Dag tijdskader",
+          "subtitle": "Selecteer een benaderend tijdsbestek wanneer uw fiets gestolen is."
+        },
+        "bike_details": {
+          "title": "Fietsgegevens",
+          "subtitle": "Voeg alle details toe die kunnen helpen om jouw fiets herkenbaar te maken."
+        },
+        "enter_email": {
+          "title": "E-mailadres",
+          "subtitle": "We zullen u een verificatielink sturen en uw e-mail alleen gebruiken voor strikt gerelateerde communicatie."
         }
       }
     },

@@ -8,7 +8,8 @@
       "subtitle": "Insereix les dades relacionades amb el robatori de bicicletes, seran afegides al cercador.",
       "buttons": {
         "next": "Següent.",
-        "back": "End"
+        "back": "End",
+        "submit": "Enviar informe"
       }
     },
     "homepage": {
@@ -19,13 +20,15 @@
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Bicicleta robada marca"
+          "title": "Bicicleta robada marca",
+          "subtitle": "Cerca el nom de la marca, si no la trobes, pots escriure-la. Si no la coneixes, deixa aquest camp en blanc."
         },
         "bike_model": {
           "title": "Bicicleta robada de model"
         },
         "colors": {
-          "title": "Colors principals de bicicleta."
+          "title": "Colors principals de bicicleta.",
+          "subtitle": "Colors de la estructura de bicicleta, afegiu cada color separat per una coma."
         },
         "is_electric": {
           "title": "És una bicicleta elèctrica?",
@@ -35,7 +38,8 @@
           }
         },
         "approximate_value": {
-          "title": "Valor aproximat."
+          "title": "Valor aproximat.",
+          "subtitle": "Escriu una valor aproximada de la bicicleta, en {{currency}}."
         },
         "theft_date": {
           "title": "Data de robatori"
@@ -47,7 +51,8 @@
             "park": "Parc",
             "cellar": "Celler",
             "garage": "Garatge",
-            "train": "Tren."
+            "train": "Tren.",
+            "garden": "Jardí"
           }
         },
         "lock_type": {
@@ -78,7 +83,17 @@
             "afternoon": "Tarda.",
             "evening": "Vespre",
             "night": "Nit"
-          }
+          },
+          "title": "Horari de dia",
+          "subtitle": "Seleccione un marc de temps aproximadament quan es va robar la seva bicicleta."
+        },
+        "bike_details": {
+          "title": "Detalls de la bicicleta",
+          "subtitle": "Afegeix qualsevol detall que pugui ajudar a fer que la teva bicicleta sigui identificable."
+        },
+        "enter_email": {
+          "title": "Adreça electrònica",
+          "subtitle": "Us enviarem un enllaç de verificació i utilitzarem el vostre correu electrònic només per a comunicació estrictament relacionada."
         }
       }
     },

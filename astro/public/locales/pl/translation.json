@@ -8,24 +8,27 @@
       "subtitle": "Wprowadź dane dotyczące kradzieży rowerów, zostaną one dodane do wyszukiwarki.",
       "buttons": {
         "next": "Następny",
-        "back": "Back"
+        "back": "Back",
+        "submit": "Prześlij raport."
       }
     },
     "homepage": {
-      "pre_cta": "Odkryj prawdę. Śledź skradzione rowery dzięki naszej epickiej wyszukiwarce obrazów."
+      "pre_cta": "Odkryj prawdę. Śledź skradzione rowery za pomocą naszego epickiego wyszukiwania obrazów."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Skradziony rower marki"
+          "title": "Skradziony rower marki",
+          "subtitle": "Wyszukaj nazwę marki, jeśli jej nie znajdziesz, możesz ją wpisać. Jeśli nie znasz nazwy marki, pozostaw to pole puste."
         },
         "bike_model": {
           "title": "Stolen bike model\" - \"Model skradzionego roweru"
         },
         "colors": {
-          "title": "Główne kolory roweru"
+          "title": "Główne kolory roweru",
+          "subtitle": "Kolory ramy rowerowej, dodaj każdy kolor oddzielający przecinkiem."
         },
         "is_electric": {
           "title": "Czy to rower elektryczny?",
@@ -35,7 +38,8 @@
           }
         },
         "approximate_value": {
-          "title": "Orientacyjna wartość"
+          "title": "Orientacyjna wartość",
+          "subtitle": "Podaj przybliżoną wartość roweru, w {{currency}}"
         },
         "theft_date": {
           "title": "Data kradzieży"
@@ -47,7 +51,8 @@
             "park": "Park",
             "cellar": "Piwnica",
             "garage": "Garaż",
-            "train": "Pociąg"
+            "train": "Pociąg",
+            "garden": "Ogród"
           }
         },
         "lock_type": {
@@ -78,7 +83,17 @@
             "afternoon": "Po południu",
             "evening": "Wieczór",
             "night": "Noc"
-          }
+          },
+          "title": "Ramka czasowa dnia",
+          "subtitle": "Wybierz przybliżony okres czasu, kiedy został skradziony Twój rower."
+        },
+        "bike_details": {
+          "title": "Szczegóły roweru.",
+          "subtitle": "Dodaj jakieś detale, które pomogą w rozpoznaniu twojego roweru."
+        },
+        "enter_email": {
+          "title": "Adres e-mailowy",
+          "subtitle": "Wyślemy ci link weryfikacyjny i będziemy korzystać z twojego adresu e-mail wyłącznie do celów związanych z komunikacją."
         }
       }
     },

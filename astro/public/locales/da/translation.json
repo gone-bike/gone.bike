@@ -8,7 +8,8 @@
       "subtitle": "Indsæt cykeltyveri relaterede data, de vil blive tilføjet til søgemotoren.",
       "buttons": {
         "next": "Næste",
-        "back": "Tilbage"
+        "back": "Tilbage",
+        "submit": "Indsend rapport."
       }
     },
     "homepage": {
@@ -19,13 +20,15 @@
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Stjålet cykelmærke"
+          "title": "Stjålet cykelmærke",
+          "subtitle": "Søg efter brandnavnet, hvis du ikke finder det, kan du skrive det. Hvis du ikke kender det, skal du lade dette felt være tomt."
         },
         "bike_model": {
           "title": "Stjålet cykelmodel"
         },
         "colors": {
-          "title": "Cykel hovedfarver."
+          "title": "Cykel hovedfarver.",
+          "subtitle": "Cykelstel farver, tilføj hver farve adskilt af en komma."
         },
         "is_electric": {
           "title": "Er det en elektrisk cykel?",
@@ -35,7 +38,8 @@
           }
         },
         "approximate_value": {
-          "title": "Omtrentlig værdi"
+          "title": "Omtrentlig værdi",
+          "subtitle": "Angiv en omtrentlig værdi af cyklen, i {{currency}}."
         },
         "theft_date": {
           "title": "Tyveridato."
@@ -47,7 +51,8 @@
             "park": "Park",
             "cellar": "Kælder",
             "garage": "Garage",
-            "train": "Tog"
+            "train": "Tog",
+            "garden": "Have you seen my garden?"
           }
         },
         "lock_type": {
@@ -78,7 +83,17 @@
             "afternoon": "Eftermiddag.",
             "evening": "Aften",
             "night": "Natte."
-          }
+          },
+          "title": "Dags tidsramme.",
+          "subtitle": "Vælg en omtrentlig tidsramme, hvornår din cykel blev stjålet."
+        },
+        "bike_details": {
+          "title": "Cykel detaljer.",
+          "subtitle": "Tilføj enhver detalje, der kan hjælpe med at gøre din cykel genkendelig."
+        },
+        "enter_email": {
+          "title": "E-mail adresse",
+          "subtitle": "Vi vil sende dig et verifikationslink og bruge din email kun til strikt relateret kommunikation."
         }
       }
     },

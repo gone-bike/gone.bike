@@ -8,24 +8,27 @@
       "subtitle": "Unesite podatke povezane s krađom bicikla, dodat će se u pretraživač.",
       "buttons": {
         "next": "Sljedeći",
-        "back": "Natrag"
+        "back": "Natrag",
+        "submit": "Podnesi izvještaj."
       }
     },
     "homepage": {
-      "pre_cta": "Otkrijte istinu. Pronađite ukradene bicikle uz našu epsku pretragu slika."
+      "pre_cta": "Otkrijte istinu. Pružite trag ukradenim biciklima uz našu epohalnu pretragu slika."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Ukradena bicikla marka."
+          "title": "Ukradena bicikla marka.",
+          "subtitle": "Pretražite ime marke, ako je ne pronađete, možete ga upisati. Ako ga ne znate, ostavite ovo polje prazno."
         },
         "bike_model": {
           "title": "''Stolen bike model'' would be translated to ''Model ukradenog bicikla'' in Croatian language."
         },
         "colors": {
-          "title": "Bike glavne boje"
+          "title": "Bike glavne boje",
+          "subtitle": "Boje okvira bicikla, dodajte svaku boju odvojenu zarezom."
         },
         "is_electric": {
           "title": "Je li to električni bicikl?",
@@ -35,7 +38,8 @@
           }
         },
         "approximate_value": {
-          "title": "Okvirna vrijednost"
+          "title": "Okvirna vrijednost",
+          "subtitle": "Upišite približnu vrijednost bicikla u {{valuti}}."
         },
         "theft_date": {
           "title": "Datum krađe"
@@ -47,7 +51,8 @@
             "park": "Park",
             "cellar": "Podrum",
             "garage": "Garaža",
-            "train": "Vlak"
+            "train": "Vlak",
+            "garden": "Vrt"
           }
         },
         "lock_type": {
@@ -78,7 +83,17 @@
             "afternoon": "Popodne",
             "evening": "Večer",
             "night": "Noć"
-          }
+          },
+          "title": "Dnevni vremenski okvir",
+          "subtitle": "Odaberite otprilike vrijeme kada je vaš bicikl ukraden."
+        },
+        "bike_details": {
+          "title": "Biciklistički detalji",
+          "subtitle": "Dodajte bilo kakve detalje koji mogu pomoći u prepoznavanju vašeg bicikla."
+        },
+        "enter_email": {
+          "title": "Adresa e-pošte",
+          "subtitle": "Poslat ćemo vam verifikacijski link i vašu e-poštu koristiti samo za strogo povezanu komunikaciju."
         }
       }
     },

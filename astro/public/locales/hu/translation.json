@@ -8,24 +8,27 @@
       "subtitle": "Illessze be a kerékpárlopással kapcsolatos adatokat, azokat hozzáadjuk a keresőmotorhoz.",
       "buttons": {
         "next": "Nincs további információ.",
-        "back": "Vissza"
+        "back": "Vissza",
+        "submit": "Jelentés beküldése"
       }
     },
     "homepage": {
-      "pre_cta": "Fedezze fel az igazságot. Kövesse nyomon az ellopott kerékpárokat epikus képkeresőnk segítségével."
+      "pre_cta": "Fedezze fel az igazságot. Kövesse nyomon az ellopott kerékpárokat epikus képkeresőnkkel."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Lopott kerékpár márka"
+          "title": "Lopott kerékpár márka",
+          "subtitle": "Keresd ki a márka nevét, ha nem találod, írd be. Ha nem tudod, hagyd üresen ezt a mezőt."
         },
         "bike_model": {
           "title": "Lopott kerékpár modell"
         },
         "colors": {
-          "title": "Fő kerékpárszínek"
+          "title": "Fő kerékpárszínek",
+          "subtitle": "Kerékpár vázszínek, minden színt vesszővel elválasztva."
         },
         "is_electric": {
           "title": "Az egy elektromos kerékpár?",
@@ -35,7 +38,8 @@
           }
         },
         "approximate_value": {
-          "title": "Körülbelüli érték."
+          "title": "Körülbelüli érték.",
+          "subtitle": "Írja be a kerékpár hozzávetőleges értékét, {{currency}}-ban."
         },
         "theft_date": {
           "title": "Lopási dátum."
@@ -47,7 +51,8 @@
             "park": "Park",
             "cellar": "Pince",
             "garage": "Garázs",
-            "train": "vonat"
+            "train": "vonat",
+            "garden": "Kert"
           }
         },
         "lock_type": {
@@ -78,7 +83,17 @@
             "afternoon": "Délután",
             "evening": "Est",
             "night": "Éjszaka"
-          }
+          },
+          "title": "Nappali időkeret",
+          "subtitle": "Válassza ki az időkeretet, amikor a kerékpárját ellopták."
+        },
+        "bike_details": {
+          "title": "Bicikli részletek",
+          "subtitle": "Azonosságot segítő részleteket adj hozzá a kerékpárodhoz, amelyek segítenek azonosítani."
+        },
+        "enter_email": {
+          "title": "E-mail cím",
+          "subtitle": "Egy ellenőrző linket fogunk küldeni Önnek és az e-mailjét csak szigorúan kapcsolódó kommunikációra használjuk."
         }
       }
     },
