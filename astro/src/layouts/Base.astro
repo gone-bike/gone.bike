@@ -27,7 +27,41 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- <meta name="generator" content={Astro.generator} /> -->
+
+    <!-- Twitter
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+    -->
+
+    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+
     <SEO title={title} description={description} />
+    {
+      /*
+      canonical={canonicalURL}
+      twitter={{
+        creator: "@surjithctly",
+        site: "@web3templates",
+        card: "summary_large_image",
+      }}
+      openGraph={{
+        basic: {
+          url: canonicalURL,
+          type: "website",
+          title: "OG: " + title,
+          description: description,
+          image: resolvedImageWithDomain,
+        },
+        image: {
+          alt: title,
+        },
+      }}
+      */
+    }
   </head>
   <body>
     <Navbar />
