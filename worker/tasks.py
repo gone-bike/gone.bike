@@ -61,6 +61,7 @@ def test(self, *args, **kwargs):
         if kwargs['$trigger']['event'] == 'report.items.update':
             key = kwargs['$trigger']['keys'][0]
         print(payload)
+
         client = weaviate.Client(os.environ['WORKER_WEAVIATE_URI'])
         client.batch.configure(
             batch_size=None
@@ -161,7 +162,10 @@ def report_submit(self, *args, **kwargs):
     bike_brand = None
     bike_model = None
 
-    if "bike_brand" in kwargs:
+    if "bike_brand_id" in kwargs:
+        bike_brand = int(kwargs.get('bike_brand_id'))
+
+    elif "bike_brand" in kwargs and kwargs.get('bike_brand') != "":
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
         bike_brand_slug = slugify(kwargs['bike_brand'])
         bike_brand = requests.get(f'{url}&filter[key][_eq]={ bike_brand_slug }')
@@ -176,8 +180,10 @@ def report_submit(self, *args, **kwargs):
         else:
             bike_brand = bike_brand["data"][0]["id"]
 
+    if "bike_model_id" in kwargs:
+        bike_model = int(kwargs.get('bike_model_id'))
 
-    if "bike_model" in kwargs:
+    elif "bike_model" in kwargs:
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand_model?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
 
         bike_model_slug = slugify(kwargs['bike_model'])
@@ -223,7 +229,7 @@ def report_submit(self, *args, **kwargs):
     }
 
     if kwargs.get('location_coords'):
-        entry['location'] = { "coordinates": [ kwargs.get("location_coords",{}).get('lng'), kwargs.get("location_coords",{}).get('lat') ], "type": "Point"},
+        entry['location'] = { "coordinates": [ kwargs.get("location_coords",{}).get('lng'), kwargs.get("location_coords",{}).get('lat') ], "type": "Point"}
 
     elif kwargs.get('location_address_raw'):
 
@@ -283,7 +289,7 @@ def report_submit(self, *args, **kwargs):
     entry["photos"] = [ uploads[x] for x in uploads if x != 'main_photo' ]
 
 
-    # print(json.dumps(entry))
+    print(json.dumps(entry))
 
 
     url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/report?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
