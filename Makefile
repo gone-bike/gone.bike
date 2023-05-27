@@ -4,3 +4,6 @@ update:
 	docker-compose up -d web
 	docker-compose restart web
 
+	docker-compose build worker
+	docker-compose up -d worker
+
