@@ -4,13 +4,30 @@ export interface Props {
 }
 
 const report = Astro.props.report
+
+const date = new Date(report.theft_date); 
+const year = date.getFullYear();
+const month = date.toLocaleString('default', { month: 'long' });
+const day = String(date.getDate()).padStart(2, '0');
+const formattedDate = `${year} ${month} ${day}`;
 ---
 
-<div class="border-2">
-    <div class="p-4 ">
-    <img src={`/photos/${report.main_photo.id}`}>
-    <strong>{report.bike_brand_model.bike_brand.name } / {report.bike_brand_model.name }</strong>
-    <small>{report.theft_date}</small>
-    <a class="block underline text-blue-500 hover:text-blue-800" href={`/report?id=${report.id}`}>link</a>
+
+<div class=" max-w-xs min-w-xs rounded shadow-lg ">
+  <img class="object-cover	h-64 w-full" src={`/photos/${report.main_photo.id}`} alt="Sunset in the mountains">
+  <div class="p-5 flex justify-between flex-col">
+    <div class="h-32">
+      <a >
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{report.bike_brand_model.bike_brand.name } / {report.bike_brand_model.name }</h5>
+      </a>
+      <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased mb-2">
+        theft date : {formattedDate}
+      </p>
     </div>
+    <div class=" h-12">
+      <a href={`/report?id=${report.id}`} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        View Report
+      </a>
+    </div>
+	</div>
 </div>

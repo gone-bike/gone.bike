@@ -25,14 +25,9 @@ if (! listing ) {
 
 await i18next.changeLanguage(args.locale)
 ---
-<BaseLayout title={t('test.x')} description="test">
 
-
-  <div class="container mx-auto grid grid-cols-1 gap-y-2 sm:grid-cols-4 sm:gap-4 ">
-  { listing.map( (report) => (
-    <ListingEntry {report}></ListingEntry>
-  )) }
-
-
+<BaseLayout title={t("test.x")} description="test">
+  <div class="py-10 px-5 flex flex-wrap gap-6 justify-center">
+    {listing.map((report) => <ListingEntry {report} />)}
   </div>
 </BaseLayout>
