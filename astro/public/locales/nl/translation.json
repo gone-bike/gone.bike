@@ -10,6 +10,9 @@
         "next": "Nederlands",
         "back": "Terug"
       }
+    },
+    "homepage": {
+      "pre_cta": "Ontdek de waarheid. Vind gestolen fietsen op met onze epische afbeeldingzoekfunctie."
     }
   },
   "forms": {
@@ -43,7 +46,8 @@
             "street": "Straat",
             "park": "Park",
             "cellar": "Kelder",
-            "garage": "Garage"
+            "garage": "Garage",
+            "train": "Trein"
           }
         },
         "lock_type": {

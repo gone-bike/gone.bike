@@ -61,6 +61,7 @@ def test(self, *args, **kwargs):
         if kwargs['$trigger']['event'] == 'report.items.update':
             key = kwargs['$trigger']['keys'][0]
         print(payload)
+
         client = weaviate.Client(os.environ['WORKER_WEAVIATE_URI'])
         client.batch.configure(
             batch_size=None
@@ -161,7 +162,10 @@ def report_submit(self, *args, **kwargs):
     bike_brand = None
     bike_model = None
 
-    if "bike_brand" in kwargs:
+    if "bike_brand_id" in kwargs:
+        bike_brand = int(kwargs.get('bike_brand_id'))
+
+    elif "bike_brand" in kwargs and kwargs.get('bike_brand') != "":
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
         bike_brand_slug = slugify(kwargs['bike_brand'])
         bike_brand = requests.get(f'{url}&filter[key][_eq]={ bike_brand_slug }')
@@ -176,8 +180,10 @@ def report_submit(self, *args, **kwargs):
         else:
             bike_brand = bike_brand["data"][0]["id"]
 
+    if "bike_model_id" in kwargs and bike_model:
+        bike_model = int(kwargs.get('bike_model_id'))
 
-    if "bike_model" in kwargs:
+    elif "bike_model" in kwargs and bike_brand:
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand_model?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
 
         bike_model_slug = slugify(kwargs['bike_model'])
@@ -223,7 +229,7 @@ def report_submit(self, *args, **kwargs):
     }
 
     if kwargs.get('location_coords'):
-        entry['location'] = { "coordinates": [ kwargs.get("location_coords",{}).get('lng'), kwargs.get("location_coords",{}).get('lat') ], "type": "Point"},
+        entry['location'] = { "coordinates": [ kwargs.get("location_coords",{}).get('lng'), kwargs.get("location_coords",{}).get('lat') ], "type": "Point"}
 
     elif kwargs.get('location_address_raw'):
 
@@ -245,7 +251,7 @@ def report_submit(self, *args, **kwargs):
 
     uploads = {}
     for pid in range(0,9):
-        e = 'main_photo' if pid == 0 else f'photo_{pid}'
+        e = 'main_photo' if pid == 0 else f'photos_{pid}'
 
         if e in kwargs and kwargs[e] is not None and kwargs[e] != "":
 
@@ -278,12 +284,21 @@ def report_submit(self, *args, **kwargs):
         #     "name":"xcccc"
         # }
 
-
     entry["main_photo"] = uploads.get('main_photo')
-    entry["photos"] = [ uploads[x] for x in uploads if x != 'main_photo' ]
 
+    entry["photos"] = {
+        "create": [ ] }
 
-    # print(json.dumps(entry))
+    for x in uploads:
+      if x != 'main_photo':
+        entry["photos"]["create"].append({
+          "report_id": "+",
+          "directus_files_id": {
+            "id": uploads.get(x)
+          }
+        })
+
+    print(json.dumps(entry))
 
 
     url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/report?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'

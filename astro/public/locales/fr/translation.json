@@ -10,6 +10,9 @@
         "next": "Suivant",
         "back": "Retour"
       }
+    },
+    "homepage": {
+      "pre_cta": "Découvrez la vérité. Retrouvez les vélos volés avec notre recherche d'images épique."
     }
   },
   "forms": {
@@ -43,7 +46,8 @@
             "street": "Rue",
             "park": "Parc",
             "cellar": "Cave",
-            "garage": "Garage"
+            "garage": "Garage",
+            "train": "Train"
           }
         },
         "lock_type": {

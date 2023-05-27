@@ -10,6 +10,9 @@
         "next": "Następny",
         "back": "Back"
       }
+    },
+    "homepage": {
+      "pre_cta": "Odkryj prawdę. Śledź skradzione rowery dzięki naszej epickiej wyszukiwarce obrazów."
     }
   },
   "forms": {
@@ -43,7 +46,8 @@
             "street": "Ulica",
             "park": "Park",
             "cellar": "Piwnica",
-            "garage": "Garaż"
+            "garage": "Garaż",
+            "train": "Pociąg"
           }
         },
         "lock_type": {

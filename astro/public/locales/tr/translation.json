@@ -10,6 +10,9 @@
         "next": "Sonraki",
         "back": "Geri dönünüz."
       }
+    },
+    "homepage": {
+      "pre_cta": "Gerçeği keşfedin. Epik resim arama özelliğimizle çalınan bisikletleri takip edin."
     }
   },
   "forms": {
@@ -43,7 +46,8 @@
             "street": "Sokak",
             "park": "Park",
             "cellar": "Kiler",
-            "garage": "Garaj"
+            "garage": "Garaj",
+            "train": "Tren"
           }
         },
         "lock_type": {

@@ -10,6 +10,9 @@
         "next": "Næste",
         "back": "Tilbage"
       }
+    },
+    "homepage": {
+      "pre_cta": "Opdag sandheden. Spor stjålne cykler med vores episke billedsøgning."
     }
   },
   "forms": {
@@ -43,7 +46,8 @@
             "street": "Gade",
             "park": "Park",
             "cellar": "Kælder",
-            "garage": "Garage"
+            "garage": "Garage",
+            "train": "Tog"
           }
         },
         "lock_type": {

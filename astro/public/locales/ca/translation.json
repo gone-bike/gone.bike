@@ -10,6 +10,9 @@
         "next": "Següent.",
         "back": "End"
       }
+    },
+    "homepage": {
+      "pre_cta": "Descobreix la veritat. Rastreja les bicicletes robades amb la nostra èpica recerca d'imatges."
     }
   },
   "forms": {
@@ -43,7 +46,8 @@
             "street": "Carrer",
             "park": "Parc",
             "cellar": "Celler",
-            "garage": "Garatge"
+            "garage": "Garatge",
+            "train": "Tren."
           }
         },
         "lock_type": {

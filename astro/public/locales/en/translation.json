@@ -10,6 +10,9 @@
         "next": "Next.",
         "back": "Back"
       }
+    },
+    "homepage": {
+      "pre_cta": "Discover the truth. Track down stolen bikes with our epic image search."
     }
   },
   "forms": {
@@ -43,7 +46,8 @@
             "street": "Street",
             "park": "Park",
             "cellar": null,
-            "garage": "Garage"
+            "garage": "Garage",
+            "train": "Train"
           }
         },
         "lock_type": {

@@ -10,6 +10,9 @@
         "next": "Sljedeći",
         "back": "Natrag"
       }
+    },
+    "homepage": {
+      "pre_cta": "Otkrijte istinu. Pronađite ukradene bicikle uz našu epsku pretragu slika."
     }
   },
   "forms": {
@@ -43,7 +46,8 @@
             "street": "Ulica",
             "park": "Park",
             "cellar": "Podrum",
-            "garage": "Garaža"
+            "garage": "Garaža",
+            "train": "Vlak"
           }
         },
         "lock_type": {

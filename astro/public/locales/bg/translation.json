@@ -10,6 +10,9 @@
         "next": "Напред (Note: The translation is in Bulgarian language)",
         "back": "Назад"
       }
+    },
+    "homepage": {
+      "pre_cta": "Открийте истината. Открийте откраднати велосипеди с нашата епична търсачка на изображения."
     }
   },
   "forms": {
@@ -43,7 +46,8 @@
             "street": null,
             "park": "Парк",
             "cellar": "Килер.",
-            "garage": "Гараж"
+            "garage": "Гараж",
+            "train": "Влак"
           }
         },
         "lock_type": {

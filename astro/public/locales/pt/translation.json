@@ -10,6 +10,9 @@
         "next": "Próximo",
         "back": "De volta."
       }
+    },
+    "homepage": {
+      "pre_cta": "Descubra a verdade. Rastreie bicicletas roubadas com nossa incrível busca de imagens."
     }
   },
   "forms": {
@@ -43,7 +46,8 @@
             "street": "Rua",
             "park": "Parque",
             "cellar": "Porão",
-            "garage": "Garagem"
+            "garage": "Garagem",
+            "train": "Trem"
           }
         },
         "lock_type": {

@@ -10,6 +10,9 @@
         "next": "Nincs további információ.",
         "back": "Vissza"
       }
+    },
+    "homepage": {
+      "pre_cta": "Fedezze fel az igazságot. Kövesse nyomon az ellopott kerékpárokat epikus képkeresőnk segítségével."
     }
   },
   "forms": {
@@ -43,7 +46,8 @@
             "street": "Utca",
             "park": "Park",
             "cellar": "Pince",
-            "garage": "Garázs"
+            "garage": "Garázs",
+            "train": "vonat"
           }
         },
         "lock_type": {

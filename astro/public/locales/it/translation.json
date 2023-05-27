@@ -10,6 +10,9 @@
         "next": "Prossimo",
         "back": "Indietro"
       }
+    },
+    "homepage": {
+      "pre_cta": "Scopri la verità. Rintraccia le biciclette rubate con la nostra fantastica ricerca per immagini."
     }
   },
   "forms": {
@@ -43,7 +46,8 @@
             "street": "Strada",
             "park": "Parco",
             "cellar": "Cantina",
-            "garage": "Garage."
+            "garage": "Garage.",
+            "train": "Treno"
           }
         },
         "lock_type": {

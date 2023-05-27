@@ -1,0 +1,21 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: git pull && make update
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USER }}
+          privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+        env:
+          CI: true
