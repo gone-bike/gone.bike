@@ -28,8 +28,8 @@ export default async function() {
     return (!data || data.length == 0) ? false : data;
 
   } catch (e: any) {
-    console.log(e);
-    return [];
+    // console.log(e);
+    throw e;
   }
 
 }
