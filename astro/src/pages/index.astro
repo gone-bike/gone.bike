@@ -23,6 +23,11 @@ import BaseLayout from "@layouts/Base.astro";
       );
     }
   </style>
+  <script>
+    document.getElementById("listing-button").addEventListener("click", () => {
+      window.location.href = "/listing";
+    });
+  </script>
   <div class="w-full">
     <div class="hero w-full h-[50vh] flex flex-col items-center justify-center">
       <div class="pre-cta text-lg font-bold">
@@ -43,8 +48,9 @@ import BaseLayout from "@layouts/Base.astro";
       <div class="my-4">
         <span class="text-gray-400">No luck?</span> Try to listing your bike
       </div>
-      <button class="list-button bg-[#2DA771] rounded py-2 px-4"
-        >List Your Stolen Bike</button
+      <button
+        class="list-button text-white bg-[#2DA771] rounded py-2 px-4"
+        id="listing-button">List Your Stolen Bike</button
       >
     </div>
     <div class="listing"></div>
