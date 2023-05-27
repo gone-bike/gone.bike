@@ -39,6 +39,7 @@
 	},
 	"devDependencies": {
 		"@tailwindcss/forms": "^0.5.3",
+		"@types/uuid": "^9.0.1",
 		"tailwindcss-pseudo-elements": "^2.0.0"
 	}
 }

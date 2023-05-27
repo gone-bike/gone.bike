@@ -2,22 +2,20 @@
 import i18next, { t } from "i18next";
 
 const args = {
-    locale: Astro.url.searchParams.get("locale") || 'en',
-    id: Astro.url.searchParams.get("id") || 0
-}
+  locale: Astro.url.searchParams.get("locale") || "en",
+  id: Astro.url.searchParams.get("id") || 0,
+};
 
-await i18next.changeLanguage(args.locale)
+await i18next.changeLanguage(args.locale);
 
 import BaseLayout from "@layouts/Base.astro";
 ---
 
-<BaseLayout title={t('homepage.title')} description="">
+<BaseLayout title={t("homepage.title")} description="">
   <div class="container max-w-3xl mx-auto mt-10">
-	 <div>
-		<h1 class="font-bold text-xl text-center">Template scaffolding</h1>
-		<p class="mt-2 p-5 font-mono border border-gray-300">
-			here some content
-		</p>
-	 </div>
- </div>
+    <div>
+      <h1 class="font-bold text-xl text-center">Template scaffolding</h1>
+      <p class="mt-2 p-5 font-mono border border-gray-300">ciao</p>
+    </div>
+  </div>
 </BaseLayout>

@@ -17,7 +17,7 @@ export async function post({ request }: APIContext) {
 
   try {
 
-    let file = formData.get('file');
+    let file: any = formData.get('file');
     let buf = await file.arrayBuffer();
     let uuid = uuidv4();
 
@@ -43,8 +43,8 @@ export async function post({ request }: APIContext) {
     return {
       body: JSON.stringify(upload)
     };
-  } catch (err) {
-      return new Response(JSON.stringify({ error: err.message }), {
+  } catch (err: any) {
+      return new Response(JSON.stringify({ error: err?.message }), {
         status: 500,
         headers: {
           "Content-Type": "application/json"
