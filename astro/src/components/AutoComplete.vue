@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from "vue"
+import { computed, onMounted, ref, toRaw, watch } from "vue"
 import { t } from 'i18next'
 import { onClickOutside } from "@vueuse/core"
 
-const props = defineProps<{ api: { key: string, value: string }[], title: string, listed: string, newItem: string }>()
+const props = defineProps<{ api: { key: string | number, value: string }[], title: string, listed: string, newItem: string }>()
 const emit = defineEmits(['update:listed', 'update:newItem'])
 const isOpen = ref(false)
 let startIdx = ref(0)
@@ -13,8 +13,10 @@ function handleChange(e: Event) {
     searchQuery.value = val
 }
 const searchEl = ref<HTMLInputElement>()
-const searchQuery = ref("")
+const prevQuery = ref<string[]>([])
+const searchQuery = ref('')
 const queryResults = computed(() => {
+    prevQuery.value = queryResults.value
     let tempresult = props.api.map(e => e.value).filter(q => q.toLowerCase().includes(searchQuery.value.toLowerCase()))
     let result = startIdx.value === 0 ? tempresult : tempresult.slice(startIdx.value, tempresult.length - 1)
     if (result.length === 0) {
@@ -53,6 +55,7 @@ function searchKeyUp() {
     } else if (queryResults.value.length >= (focusElIdx.value + 1)) {
         if(startIdx.value !== 0){
             startIdx.value--
+            focusElIdx.value--
         }else{
             focusElIdx.value--
         }
@@ -62,12 +65,12 @@ function searchEnter(result?: string) {
     if (result) {
         searchQuery.value = result
     } else {
-        searchQuery.value = queryResults.value[focusElIdx.value]
+        searchQuery.value = queryResults.value[focusElIdx.value] ?? prevQuery.value[focusElIdx.value]
     }
     searchEl.value?.blur()
     isOpen.value = false
     let apiList = props.api.map(e => e.value)
-    let idx = apiList.indexOf(result ? result : queryResults.value[focusElIdx.value])
+    let idx = apiList.indexOf(result ? result : (queryResults.value[focusElIdx.value] ?? prevQuery.value[focusElIdx.value]))
     if (idx > -1) {
         emit("update:listed", props.api[idx].key)
         emit("update:newItem", "")
