@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deloy
+      - name: Deploy
         uses: garygrossgarten/github-action-ssh@release
         with:
           command: make update
