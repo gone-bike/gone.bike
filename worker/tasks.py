@@ -180,10 +180,10 @@ def report_submit(self, *args, **kwargs):
         else:
             bike_brand = bike_brand["data"][0]["id"]
 
-    if "bike_model_id" in kwargs:
+    if "bike_model_id" in kwargs and bike_model:
         bike_model = int(kwargs.get('bike_model_id'))
 
-    elif "bike_model" in kwargs:
+    elif "bike_model" in kwargs and bike_brand:
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand_model?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
 
         bike_model_slug = slugify(kwargs['bike_model'])
@@ -251,7 +251,7 @@ def report_submit(self, *args, **kwargs):
 
     uploads = {}
     for pid in range(0,9):
-        e = 'main_photo' if pid == 0 else f'photo_{pid}'
+        e = 'main_photo' if pid == 0 else f'photos_{pid}'
 
         if e in kwargs and kwargs[e] is not None and kwargs[e] != "":
 
@@ -284,10 +284,19 @@ def report_submit(self, *args, **kwargs):
         #     "name":"xcccc"
         # }
 
-
     entry["main_photo"] = uploads.get('main_photo')
-    entry["photos"] = [ uploads[x] for x in uploads if x != 'main_photo' ]
 
+    entry["photos"] = {
+        "create": [ ] }
+
+    for x in uploads:
+      if x != 'main_photo':
+        entry["photos"]["create"].append({
+          "report_id": "+",
+          "directus_files_id": {
+            "id": uploads.get(x)
+          }
+        })
 
     print(json.dumps(entry))
 
