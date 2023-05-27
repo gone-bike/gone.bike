@@ -25,7 +25,6 @@ export default async function() {
       ]
     });
     let data = query && query.data ? query.data : []
-
     return (!data || data.length == 0) ? false : data;
 
   } catch (e) {

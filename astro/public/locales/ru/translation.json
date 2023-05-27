@@ -43,7 +43,8 @@
             "street": "Улица",
             "park": "Парк",
             "cellar": "Погреб",
-            "garage": "Гараж"
+            "garage": "Гараж",
+            "train": "Поезд"
           }
         },
         "lock_type": {

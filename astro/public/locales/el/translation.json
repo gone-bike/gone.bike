@@ -43,7 +43,8 @@
             "street": "Οδός",
             "park": "Πάρκο",
             "cellar": "Υπόγειο",
-            "garage": "Γκαράζ"
+            "garage": "Γκαράζ",
+            "train": "Τρένο"
           }
         },
         "lock_type": {

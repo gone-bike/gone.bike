@@ -43,7 +43,8 @@
             "street": "Ulice",
             "park": "Park",
             "cellar": "Sklep",
-            "garage": "Garáž"
+            "garage": "Garáž",
+            "train": "Vlak"
           }
         },
         "lock_type": {

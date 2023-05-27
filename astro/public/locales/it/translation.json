@@ -43,7 +43,8 @@
             "street": "Strada",
             "park": "Parco",
             "cellar": "Cantina",
-            "garage": "Garage."
+            "garage": "Garage.",
+            "train": "Treno"
           }
         },
         "lock_type": {

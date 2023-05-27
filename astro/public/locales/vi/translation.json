@@ -43,7 +43,8 @@
             "street": "Đường",
             "park": "Công viên",
             "cellar": "Ngăn chứa rượu.",
-            "garage": "Garage."
+            "garage": "Garage.",
+            "train": "Tàu hỏa"
           }
         },
         "lock_type": {

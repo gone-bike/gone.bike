@@ -43,7 +43,8 @@
             "street": "Rua",
             "park": "Parque",
             "cellar": "Porão",
-            "garage": "Garagem"
+            "garage": "Garagem",
+            "train": "Trem"
           }
         },
         "lock_type": {

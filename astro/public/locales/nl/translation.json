@@ -43,7 +43,8 @@
             "street": "Straat",
             "park": "Park",
             "cellar": "Kelder",
-            "garage": "Garage"
+            "garage": "Garage",
+            "train": "Trein"
           }
         },
         "lock_type": {

@@ -43,7 +43,8 @@
             "street": "Gade",
             "park": "Park",
             "cellar": "Kælder",
-            "garage": "Garage"
+            "garage": "Garage",
+            "train": "Tog"
           }
         },
         "lock_type": {

@@ -43,7 +43,8 @@
             "street": "ストリート",
             "park": "パーク",
             "cellar": "地下室",
-            "garage": "ガレージ"
+            "garage": "ガレージ",
+            "train": "列車"
           }
         },
         "lock_type": {

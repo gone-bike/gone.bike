@@ -43,7 +43,8 @@
             "street": "Ulica",
             "park": "Park",
             "cellar": "Piwnica",
-            "garage": "Garaż"
+            "garage": "Garaż",
+            "train": "Pociąg"
           }
         },
         "lock_type": {

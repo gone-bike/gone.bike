@@ -43,7 +43,8 @@
             "street": "Utca",
             "park": "Park",
             "cellar": "Pince",
-            "garage": "Garázs"
+            "garage": "Garázs",
+            "train": "vonat"
           }
         },
         "lock_type": {

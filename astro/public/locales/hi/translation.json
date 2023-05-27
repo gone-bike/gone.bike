@@ -43,7 +43,8 @@
             "street": "सड़क",
             "park": "पार्क",
             "cellar": "गोदाम",
-            "garage": "गैराज"
+            "garage": "गैराज",
+            "train": "ट्रेन"
           }
         },
         "lock_type": {

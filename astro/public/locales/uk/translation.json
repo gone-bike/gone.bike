@@ -43,7 +43,8 @@
             "street": "Вулиця",
             "park": "Парк",
             "cellar": "Підвал",
-            "garage": "Гараж"
+            "garage": "Гараж",
+            "train": "Потяг"
           }
         },
         "lock_type": {

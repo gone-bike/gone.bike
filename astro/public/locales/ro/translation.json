@@ -43,7 +43,8 @@
             "street": "Strada",
             "park": "Parc",
             "cellar": "Bodăga.",
-            "garage": "Garaj"
+            "garage": "Garaj",
+            "train": "Tren."
           }
         },
         "lock_type": {
