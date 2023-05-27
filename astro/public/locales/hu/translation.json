@@ -38,7 +38,13 @@
           "title": "Lopási dátum."
         },
         "location_type": {
-          "title": "Hol volt a bicikli?"
+          "title": "Hol volt a bicikli?",
+          "choices": {
+            "street": "Utca",
+            "park": "Park",
+            "cellar": "Pince",
+            "garage": "Garázs"
+          }
         },
         "lock_type": {
           "title": "Zártípus"

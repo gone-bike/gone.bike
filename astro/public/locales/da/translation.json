@@ -38,7 +38,13 @@
           "title": "Tyveridato."
         },
         "location_type": {
-          "title": "Hvor var cyklen?"
+          "title": "Hvor var cyklen?",
+          "choices": {
+            "street": "Gade",
+            "park": "Park",
+            "cellar": "Kælder",
+            "garage": "Garage"
+          }
         },
         "lock_type": {
           "title": "Låsetype"

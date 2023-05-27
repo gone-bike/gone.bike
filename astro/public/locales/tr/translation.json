@@ -38,7 +38,13 @@
           "title": "Hırsızlık tarihi"
         },
         "location_type": {
-          "title": "Bisiklet neredeydi?"
+          "title": "Bisiklet neredeydi?",
+          "choices": {
+            "street": "Sokak",
+            "park": "Park",
+            "cellar": "Kiler",
+            "garage": "Garaj"
+          }
         },
         "lock_type": {
           "title": "Kilit türü"

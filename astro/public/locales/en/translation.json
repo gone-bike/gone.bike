@@ -38,7 +38,13 @@
           "title": "Theft date"
         },
         "location_type": {
-          "title": "Where was the bike?"
+          "title": "Where was the bike?",
+          "choices": {
+            "street": "Street",
+            "park": "Park",
+            "cellar": null,
+            "garage": "Garage"
+          }
         },
         "lock_type": {
           "title": "Lock type"

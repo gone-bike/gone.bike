@@ -38,7 +38,13 @@
           "title": "Diebstahldatum"
         },
         "location_type": {
-          "title": "Wo war das Fahrrad?"
+          "title": "Wo war das Fahrrad?",
+          "choices": {
+            "street": "Straße",
+            "park": "Park",
+            "cellar": "Keller",
+            "garage": "Garage"
+          }
         },
         "lock_type": {
           "title": "Schlosstyp"

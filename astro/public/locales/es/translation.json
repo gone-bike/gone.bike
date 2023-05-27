@@ -38,7 +38,13 @@
           "title": "Fecha de robo"
         },
         "location_type": {
-          "title": "¿Dónde estaba la bicicleta?"
+          "title": "¿Dónde estaba la bicicleta?",
+          "choices": {
+            "street": "Calle",
+            "park": "Parque",
+            "cellar": "Bodega",
+            "garage": "Garaje"
+          }
         },
         "lock_type": {
           "title": "Tipo de cerradura"

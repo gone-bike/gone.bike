@@ -38,7 +38,13 @@
           "title": "Data de robatori"
         },
         "location_type": {
-          "title": "On estava la bicicleta?"
+          "title": "On estava la bicicleta?",
+          "choices": {
+            "street": "Carrer",
+            "park": "Parc",
+            "cellar": "Celler",
+            "garage": "Garatge"
+          }
         },
         "lock_type": {
           "title": "Tipus de bloqueig."

@@ -38,7 +38,13 @@
           "title": "Diefstal datum"
         },
         "location_type": {
-          "title": "Waar was de fiets?"
+          "title": "Waar was de fiets?",
+          "choices": {
+            "street": "Straat",
+            "park": "Park",
+            "cellar": "Kelder",
+            "garage": "Garage"
+          }
         },
         "lock_type": {
           "title": "Type slot"

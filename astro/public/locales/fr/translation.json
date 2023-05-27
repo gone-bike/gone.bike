@@ -38,7 +38,13 @@
           "title": "Date de vol"
         },
         "location_type": {
-          "title": "Où était le vélo?"
+          "title": "Où était le vélo?",
+          "choices": {
+            "street": "Rue",
+            "park": "Parc",
+            "cellar": "Cave",
+            "garage": "Garage"
+          }
         },
         "lock_type": {
           "title": "Type de verrouillage"

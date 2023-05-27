@@ -38,7 +38,13 @@
           "title": "Дата кражи"
         },
         "location_type": {
-          "title": "Где был велосипед?"
+          "title": "Где был велосипед?",
+          "choices": {
+            "street": "Улица",
+            "park": "Парк",
+            "cellar": "Погреб",
+            "garage": "Гараж"
+          }
         },
         "lock_type": {
           "title": "Тип замка"

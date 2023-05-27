@@ -38,7 +38,13 @@
           "title": "Datum krađe"
         },
         "location_type": {
-          "title": "Gdje je bio bicikl?"
+          "title": "Gdje je bio bicikl?",
+          "choices": {
+            "street": "Ulica",
+            "park": "Park",
+            "cellar": "Podrum",
+            "garage": "Garaža"
+          }
         },
         "lock_type": {
           "title": "Vrsta brave"

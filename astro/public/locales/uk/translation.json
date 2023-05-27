@@ -38,7 +38,13 @@
           "title": "Дата крадіжки"
         },
         "location_type": {
-          "title": "Де був велосипед?"
+          "title": "Де був велосипед?",
+          "choices": {
+            "street": "Вулиця",
+            "park": "Парк",
+            "cellar": "Підвал",
+            "garage": "Гараж"
+          }
         },
         "lock_type": {
           "title": "Тип замка"

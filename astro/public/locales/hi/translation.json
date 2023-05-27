@@ -38,7 +38,13 @@
           "title": "चोरी की तारीख"
         },
         "location_type": {
-          "title": "बाइक कहाँ थी?"
+          "title": "बाइक कहाँ थी?",
+          "choices": {
+            "street": "सड़क",
+            "park": "पार्क",
+            "cellar": "गोदाम",
+            "garage": "गैराज"
+          }
         },
         "lock_type": {
           "title": "लॉक प्रकार"

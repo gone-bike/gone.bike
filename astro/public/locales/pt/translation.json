@@ -38,7 +38,13 @@
           "title": "Data do roubo."
         },
         "location_type": {
-          "title": "Onde estava a bicicleta?"
+          "title": "Onde estava a bicicleta?",
+          "choices": {
+            "street": "Rua",
+            "park": "Parque",
+            "cellar": "Porão",
+            "garage": "Garagem"
+          }
         },
         "lock_type": {
           "title": "Tipo de bloqueio"

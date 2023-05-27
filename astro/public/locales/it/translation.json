@@ -38,7 +38,13 @@
           "title": "Data di furto"
         },
         "location_type": {
-          "title": "Dov'era la bici?"
+          "title": "Dov'era la bici?",
+          "choices": {
+            "street": "Strada",
+            "park": "Parco",
+            "cellar": "Cantina",
+            "garage": "Garage."
+          }
         },
         "lock_type": {
           "title": "Tipo di blocco"

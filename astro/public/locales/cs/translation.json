@@ -38,7 +38,13 @@
           "title": "Datum krádeže"
         },
         "location_type": {
-          "title": "Kde bylo kolo?"
+          "title": "Kde bylo kolo?",
+          "choices": {
+            "street": "Ulice",
+            "park": "Park",
+            "cellar": "Sklep",
+            "garage": "Garáž"
+          }
         },
         "lock_type": {
           "title": "Typ zámku"

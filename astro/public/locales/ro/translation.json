@@ -38,7 +38,13 @@
           "title": "Data furtului."
         },
         "location_type": {
-          "title": "Unde era bicicleta?"
+          "title": "Unde era bicicleta?",
+          "choices": {
+            "street": "Strada",
+            "park": "Parc",
+            "cellar": "Bodăga.",
+            "garage": "Garaj"
+          }
         },
         "lock_type": {
           "title": "Tipul de blocare"
