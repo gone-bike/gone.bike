@@ -25,7 +25,11 @@
           "title": "バイクの主な色"
         },
         "is_electric": {
-          "title": "電動自転車ですか？"
+          "title": "電動自転車ですか？",
+          "choices": {
+            "no": "非電動自転車",
+            "yes": "電動自転車"
+          }
         },
         "approximate_value": {
           "title": "おおよその値"

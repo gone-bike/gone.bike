@@ -25,7 +25,11 @@
           "title": "Fiets hoofdkleuren"
         },
         "is_electric": {
-          "title": "Is het een elektrische fiets?"
+          "title": "Is het een elektrische fiets?",
+          "choices": {
+            "no": "Niet-elektrische fiets",
+            "yes": "Elektrische fiets"
+          }
         },
         "approximate_value": {
           "title": "Ongeveer waarde"

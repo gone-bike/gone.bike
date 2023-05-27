@@ -25,7 +25,11 @@
           "title": "Bisiklet ana renkleri"
         },
         "is_electric": {
-          "title": "Elektrikli bir bisiklet mi?"
+          "title": "Elektrikli bir bisiklet mi?",
+          "choices": {
+            "no": "Elektriksiz bisiklet",
+            "yes": "Elektrikli bisiklet"
+          }
         },
         "approximate_value": {
           "title": "Yaklaşık değer"

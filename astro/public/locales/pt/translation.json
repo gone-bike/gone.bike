@@ -25,7 +25,11 @@
           "title": "Cores principais da bicicleta"
         },
         "is_electric": {
-          "title": "É uma bicicleta elétrica?"
+          "title": "É uma bicicleta elétrica?",
+          "choices": {
+            "no": "Bicicleta não elétrica.",
+            "yes": "Bicicleta elétrica."
+          }
         },
         "approximate_value": {
           "title": "Valor aproximado"

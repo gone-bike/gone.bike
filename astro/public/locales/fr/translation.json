@@ -25,7 +25,11 @@
           "title": "Les principales couleurs de vélo."
         },
         "is_electric": {
-          "title": "Est-ce un vélo électrique ?"
+          "title": "Est-ce un vélo électrique ?",
+          "choices": {
+            "no": "Vélo non électrique",
+            "yes": "Vélo électrique"
+          }
         },
         "approximate_value": {
           "title": "Valeur approximative"
@@ -60,7 +64,7 @@
         },
         "theft_timeframe": {
           "choices": {
-            "morning": null,
+            "morning": "Matin",
             "afternoon": "Après-midi",
             "evening": "Soirée",
             "night": "Nuit"

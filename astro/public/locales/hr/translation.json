@@ -25,7 +25,11 @@
           "title": "Bike glavne boje"
         },
         "is_electric": {
-          "title": "Je li to električni bicikl?"
+          "title": "Je li to električni bicikl?",
+          "choices": {
+            "no": "Ne-električni bicikl.",
+            "yes": "Električni bicikl"
+          }
         },
         "approximate_value": {
           "title": "Okvirna vrijednost"

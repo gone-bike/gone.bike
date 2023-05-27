@@ -25,7 +25,11 @@
           "title": "Hlavní barvy jízdních kol"
         },
         "is_electric": {
-          "title": "Je to elektrické kolo?"
+          "title": "Je to elektrické kolo?",
+          "choices": {
+            "no": "Nelektrické kolo",
+            "yes": "Elektrické kolo."
+          }
         },
         "approximate_value": {
           "title": "Přibližná hodnota"
@@ -60,7 +64,7 @@
         },
         "theft_timeframe": {
           "choices": {
-            "morning": null,
+            "morning": "Dobré ráno",
             "afternoon": "Odpoledne.",
             "evening": "Večer",
             "night": "Noc"

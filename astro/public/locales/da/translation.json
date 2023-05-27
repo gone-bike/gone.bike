@@ -25,7 +25,11 @@
           "title": "Cykel hovedfarver."
         },
         "is_electric": {
-          "title": "Er det en elektrisk cykel?"
+          "title": "Er det en elektrisk cykel?",
+          "choices": {
+            "no": "Ikke-elektrisk cykel",
+            "yes": "Elektrisk cykel"
+          }
         },
         "approximate_value": {
           "title": "Omtrentlig værdi"
@@ -40,7 +44,7 @@
           "title": "Låsetype"
         },
         "lock_anchor": {
-          "title": null,
+          "title": "Ankerpunkt",
           "choices": {
             "tree": "Træ"
           }

@@ -25,7 +25,11 @@
           "title": "Màu chính của xe đạp"
         },
         "is_electric": {
-          "title": "Đây có phải là một chiếc xe đạp điện không?"
+          "title": "Đây có phải là một chiếc xe đạp điện không?",
+          "choices": {
+            "no": "Xe đạp không sử dụng điện.",
+            "yes": "Xe đạp điện"
+          }
         },
         "approximate_value": {
           "title": "Giá trị xấp xỉ."

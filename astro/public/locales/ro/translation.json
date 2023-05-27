@@ -25,7 +25,11 @@
           "title": "Bicicletă culorile principale."
         },
         "is_electric": {
-          "title": "Este o bicicletă electrică?"
+          "title": "Este o bicicletă electrică?",
+          "choices": {
+            "no": "Bicicletă non-electrică.",
+            "yes": "Bicicletă electrică."
+          }
         },
         "approximate_value": {
           "title": "Valoare aproximativă."

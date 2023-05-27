@@ -25,7 +25,11 @@
           "title": "Colors principals de bicicleta."
         },
         "is_electric": {
-          "title": "És una bicicleta elèctrica?"
+          "title": "És una bicicleta elèctrica?",
+          "choices": {
+            "no": "Bicicleta no elèctrica.",
+            "yes": "Bicicleta elèctrica"
+          }
         },
         "approximate_value": {
           "title": "Valor aproximat."
@@ -62,7 +66,7 @@
           "choices": {
             "morning": "Matí",
             "afternoon": "Tarda.",
-            "evening": null,
+            "evening": "Vespre",
             "night": "Nit"
           }
         }

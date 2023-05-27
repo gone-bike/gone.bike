@@ -25,7 +25,11 @@
           "title": "Główne kolory roweru"
         },
         "is_electric": {
-          "title": "Czy to rower elektryczny?"
+          "title": "Czy to rower elektryczny?",
+          "choices": {
+            "no": "Nieelektryczny rower.",
+            "yes": "Rower elektryczny."
+          }
         },
         "approximate_value": {
           "title": "Orientacyjna wartość"

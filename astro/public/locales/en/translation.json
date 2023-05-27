@@ -25,7 +25,11 @@
           "title": "Bike main colors\n"
         },
         "is_electric": {
-          "title": "Is it an electric bike?"
+          "title": "Is it an electric bike?",
+          "choices": {
+            "no": "Non-electric bike",
+            "yes": "Electric bike"
+          }
         },
         "approximate_value": {
           "title": "Approximate value"

@@ -25,7 +25,11 @@
           "title": "Fő kerékpárszínek"
         },
         "is_electric": {
-          "title": "Az egy elektromos kerékpár?"
+          "title": "Az egy elektromos kerékpár?",
+          "choices": {
+            "no": "Nem elektromos kerékpár.",
+            "yes": "Elektromos kerékpár"
+          }
         },
         "approximate_value": {
           "title": "Körülbelüli érték."

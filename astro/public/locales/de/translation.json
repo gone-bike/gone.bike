@@ -25,7 +25,11 @@
           "title": "Fahrrad Hauptfarben."
         },
         "is_electric": {
-          "title": "Ist es ein Elektrofahrrad?"
+          "title": "Ist es ein Elektrofahrrad?",
+          "choices": {
+            "no": "Nicht-elektrisches Fahrrad.",
+            "yes": "Elektrofahrrad"
+          }
         },
         "approximate_value": {
           "title": "Ungefährer Wert"
