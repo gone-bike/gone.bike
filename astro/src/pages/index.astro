@@ -1,13 +1,15 @@
 ---
+import i18next from 'i18next'
 import language, { t, changeLanguage } from "i18next";
 import { localizePath } from "astro-i18next";
 
 import BaseLayout from "@layouts/Base.astro";
 
 changeLanguage(Astro.url.searchParams.get("locale") || "en");
+
 ---
 
-<BaseLayout title={t("homepage.title")} lang={language} description="">
+<BaseLayout title={t("homepage.title")} lang={i18next.language} description="">
   <style>
     .hero {
       background: linear-gradient(
