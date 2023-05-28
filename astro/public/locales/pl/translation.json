@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Orientacyjna wartość",
-          "subtitle": "Podaj przybliżoną wartość roweru, w {{currency}}"
+          "subtitle": "Podaj przybliżoną wartość roweru, w {{currency}}",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Data kradzieży",

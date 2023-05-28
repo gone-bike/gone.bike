@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Omtrentlig værdi",
-          "subtitle": "Angiv en omtrentlig værdi af cyklen, i {{currency}}."
+          "subtitle": "Angiv en omtrentlig værdi af cyklen, i {{currency}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Tyveridato.",

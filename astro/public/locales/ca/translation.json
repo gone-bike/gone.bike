@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Valor aproximat.",
-          "subtitle": "Escriu una valor aproximada de la bicicleta, en {{currency}}."
+          "subtitle": "Escriu una valor aproximada de la bicicleta, en {{currency}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Data de robatori",

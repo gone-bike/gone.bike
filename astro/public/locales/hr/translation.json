@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Okvirna vrijednost",
-          "subtitle": "Upišite približnu vrijednost bicikla u {{valuti}}."
+          "subtitle": "Upišite približnu vrijednost bicikla u {{valuti}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Datum krađe",

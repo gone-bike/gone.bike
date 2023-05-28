@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "अनुमानित मूल्य",
-          "subtitle": "बाइक की लगभग कीमत {{currency}} में टाइप करें।"
+          "subtitle": "बाइक की लगभग कीमत {{currency}} में टाइप करें।",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "चोरी की तारीख",

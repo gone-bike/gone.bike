@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Valore approssimativo",
-          "subtitle": "Inserire un valore approssimativo della bicicletta, in {{currency}}"
+          "subtitle": "Inserire un valore approssimativo della bicicletta, in {{currency}}",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Data di furto",

@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Approximate value",
-          "subtitle": "Type an approximate value of the bike, in {{currency}}:"
+          "subtitle": "Type an approximate value of the bike, in {{currency}}:",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Theft date",

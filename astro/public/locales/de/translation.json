@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Ungefährer Wert",
-          "subtitle": "Geben Sie einen ungefähren Wert des Fahrrads in {{currency}} ein."
+          "subtitle": "Geben Sie einen ungefähren Wert des Fahrrads in {{currency}} ein.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Diebstahldatum",

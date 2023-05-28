@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Yaklaşık değer",
-          "subtitle": "\" Bisikletin yaklaşık değerini {{currency}} cinsinden yazın. \"\n\n(Note: The language locale \"tr\" is for Turkish)"
+          "subtitle": "\" Bisikletin yaklaşık değerini {{currency}} cinsinden yazın. \"\n\n(Note: The language locale \"tr\" is for Turkish)",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Hırsızlık tarihi",

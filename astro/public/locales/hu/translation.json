@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Körülbelüli érték.",
-          "subtitle": "Írja be a kerékpár hozzávetőleges értékét, {{currency}}-ban."
+          "subtitle": "Írja be a kerékpár hozzávetőleges értékét, {{currency}}-ban.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Lopási dátum.",

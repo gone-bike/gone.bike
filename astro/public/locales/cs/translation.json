@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Přibližná hodnota",
-          "subtitle": "Zadejte přibližnou hodnotu kola v {{měna}}."
+          "subtitle": "Zadejte přibližnou hodnotu kola v {{měna}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Datum krádeže",

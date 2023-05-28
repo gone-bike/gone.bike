@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Valoare aproximativă.",
-          "subtitle": "Introduceți o valoare aproximativă a bicicletei, în {{valută}}."
+          "subtitle": "Introduceți o valoare aproximativă a bicicletei, în {{valută}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Data furtului.",

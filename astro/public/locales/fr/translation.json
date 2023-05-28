@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Valeur approximative",
-          "subtitle": "Entrez une valeur approximative du vélo en {{devise}}"
+          "subtitle": "Entrez une valeur approximative du vélo en {{devise}}",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Date de vol",

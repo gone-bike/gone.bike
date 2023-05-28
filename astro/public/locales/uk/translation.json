@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Приблизна вартість.",
-          "subtitle": "Вкажіть приблизну вартість велосипеда, в {{currency}}."
+          "subtitle": "Вкажіть приблизну вартість велосипеда, в {{currency}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Дата крадіжки",
