@@ -10,8 +10,9 @@ const args = {
 
 await i18next.changeLanguage(args.locale);
 
-// let origin = new URL(Astro.url).origin
-let origin = "https://ajaythewizard-cuddly-system-49pp6gx654x296x-3000.preview.app.github.dev"
+let origin = new URL(Astro.url).origin
+
+let photoTranslation = t(`forms.report.questions.photos.title`, { n: 4 })
 
 let fff = {data: []}
 
@@ -20,11 +21,11 @@ try{
     await fetch(`${origin}/api/bike_brand.json`)
   ).json()
 } catch(e){
-  console.log(e, "ee", origin)
+  console.log("Error")
 }
 ---
 
-<BaseLayout title={t("pages.report_form.title")} description="">
+<BaseLayout title={t("pages.report_form.title")} description="" lang={args.locale}>
   <div class="container max-w-3xl mx-auto mt-10">
     <div class="border">
       <div class="p-4 text-center">
@@ -33,7 +34,7 @@ try{
       </div>
       <div class="w-full h-[1px] bg-gray-200"></div>
       <div class="p-4">
-        <Form client:load bikeBrand={fff.data} lang={args.locale} maxUpload={4}/>
+        <Form client:load bikeBrand={fff.data} lang={args.locale} photoTranslation={photoTranslation} maxUploads={4} currency="EU"/>
       </div>
     </div>
   </div>

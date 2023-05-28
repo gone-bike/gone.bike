@@ -13,6 +13,8 @@ let tagModel = ref(props.modelValue)
 
 watch(tagModel, function(val){
     if(val === "") return
+    if(val.slice(0, val.length-2).trim() === "") return
+    if(val.split("").map(e=>e===",").filter(e=>e).length) return
     if(val[val.length-1]=== ","){
         let newtags = [...tags.value, val.slice(0, val.length-2)]
         tags.value = newtags
@@ -22,7 +24,8 @@ watch(tagModel, function(val){
 })
 
 function handleAdd(){
-    if(tagModel.value){
+    if(tagModel.value.split("").map(e=>e==="," || e === " ").filter(e=>e).length) return
+    if(tagModel.value.trim() && tagModel.value !== ","){
         let newLst = [...tags.value, tagModel.value.valueOf()]
         tags.value = newLst
         tagModel.value = ""
@@ -37,9 +40,9 @@ function remove(tag: string) {
 </script>
 
 <template>
-    <div class="flex flex-col ml-2">
+    <div class="flex flex-col">
         <label :for="props.title" class="text-lg">{{ t(`forms.report.questions.${props.title}.title`) }}</label>
-        <span class="mb-2 text-sm font-semibold text-gray-500 ml-1">{{ t(`forms.report.questions.${props.title}.subtitle`)
+        <span class="mb-2 text-sm font-semibold text-gray-500">{{ t(`forms.report.questions.${props.title}.subtitle`)
         }}</span>
         <input type="text" @keydown.enter="handleAdd" autocomplete="off" :name="props.title"
             :placeholder="t(`forms.report.questions.${props.title}.placeholder`) as string" :id="props.title" v-model="tagModel" /> 

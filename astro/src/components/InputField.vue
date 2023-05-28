@@ -11,9 +11,9 @@ function handleChange(e: any) {
 
 </script>
 <template>
-    <div class="flex flex-col ml-2">
+    <div class="flex flex-col">
         <label :for="props.title" class="mb-2 text-lg">{{ t(`forms.report.questions.${props.title}.title`) }}</label>
         <input autocomplete="off" :name="props.title" :placeholder="t(`forms.report.questions.${props.title}.placeholder`) as string"  :id="props.title" :type="props.type ?? 'text'" :value="props.modelValue" @input="handleChange"/>
-        <span class="mt-1 text-sm font-semibold text-gray-500 ml-1">{{ t(`forms.report.questions.${props.title}.subtitle`)  }}</span>
+        <span class="mt-1 text-sm font-semibold text-gray-500">{{ t(`forms.report.questions.${props.title}.subtitle`)  }}</span>
     </div>
 </template>

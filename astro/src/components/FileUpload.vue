@@ -14,7 +14,7 @@ const props = defineProps<{
     isUploading: boolean
 }>()
 
-const emit = defineEmits(["update:modelValue", "update:isUploading"])
+const emit = defineEmits(["update:modelValue", "update:isUploading", "delete", "upload"])
 
 const fileUploadEl = ref<HTMLInputElement>()
 const progressWidth = ref()
@@ -74,6 +74,7 @@ async function handleMainFileUpload() {
             signal: uploadSignal.value.signal,
         })
         emit("update:isUploading", false)
+        emit("upload")
         if (resp.data.upload) {
             uploadData.value = resp.data
             emit("update:modelValue", { upload: resp.data.upload, name: resp.data.name })
@@ -110,7 +111,7 @@ async function handleMainFileUpload() {
                     <p class="text-sm m-2 font-mono ml-5 absolute">{{ progressBarName }}</p>
                 </div>
                 <p></p>
-                <button @click="deleteFile" class="bg-red-300 text-red-700 p-1 ml-2 rounded-lg hover:bg-red-400">
+                <button @click="deleteFile" class="bg-red-300 text-red-700 p-1 rounded-lg hover:bg-red-400">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="h-6 w-6">
                         <path stroke-linecap="round" stroke-linejoin="round"

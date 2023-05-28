@@ -82,7 +82,7 @@ function searchEnter(result?: string) {
 </script>
 <template>
     <div class="relative w-full h-full">
-        <div class="flex flex-col ml-2 relative w-full">
+        <div class="flex flex-col relative w-full">
             <label :for="props.title" class='mb-2 text-lg w-full'>{{
                 t(`forms.report.questions.${props.title}.title`)
             }}</label>
@@ -100,7 +100,7 @@ function searchEnter(result?: string) {
                     </div>
                 </div>
             </div>
-            <span class="text-sm mt-2 font-semibold text-gray-500 ml-1">{{
+            <span class="text-sm mt-2 font-semibold text-gray-500">{{
                 t(`forms.report.questions.${props.title}.subtitle`)
             }}</span>
         </div>
