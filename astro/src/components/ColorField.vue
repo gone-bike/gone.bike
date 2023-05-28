@@ -42,8 +42,6 @@ function remove(tag: string) {
 <template>
     <div class="flex flex-col">
         <label :for="props.title" class="text-lg">{{ t(`forms.report.questions.${props.title}.title`) }}</label>
-        <span class="mb-2 text-sm font-semibold text-gray-500">{{ t(`forms.report.questions.${props.title}.subtitle`)
-        }}</span>
         <input type="text" @keydown.enter="handleAdd" autocomplete="off" :name="props.title"
             :placeholder="t(`forms.report.questions.${props.title}.placeholder`) as string" :id="props.title" v-model="tagModel" /> 
         <ul class="flex gap-2 mt-2">
@@ -54,6 +52,8 @@ function remove(tag: string) {
                 </button>
             </li>
         </ul>
+            <span class="mb-2 text-sm font-normal text-gray-400 italic ">{{ t(`forms.report.questions.${props.title}.subtitle`)
+            }}</span>
 
     </div>
 </template>

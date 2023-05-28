@@ -224,12 +224,12 @@ let currentPage = ref(1)
                 <label for="bike_details" class="mb-2 text-lg">{{ t("bike_details") }}</label>
                 <textarea name="bike_details" id="bike_details" v-model="formValue.bike_details" cols="30" rows="7"
                     :placeholder="(i18next(`forms.report.questions.bike_details.placeholder`) as string)"> </textarea>
-                <span class="mt-1 text-sm font-semibold text-gray-500">{{
+                <span class="mt-1 text-sm font-normal text-gray-400 italic ">{{
                     i18next(`forms.report.questions.bike_details.subtitle`) }}</span>
 
             </div>
             <div>
-                <label for="is_electric" class="mb-2 text-lg">{{ t("is_electric") }}</label>
+                <label for="is_electric" class="mb-2 ita text-lg">{{ t("is_electric") }}</label>
                 <br />
                 <div class="flex items-center mt-3">
                     <input type="radio" value="1" aria-labelledby="is_electric" class="h-4 w-4  " name="is_electric"
@@ -261,7 +261,7 @@ let currentPage = ref(1)
                     to: new Date('01.01.2010'),
                     from: Date.now()
                 }" :lang="props.lang" v-model="theftDateUnformated" class="w-full" />
-                <span class="mt-1 text-sm font-semibold text-gray-500">{{
+                <span class="mt-1 text-sm font-normal text-gray-400 italic ">{{
                     i18next(`forms.report.questions.theft_date.subtitle`) }}</span>
 
             </div>
@@ -275,13 +275,13 @@ let currentPage = ref(1)
                 :list='["tree", "gate", "fence", "post", "self_bike", "other_bike"]' />
             <div class="flex flex-col">
                 <label for="location" class="text-lg">{{ t("location") }}</label>
-                <p class="text-sm text-gray-500 mb-2 font-semibold">{{ i18next("forms.report.questions.location.subtitle")
+                <p class="text-sm text-gray-400 mb-2 font-normal italic">{{ i18next("forms.report.questions.location.subtitle")
                 }}
                 </p>
                 <GoogleMap v-model:address="formValue.location_address" v-model:coords="formValue.location_coords"
                     v-model:details="formValue.location_details" />
-                <p v-if="errors.location" class="text-sm flex justify-between mt-3 bg-red-200 text-red-600 p-2 font-mono">
-                    <span>You must fill this field</span>
+                <p v-show="errors.location" class="text-sm flex justify-between mt-3 bg-red-200 text-red-600 p-2 font-mono">
+                    <span>{{ i18next(`forms.report.questions.location_address.error_msg`) }}</span>
                     <button @click="errors.location = false">&#10006;</button>
                 </p>
 
@@ -328,7 +328,7 @@ let currentPage = ref(1)
                 <textarea name="description"
                     :placeholder="(i18next(`forms.report.questions.description.placeholder`) as string)" id="description"
                     v-model="formValue.description" cols="30" rows="10"></textarea>
-                <span class="mt-1 text-gray-600">{{ i18next(`forms.report.questions.description.subtitle`) }}</span>
+                <span class="mt-1 font-normal italic text-gray-400">{{ i18next(`forms.report.questions.description.subtitle`) }}</span>
             </div>
             <div class="flex w-full justify-between">
                 <a href="#page-3"
@@ -359,4 +359,9 @@ let currentPage = ref(1)
 </template>
 <style>:root {
     --v-calendar-datepicker-icon-color: #9333EA !important;
-}</style>
+}
+input::placeholder, textarea::placeholder{
+    color:#9ca3af;
+     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+</style>

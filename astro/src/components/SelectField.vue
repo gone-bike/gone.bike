@@ -39,6 +39,6 @@ const isOther = ref(false)
             <input type="text" :class="['w-52', !isOther ? 'border-gray-500 bg-gray-100 pointer-events-none' : '']"
                 :value="isOther ? props.modelValue : ''" @input="handleOtherField">
         </div>
-        <span v-show="!isOther" class="mt-1 text-sm font-semibold text-gray-500">{{ t(`forms.report.questions.${props.title}.subtitle`)  }}</span>
+        <span v-show="!isOther" class="mt-1 text-sm font-normal text-gray-400 italic ">{{ t(`forms.report.questions.${props.title}.subtitle`)  }}</span>
     </div>
 </template>
