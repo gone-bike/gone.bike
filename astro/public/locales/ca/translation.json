@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "Colors principals de bicicleta.",
-          "subtitle": "Colors de la estructura de bicicleta, afegiu cada color separat per una coma."
+          "subtitle": "Colors de la estructura de bicicleta, afegiu cada color separat per una coma.",
+          "placeholder": "negre, vermell"
         },
         "is_electric": {
           "title": "És una bicicleta elèctrica?",
@@ -64,22 +65,33 @@
             "garage": "Garatge",
             "train": "Tren.",
             "garden": "Jardí",
-            "home": "Inici"
+            "home": "Inici",
+            "office": "Oficina",
+            "car": "Cotxe"
           }
         },
         "lock_type": {
-          "title": "Tipus de bloqueig."
+          "title": "Tipus de bloqueig.",
+          "choices": {
+            "chain": "Cadena",
+            "ulock": "U-Lock",
+            "folding": "Claus de plegat"
+          }
         },
         "lock_anchor": {
           "title": "Punt d'ancoratge",
           "choices": {
-            "tree": "Arbre"
+            "tree": "Arbre",
+            "gate": "Porta",
+            "post": "Valla",
+            "self_bike": "A si mateix",
+            "other_bike": "A altres bicicleta."
           },
           "subtitle": "Si has lligat la bicicleta a alguna cosa, si us plau, digues-nos a què estava lligada."
         },
         "location": {
           "title": "Adreça i coordenades.",
-          "placeholder": null,
+          "placeholder": "centre de la ciutat de Londres",
           "subtitle": "Escriu una adreça o una ubicació i selecciona un punt del mapa on va succeir el robatori. Com més precís, millor."
         },
         "main_photo": {
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Detalls de la bicicleta",
-          "subtitle": "Afegeix qualsevol detall que pugui ajudar a fer que la teva bicicleta sigui identificable."
+          "subtitle": "Afegeix qualsevol detall que pugui ajudar a fer que la teva bicicleta sigui identificable.",
+          "placeholder": "La bicicleta té una dent trencada al plató de la cadena."
         },
         "enter_email": {
           "title": "Adreça electrònica",
           "subtitle": "Us enviarem un enllaç de verificació i utilitzarem el vostre correu electrònic només per a comunicació estrictament relacionada.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "Altres"
       }
     },
     "report_form": {

@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "Bike glavne boje",
-          "subtitle": "Boje okvira bicikla, dodajte svaku boju odvojenu zarezom."
+          "subtitle": "Boje okvira bicikla, dodajte svaku boju odvojenu zarezom.",
+          "placeholder": "crna, crvena"
         },
         "is_electric": {
           "title": "Je li to električni bicikl?",
@@ -64,23 +65,34 @@
             "garage": "Garaža",
             "train": "Vlak",
             "garden": "Vrt",
-            "home": "Domaćište"
+            "home": "Domaćište",
+            "office": "ured",
+            "car": "Auto"
           }
         },
         "lock_type": {
-          "title": "Vrsta brave"
+          "title": "Vrsta brave",
+          "choices": {
+            "chain": "Lanac",
+            "ulock": "U-Lock",
+            "folding": "Sklapajući katanac."
+          }
         },
         "lock_anchor": {
           "title": "Sidrišna točka",
           "choices": {
-            "tree": "Drvo"
+            "tree": "Drvo",
+            "gate": "Vrata",
+            "post": "Ograda",
+            "self_bike": "Samom sebi",
+            "other_bike": "Do you mean \"To another bike\" or \"To other bikers\"? Please provide more context."
           },
           "subtitle": "Ako ste zakvačili bicikl za nešto, molimo vas da nam kažete na što ste ga zakvačili."
         },
         "location": {
           "title": "Adresa i koordinate",
-          "placeholder": null,
-          "subtitle": null
+          "placeholder": "Londonski centar grada",
+          "subtitle": "Upišite adresu ili lokaciju i odaberite točku na karti gdje se dogodila krađa. Što preciznije, to bolje."
         },
         "main_photo": {
           "title": "Ukradena bicikla glavna fotografija"
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Biciklistički detalji",
-          "subtitle": "Dodajte bilo kakve detalje koji mogu pomoći u prepoznavanju vašeg bicikla."
+          "subtitle": "Dodajte bilo kakve detalje koji mogu pomoći u prepoznavanju vašeg bicikla.",
+          "placeholder": "Bicikl ima slomljeni zub na lančaniku."
         },
         "enter_email": {
           "title": "Adresa e-pošte",
           "subtitle": "Poslat ćemo vam verifikacijski link i vašu e-poštu koristiti samo za strogo povezanu komunikaciju.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "Drugi"
       }
     },
     "report_form": {

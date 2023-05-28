@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "Fiets hoofdkleuren",
-          "subtitle": "Fietsframe kleuren, voeg elke kleur toe gescheiden door een komma."
+          "subtitle": "Fietsframe kleuren, voeg elke kleur toe gescheiden door een komma.",
+          "placeholder": "zwart, rood"
         },
         "is_electric": {
           "title": "Is het een elektrische fiets?",
@@ -64,22 +65,33 @@
             "garage": "Garage",
             "train": "Trein",
             "garden": "Tuin",
-            "home": "Thuis"
+            "home": "Thuis",
+            "office": "Kantoor",
+            "car": "Auto"
           }
         },
         "lock_type": {
-          "title": "Type slot"
+          "title": "Type slot",
+          "choices": {
+            "chain": "Keten",
+            "ulock": "U-Lock",
+            "folding": "Opvouwbaar slot"
+          }
         },
         "lock_anchor": {
           "title": "Ankerpunt.",
           "choices": {
-            "tree": "Boom"
+            "tree": "Boom",
+            "gate": "Gate",
+            "post": "Hek",
+            "self_bike": "Aan zichzelf",
+            "other_bike": "Naar andere fiets."
           },
           "subtitle": "Als je de fiets aan iets hebt vastgemaakt, vertel ons dan waar het aan vastgemaakt was."
         },
         "location": {
           "title": "Adres en coördinaten",
-          "placeholder": null,
+          "placeholder": "is het centrum van Londen.",
           "subtitle": "Typ een adres of een locatie en selecteer een kaartpunt waar de diefstal heeft plaatsgevonden. Hoe nauwkeuriger, hoe beter."
         },
         "main_photo": {
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Fietsgegevens",
-          "subtitle": "Voeg alle details toe die kunnen helpen om jouw fiets herkenbaar te maken."
+          "subtitle": "Voeg alle details toe die kunnen helpen om jouw fiets herkenbaar te maken.",
+          "placeholder": "De fiets heeft een gebroken tand op de kettingring."
         },
         "enter_email": {
           "title": "E-mailadres",
           "subtitle": "We zullen u een verificatielink sturen en uw e-mail alleen gebruiken voor strikt gerelateerde communicatie.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "than English, Dutch is also spoken in Belgium and Suriname."
       }
     },
     "report_form": {

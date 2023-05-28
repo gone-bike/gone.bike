@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "Bisiklet ana renkleri",
-          "subtitle": "Bisiklet şasi renkleri, her rengi virgülle ayırarak ekleyin."
+          "subtitle": "Bisiklet şasi renkleri, her rengi virgülle ayırarak ekleyin.",
+          "placeholder": "{{Black}} ve {{red}}."
         },
         "is_electric": {
           "title": "Elektrikli bir bisiklet mi?",
@@ -64,22 +65,33 @@
             "garage": "Garaj",
             "train": "Tren",
             "garden": "Bahçe",
-            "home": "Ev"
+            "home": "Ev",
+            "office": "Ofis",
+            "car": "Araba"
           }
         },
         "lock_type": {
-          "title": "Kilit türü"
+          "title": "Kilit türü",
+          "choices": {
+            "chain": "Zincir",
+            "ulock": "U-Lock",
+            "folding": "Katlanabilir kilit"
+          }
         },
         "lock_anchor": {
           "title": "Bağlantı noktası",
           "choices": {
-            "tree": "Ağaç"
+            "tree": "Ağaç",
+            "gate": "Kapı",
+            "post": "Çit",
+            "self_bike": "Kendine",
+            "other_bike": "Diğer bisiklete"
           },
           "subtitle": "Eğer bisikleti bir şeye bağladıysanız, bize ne olduğunu söyleyin."
         },
         "location": {
           "title": "Adres ve koordinatlar",
-          "placeholder": null,
+          "placeholder": "Londra şehir merkezi",
           "subtitle": "Bir adres veya konum yazın ve hırsızlık olayının meydana geldiği bir harita noktası seçin. Ne kadar hassas olursanız o kadar iyi."
         },
         "main_photo": {
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Bisiklet detayları",
-          "subtitle": "Bisikletinizin tanınabilirliğini artırmak için yardımcı olabilecek herhangi bir detay ekleyin."
+          "subtitle": "Bisikletinizin tanınabilirliğini artırmak için yardımcı olabilecek herhangi bir detay ekleyin.",
+          "placeholder": "Bisikletin zincir yüzüğünde kırık dişi var."
         },
         "enter_email": {
           "title": "E-posta adresi",
           "subtitle": "Size doğrulama bağlantısı göndereceğiz ve e-postanızı sadece sıkı ilişkili iletişim için kullanacağız.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "Diğer."
       }
     },
     "report_form": {

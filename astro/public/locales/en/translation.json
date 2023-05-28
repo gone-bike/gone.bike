@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "Bike main colors\n",
-          "subtitle": "Bike frame colors, add each color separated by a comma."
+          "subtitle": "Bike frame colors, add each color separated by a comma.",
+          "placeholder": "IE: black, red"
         },
         "is_electric": {
           "title": "Is it an electric bike?",
@@ -64,16 +65,27 @@
             "garage": "Garage",
             "train": "Train",
             "garden": "Garden",
-            "home": "Home"
+            "home": "Home",
+            "office": "Office",
+            "car": "Car"
           }
         },
         "lock_type": {
-          "title": "Lock type"
+          "title": "Lock type",
+          "choices": {
+            "chain": "Chain",
+            "ulock": "U-Lock",
+            "folding": "Folding lock"
+          }
         },
         "lock_anchor": {
           "title": "Anchor point",
           "choices": {
-            "tree": "Tree"
+            "tree": "Tree",
+            "gate": "Gate",
+            "post": "Fence",
+            "self_bike": "To itself",
+            "other_bike": "To other bike"
           },
           "subtitle": "If you anchored the bike to something, please tell us what it was."
         },
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Bike details.",
-          "subtitle": "Add any detail that can help make your bike recognizable."
+          "subtitle": "Add any detail that can help make your bike recognizable.",
+          "placeholder": "IE: The bike has a broken tooth on the chain ring."
         },
         "enter_email": {
           "title": "Email address",
           "subtitle": "We will send you a verification link and use your email only for strictly related communication.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "Other"
       }
     },
     "report_form": {

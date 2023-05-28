@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "Les principales couleurs de vélo.",
-          "subtitle": "Couleurs de cadre de vélo, ajouter chaque couleur séparée par une virgule."
+          "subtitle": "Couleurs de cadre de vélo, ajouter chaque couleur séparée par une virgule.",
+          "placeholder": "No translation provided for this task. Please specify the content to be translated."
         },
         "is_electric": {
           "title": "Est-ce un vélo électrique ?",
@@ -64,22 +65,33 @@
             "garage": "Garage",
             "train": "Train",
             "garden": "Jardin",
-            "home": "Accueil"
+            "home": "Accueil",
+            "office": "Bureau",
+            "car": "Sorry, there is no content provided to translate."
           }
         },
         "lock_type": {
-          "title": "Type de verrouillage"
+          "title": "Type de verrouillage",
+          "choices": {
+            "chain": "Chaîne",
+            "ulock": "U-Lock",
+            "folding": "Serrure pliante"
+          }
         },
         "lock_anchor": {
           "title": "Point d'ancrage",
           "choices": {
-            "tree": "Arbre"
+            "tree": "Arbre",
+            "gate": "Porte",
+            "post": "Barrière",
+            "self_bike": "À soi-même",
+            "other_bike": "Aux autres vélos"
           },
           "subtitle": "Si vous avez attaché le vélo à quelque chose, veuillez nous dire ce que c'était."
         },
         "location": {
           "title": "Adresse et coordonnées.",
-          "placeholder": null,
+          "placeholder": "Centre-ville de Londres",
           "subtitle": "Entrez une adresse ou un lieu et sélectionnez un point sur la carte où le vol s'est produit. Plus c'est précis, mieux c'est."
         },
         "main_photo": {
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Détails du vélo",
-          "subtitle": "Ajoutez tout détail qui peut aider à reconnaître votre vélo."
+          "subtitle": "Ajoutez tout détail qui peut aider à reconnaître votre vélo.",
+          "placeholder": "Le vélo a une dent cassée sur le plateau de chaîne."
         },
         "enter_email": {
           "title": "Adresse e-mail",
           "subtitle": "Nous vous enverrons un lien de vérification et utiliserons votre adresse e-mail uniquement pour une communication strictement liée.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "Autre"
       }
     },
     "report_form": {

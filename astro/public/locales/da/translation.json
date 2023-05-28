@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "Cykel hovedfarver.",
-          "subtitle": "Cykelstel farver, tilføj hver farve adskilt af en komma."
+          "subtitle": "Cykelstel farver, tilføj hver farve adskilt af en komma.",
+          "placeholder": "Translation: Jeg kan ikke sende dig penge i dag."
         },
         "is_electric": {
           "title": "Er det en elektrisk cykel?",
@@ -64,22 +65,33 @@
             "garage": "Garage",
             "train": "Tog",
             "garden": "Have you seen my garden?",
-            "home": "Hjem"
+            "home": "Hjem",
+            "office": "Kontor",
+            "car": "Bil"
           }
         },
         "lock_type": {
-          "title": "Låsetype"
+          "title": "Låsetype",
+          "choices": {
+            "chain": "Kæde",
+            "ulock": "U-Lock",
+            "folding": "Sammenklappeligt lås"
+          }
         },
         "lock_anchor": {
           "title": "Ankerpunkt",
           "choices": {
-            "tree": "Træ"
+            "tree": "Træ",
+            "gate": "Porten.",
+            "post": "Hegn",
+            "self_bike": "Til sig selv.",
+            "other_bike": "Til andre cykler."
           },
           "subtitle": "Hvis du har ankring af cyklen til noget, så fortæl os venligst, hvad det var."
         },
         "location": {
           "title": "Adresse og koordinater.",
-          "placeholder": null,
+          "placeholder": "London centrum",
           "subtitle": "Skriv en adresse eller placering og vælg et punkt på kortet, hvor tyveriet skete. Jo mere præcist jo bedre."
         },
         "main_photo": {
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Cykel detaljer.",
-          "subtitle": "Tilføj enhver detalje, der kan hjælpe med at gøre din cykel genkendelig."
+          "subtitle": "Tilføj enhver detalje, der kan hjælpe med at gøre din cykel genkendelig.",
+          "placeholder": "Cyklen har en knækket tand på kæderingen."
         },
         "enter_email": {
           "title": "E-mail adresse",
           "subtitle": "Vi vil sende dig et verifikationslink og bruge din email kun til strikt relateret kommunikation.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "Andejfjfjdf.jdjdj."
       }
     },
     "report_form": {

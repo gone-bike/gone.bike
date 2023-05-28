@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "Fahrrad Hauptfarben.",
-          "subtitle": "Fahrradrahmenfarben, fügen Sie jede Farbe durch ein Komma getrennt hinzu."
+          "subtitle": "Fahrradrahmenfarben, fügen Sie jede Farbe durch ein Komma getrennt hinzu.",
+          "placeholder": "Schwarz, rot"
         },
         "is_electric": {
           "title": "Ist es ein Elektrofahrrad?",
@@ -64,22 +65,33 @@
             "garage": "Garage",
             "train": "Zug",
             "garden": "Garten",
-            "home": "Startseite"
+            "home": "Startseite",
+            "office": "Büro",
+            "car": "Auto"
           }
         },
         "lock_type": {
-          "title": "Schlosstyp"
+          "title": "Schlosstyp",
+          "choices": {
+            "chain": "Kette",
+            "ulock": "U-Lock",
+            "folding": "Faltenschloss"
+          }
         },
         "lock_anchor": {
           "title": "Ankerpunkt",
           "choices": {
-            "tree": "Baum"
+            "tree": "Baum",
+            "gate": "Tor",
+            "post": "Zaun",
+            "self_bike": "Zu sich selbst.",
+            "other_bike": "Zu einem anderen Fahrrad"
           },
           "subtitle": "Wenn Sie das Fahrrad an etwas angebunden haben, sagen Sie uns bitte, woran es angebunden war."
         },
         "location": {
           "title": "Adresse und Koordinaten",
-          "placeholder": null,
+          "placeholder": "London Stadtzentrum",
           "subtitle": "Geben Sie eine Adresse oder einen Standort ein und wählen Sie einen Kartenpunkt aus, an dem der Diebstahl stattgefunden hat. Je genauer, desto besser."
         },
         "main_photo": {
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Fahrraddetails",
-          "subtitle": "Fügen Sie Details hinzu, die dazu beitragen können, dass Ihr Fahrrad erkennbar ist."
+          "subtitle": "Fügen Sie Details hinzu, die dazu beitragen können, dass Ihr Fahrrad erkennbar ist.",
+          "placeholder": "Das Fahrrad hat einen abgebrochenen Zahn am Kettenblatt."
         },
         "enter_email": {
           "title": "E-Mail-Adresse",
           "subtitle": "Wir werden Ihnen einen Verifizierungslink senden und Ihre E-Mail nur für streng verwandte Kommunikation verwenden.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "Andere."
       }
     },
     "report_form": {

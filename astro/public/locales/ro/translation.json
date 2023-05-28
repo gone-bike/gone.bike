@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "Bicicletă culorile principale.",
-          "subtitle": "Culorile cadrului bicicletei, adăugați fiecare culoare separat, prin virgulă."
+          "subtitle": "Culorile cadrului bicicletei, adăugați fiecare culoare separat, prin virgulă.",
+          "placeholder": "negru, roșu"
         },
         "is_electric": {
           "title": "Este o bicicletă electrică?",
@@ -64,22 +65,33 @@
             "garage": "Garaj",
             "train": "Tren.",
             "garden": "Grădină",
-            "home": "Acasă"
+            "home": "Acasă",
+            "office": "Birou",
+            "car": "Automobil"
           }
         },
         "lock_type": {
-          "title": "Tipul de blocare"
+          "title": "Tipul de blocare",
+          "choices": {
+            "chain": "Lanț",
+            "ulock": "U-Lock",
+            "folding": "Încuietoare pliabilă"
+          }
         },
         "lock_anchor": {
           "title": "Punct de ancorare.",
           "choices": {
-            "tree": "Copac"
+            "tree": "Copac",
+            "gate": "Poartă",
+            "post": "Gard",
+            "self_bike": "În sine",
+            "other_bike": "Către altă bicicletă."
           },
           "subtitle": "Dacă ați ancorat bicicleta într-un obiect, vă rugăm să ne spuneți la ce ați ancorat-o."
         },
         "location": {
           "title": "Adresă și coordonate",
-          "placeholder": null,
+          "placeholder": "Centrul orașului Londra",
           "subtitle": "Introduceți o adresă sau o locație și selectați un punct de pe hartă unde a avut loc furtul. Cu cât este mai precis, cu atât este mai bine."
         },
         "main_photo": {
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Detalii bicicletă.",
-          "subtitle": "Adăugați orice detaliu care poate ajuta la recunoașterea bicicletei dvs."
+          "subtitle": "Adăugați orice detaliu care poate ajuta la recunoașterea bicicletei dvs.",
+          "placeholder": "Bicicleta are un dinte rupt pe coroana lanțului."
         },
         "enter_email": {
           "title": "Adresă de email",
           "subtitle": "Vă vom trimite un link de verificare și vom utiliza adresa dvs. de email doar pentru comunicare strict legată de acest scop.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "Alte"
       }
     },
     "report_form": {
