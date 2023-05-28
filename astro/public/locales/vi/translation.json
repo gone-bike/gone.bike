@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Tìm kiếm và báo cáo xe đạp bị mất"
+    "title": "Tìm kiếm và báo cáo xe đạp bị mất",
+    "hero": {
+      "pre_cta": "Khám phá sự thật. Tìm kiếm các chiếc xe bị đánh cắp với công cụ tìm kiếm ấn tượng của chúng tôi.",
+      "title": "Bạn có bị mất xe đạp không?",
+      "cta_add_listing": "Danh sách xe đạp của bạn đã bị mất."
+    }
   },
   "pages": {
     "report_form": {
@@ -8,24 +13,24 @@
       "subtitle": "Thêm dữ liệu liên quan đến việc mất trộm xe đạp, chúng sẽ được thêm vào công cụ tìm kiếm.",
       "buttons": {
         "next": "Trang sau",
-        "back": "Quay lại"
+        "back": "Quay lại",
+        "submit": "Gửi báo cáo"
       }
-    },
-    "homepage": {
-      "pre_cta": "Khám phá sự thật. Tìm kiếm các chiếc xe bị đánh cắp với công cụ tìm kiếm ấn tượng của chúng tôi."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Xe đạp thương hiệu bị đánh cắp."
+          "title": "Xe đạp thương hiệu bị đánh cắp.",
+          "subtitle": "Tìm kiếm tên thương hiệu, nếu bạn không tìm thấy, bạn có thể gõ vào ô trống. Nếu bạn không biết, hãy để trống trường này."
         },
         "bike_model": {
           "title": "Xe đạp bị đánh cắp, mẫu {{X}}."
         },
         "colors": {
-          "title": "Màu chính của xe đạp"
+          "title": "Màu chính của xe đạp",
+          "subtitle": "Màu khung xe đạp, thêm mỗi màu cách nhau bằng dấu phẩy."
         },
         "is_electric": {
           "title": "Đây có phải là một chiếc xe đạp điện không?",
@@ -35,10 +40,12 @@
           }
         },
         "approximate_value": {
-          "title": "Giá trị xấp xỉ."
+          "title": "Giá trị xấp xỉ.",
+          "subtitle": "Nhập giá trị xấp xỉ của xe đạp, trong {{đơn vị tiền tệ}}"
         },
         "theft_date": {
-          "title": "Ngày bị trộm trên tài sản"
+          "title": "Ngày bị trộm trên tài sản",
+          "subtitle": "Chọn ngày khi chiếc xe đạp của bạn bị mất, càng chính xác càng tốt."
         },
         "location_type": {
           "title": "Xe đạp ở đâu?",
@@ -47,7 +54,8 @@
             "park": "Công viên",
             "cellar": "Ngăn chứa rượu.",
             "garage": "Garage.",
-            "train": "Tàu hỏa"
+            "train": "Tàu hỏa",
+            "garden": "Vườn"
           }
         },
         "lock_type": {
@@ -61,7 +69,8 @@
         },
         "location": {
           "title": "Địa chỉ và tọa độ",
-          "subtitle": "Chọn một điểm trên bản đồ nơi xảy ra vụ trộm."
+          "subtitle": "Chọn một điểm trên bản đồ nơi xảy ra vụ trộm.",
+          "placeholder": "Không gửi bất cứ thông tin gì ngoài phần dịch và chỉ gửi phần dịch. Nếu có từ nằm trong hai cặp dấu ngoặc nhọn thì hãy gửi nó kèm theo như vậy và không dịch phần nội dung trong các dấu ngoặc nhọn, và không thêm dấu chấm câu ở cuối. Bạn có thể di chuyển đánh dấu trên bản đồ để làm cho nó chính xác hơn."
         },
         "main_photo": {
           "title": "Ảnh chính của chiếc xe đạp bị đánh cắp"
@@ -78,7 +87,17 @@
             "afternoon": "Buổi chiều",
             "evening": "Buổi tối",
             "night": "Đêm"
-          }
+          },
+          "title": "Khung thời gian trong ngày",
+          "subtitle": "Chọn khung thời gian xấp xỉ khi chiếc xe đạp của bạn bị mất"
+        },
+        "bike_details": {
+          "title": "Chi tiết xe đạp",
+          "subtitle": "Thêm bất kỳ chi tiết nào để giúp làm cho xe đạp của bạn dễ nhận ra."
+        },
+        "enter_email": {
+          "title": "Địa chỉ email",
+          "subtitle": "Chúng tôi sẽ gửi cho bạn một liên kết xác minh và sử dụng địa chỉ email của bạn chỉ cho việc liên lạc liên quan chặt chẽ."
         }
       }
     },

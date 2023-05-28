@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Stolen bike search and report"
+    "title": "Stolen bike search and report",
+    "hero": {
+      "pre_cta": "Discover the truth. Track down stolen bikes with our epic image search.",
+      "title": "Did your bike get stolen?",
+      "cta_add_listing": "List your stolen bike"
+    }
   },
   "pages": {
     "report_form": {
@@ -8,24 +13,24 @@
       "subtitle": "Insert bike theft related data, they will be added to the search engine",
       "buttons": {
         "next": "Next.",
-        "back": "Back"
+        "back": "Back",
+        "submit": "Submit report."
       }
-    },
-    "homepage": {
-      "pre_cta": "Discover the truth. Track down stolen bikes with our epic image search."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Stolen bike brand"
+          "title": "Stolen bike brand",
+          "subtitle": "Search the brand name, if you don't find it, you can type it in. If you don't know it, leave this field blank."
         },
         "bike_model": {
           "title": "Stolen bike model"
         },
         "colors": {
-          "title": "Bike main colors\n"
+          "title": "Bike main colors\n",
+          "subtitle": "Bike frame colors, add each color separated by a comma."
         },
         "is_electric": {
           "title": "Is it an electric bike?",
@@ -35,19 +40,22 @@
           }
         },
         "approximate_value": {
-          "title": "Approximate value"
+          "title": "Approximate value",
+          "subtitle": "Type an approximate value of the bike, in {{currency}}:"
         },
         "theft_date": {
-          "title": "Theft date"
+          "title": "Theft date",
+          "subtitle": "Select the date when your bike was stolen, the more accurate, the better."
         },
         "location_type": {
           "title": "Where was the bike?",
           "choices": {
             "street": "Street",
             "park": "Park",
-            "cellar": null,
+            "cellar": "Cellar",
             "garage": "Garage",
-            "train": "Train"
+            "train": "Train",
+            "garden": "Garden"
           }
         },
         "lock_type": {
@@ -61,7 +69,8 @@
         },
         "location": {
           "title": "Address and coordinates",
-          "subtitle": "Select a map point where the theft happened."
+          "subtitle": "Select a map point where the theft happened.",
+          "placeholder": "IE: an address, a city, an street name. You can move the map marker to be more accurate"
         },
         "main_photo": {
           "title": "Stolen bike main photo"
@@ -78,7 +87,17 @@
             "afternoon": "Afternoon",
             "evening": "Evening",
             "night": "Night"
-          }
+          },
+          "title": "Day time frame",
+          "subtitle": "Select an approximate time frame when your bike was stolen."
+        },
+        "bike_details": {
+          "title": "Bike details.",
+          "subtitle": "Add any detail that can help make your bike recognizable."
+        },
+        "enter_email": {
+          "title": "Email address",
+          "subtitle": "We will send you a verification link and use your email only for strictly related communication."
         }
       }
     },

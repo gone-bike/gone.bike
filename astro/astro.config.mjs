@@ -20,6 +20,7 @@ const { PUBLIC_PORT } = loadEnv(import.meta.env.PUBLIC_PORT, process.cwd(), "");
 //SentryInit();
 export default defineConfig({
   integrations: [astroI18next(), vue(), tailwind(), mdx()],
+  site: 'https://gone.bike',
   output: "server",
   adapter: node({
     mode: "middleware"
