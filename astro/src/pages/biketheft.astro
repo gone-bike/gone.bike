@@ -28,7 +28,19 @@ try {
   console.log("Error");
 }
 ---
-
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
+<script>
+window.onloadTurnstileCallback = function () {
+    turnstile.render('#example-container', {
+        sitekey: '0x4AAAAAAAFUGAm8uaSlNEMe',
+        callback: function(token) {
+          document.getElementById("vue_app").removeAttribute("hidden")
+            console.log(`Challenge Success ${token}`);
+        },
+    });
+};
+</script>
+  <div id="example-container"</div>
 <BaseLayout
   title={t("pages.report_form.title")}
   description=""
@@ -41,7 +53,7 @@ try {
         <p class="mt-2">{t("pages.report_form.subtitle")}</p>
       </div>
       <div class="w-full h-[1px] bg-gray-200"></div>
-      <div class="p-4">
+      <div class="p-4" id="vue_app" hidden>
         <Form
           client:load
           bikeBrand={fff.data}
