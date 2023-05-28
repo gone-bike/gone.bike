@@ -15,6 +15,10 @@
         "next": "Sljedeći",
         "back": "Natrag",
         "submit": "Podnesi izvještaj."
+      },
+      "thank": {
+        "title": "Hvala vam!",
+        "sub_title": "Vaša prijava je uspješno zaprimljena."
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "Ukradena bicikla marka.",
-          "subtitle": "Pretražite ime marke, ako je ne pronađete, možete ga upisati. Ako ga ne znate, ostavite ovo polje prazno."
+          "subtitle": "Pretražite ime marke, ako je ne pronađete, možete ga upisati. Ako ga ne znate, ostavite ovo polje prazno.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "''Stolen bike model'' would be translated to ''Model ukradenog bicikla'' in Croatian language."
+          "title": "''Stolen bike model'' would be translated to ''Model ukradenog bicikla'' in Croatian language.",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Ako znate model svog bicikla, unesite ga ovdje. Ako odgovara ponuđenim prijedlozima, odaberite ga."
         },
         "colors": {
           "title": "Bike glavne boje",
@@ -56,7 +63,8 @@
             "cellar": "Podrum",
             "garage": "Garaža",
             "train": "Vlak",
-            "garden": "Vrt"
+            "garden": "Vrt",
+            "home": "Domaćište"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Sidrišna točka",
           "choices": {
             "tree": "Drvo"
-          }
+          },
+          "subtitle": "Ako ste zakvačili bicikl za nešto, molimo vas da nam kažete na što ste ga zakvačili."
         },
         "location": {
           "title": "Adresa i koordinate",
-          "subtitle": "Odaberite točku na karti gdje se dogodila krađa.",
-          "placeholder": "Sorry, as an AI language model, I do not have any context or content to translate. Kindly provide me with the text to be translated."
+          "placeholder": null,
+          "subtitle": null
         },
         "main_photo": {
           "title": "Ukradena bicikla glavna fotografija"
@@ -80,7 +89,8 @@
           "title": "Možete dodati do {{n}} fotografija."
         },
         "description": {
-          "title": "Opišite što se dogodilo."
+          "title": "Opišite što se dogodilo.",
+          "subtitle": "Što više detalja date o tome što se dogodilo, to bolje."
         },
         "theft_timeframe": {
           "choices": {

@@ -15,6 +15,10 @@
         "next": "Trang sau",
         "back": "Quay lại",
         "submit": "Gửi báo cáo"
+      },
+      "thank": {
+        "title": "Các sản phẩm mới đã về đến cửa hàng của chúng tôi, hãy đến và khám phá ngay hôm nay!\nXin cảm ơn!",
+        "sub_title": "Đã nhận được đăng ký của bạn đúng tại chỗ."
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "Xe đạp thương hiệu bị đánh cắp.",
-          "subtitle": "Tìm kiếm tên thương hiệu, nếu bạn không tìm thấy, bạn có thể gõ vào ô trống. Nếu bạn không biết, hãy để trống trường này."
+          "subtitle": "Tìm kiếm tên thương hiệu, nếu bạn không tìm thấy, bạn có thể gõ vào ô trống. Nếu bạn không biết, hãy để trống trường này.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Xe đạp bị đánh cắp, mẫu {{X}}."
+          "title": "Xe đạp bị đánh cắp, mẫu {{X}}.",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Nếu bạn biết model xe của mình, hãy thêm vào đây. Nếu nó phù hợp với các gợi ý được đưa ra, vui lòng chọn nó."
         },
         "colors": {
           "title": "Màu chính của xe đạp",
@@ -56,7 +63,8 @@
             "cellar": "Ngăn chứa rượu.",
             "garage": "Garage.",
             "train": "Tàu hỏa",
-            "garden": "Vườn"
+            "garden": "Vườn",
+            "home": "Trang chủ"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Điểm neo",
           "choices": {
             "tree": "Cây"
-          }
+          },
+          "subtitle": "Nếu bạn đã neo xe đạp vào điều gì đó, vui lòng cho chúng tôi biết đó là gì."
         },
         "location": {
           "title": "Địa chỉ và tọa độ",
-          "subtitle": "Chọn một điểm trên bản đồ nơi xảy ra vụ trộm.",
-          "placeholder": "Không gửi bất cứ thông tin gì ngoài phần dịch và chỉ gửi phần dịch. Nếu có từ nằm trong hai cặp dấu ngoặc nhọn thì hãy gửi nó kèm theo như vậy và không dịch phần nội dung trong các dấu ngoặc nhọn, và không thêm dấu chấm câu ở cuối. Bạn có thể di chuyển đánh dấu trên bản đồ để làm cho nó chính xác hơn."
+          "placeholder": null,
+          "subtitle": "Nhập địa chỉ hoặc vị trí và chọn một điểm trên bản đồ nơi mà việc trộm xảy ra. Càng chính xác càng tốt."
         },
         "main_photo": {
           "title": "Ảnh chính của chiếc xe đạp bị đánh cắp"
@@ -80,7 +89,8 @@
           "title": "Bạn có thể thêm lên đến {{n}} ảnh."
         },
         "description": {
-          "title": "Mô tả những gì đã xảy ra."
+          "title": "Mô tả những gì đã xảy ra.",
+          "subtitle": "Càng nhiều chi tiết bạn cung cấp về những gì đã xảy ra, càng tốt."
         },
         "theft_timeframe": {
           "choices": {

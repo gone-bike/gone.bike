@@ -15,6 +15,10 @@
         "next": "次の内容",
         "back": "Back => 戻る",
         "submit": "レポートを提出する"
+      },
+      "thank": {
+        "title": "ありがとうございます！",
+        "sub_title": "あなたの提出は正しく受け取られました。"
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "盗まれた自転車のブランド",
-          "subtitle": "ブランド名を検索して見つからなければ、入力してください。分からない場合は、このフィールドを空白のままにしてください。"
+          "subtitle": "ブランド名を検索して見つからなければ、入力してください。分からない場合は、このフィールドを空白のままにしてください。",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "盗まれた自転車のモデル"
+          "title": "盗まれた自転車のモデル",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "バイクのモデルが分かる場合は、ここに追加してください。提供された提案と一致する場合は、選択してください。"
         },
         "colors": {
           "title": "バイクの主な色",
@@ -56,7 +63,8 @@
             "cellar": "地下室",
             "garage": "ガレージ",
             "train": "列車",
-            "garden": "庭園"
+            "garden": "庭園",
+            "home": "ホーム"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "アンカーポイント",
           "choices": {
             "tree": "木"
-          }
+          },
+          "subtitle": "自転車を何かに固定した場合は、それが何であるかを教えてください。"
         },
         "location": {
           "title": "住所と座標",
-          "subtitle": "盗難事件が起こった地図上のポイントを選択してください。",
-          "placeholder": null
+          "placeholder": null,
+          "subtitle": "住所または場所を入力し、窃盗が起こった地図のポイントを選択してください。より正確であれば、より良いです。"
         },
         "main_photo": {
           "title": "盗まれた自転車のメイン写真"
@@ -80,7 +89,8 @@
           "title": "{{n}}枚の写真を追加できます。"
         },
         "description": {
-          "title": "何が起こったかを説明してください。"
+          "title": "何が起こったかを説明してください。",
+          "subtitle": "何が起こったかについて詳細を提供するほど、より良いです。"
         },
         "theft_timeframe": {
           "choices": {

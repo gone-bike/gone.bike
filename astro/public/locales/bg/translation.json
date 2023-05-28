@@ -15,6 +15,10 @@
         "next": "Напред (Note: The translation is in Bulgarian language)",
         "back": "Назад",
         "submit": "Подайте доклад."
+      },
+      "thank": {
+        "title": null,
+        "sub_title": "Вашата подадена информация е получена правилно."
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "\"Stolen bike brand\" - Открадната марка на велосипед.",
-          "subtitle": "Търсете марката, ако я няма, можете да я въведете. Ако я не знаете, оставете това поле празно."
+          "subtitle": "Търсете марката, ако я няма, можете да я въведете. Ако я не знаете, оставете това поле празно.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "угнета велосипед модел"
+          "title": "угнета велосипед модел",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Ако знаете модела на своето колело, добавете го тук. Ако той съответства на предложените предложения, моля, изберете го."
         },
         "colors": {
           "title": "черен, бял, син, червен, зелен",
@@ -56,7 +63,8 @@
             "cellar": "Килер.",
             "garage": "Гараж",
             "train": "Влак",
-            "garden": "Градина"
+            "garden": "Градина",
+            "home": "Начало"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Точка на закрепване.",
           "choices": {
             "tree": "Дърво"
-          }
+          },
+          "subtitle": "Ако сте закрепили велосипеда за нещо, моля кажете ни какво беше това."
         },
         "location": {
           "title": "Адрес и координати",
-          "subtitle": "Изберете точка на картата, където е станало кражбата.",
-          "placeholder": "Sorry, as an AI language model I'm unable to see any content or context for translation. Please provide the text you want me to translate in order to proceed."
+          "placeholder": null,
+          "subtitle": "Въведете адрес или местоположение и изберете точка на картата, където е станало кражбата. Чим по-точно, толкова по-добре."
         },
         "main_photo": {
           "title": "Главна снимка на откраднат велосипед."
@@ -80,7 +89,8 @@
           "title": "Можете да добавите до {{n}} снимки."
         },
         "description": {
-          "title": "Опишете какво се случи."
+          "title": "Опишете какво се случи.",
+          "subtitle": "Колкото повече детайли дадете за това, което се е случило, толкова по-добре."
         },
         "theft_timeframe": {
           "choices": {

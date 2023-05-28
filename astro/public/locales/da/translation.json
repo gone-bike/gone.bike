@@ -15,6 +15,10 @@
         "next": "Næste",
         "back": "Tilbage",
         "submit": "Indsend rapport."
+      },
+      "thank": {
+        "title": "Tak skal du have!",
+        "sub_title": "Din indsendelse er blevet modtaget korrekt."
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "Stjålet cykelmærke",
-          "subtitle": "Søg efter brandnavnet, hvis du ikke finder det, kan du skrive det. Hvis du ikke kender det, skal du lade dette felt være tomt."
+          "subtitle": "Søg efter brandnavnet, hvis du ikke finder det, kan du skrive det. Hvis du ikke kender det, skal du lade dette felt være tomt.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Stjålet cykelmodel"
+          "title": "Stjålet cykelmodel",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Hvis du kender modellen af din cykel, tilføj den her. Hvis den matcher de foreslåede forslag, skal du vælge den."
         },
         "colors": {
           "title": "Cykel hovedfarver.",
@@ -56,7 +63,8 @@
             "cellar": "Kælder",
             "garage": "Garage",
             "train": "Tog",
-            "garden": "Have you seen my garden?"
+            "garden": "Have you seen my garden?",
+            "home": "Hjem"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Ankerpunkt",
           "choices": {
             "tree": "Træ"
-          }
+          },
+          "subtitle": "Hvis du har ankring af cyklen til noget, så fortæl os venligst, hvad det var."
         },
         "location": {
           "title": "Adresse og koordinater.",
-          "subtitle": "Vælg et kortpunkt, hvor tyveriet fandt sted.",
-          "placeholder": "Sorry, can you please provide the content for translation?"
+          "placeholder": null,
+          "subtitle": "Skriv en adresse eller placering og vælg et punkt på kortet, hvor tyveriet skete. Jo mere præcist jo bedre."
         },
         "main_photo": {
           "title": "Stjålet cykel hovedfoto"
@@ -80,7 +89,8 @@
           "title": "Du kan tilføje op til {{n}} billeder."
         },
         "description": {
-          "title": "Beskriv hvad der skete."
+          "title": "Beskriv hvad der skete.",
+          "subtitle": "Jo flere detaljer du giver om, hvad der skete, jo bedre."
         },
         "theft_timeframe": {
           "choices": {

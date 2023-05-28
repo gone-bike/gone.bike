@@ -15,6 +15,10 @@
         "next": "Următorul.",
         "back": "Înapoi.",
         "submit": "Trimite raportul."
+      },
+      "thank": {
+        "title": "Mulțumesc!",
+        "sub_title": "Trimiterea ta a fost primită corect."
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "Bicicletă furată marcă",
-          "subtitle": "Căutați numele mărcii, dacă nu îl găsiți, îl puteți tasta. Dacă nu îl cunoașteți, lăsați acest câmp necompletat."
+          "subtitle": "Căutați numele mărcii, dacă nu îl găsiți, îl puteți tasta. Dacă nu îl cunoașteți, lăsați acest câmp necompletat.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Model de bicicletă furată"
+          "title": "Model de bicicletă furată",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Dacă știți modelul bicicletei dumneavoastră, adăugați-l aici. Dacă se potrivește cu sugestiile date, vă rugăm să o selectați."
         },
         "colors": {
           "title": "Bicicletă culorile principale.",
@@ -56,7 +63,8 @@
             "cellar": "Bodăga.",
             "garage": "Garaj",
             "train": "Tren.",
-            "garden": "Grădină"
+            "garden": "Grădină",
+            "home": "Acasă"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Punct de ancorare.",
           "choices": {
             "tree": "Copac"
-          }
+          },
+          "subtitle": "Dacă ați ancorat bicicleta într-un obiect, vă rugăm să ne spuneți la ce ați ancorat-o."
         },
         "location": {
           "title": "Adresă și coordonate",
-          "subtitle": "Selectați un punct de pe hartă unde a avut loc furtul.",
-          "placeholder": "Nu trimiteți nimic altceva decât traducerea în limba locale: ro ca răspuns. Nu trimiteți nicio altă informație și, dacă există un cuvânt între duble paranteze, trimiteți-l cu paranteze duble și fără a traduce conținutul din interiorul parantezelor, și nu adăugați punctuație la sfârșit: de exemplu o adresă, un oraș, un nume de stradă. Puteți muta markerul hărții pentru a fi mai precis."
+          "placeholder": null,
+          "subtitle": "Introduceți o adresă sau o locație și selectați un punct de pe hartă unde a avut loc furtul. Cu cât este mai precis, cu atât este mai bine."
         },
         "main_photo": {
           "title": "Fotografia principală a bicicletei furate"
@@ -80,7 +89,8 @@
           "title": "Poți adăuga până la {{n}} fotografii."
         },
         "description": {
-          "title": "Descrie ce s-a întâmplat."
+          "title": "Descrie ce s-a întâmplat.",
+          "subtitle": "Cu cat oferi mai multe detalii despre ce s-a intamplat, cu atat este mai bine."
         },
         "theft_timeframe": {
           "choices": {
