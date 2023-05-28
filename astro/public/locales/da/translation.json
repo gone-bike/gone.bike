@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Omtrentlig værdi",
-          "subtitle": "Angiv en omtrentlig værdi af cyklen, i {{currency}}."
+          "subtitle": "Angiv en omtrentlig værdi af cyklen, i {{currency}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Tyveridato.",
@@ -97,7 +98,8 @@
         },
         "enter_email": {
           "title": "E-mail adresse",
-          "subtitle": "Vi vil sende dig et verifikationslink og bruge din email kun til strikt relateret kommunikation."
+          "subtitle": "Vi vil sende dig et verifikationslink og bruge din email kun til strikt relateret kommunikation.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

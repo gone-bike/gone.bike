@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Valoare aproximativă.",
-          "subtitle": "Introduceți o valoare aproximativă a bicicletei, în {{valută}}."
+          "subtitle": "Introduceți o valoare aproximativă a bicicletei, în {{valută}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Data furtului.",
@@ -97,7 +98,8 @@
         },
         "enter_email": {
           "title": "Adresă de email",
-          "subtitle": "Vă vom trimite un link de verificare și vom utiliza adresa dvs. de email doar pentru comunicare strict legată de acest scop."
+          "subtitle": "Vă vom trimite un link de verificare și vom utiliza adresa dvs. de email doar pentru comunicare strict legată de acest scop.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

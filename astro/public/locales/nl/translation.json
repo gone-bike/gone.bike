@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Ongeveer waarde",
-          "subtitle": "Geef een bij benadering waarde van de fiets, in {{currency}}."
+          "subtitle": "Geef een bij benadering waarde van de fiets, in {{currency}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Diefstal datum",
@@ -97,7 +98,8 @@
         },
         "enter_email": {
           "title": "E-mailadres",
-          "subtitle": "We zullen u een verificatielink sturen en uw e-mail alleen gebruiken voor strikt gerelateerde communicatie."
+          "subtitle": "We zullen u een verificatielink sturen en uw e-mail alleen gebruiken voor strikt gerelateerde communicatie.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

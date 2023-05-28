@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Orientacyjna wartość",
-          "subtitle": "Podaj przybliżoną wartość roweru, w {{currency}}"
+          "subtitle": "Podaj przybliżoną wartość roweru, w {{currency}}",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Data kradzieży",
@@ -97,7 +98,8 @@
         },
         "enter_email": {
           "title": "Adres e-mailowy",
-          "subtitle": "Wyślemy ci link weryfikacyjny i będziemy korzystać z twojego adresu e-mail wyłącznie do celów związanych z komunikacją."
+          "subtitle": "Wyślemy ci link weryfikacyjny i będziemy korzystać z twojego adresu e-mail wyłącznie do celów związanych z komunikacją.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

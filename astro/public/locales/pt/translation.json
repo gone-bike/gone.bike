@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Valor aproximado",
-          "subtitle": "Digite um valor aproximado da bicicleta, em {{currency}}."
+          "subtitle": "Digite um valor aproximado da bicicleta, em {{currency}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Data do roubo.",
@@ -97,7 +98,8 @@
         },
         "enter_email": {
           "title": "Endereço de e-mail",
-          "subtitle": "Enviaremos um link de verificação e usaremos seu e-mail apenas para comunicação estritamente relacionada."
+          "subtitle": "Enviaremos um link de verificação e usaremos seu e-mail apenas para comunicação estritamente relacionada.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

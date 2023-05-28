@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "おおよその値",
-          "subtitle": "自転車のおおよその価値を、{{currency}}で入力してください。"
+          "subtitle": "自転車のおおよその価値を、{{currency}}で入力してください。",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "盗難日付",
@@ -97,7 +98,8 @@
         },
         "enter_email": {
           "title": "メールアドレス",
-          "subtitle": "私たちはあなたに確認リンクを送信し、あなたの電子メールを厳密に関連するコミュニケーションにのみ使用します。"
+          "subtitle": "私たちはあなたに確認リンクを送信し、あなたの電子メールを厳密に関連するコミュニケーションにのみ使用します。",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

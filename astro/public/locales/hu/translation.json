@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Körülbelüli érték.",
-          "subtitle": "Írja be a kerékpár hozzávetőleges értékét, {{currency}}-ban."
+          "subtitle": "Írja be a kerékpár hozzávetőleges értékét, {{currency}}-ban.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Lopási dátum.",
@@ -97,7 +98,8 @@
         },
         "enter_email": {
           "title": "E-mail cím",
-          "subtitle": "Egy ellenőrző linket fogunk küldeni Önnek és az e-mailjét csak szigorúan kapcsolódó kommunikációra használjuk."
+          "subtitle": "Egy ellenőrző linket fogunk küldeni Önnek és az e-mailjét csak szigorúan kapcsolódó kommunikációra használjuk.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

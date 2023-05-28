@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Ungefährer Wert",
-          "subtitle": "Geben Sie einen ungefähren Wert des Fahrrads in {{currency}} ein."
+          "subtitle": "Geben Sie einen ungefähren Wert des Fahrrads in {{currency}} ein.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Diebstahldatum",
@@ -97,7 +98,8 @@
         },
         "enter_email": {
           "title": "E-Mail-Adresse",
-          "subtitle": "Wir werden Ihnen einen Verifizierungslink senden und Ihre E-Mail nur für streng verwandte Kommunikation verwenden."
+          "subtitle": "Wir werden Ihnen einen Verifizierungslink senden und Ihre E-Mail nur für streng verwandte Kommunikation verwenden.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

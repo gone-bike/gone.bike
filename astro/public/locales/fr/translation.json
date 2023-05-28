@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Valeur approximative",
-          "subtitle": "Entrez une valeur approximative du vélo en {{devise}}"
+          "subtitle": "Entrez une valeur approximative du vélo en {{devise}}",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Date de vol",
@@ -97,7 +98,8 @@
         },
         "enter_email": {
           "title": "Adresse e-mail",
-          "subtitle": "Nous vous enverrons un lien de vérification et utiliserons votre adresse e-mail uniquement pour une communication strictement liée."
+          "subtitle": "Nous vous enverrons un lien de vérification et utiliserons votre adresse e-mail uniquement pour une communication strictement liée.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Giá trị xấp xỉ.",
-          "subtitle": "Nhập giá trị xấp xỉ của xe đạp, trong {{đơn vị tiền tệ}}"
+          "subtitle": "Nhập giá trị xấp xỉ của xe đạp, trong {{đơn vị tiền tệ}}",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Ngày bị trộm trên tài sản",
@@ -97,7 +98,8 @@
         },
         "enter_email": {
           "title": "Địa chỉ email",
-          "subtitle": "Chúng tôi sẽ gửi cho bạn một liên kết xác minh và sử dụng địa chỉ email của bạn chỉ cho việc liên lạc liên quan chặt chẽ."
+          "subtitle": "Chúng tôi sẽ gửi cho bạn một liên kết xác minh và sử dụng địa chỉ email của bạn chỉ cho việc liên lạc liên quan chặt chẽ.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

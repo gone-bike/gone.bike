@@ -41,7 +41,8 @@
         },
         "approximate_value": {
           "title": "Yaklaşık değer",
-          "subtitle": "\" Bisikletin yaklaşık değerini {{currency}} cinsinden yazın. \"\n\n(Note: The language locale \"tr\" is for Turkish)"
+          "subtitle": "\" Bisikletin yaklaşık değerini {{currency}} cinsinden yazın. \"\n\n(Note: The language locale \"tr\" is for Turkish)",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
           "title": "Hırsızlık tarihi",
@@ -97,7 +98,8 @@
         },
         "enter_email": {
           "title": "E-posta adresi",
-          "subtitle": "Size doğrulama bağlantısı göndereceğiz ve e-postanızı sadece sıkı ilişkili iletişim için kullanacağız."
+          "subtitle": "Size doğrulama bağlantısı göndereceğiz ve e-postanızı sadece sıkı ilişkili iletişim için kullanacağız.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },
