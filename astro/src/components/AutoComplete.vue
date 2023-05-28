@@ -21,8 +21,6 @@ const queryResults = computed(() => {
     let result = startIdx.value === 0 ? tempresult : tempresult.slice(startIdx.value, tempresult.length - 1)
     if (result.length === 0) {
         result.push(searchQuery.value)
-    } else if (searchQuery.value && !result.includes(searchQuery.value)) {
-        result.unshift(searchQuery.value)
     }
     return result
 })
