@@ -15,7 +15,7 @@ import InputField from "./InputField.vue"
 import SelectField from "./SelectField.vue"
 import FileUpload from "./FileUpload.vue"
 import ColorField from "./ColorField.vue";
-
+import Stepper from "./Stepper.vue";
 import GoogleMap from "./GoogleMap.vue"
 
 
@@ -36,6 +36,8 @@ function validateEmail(email: string) {
 let bikeModelsApi = ref<{ key: string, value: string }[]>([]);
 
 let bikeBrandApi: { key: string, value: string }[] = props.bikeBrand
+
+let noOfOtherUploads = ref(1)
 
 let formValue = reactive({
     bike_brand: '',
@@ -71,18 +73,18 @@ let formValue = reactive({
 
 let modelCache: Record<string, typeof bikeModelsApi.value> = reactive({})
 
-watch(()=>formValue.bike_brand_id,async function(val){
-    if(val){
-        if(modelCache[val]){
+watch(() => formValue.bike_brand_id, async function (val) {
+    if (val) {
+        if (modelCache[val]) {
             bikeModelsApi.value = modelCache[val]
-        }else{
+        } else {
             console.log("cache saved!")
             const modelData = await (await fetch(`${location.origin}/api/bike_model.json?brand=${val}`)).json()
             bikeModelsApi.value = modelData.data
             modelCache[val] = modelData.data
         }
-    }else{
-        console.log(val)
+    } else {
+        bikeModelsApi.value = []
     }
 })
 
@@ -91,7 +93,7 @@ let theftDateUnformated = ref<Date>(new Date(Date.now()))
 watchEffect(() => {
     let date = theftDateUnformated.value
     if (date) {
-        formValue.theft_date = `${date.getFullYear()}-${date.getMonth() < 10  ? `0${date.getMonth()}`: date.getMonth()}-${date.getDate()}`
+        formValue.theft_date = `${date.getFullYear()}-${date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth()}-${date.getDate()}`
     }
 })
 
@@ -112,7 +114,7 @@ function t(str: string, param?: {}) {
 let stack = ref<number[]>([])
 
 async function onSubmit(formData: typeof formValue) {
-    let dat = await axios.post("/api/input/report-submit",formData)
+    let dat = await axios.post("/api/input/report-submit", formData)
     console.log(dat.data)
 }
 
@@ -138,8 +140,7 @@ onMounted(() => {
                 errors.location = true
                 window.location.hash = "#page-2"
             }
-        }
-        if (prevPage === 3 && page === 4) {
+        } else if (prevPage === 3 && page === 4) {
             if (typeof formValue.main_photo === "string") {
                 showAlert({
                     title: "Error",
@@ -147,8 +148,7 @@ onMounted(() => {
                 })
                 window.location.hash = "#page-3"
             }
-        }
-        if (prevPage === 6 && page === 7) {
+        } else if (prevPage === 6 && page === 7) {
             if (formValue.mail && validateEmail(formValue.mail)) {
                 onSubmit(toRaw(formValue))
             } else {
@@ -158,6 +158,7 @@ onMounted(() => {
                 })
                 window.location.hash = `#page-6`
             }
+        } else {
         }
     }
 })
@@ -200,19 +201,21 @@ let currentPage = ref(1)
                 </svg>
             </button>
         </div>
+        <Stepper :step="currentPage" />
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 1">
             <AutoComplete v-model:new-item="formValue.bike_brand" v-model:listed="formValue.bike_brand_id"
                 :api="bikeBrandApi" title="bike_brand" />
-            <AutoComplete v-show="bikeModelsApi.length && !formValue.bike_brand" v-model:listed="formValue.bike_model_id" v-model:new-item="formValue.bike_model"
-                :api="bikeModelsApi" title="bike_model" />
-            <InputField v-show="formValue.bike_brand && !bikeBrandApi.length" v-model="formValue.bike_model" title="bike_model"/>
+            <AutoComplete v-show="bikeModelsApi.length && !formValue.bike_brand" v-model:listed="formValue.bike_model_id"
+                v-model:new-item="formValue.bike_model" :api="bikeModelsApi" title="bike_model" />
+            <InputField v-show="formValue.bike_brand && !bikeModelsApi.length" v-model="formValue.bike_model"
+                title="bike_model" />
             <ColorField v-model="formValue.colors" title="colors" />
             <div class="flex flex-col ml-2">
                 <label for="bike_details" class="mb-2 text-lg">{{ t("bike_details") }}</label>
                 <textarea name="bike_details" id="bike_details" v-model="formValue.bike_details" cols="30" rows="7"
-                    :placeholder="t(`forms.report.questions.bike_details.placeholder`)"> </textarea>
+                    :placeholder="(i18next(`forms.report.questions.bike_details.placeholder`) as string)"> </textarea>
                 <span class="mt-1 text-sm font-semibold text-gray-500 ml-1">{{
-                    t(`forms.report.questions.description.subtitle`) }}</span>
+                    i18next(`forms.report.questions.bike_details.subtitle`) }}</span>
 
             </div>
             <div class="ml-2">
@@ -242,12 +245,15 @@ let currentPage = ref(1)
             </div>
         </div>
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 2">
-            <div class="flex flex-col ml-2">
+            <div class="flex flex-col ml-2 w-full">
                 <label for="theft_date" class="mb-2 text-lg">{{ t("theft_date") }}</label>
                 <DatePicker :disabled-start-date="{
                     to: new Date('01.01.2010'),
                     from: Date.now()
-                }" lang="en" v-model="theftDateUnformated" />
+                }" lang="en" v-model="theftDateUnformated" class="w-full" />
+                                <span class="mt-1 text-sm font-semibold text-gray-500 ml-1">{{
+                    i18next(`forms.report.questions.theft_date.subtitle`) }}</span>
+
             </div>
             <SelectField :other="false" v-model="formValue.theft_timeframe" title="theft_timeframe"
                 :list='["morning", "afternoon", "evening", "night"]' />
@@ -294,10 +300,13 @@ let currentPage = ref(1)
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 4">
             <div>
                 <p class="mb-2 text-lg">{{ t("photos", { n: 4 }) }}</p>
-                <FileUpload :show-alert="showAlert" v-model="formValue.photos_1" />
-                <FileUpload :show-alert="showAlert" v-model="formValue.photos_2" />
-                <FileUpload :show-alert="showAlert" v-model="formValue.photos_3" />
-                <FileUpload :show-alert="showAlert" v-model="formValue.photos_4" />
+                <FileUpload v-show="noOfOtherUploads > 1" :show-alert="showAlert" v-model="formValue.photos_1" />
+                <FileUpload v-show="noOfOtherUploads > 2 && formValue.photos_1" :show-alert="showAlert" v-model="formValue.photos_2" />
+                <FileUpload v-show="noOfOtherUploads > 3 && formValue.photos_2" :show-alert="showAlert" v-model="formValue.photos_3" />
+                <FileUpload v-show="noOfOtherUploads > 2 && formValue.photos_3" :show-alert="showAlert" v-model="formValue.photos_4" />
+                <button @click="noOfOtherUploads++" class="p-3 rounded-lg bg-purple-500 text-white hover:bg-purple-600">
+                    Add More +
+                </button>
             </div>
             <div class="flex w-full justify-between">
                 <a href="#page-3"
@@ -311,9 +320,9 @@ let currentPage = ref(1)
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 5">
             <div class="flex flex-col ml-2">
                 <label for="description" class="mb-2 text-lg">{{ t("description") }}</label>
-                <textarea name="description" :placeholder="t(`forms.report.questions.description.placeholder`)"
+                <textarea name="description" :placeholder="(i18next(`forms.report.questions.description.placeholder`) as string)"
                     id="description" v-model="formValue.description" cols="30" rows="10"></textarea>
-                <span class="mt-1 text-gray-600 ml-1">{{ t(`forms.report.questions.description.subtitle`) }}</span>
+                <span class="mt-1 text-gray-600 ml-1">{{ i18next(`forms.report.questions.description.subtitle`) }}</span>
             </div>
             <div class="flex w-full justify-between">
                 <a href="#page-4"
@@ -343,10 +352,7 @@ let currentPage = ref(1)
     </div>
 </template>
 <style>
-.main-image-preview {
-    display: block;
-    cursor: pointer;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
+:root {
+    --v-calendar-datepicker-icon-color: #9333EA !important;
 }
 </style>

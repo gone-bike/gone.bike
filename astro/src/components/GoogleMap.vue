@@ -4,6 +4,8 @@ import { onMounted, ref } from "vue"
 import { Loader } from "@googlemaps/js-api-loader"
 import './gmap.d.ts'
 
+import { t } from "i18next"
+
 interface Props {
   coords: {
     lat: number,
@@ -179,7 +181,7 @@ onMounted(async () => {
 <template>
   <div class="w-full">
     <div class="flex w-full gap-2 items-center">
-      <input id="place-search" type="text" class="my-4 w-full" ref="placeRef" />
+      <input :placeholder="(t('forms.report.questions.location.placeholder') as string)" id="place-search" type="text" class="my-4 w-full" ref="placeRef" />
       <button @click="useCurrentLocation"
         class="p-2 rounded-xl bg-purple-300  text-purple-900 hover:bg-purple-400 focus:bg-purple-400">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
