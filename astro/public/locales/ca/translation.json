@@ -97,7 +97,8 @@
         },
         "enter_email": {
           "title": "Adreça electrònica",
-          "subtitle": "Us enviarem un enllaç de verificació i utilitzarem el vostre correu electrònic només per a comunicació estrictament relacionada."
+          "subtitle": "Us enviarem un enllaç de verificació i utilitzarem el vostre correu electrònic només per a comunicació estrictament relacionada.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

@@ -97,7 +97,8 @@
         },
         "enter_email": {
           "title": "Email address",
-          "subtitle": "We will send you a verification link and use your email only for strictly related communication."
+          "subtitle": "We will send you a verification link and use your email only for strictly related communication.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

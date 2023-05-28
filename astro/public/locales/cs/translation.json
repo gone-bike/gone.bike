@@ -97,7 +97,8 @@
         },
         "enter_email": {
           "title": "E-mailová adresa.",
-          "subtitle": "Pošleme vám ověřovací odkaz a vaši e-mailovou adresu použijeme pouze pro přísně související komunikaci."
+          "subtitle": "Pošleme vám ověřovací odkaz a vaši e-mailovou adresu použijeme pouze pro přísně související komunikaci.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

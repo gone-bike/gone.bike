@@ -97,7 +97,8 @@
         },
         "enter_email": {
           "title": "E-mail cím",
-          "subtitle": "Egy ellenőrző linket fogunk küldeni Önnek és az e-mailjét csak szigorúan kapcsolódó kommunikációra használjuk."
+          "subtitle": "Egy ellenőrző linket fogunk küldeni Önnek és az e-mailjét csak szigorúan kapcsolódó kommunikációra használjuk.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

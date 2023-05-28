@@ -97,7 +97,8 @@
         },
         "enter_email": {
           "title": "Adresa e-pošte",
-          "subtitle": "Poslat ćemo vam verifikacijski link i vašu e-poštu koristiti samo za strogo povezanu komunikaciju."
+          "subtitle": "Poslat ćemo vam verifikacijski link i vašu e-poštu koristiti samo za strogo povezanu komunikaciju.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

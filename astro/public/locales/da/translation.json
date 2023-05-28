@@ -97,7 +97,8 @@
         },
         "enter_email": {
           "title": "E-mail adresse",
-          "subtitle": "Vi vil sende dig et verifikationslink og bruge din email kun til strikt relateret kommunikation."
+          "subtitle": "Vi vil sende dig et verifikationslink og bruge din email kun til strikt relateret kommunikation.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

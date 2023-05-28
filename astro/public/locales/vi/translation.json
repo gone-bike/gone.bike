@@ -97,7 +97,8 @@
         },
         "enter_email": {
           "title": "Địa chỉ email",
-          "subtitle": "Chúng tôi sẽ gửi cho bạn một liên kết xác minh và sử dụng địa chỉ email của bạn chỉ cho việc liên lạc liên quan chặt chẽ."
+          "subtitle": "Chúng tôi sẽ gửi cho bạn một liên kết xác minh và sử dụng địa chỉ email của bạn chỉ cho việc liên lạc liên quan chặt chẽ.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

@@ -97,7 +97,8 @@
         },
         "enter_email": {
           "title": "Dirección de correo electrónico.",
-          "subtitle": "Le enviaremos un enlace de verificación y utilizaremos su correo electrónico solamente para comunicación estrictamente relacionada."
+          "subtitle": "Le enviaremos un enlace de verificación y utilizaremos su correo electrónico solamente para comunicación estrictamente relacionada.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

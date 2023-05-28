@@ -97,7 +97,8 @@
         },
         "enter_email": {
           "title": "Adresse e-mail",
-          "subtitle": "Nous vous enverrons un lien de vérification et utiliserons votre adresse e-mail uniquement pour une communication strictement liée."
+          "subtitle": "Nous vous enverrons un lien de vérification et utiliserons votre adresse e-mail uniquement pour une communication strictement liée.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

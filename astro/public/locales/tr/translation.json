@@ -97,7 +97,8 @@
         },
         "enter_email": {
           "title": "E-posta adresi",
-          "subtitle": "Size doğrulama bağlantısı göndereceğiz ve e-postanızı sadece sıkı ilişkili iletişim için kullanacağız."
+          "subtitle": "Size doğrulama bağlantısı göndereceğiz ve e-postanızı sadece sıkı ilişkili iletişim için kullanacağız.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

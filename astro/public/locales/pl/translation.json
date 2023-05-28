@@ -97,7 +97,8 @@
         },
         "enter_email": {
           "title": "Adres e-mailowy",
-          "subtitle": "Wyślemy ci link weryfikacyjny i będziemy korzystać z twojego adresu e-mail wyłącznie do celów związanych z komunikacją."
+          "subtitle": "Wyślemy ci link weryfikacyjny i będziemy korzystać z twojego adresu e-mail wyłącznie do celów związanych z komunikacją.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },

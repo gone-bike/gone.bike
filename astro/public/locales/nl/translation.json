@@ -97,7 +97,8 @@
         },
         "enter_email": {
           "title": "E-mailadres",
-          "subtitle": "We zullen u een verificatielink sturen en uw e-mail alleen gebruiken voor strikt gerelateerde communicatie."
+          "subtitle": "We zullen u een verificatielink sturen en uw e-mail alleen gebruiken voor strikt gerelateerde communicatie.",
+          "placeholder": "IE: my.email@email.com"
         }
       }
     },
