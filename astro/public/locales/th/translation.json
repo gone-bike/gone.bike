@@ -15,6 +15,10 @@
         "next": "ถัดไป",
         "back": "กลับ",
         "submit": "ส่งรายงาน"
+      },
+      "thank": {
+        "title": "ขอบคุณ!",
+        "sub_title": "การส่งของคุณได้รับการรับรองถูกต้องแล้ว"
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "{{ยี่ห้อจักรยาน}}ที่ถูกขโมย",
-          "subtitle": "ค้นหาชื่อแบรนด์ หากคุณไม่พบ คุณสามารถพิมพ์ชื่อได้ หากคุณไม่ทราบให้ปล่อยช่องนี้ว่างเปล่า"
+          "subtitle": "ค้นหาชื่อแบรนด์ หากคุณไม่พบ คุณสามารถพิมพ์ชื่อได้ หากคุณไม่ทราบให้ปล่อยช่องนี้ว่างเปล่า",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "รถจักรยานรุ่นถูกขโมย"
+          "title": "รถจักรยานรุ่นถูกขโมย",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "หากคุณทราบรุ่นของจักรยานของคุณโปรดเพิ่มที่นี่ หากมันตรงกับข้อเสนอที่กำหนดให้โปรดเลือกมัน"
         },
         "colors": {
           "title": "สีหลักของจักรยาน",
@@ -56,7 +63,8 @@
             "cellar": "คลังไวน์",
             "garage": "รถที่จอดโดยเฉพาะ",
             "train": "รถไฟ",
-            "garden": "สวนป่าลงราชา (Note: This is a fictional translation as the original content \"Garden\" is a bit vague and can have different translations depending on the context.)"
+            "garden": "สวนป่าลงราชา (Note: This is a fictional translation as the original content \"Garden\" is a bit vague and can have different translations depending on the context.)",
+            "home": "บ้าน"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "จุดยึดติดของเชือก",
           "choices": {
             "tree": "ต้นไม้"
-          }
+          },
+          "subtitle": "หากคุณเชื่อมต่อรถจักรยานกับสิ่งที่บางสิ่ง โปรดบอกเราว่ามันคืออะไร"
         },
         "location": {
           "title": "ที่อยู่และพิกัด",
-          "subtitle": "เลือกจุดบนแผนที่ที่เกิดการโจรกรรม {{theft}}",
-          "placeholder": "ย้ายตำแหน่งปักหมุดเพื่อความแม่นยำมากขึ้น"
+          "placeholder": null,
+          "subtitle": "พิมพ์ที่อยู่หรือตำแหน่งและเลือกจุดแผนที่ที่เกิดการโจรกรรม ยิ่งเจาะจงมากเท่าไรก็ยิ่งดี"
         },
         "main_photo": {
           "title": "รูปหลักของจักรยานถูกขโมย"
@@ -80,7 +89,8 @@
           "title": "คุณสามารถเพิ่มรูปภาพได้สูงสุด {{n}} ภาพ"
         },
         "description": {
-          "title": "อธิบายว่าเกิดอะไรขึ้น"
+          "title": "อธิบายว่าเกิดอะไรขึ้น",
+          "subtitle": "มีรายละเอียดเท่าไหร่ที่คุณให้เกี่ยวกับสิ่งที่เกิดขึ้น เท่านั้นที่จะดีขึ้น"
         },
         "theft_timeframe": {
           "choices": {

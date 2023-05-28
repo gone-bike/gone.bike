@@ -15,6 +15,10 @@
         "next": "Próximo",
         "back": "De volta.",
         "submit": "Enviar relatório."
+      },
+      "thank": {
+        "title": "O meu nome é Sarah e eu sou uma assistente virtual. Como posso ajudá-lo hoje? \n\nMinha língua local é o português. Como posso ajudá-lo hoje?",
+        "sub_title": "Sua submissão foi recebida corretamente."
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "Bicicleta roubada da marca.",
-          "subtitle": "Pesquise o nome da marca, se você não encontrá-la, pode digitá-la. Se não souber, deixe este campo em branco."
+          "subtitle": "Pesquise o nome da marca, se você não encontrá-la, pode digitá-la. Se não souber, deixe este campo em branco.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Modelo de bicicleta roubada"
+          "title": "Modelo de bicicleta roubada",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": null
         },
         "colors": {
           "title": "Cores principais da bicicleta",
@@ -56,7 +63,8 @@
             "cellar": "Porão",
             "garage": "Garagem",
             "train": "Trem",
-            "garden": "Jardim"
+            "garden": "Jardim",
+            "home": "Casa"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Ponto de ancoragem.",
           "choices": {
             "tree": "Árvore"
-          }
+          },
+          "subtitle": "Se você ancorou a bicicleta em algo, por favor nos diga o que era."
         },
         "location": {
           "title": "Endereço e coordenadas.",
-          "subtitle": "Selecione um ponto no mapa onde ocorreu o roubo.",
-          "placeholder": "Não consigo fazer isso, pois não há nenhum conteúdo fornecido para mim traduzir. Por favor, forneça o conteúdo que precisa ser traduzido."
+          "placeholder": null,
+          "subtitle": "Digite um endereço ou localização e selecione um ponto no mapa onde ocorreu o furto. Quanto mais preciso, melhor."
         },
         "main_photo": {
           "title": "Foto principal da bicicleta roubada"
@@ -80,7 +89,8 @@
           "title": "Você pode adicionar até {{n}} fotos."
         },
         "description": {
-          "title": "Descreva o que aconteceu."
+          "title": "Descreva o que aconteceu.",
+          "subtitle": "Quanto mais detalhes você der sobre o que aconteceu, melhor."
         },
         "theft_timeframe": {
           "choices": {

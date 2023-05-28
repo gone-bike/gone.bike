@@ -15,6 +15,10 @@
         "next": "Sonraki",
         "back": "Geri dönünüz.",
         "submit": "Rapor gönder"
+      },
+      "thank": {
+        "title": "Teşekkürler!",
+        "sub_title": "Gönderiniz başarıyla alındı."
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "Çalınan bisiklet markası",
-          "subtitle": "Marka adını arayın, bulamazsanız yazabilirsiniz. Bilmiyorsanız bu alanı boş bırakın."
+          "subtitle": "Marka adını arayın, bulamazsanız yazabilirsiniz. Bilmiyorsanız bu alanı boş bırakın.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Çalınmış bisiklet modeli"
+          "title": "Çalınmış bisiklet modeli",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Eğer bisikletinizin modelini biliyorsanız, buraya ekleyin. Eğer verilen önerilerle eşleşiyorsa, lütfen seçin."
         },
         "colors": {
           "title": "Bisiklet ana renkleri",
@@ -56,7 +63,8 @@
             "cellar": "Kiler",
             "garage": "Garaj",
             "train": "Tren",
-            "garden": "Bahçe"
+            "garden": "Bahçe",
+            "home": "Ev"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Bağlantı noktası",
           "choices": {
             "tree": "Ağaç"
-          }
+          },
+          "subtitle": "Eğer bisikleti bir şeye bağladıysanız, bize ne olduğunu söyleyin."
         },
         "location": {
           "title": "Adres ve koordinatlar",
-          "subtitle": "Hırsızlığın gerçekleştiği harita noktasını seçin.",
-          "placeholder": "Bu gönderiyi tercüme edin."
+          "placeholder": null,
+          "subtitle": "Bir adres veya konum yazın ve hırsızlık olayının meydana geldiği bir harita noktası seçin. Ne kadar hassas olursanız o kadar iyi."
         },
         "main_photo": {
           "title": "Çalınmış bisiklet ana fotoğrafı"
@@ -80,7 +89,8 @@
           "title": "{{n}} fotoğraf ekleyebilirsiniz."
         },
         "description": {
-          "title": "Ne olduğunu açıklayın."
+          "title": "Ne olduğunu açıklayın.",
+          "subtitle": "Ne kadar çok detay verirseniz, olayın ne olduğu hakkında o kadar iyi olur."
         },
         "theft_timeframe": {
           "choices": {

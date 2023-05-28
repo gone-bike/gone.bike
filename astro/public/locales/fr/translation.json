@@ -15,6 +15,10 @@
         "next": "Suivant",
         "back": "Retour",
         "submit": "Soumettre le rapport."
+      },
+      "thank": {
+        "title": "Merci!",
+        "sub_title": "Votre soumission a été reçue correctement."
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "Vélo volé de la marque.",
-          "subtitle": "Recherchez le nom de la marque, si vous ne le trouvez pas, vous pouvez le taper. Si vous ne le connaissez pas, laissez ce champ vide."
+          "subtitle": "Recherchez le nom de la marque, si vous ne le trouvez pas, vous pouvez le taper. Si vous ne le connaissez pas, laissez ce champ vide.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Vélo volé modèle"
+          "title": "Vélo volé modèle",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Si vous connaissez le modèle de votre vélo, veuillez l'ajouter ici. Si cela correspond aux suggestions proposées, veuillez le sélectionner."
         },
         "colors": {
           "title": "Les principales couleurs de vélo.",
@@ -56,7 +63,8 @@
             "cellar": "Cave",
             "garage": "Garage",
             "train": "Train",
-            "garden": "Jardin"
+            "garden": "Jardin",
+            "home": "Accueil"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Point d'ancrage",
           "choices": {
             "tree": "Arbre"
-          }
+          },
+          "subtitle": "Si vous avez attaché le vélo à quelque chose, veuillez nous dire ce que c'était."
         },
         "location": {
           "title": "Adresse et coordonnées.",
-          "subtitle": "Sélectionnez un point de carte où le vol a eu lieu.",
-          "placeholder": "Le chat mange du fromage."
+          "placeholder": null,
+          "subtitle": "Entrez une adresse ou un lieu et sélectionnez un point sur la carte où le vol s'est produit. Plus c'est précis, mieux c'est."
         },
         "main_photo": {
           "title": "Vélo volé photo principale"
@@ -80,7 +89,8 @@
           "title": "Vous pouvez ajouter jusqu'à {{n}} photos."
         },
         "description": {
-          "title": "Décrivez ce qui s'est passé."
+          "title": "Décrivez ce qui s'est passé.",
+          "subtitle": "Plus vous donnez de détails sur ce qui s'est passé, mieux c'est."
         },
         "theft_timeframe": {
           "choices": {

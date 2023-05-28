@@ -15,6 +15,10 @@
         "next": "Següent.",
         "back": "End",
         "submit": "Enviar informe"
+      },
+      "thank": {
+        "title": "Gràcies!",
+        "sub_title": "La teva submissió ha estat rebuda correctament."
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "Bicicleta robada marca",
-          "subtitle": "Cerca el nom de la marca, si no la trobes, pots escriure-la. Si no la coneixes, deixa aquest camp en blanc."
+          "subtitle": "Cerca el nom de la marca, si no la trobes, pots escriure-la. Si no la coneixes, deixa aquest camp en blanc.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Bicicleta robada de model"
+          "title": "Bicicleta robada de model",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Si coneixeu el model de la vostra moto, afegiu-lo aquí. Si coincideix amb les suggerències donades, seleccioneu-lo."
         },
         "colors": {
           "title": "Colors principals de bicicleta.",
@@ -56,7 +63,8 @@
             "cellar": "Celler",
             "garage": "Garatge",
             "train": "Tren.",
-            "garden": "Jardí"
+            "garden": "Jardí",
+            "home": "Inici"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Punt d'ancoratge",
           "choices": {
             "tree": "Arbre"
-          }
+          },
+          "subtitle": "Si has lligat la bicicleta a alguna cosa, si us plau, digues-nos a què estava lligada."
         },
         "location": {
           "title": "Adreça i coordenades.",
-          "subtitle": "Seleccioneu un punt del mapa on va succeir el robatori.",
-          "placeholder": "No pugueu deixar les llavors de la vida que us han estat donades! "
+          "placeholder": null,
+          "subtitle": "Escriu una adreça o una ubicació i selecciona un punt del mapa on va succeir el robatori. Com més precís, millor."
         },
         "main_photo": {
           "title": "Bicicleta robada foto principal"
@@ -80,7 +89,8 @@
           "title": "Podeu afegir fins a {{n}} fotos."
         },
         "description": {
-          "title": "Descriu el que va passar."
+          "title": "Descriu el que va passar.",
+          "subtitle": "Com més detalls donis sobre el que va passar, millor."
         },
         "theft_timeframe": {
           "choices": {

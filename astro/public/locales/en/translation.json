@@ -15,6 +15,10 @@
         "next": "Next.",
         "back": "Back",
         "submit": "Submit report."
+      },
+      "thank": {
+        "title": "Thank You!",
+        "sub_title": "Your submission has been received correctly"
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "Stolen bike brand",
-          "subtitle": "Search the brand name, if you don't find it, you can type it in. If you don't know it, leave this field blank."
+          "subtitle": "Search the brand name, if you don't find it, you can type it in. If you don't know it, leave this field blank.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Stolen bike model"
+          "title": "Stolen bike model",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "If you know the model of your bike, add it here. If it matches given suggestions, please select it."
         },
         "colors": {
           "title": "Bike main colors\n",
@@ -56,7 +63,8 @@
             "cellar": "Cellar",
             "garage": "Garage",
             "train": "Train",
-            "garden": "Garden"
+            "garden": "Garden",
+            "home": "Home"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Anchor point",
           "choices": {
             "tree": "Tree"
-          }
+          },
+          "subtitle": "If you anchored the bike to something, please tell us what it was."
         },
         "location": {
           "title": "Address and coordinates",
-          "subtitle": "Select a map point where the theft happened.",
-          "placeholder": "IE: an address, a city, an street name. You can move the map marker to be more accurate"
+          "placeholder": "IE: London city center",
+          "subtitle": "Type an address or a location and select a map point where the theft happened. The more precise, the better."
         },
         "main_photo": {
           "title": "Stolen bike main photo"
@@ -80,7 +89,8 @@
           "title": "You can add up to {{n}} photos"
         },
         "description": {
-          "title": "Describe what happened"
+          "title": "Describe what happened",
+          "subtitle": "The more details you give about what happened, the better"
         },
         "theft_timeframe": {
           "choices": {

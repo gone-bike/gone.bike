@@ -15,6 +15,10 @@
         "next": "Následující",
         "back": "Zpět",
         "submit": "Odeslat zprávu"
+      },
+      "thank": {
+        "title": "Děkuji!",
+        "sub_title": "Vaše podání bylo správně přijato."
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "Ukradené kolo značky.",
-          "subtitle": "Hledejte název značky, pokud ho nenajdete, můžete jej napsat. Pokud ho neznáte, nechte toto pole prázdné."
+          "subtitle": "Hledejte název značky, pokud ho nenajdete, můžete jej napsat. Pokud ho neznáte, nechte toto pole prázdné.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Ukradené kolo modelu"
+          "title": "Ukradené kolo modelu",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Pokud znáte model svého kola, přidejte ho zde. Pokud se shoduje s nabízenými návrhy, vyberte ho prosím."
         },
         "colors": {
           "title": "Hlavní barvy jízdních kol",
@@ -56,7 +63,8 @@
             "cellar": "Sklep",
             "garage": "Garáž",
             "train": "Vlak",
-            "garden": "Zahrada"
+            "garden": "Zahrada",
+            "home": "Domov"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Kotvicí bod",
           "choices": {
             "tree": "Strom"
-          }
+          },
+          "subtitle": "Pokud jste kotvu kolovali na něčem, řekněte nám, co to bylo."
         },
         "location": {
           "title": "Adresa a souřadnice",
-          "subtitle": "Vyberte bod na mapě, kde došlo k odcizení.",
-          "placeholder": "Následující obsah nebyl poskytnut. Prosím, pošlete obsah, který je třeba přeložit."
+          "placeholder": null,
+          "subtitle": "Zadejte adresu nebo místo a vyberte bod na mapě, kde došlo k odcizení. Čím přesnější, tím lépe."
         },
         "main_photo": {
           "title": "Odcizené kolo hlavní foto."
@@ -80,7 +89,8 @@
           "title": "Můžete přidat až {{n}} fotografií."
         },
         "description": {
-          "title": "Popište, co se stalo."
+          "title": "Popište, co se stalo.",
+          "subtitle": "Čím více podrobností poskytnete o tom, co se stalo, tím lépe."
         },
         "theft_timeframe": {
           "choices": {

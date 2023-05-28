@@ -15,6 +15,10 @@
         "next": "Następny",
         "back": "Back",
         "submit": "Prześlij raport."
+      },
+      "thank": {
+        "title": "Dziękuję!",
+        "sub_title": "Twoje zgłoszenie zostało poprawnie odebrane."
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "Skradziony rower marki",
-          "subtitle": "Wyszukaj nazwę marki, jeśli jej nie znajdziesz, możesz ją wpisać. Jeśli nie znasz nazwy marki, pozostaw to pole puste."
+          "subtitle": "Wyszukaj nazwę marki, jeśli jej nie znajdziesz, możesz ją wpisać. Jeśli nie znasz nazwy marki, pozostaw to pole puste.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Stolen bike model\" - \"Model skradzionego roweru"
+          "title": "Stolen bike model\" - \"Model skradzionego roweru",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Jeśli znasz model swojego roweru, dodaj go tutaj. Jeśli odpowiada to podanym sugestiom, wybierz go. \n\nTranslation: Jeśli znasz model swojego roweru, dodaj go tutaj. Jeśli odpowiada to podanym sugestiom, wybierz go."
         },
         "colors": {
           "title": "Główne kolory roweru",
@@ -56,7 +63,8 @@
             "cellar": "Piwnica",
             "garage": "Garaż",
             "train": "Pociąg",
-            "garden": "Ogród"
+            "garden": "Ogród",
+            "home": "Dom"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Punkt kotwiczenia",
           "choices": {
             "tree": "Drzewo"
-          }
+          },
+          "subtitle": "Jeśli przypiąłeś rower do czegoś, powiedz nam, do czego to było."
         },
         "location": {
           "title": "Adres i koordynaty.",
-          "subtitle": "Wybierz punkt na mapie, w którym doszło do kradzieży.",
-          "placeholder": "Niebieski samochód zatrzymał się przy czerwonym domu. {{John}} wysiadł z samochodu i wszedł do domu."
+          "placeholder": null,
+          "subtitle": "Wpisz adres lub lokalizację i wybierz punkt na mapie, gdzie doszło do kradzieży. Im dokładniej, tym lepiej."
         },
         "main_photo": {
           "title": "Skradziony rower główne zdjęcie."
@@ -80,7 +89,8 @@
           "title": "Możesz dodać do {{n}} zdjęć."
         },
         "description": {
-          "title": "Opisz, co się stało."
+          "title": "Opisz, co się stało.",
+          "subtitle": "Im więcej szczegółów podasz na temat tego, co się stało, tym lepiej."
         },
         "theft_timeframe": {
           "choices": {

@@ -15,6 +15,10 @@
         "next": "Nederlands",
         "back": "Terug",
         "submit": "Indienen van rapport"
+      },
+      "thank": {
+        "title": "Dank je wel!",
+        "sub_title": "Uw inzending is correct ontvangen."
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "Gestolen fietsmerk",
-          "subtitle": "Zoek naar de merknaam, als je het niet kunt vinden, kun je het typen. Als je het niet weet, laat dit veld dan leeg."
+          "subtitle": "Zoek naar de merknaam, als je het niet kunt vinden, kun je het typen. Als je het niet weet, laat dit veld dan leeg.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Gestolen fietsmodel"
+          "title": "Gestolen fietsmodel",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Als u het model van uw fiets kent, voeg het dan hier toe. Als het overeenkomt met de gegeven suggesties, selecteer het dan alstublieft."
         },
         "colors": {
           "title": "Fiets hoofdkleuren",
@@ -56,7 +63,8 @@
             "cellar": "Kelder",
             "garage": "Garage",
             "train": "Trein",
-            "garden": "Tuin"
+            "garden": "Tuin",
+            "home": "Thuis"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Ankerpunt.",
           "choices": {
             "tree": "Boom"
-          }
+          },
+          "subtitle": "Als je de fiets aan iets hebt vastgemaakt, vertel ons dan waar het aan vastgemaakt was."
         },
         "location": {
           "title": "Adres en coördinaten",
-          "subtitle": "Selecteer een kaartpunt waar de diefstal heeft plaatsgevonden.",
-          "placeholder": "Sorry, as an AI language model, I do not have any context or content to translate. Please provide me with the content you want me to translate."
+          "placeholder": null,
+          "subtitle": "Typ een adres of een locatie en selecteer een kaartpunt waar de diefstal heeft plaatsgevonden. Hoe nauwkeuriger, hoe beter."
         },
         "main_photo": {
           "title": "Gestolen fiets hoofdfoto"
@@ -80,7 +89,8 @@
           "title": "Je kunt maximaal {{n}} foto's toevoegen."
         },
         "description": {
-          "title": "Beschrijf wat er is gebeurd."
+          "title": "Beschrijf wat er is gebeurd.",
+          "subtitle": "Hoe meer details je geeft over wat er is gebeurd, hoe beter."
         },
         "theft_timeframe": {
           "choices": {

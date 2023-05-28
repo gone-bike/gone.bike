@@ -15,6 +15,10 @@
         "next": "Nincs további információ.",
         "back": "Vissza",
         "submit": "Jelentés beküldése"
+      },
+      "thank": {
+        "title": "Kérjük, válassza ki a nyelvet.",
+        "sub_title": "Az ön beküldése sikeresen megérkezett."
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "Lopott kerékpár márka",
-          "subtitle": "Keresd ki a márka nevét, ha nem találod, írd be. Ha nem tudod, hagyd üresen ezt a mezőt."
+          "subtitle": "Keresd ki a márka nevét, ha nem találod, írd be. Ha nem tudod, hagyd üresen ezt a mezőt.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Lopott kerékpár modell"
+          "title": "Lopott kerékpár modell",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Ha ismeri a kerékpár modelljét, akkor adja meg itt. Ha az adott javaslatoknak megfelel, válassza ki."
         },
         "colors": {
           "title": "Fő kerékpárszínek",
@@ -56,7 +63,8 @@
             "cellar": "Pince",
             "garage": "Garázs",
             "train": "vonat",
-            "garden": "Kert"
+            "garden": "Kert",
+            "home": "Otthon"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Horgonyzó pont.",
           "choices": {
             "tree": "Fa"
-          }
+          },
+          "subtitle": "Ha valamihez lehorgonyoztad a biciklit, kérjük, mondd el nekünk, hogy mi volt az."
         },
         "location": {
           "title": "Cím és koordináták.",
-          "subtitle": "Válasszon egy térképpontot, ahol a lopás történt.",
-          "placeholder": "Az étterem a központban található, könnyen megközelíthető. A menüben sokféle étel közül lehet választani, mindig friss és finom ételeket készítenek. Jó hangulatú hely, ajánlom mindenkinek!\n\n(Note: This is the Hungarian translation of: \"The restaurant is located in the center, easily accessible. The menu offers a variety of dishes, always freshly prepared and delicious. It's a great atmosphere, I recommend it to everyone!\")"
+          "placeholder": null,
+          "subtitle": "Adjon meg egy címet vagy helyet, majd válasszon a térképen egy pontot, ahol a lopás történt. Minél pontosabb, annál jobb."
         },
         "main_photo": {
           "title": "Ellopott kerékpár fő fényképe"
@@ -80,7 +89,8 @@
           "title": "Akár {{n}} fotót is hozzáadhatsz."
         },
         "description": {
-          "title": "Mi történt?"
+          "title": "Mi történt?",
+          "subtitle": "Minél több részletet ad meg arról, mi történt, annál jobb."
         },
         "theft_timeframe": {
           "choices": {

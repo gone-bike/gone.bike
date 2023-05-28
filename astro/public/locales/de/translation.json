@@ -15,6 +15,10 @@
         "next": "Nächstes.",
         "back": "Zurück",
         "submit": "Einreichen des Berichts"
+      },
+      "thank": {
+        "title": "Danke dir!",
+        "sub_title": "Ihre Einsendung wurde korrekt empfangen."
       }
     }
   },
@@ -23,10 +27,13 @@
       "questions": {
         "bike_brand": {
           "title": "Gestohlenes Fahrrad-Marke",
-          "subtitle": "Suchen Sie den Markennamen. Wenn Sie ihn nicht finden, können Sie ihn eingeben. Wenn Sie es nicht wissen, lassen Sie dieses Feld leer."
+          "subtitle": "Suchen Sie den Markennamen. Wenn Sie ihn nicht finden, können Sie ihn eingeben. Wenn Sie es nicht wissen, lassen Sie dieses Feld leer.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Gestohlenes Fahrradmodell"
+          "title": "Gestohlenes Fahrradmodell",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Wenn Sie das Modell Ihres Fahrrads kennen, fügen Sie es hier hinzu. Wenn es den vorgeschlagenen Vorschlägen entspricht, wählen Sie es bitte aus."
         },
         "colors": {
           "title": "Fahrrad Hauptfarben.",
@@ -56,7 +63,8 @@
             "cellar": "Keller",
             "garage": "Garage",
             "train": "Zug",
-            "garden": "Garten"
+            "garden": "Garten",
+            "home": "Startseite"
           }
         },
         "lock_type": {
@@ -66,12 +74,13 @@
           "title": "Ankerpunkt",
           "choices": {
             "tree": "Baum"
-          }
+          },
+          "subtitle": "Wenn Sie das Fahrrad an etwas angebunden haben, sagen Sie uns bitte, woran es angebunden war."
         },
         "location": {
           "title": "Adresse und Koordinaten",
-          "subtitle": "Wählen Sie einen Kartenausschnitt aus, an dem der Diebstahl stattgefunden hat.",
-          "placeholder": "Bitte bewegen Sie den Marker auf die genaue Adresse."
+          "placeholder": null,
+          "subtitle": "Geben Sie eine Adresse oder einen Standort ein und wählen Sie einen Kartenpunkt aus, an dem der Diebstahl stattgefunden hat. Je genauer, desto besser."
         },
         "main_photo": {
           "title": "Gestohlenes Fahrrad Hauptfoto"
@@ -80,7 +89,8 @@
           "title": "Sie können bis zu {{n}} Fotos hinzufügen."
         },
         "description": {
-          "title": "Beschreiben Sie, was passiert ist."
+          "title": "Beschreiben Sie, was passiert ist.",
+          "subtitle": "Je mehr Details du über das Geschehene gibst, desto besser."
         },
         "theft_timeframe": {
           "choices": {
