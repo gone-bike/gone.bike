@@ -28,19 +28,6 @@ try {
   console.log("Error");
 }
 ---
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
-<script>
-window.onloadTurnstileCallback = function () {
-    turnstile.render('#example-container', {
-        sitekey: '0x4AAAAAAAFUGAm8uaSlNEMe',
-        callback: function(token) {
-          document.getElementById("vue_app").removeAttribute("hidden")
-            console.log(`Challenge Success ${token}`);
-        },
-    });
-};
-</script>
-  <div id="example-container"</div>
 <BaseLayout
   title={t("pages.report_form.title")}
   description=""
@@ -53,6 +40,23 @@ window.onloadTurnstileCallback = function () {
         <p class="mt-2">{t("pages.report_form.subtitle")}</p>
       </div>
       <div class="w-full h-[1px] bg-gray-200"></div>
+
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
+      <script>
+      window.onloadTurnstileCallback = function () {
+          turnstile.render('#captcha-challenge', {
+              sitekey: '3x00000000000000000000FF',
+              callback: function(token) {
+                document.getElementById("vue_app").removeAttribute("hidden")
+                document.getElementById("captcha-challenge").classList.add("hidden");
+                window.captchaToken = token;
+              },
+          });
+      };
+      </script>
+
+
+      <div class="p-10 flex justify-center items-center" id="captcha-challenge"></div>
       <div class="p-4" id="vue_app" hidden>
         <Form
           client:load
