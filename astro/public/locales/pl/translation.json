@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "Główne kolory roweru",
-          "subtitle": "Kolory ramy rowerowej, dodaj każdy kolor oddzielający przecinkiem."
+          "subtitle": "Kolory ramy rowerowej, dodaj każdy kolor oddzielający przecinkiem.",
+          "placeholder": "czarny, czerwony"
         },
         "is_electric": {
           "title": "Czy to rower elektryczny?",
@@ -64,22 +65,33 @@
             "garage": "Garaż",
             "train": "Pociąg",
             "garden": "Ogród",
-            "home": "Dom"
+            "home": "Dom",
+            "office": "Biuro",
+            "car": "Samochód"
           }
         },
         "lock_type": {
-          "title": "Typ zamka"
+          "title": "Typ zamka",
+          "choices": {
+            "chain": "Łańcuch",
+            "ulock": "U-Lock",
+            "folding": "Złożony zamek"
+          }
         },
         "lock_anchor": {
           "title": "Punkt kotwiczenia",
           "choices": {
-            "tree": "Drzewo"
+            "tree": "Drzewo",
+            "gate": "Brama",
+            "post": "Płot",
+            "self_bike": "Do samoistnie.",
+            "other_bike": "Do innego roweru."
           },
           "subtitle": "Jeśli przypiąłeś rower do czegoś, powiedz nam, do czego to było."
         },
         "location": {
           "title": "Adres i koordynaty.",
-          "placeholder": null,
+          "placeholder": "centrum miasta Londynu",
           "subtitle": "Wpisz adres lub lokalizację i wybierz punkt na mapie, gdzie doszło do kradzieży. Im dokładniej, tym lepiej."
         },
         "main_photo": {
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Szczegóły roweru.",
-          "subtitle": "Dodaj jakieś detale, które pomogą w rozpoznaniu twojego roweru."
+          "subtitle": "Dodaj jakieś detale, które pomogą w rozpoznaniu twojego roweru.",
+          "placeholder": "Rower ma złamany ząb na koronce łańcucha."
         },
         "enter_email": {
           "title": "Adres e-mailowy",
           "subtitle": "Wyślemy ci link weryfikacyjny i będziemy korzystać z twojego adresu e-mail wyłącznie do celów związanych z komunikacją.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "Inne"
       }
     },
     "report_form": {

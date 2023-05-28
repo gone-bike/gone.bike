@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "Hlavní barvy jízdních kol",
-          "subtitle": "Barvy rámů kol, přidejte každou barvu oddělenou čárkou."
+          "subtitle": "Barvy rámů kol, přidejte každou barvu oddělenou čárkou.",
+          "placeholder": "Ještě než začneme, je potřeba si zkontrolovat všechny vaše informace. Prosím, zadejte své jméno a datum narození.\n\nTranslation: Před začátkem je nutné zkontrolovat všechny vaše informace. Prosím, zadejte své jméno a datum narození."
         },
         "is_electric": {
           "title": "Je to elektrické kolo?",
@@ -64,22 +65,33 @@
             "garage": "Garáž",
             "train": "Vlak",
             "garden": "Zahrada",
-            "home": "Domov"
+            "home": "Domov",
+            "office": "Kancelář",
+            "car": "Auto"
           }
         },
         "lock_type": {
-          "title": "Typ zámku"
+          "title": "Typ zámku",
+          "choices": {
+            "chain": "Řetěz.",
+            "ulock": "U-Lock",
+            "folding": "Skládací zámek."
+          }
         },
         "lock_anchor": {
           "title": "Kotvicí bod",
           "choices": {
-            "tree": "Strom"
+            "tree": "Strom",
+            "gate": "Brána.",
+            "post": "Plot.",
+            "self_bike": "K sobě samému.",
+            "other_bike": "K jinému kolu."
           },
           "subtitle": "Pokud jste kotvu kolovali na něčem, řekněte nám, co to bylo."
         },
         "location": {
           "title": "Adresa a souřadnice",
-          "placeholder": null,
+          "placeholder": "Centrum města Londýna",
           "subtitle": "Zadejte adresu nebo místo a vyberte bod na mapě, kde došlo k odcizení. Čím přesnější, tím lépe."
         },
         "main_photo": {
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Detaily kola",
-          "subtitle": "Přidejte jakékoliv detaily, které mohou pomoci vaší kolo identifikovat."
+          "subtitle": "Přidejte jakékoliv detaily, které mohou pomoci vaší kolo identifikovat.",
+          "placeholder": "Kolo má na převodníku rozbitý zub."
         },
         "enter_email": {
           "title": "E-mailová adresa.",
           "subtitle": "Pošleme vám ověřovací odkaz a vaši e-mailovou adresu použijeme pouze pro přísně související komunikaci.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "Jiné."
       }
     },
     "report_form": {

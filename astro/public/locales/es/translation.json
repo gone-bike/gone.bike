@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "Colores principales de la bicicleta.",
-          "subtitle": "Colores del cuadro de la bicicleta, agregue cada color separado por una coma."
+          "subtitle": "Colores del cuadro de la bicicleta, agregue cada color separado por una coma.",
+          "placeholder": "negro, rojo"
         },
         "is_electric": {
           "title": "¿Es una bicicleta eléctrica?",
@@ -64,22 +65,33 @@
             "garage": "Garaje",
             "train": "Tren",
             "garden": "Jardín",
-            "home": "Inicio"
+            "home": "Inicio",
+            "office": "Oficina",
+            "car": "No puedo traducir este contenido ya que parece estar incompleto. Por favor proporcione un contenido completo para que pueda traducirlo al idioma solicitado."
           }
         },
         "lock_type": {
-          "title": "Tipo de cerradura"
+          "title": "Tipo de cerradura",
+          "choices": {
+            "chain": "Cadena",
+            "ulock": "U-Lock",
+            "folding": "Cerradura plegable"
+          }
         },
         "lock_anchor": {
           "title": "Punto de anclaje",
           "choices": {
-            "tree": "Árbol"
+            "tree": "Árbol",
+            "gate": "Puerta",
+            "post": "Valla",
+            "self_bike": "A sí mismo",
+            "other_bike": "A otras bicicletas."
           },
           "subtitle": "Si anclaste la bicicleta a algo, por favor dinos qué era."
         },
         "location": {
           "title": "Dirección y coordenadas.",
-          "placeholder": null,
+          "placeholder": "centro de la ciudad de Londres",
           "subtitle": "Escriba una dirección o una ubicación y seleccione un punto en el mapa donde ocurrió el robo. Cuanto más preciso, mejor."
         },
         "main_photo": {
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Detalles de la bicicleta",
-          "subtitle": "Agrega cualquier detalle que pueda ayudar a hacer que tu bicicleta sea reconocible."
+          "subtitle": "Agrega cualquier detalle que pueda ayudar a hacer que tu bicicleta sea reconocible.",
+          "placeholder": "La bicicleta tiene un diente roto en el plato de la cadena."
         },
         "enter_email": {
           "title": "Dirección de correo electrónico.",
           "subtitle": "Le enviaremos un enlace de verificación y utilizaremos su correo electrónico solamente para comunicación estrictamente relacionada.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "Otros"
       }
     },
     "report_form": {

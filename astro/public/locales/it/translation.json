@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "Bici colori principali",
-          "subtitle": "Colori del telaio della bici, aggiungere ogni colore separato da una virgola."
+          "subtitle": "Colori del telaio della bici, aggiungere ogni colore separato da una virgola.",
+          "placeholder": "nero, rosso"
         },
         "is_electric": {
           "title": "È una bicicletta elettrica?",
@@ -64,22 +65,33 @@
             "garage": "Garage.",
             "train": "Treno",
             "garden": "Giardino",
-            "home": "Casa"
+            "home": "Casa",
+            "office": "Ufficio",
+            "car": "ro signifie automobile."
           }
         },
         "lock_type": {
-          "title": "Tipo di blocco"
+          "title": "Tipo di blocco",
+          "choices": {
+            "chain": "Catena",
+            "ulock": "U-Lock",
+            "folding": "Blocco pieghevole"
+          }
         },
         "lock_anchor": {
           "title": "Punto di ancoraggio.",
           "choices": {
-            "tree": "Albero"
+            "tree": "Albero",
+            "gate": "Gate",
+            "post": "Recinzione",
+            "self_bike": "A se stesso",
+            "other_bike": "A altre biciclette"
           },
           "subtitle": "Se hai ancorato la bici a qualcosa, per favore dicci a cosa era ancorata."
         },
         "location": {
           "title": "Indirizzo e coordinate.",
-          "placeholder": null,
+          "placeholder": "centro città di Londra",
           "subtitle": "Inserisci un indirizzo o una posizione e seleziona un punto sulla mappa dove è avvenuto il furto. Più preciso è, meglio è."
         },
         "main_photo": {
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Dettagli della bici.",
-          "subtitle": "Aggiungi qualsiasi dettaglio che possa aiutare a rendere la tua bici riconoscibile."
+          "subtitle": "Aggiungi qualsiasi dettaglio che possa aiutare a rendere la tua bici riconoscibile.",
+          "placeholder": "La bici ha un dente rotto sulla corona della catena."
         },
         "enter_email": {
           "title": "Indirizzo email",
           "subtitle": "Ti invieremo un link di verifica e utilizzeremo la tua email solo per comunicazioni strettamente correlate.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "Altro"
       }
     },
     "report_form": {

@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "Fő kerékpárszínek",
-          "subtitle": "Kerékpár vázszínek, minden színt vesszővel elválasztva."
+          "subtitle": "Kerékpár vázszínek, minden színt vesszővel elválasztva.",
+          "placeholder": "fekete, piros"
         },
         "is_electric": {
           "title": "Az egy elektromos kerékpár?",
@@ -64,22 +65,33 @@
             "garage": "Garázs",
             "train": "vonat",
             "garden": "Kert",
-            "home": "Otthon"
+            "home": "Otthon",
+            "office": "Iroda.",
+            "car": "Autó"
           }
         },
         "lock_type": {
-          "title": "Zártípus"
+          "title": "Zártípus",
+          "choices": {
+            "chain": "Lánc",
+            "ulock": "U-Lock",
+            "folding": "Hajtogató lakat."
+          }
         },
         "lock_anchor": {
           "title": "Horgonyzó pont.",
           "choices": {
-            "tree": "Fa"
+            "tree": "Fa",
+            "gate": "Kapu",
+            "post": "Kerítés",
+            "self_bike": "Magának",
+            "other_bike": "A másik kerékpárhoz"
           },
           "subtitle": "Ha valamihez lehorgonyoztad a biciklit, kérjük, mondd el nekünk, hogy mi volt az."
         },
         "location": {
           "title": "Cím és koordináták.",
-          "placeholder": null,
+          "placeholder": "London belváros",
           "subtitle": "Adjon meg egy címet vagy helyet, majd válasszon a térképen egy pontot, ahol a lopás történt. Minél pontosabb, annál jobb."
         },
         "main_photo": {
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Bicikli részletek",
-          "subtitle": "Azonosságot segítő részleteket adj hozzá a kerékpárodhoz, amelyek segítenek azonosítani."
+          "subtitle": "Azonosságot segítő részleteket adj hozzá a kerékpárodhoz, amelyek segítenek azonosítani.",
+          "placeholder": "A biciklinek eltört egy fogja a lánckeréken."
         },
         "enter_email": {
           "title": "E-mail cím",
           "subtitle": "Egy ellenőrző linket fogunk küldeni Önnek és az e-mailjét csak szigorúan kapcsolódó kommunikációra használjuk.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "cannot modify your account information. {{Please}} contact customer service for assistance."
       }
     },
     "report_form": {

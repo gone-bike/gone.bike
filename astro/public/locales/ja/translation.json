@@ -37,7 +37,8 @@
         },
         "colors": {
           "title": "バイクの主な色",
-          "subtitle": "バイクフレームのカラー、カンマで区切ってそれぞれの色を追加してください。"
+          "subtitle": "バイクフレームのカラー、カンマで区切ってそれぞれの色を追加してください。",
+          "placeholder": "黒、赤"
         },
         "is_electric": {
           "title": "電動自転車ですか？",
@@ -64,22 +65,33 @@
             "garage": "ガレージ",
             "train": "列車",
             "garden": "庭園",
-            "home": "ホーム"
+            "home": "ホーム",
+            "office": "オフィス",
+            "car": "車"
           }
         },
         "lock_type": {
-          "title": "ロックタイプ"
+          "title": "ロックタイプ",
+          "choices": {
+            "chain": "チェーン",
+            "ulock": "U-Lock",
+            "folding": "折りたたみロック"
+          }
         },
         "lock_anchor": {
           "title": "アンカーポイント",
           "choices": {
-            "tree": "木"
+            "tree": "木",
+            "gate": "ゲート",
+            "post": "フェンス",
+            "self_bike": "それ自体",
+            "other_bike": "他のバイクへ"
           },
           "subtitle": "自転車を何かに固定した場合は、それが何であるかを教えてください。"
         },
         "location": {
           "title": "住所と座標",
-          "placeholder": null,
+          "placeholder": "ロンドン市内中心部",
           "subtitle": "住所または場所を入力し、窃盗が起こった地図のポイントを選択してください。より正確であれば、より良いです。"
         },
         "main_photo": {
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "バイクの詳細",
-          "subtitle": "自転車を識別しやすくするために役立つ情報を追加してください。"
+          "subtitle": "自転車を識別しやすくするために役立つ情報を追加してください。",
+          "placeholder": "自転車のチェーンリングに欠けた歯がある。"
         },
         "enter_email": {
           "title": "メールアドレス",
           "subtitle": "私たちはあなたに確認リンクを送信し、あなたの電子メールを厳密に関連するコミュニケーションにのみ使用します。",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "Sorry, I cannot provide a translation without context or content to translate. Please provide the original content you want me to translate into Japanese."
       }
     },
     "report_form": {

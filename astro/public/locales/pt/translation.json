@@ -33,11 +33,12 @@
         "bike_model": {
           "title": "Modelo de bicicleta roubada",
           "placeholder": "IE: Diverge Expert Carbon",
-          "subtitle": null
+          "subtitle": "Se você conhece o modelo da sua moto, adicione-o aqui. Se corresponder às sugestões dadas, selecione-o."
         },
         "colors": {
           "title": "Cores principais da bicicleta",
-          "subtitle": "Cores do quadro da bicicleta, adicione cada cor separada por vírgula."
+          "subtitle": "Cores do quadro da bicicleta, adicione cada cor separada por vírgula.",
+          "placeholder": "Prezados clientes, nossa loja estará fechada para manutenção no dia 10 de agosto. Pedimos desculpas pelo transtorno e agradecemos pela compreensão."
         },
         "is_electric": {
           "title": "É uma bicicleta elétrica?",
@@ -64,22 +65,33 @@
             "garage": "Garagem",
             "train": "Trem",
             "garden": "Jardim",
-            "home": "Casa"
+            "home": "Casa",
+            "office": "Escritório",
+            "car": "ro cliente, obrigado por escolher nossos serviços. Seu pedido será entregue em {{2}} dias úteis. Para acompanhar o status do seu pedido, visite nossa página de rastreamento com o número do seu pedido: {{1234}}. Obrigado novamente por sua preferência. \n\nTranslation: Caro cliente, obrigado por escolher os nossos serviços. O seu pedido será entregue em {{2}} dias úteis. Para acompanhar o estado do seu pedido, visite a nossa página de rastreio com o número do seu pedido: {{1234}}. Obrigado novamente pela sua preferência."
           }
         },
         "lock_type": {
-          "title": "Tipo de bloqueio"
+          "title": "Tipo de bloqueio",
+          "choices": {
+            "chain": "Corrente.",
+            "ulock": "U-Lock",
+            "folding": "Trava dobrável."
+          }
         },
         "lock_anchor": {
           "title": "Ponto de ancoragem.",
           "choices": {
-            "tree": "Árvore"
+            "tree": "Árvore",
+            "gate": "Portão",
+            "post": "Cerca",
+            "self_bike": "Para si mesmo",
+            "other_bike": "Para outras bicicletas."
           },
           "subtitle": "Se você ancorou a bicicleta em algo, por favor nos diga o que era."
         },
         "location": {
           "title": "Endereço e coordenadas.",
-          "placeholder": null,
+          "placeholder": "centro da cidade de Londres",
           "subtitle": "Digite um endereço ou localização e selecione um ponto no mapa onde ocorreu o furto. Quanto mais preciso, melhor."
         },
         "main_photo": {
@@ -104,13 +116,15 @@
         },
         "bike_details": {
           "title": "Detalhes da bicicleta",
-          "subtitle": "Adicione qualquer detalhe que possa ajudar a tornar sua bicicleta reconhecível."
+          "subtitle": "Adicione qualquer detalhe que possa ajudar a tornar sua bicicleta reconhecível.",
+          "placeholder": "A bicicleta tem um dente quebrado na coroa da corrente."
         },
         "enter_email": {
           "title": "Endereço de e-mail",
           "subtitle": "Enviaremos um link de verificação e usaremos seu e-mail apenas para comunicação estritamente relacionada.",
           "placeholder": "IE: my.email@email.com"
-        }
+        },
+        "other_choice": "Outro"
       }
     },
     "report_form": {
