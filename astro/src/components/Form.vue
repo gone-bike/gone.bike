@@ -246,7 +246,7 @@ let currentPage = ref(1)
                     }}</label>
                 </div>
             </div>
-            <InputField type="number" v-model="formValue.approximate_value" title="approximate_value" />
+            <InputField type="number" :isCurrency="props.currency" v-model="formValue.approximate_value" title="approximate_value" />
             <div class="flex w-full justify-between">
                 <span></span>
                 <a href="#page-2"
