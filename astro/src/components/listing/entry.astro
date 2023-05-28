@@ -1,15 +1,26 @@
 ---
+import moment from 'moment';
+import 'moment/locale/it';
+
+const today = moment();
+moment.locale('en'); 
+
 export interface Props {
 	report: Object;
 }
 
 const report = Astro.props.report
 
-const date = new Date(report.theft_date); 
-const year = date.getFullYear();
-const month = date.toLocaleString('default', { month: 'long' });
-const day = String(date.getDate()).padStart(2, '0');
-const formattedDate = `${year} ${month} ${day}`;
+const givenDate = moment(report.theft_date);
+const currentDate = moment();
+const duration = moment.duration(currentDate.diff(givenDate));
+const daysAgo = duration.asDays();
+
+const formattedRelativeDate = daysAgo < 0
+  ? moment.duration(-daysAgo, 'days').humanize(true) + ' from now'
+  : moment.duration(daysAgo, 'days').humanize(true) + ' ago';
+
+const formattedDate = moment(report.theft_date, 'D-M-YYYY').format('MMMM Do, YYYY');
 ---
 
 
@@ -21,7 +32,7 @@ const formattedDate = `${year} ${month} ${day}`;
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{report.bike_brand_model.bike_brand.name } / {report.bike_brand_model.name }</h5>
       </a>
       <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased mb-2">
-        theft date : {formattedDate}
+        theft date : {formattedDate} ({formattedRelativeDate})
       </p>
     </div>
     <div class=" h-12">
