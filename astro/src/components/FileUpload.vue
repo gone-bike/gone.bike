@@ -10,10 +10,11 @@ const props = defineProps<{
     showAlert: (param: {
         title: string;
         subtitle: string;
-    }) => void
+    }) => void,
+    isUploading: boolean
 }>()
 
-const emit = defineEmits(["update:modelValue"])
+const emit = defineEmits(["update:modelValue", "update:isUploading"])
 
 const fileUploadEl = ref<HTMLInputElement>()
 const progressWidth = ref()
@@ -28,12 +29,17 @@ const uploadData = ref<{
     height: number;
     href: string;
 }>()
+
 const progressBarIsOpen = ref(false)
 function deleteFile() {
+    uploadSignal.value.abort()
+    uploadSignal.value = new AbortController()
+    emit("update:isUploading", false)
     progressBarIsOpen.value = false
     uploadData.value = undefined
     emit("update:modelValue", "")
 }
+let uploadSignal = ref(new AbortController())
 async function handleMainFileUpload() {
     let file = fileUploadEl.value?.files?.item(0) as File
     if (file.type.slice(0, 5) !== "image") {
@@ -43,7 +49,7 @@ async function handleMainFileUpload() {
         })
         return
     }
-    if (file.type === 'image/svg+xml'){
+    if (file.type === 'image/svg+xml') {
         props.showAlert({
             title: "Error",
             subtitle: "Svg Image is not supported"
@@ -53,22 +59,27 @@ async function handleMainFileUpload() {
     const formData = new FormData()
     formData.append("file", file)
     progressBarName.value = file.name
-    try{
+    try {
+        emit("update:isUploading", true)
         let resp = await axios.post("/api/input/upload", formData, {
             onUploadProgress({ total, loaded }) {
                 if (total) {
                     if (!progressBarIsOpen.value) {
                         progressBarIsOpen.value = true
                     }
-                    progressWidth.value = Math.floor(loaded * 100 / total) + "%"
+                    let progress = Math.floor(loaded * 100 / total) + "%"
+                    progressWidth.value = progress
                 }
             },
+            signal: uploadSignal.value.signal,
         })
+        emit("update:isUploading", false)
         if (resp.data.upload) {
             uploadData.value = resp.data
             emit("update:modelValue", { upload: resp.data.upload, name: resp.data.name })
         }
-    } catch{
+    } catch {
+        emit("update:isUploading", false)
         props.showAlert({
             title: "Error",
             subtitle: "Oops! Something went wrong"

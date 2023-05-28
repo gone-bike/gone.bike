@@ -39,11 +39,4 @@ defineProps<{
         5</div>
       <h5 class="absolute top-10 text-sm font-normal text-black">Step 5</h5>
   </div>
-  <div :data-done="$props.step > 5" class="h-[2px] w-full bg-purple-300 data-[done=true]:bg-purple-600"></div>
-  <div class="relative flex flex-col items-center text-lg">
-    <div :data-done="$props.step > 6"
-      class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-purple-400 bg-purple-100 text-purple-600 data-[done=true]:bg-purple-600 data-[done=true]:text-white">
-      6</div>
-    <h5 class="absolute top-10 text-sm font-normal text-black">Step 6</h5>
-  </div>
 </div></template>

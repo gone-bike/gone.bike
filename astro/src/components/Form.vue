@@ -39,6 +39,8 @@ let bikeBrandApi: { key: string, value: string }[] = props.bikeBrand
 
 let noOfOtherUploads = ref(1)
 
+let isUploading = ref(false)
+
 let formValue = reactive({
     bike_brand: '',
     bike_brand_id: '',
@@ -147,8 +149,14 @@ onMounted(() => {
                     subtitle: "Photo is Required"
                 })
                 window.location.hash = "#page-3"
+            }else if(isUploading.value){
+                showAlert({
+                    title: "Error",
+                    subtitle: "Please wait while uploading"
+                })
+                window.location.hash = "#page-3"
             }
-        } else if (prevPage === 6 && page === 7) {
+        } else if (prevPage === 5 && page === 6) {
             if (formValue.mail && validateEmail(formValue.mail)) {
                 onSubmit(toRaw(formValue))
             } else {
@@ -287,7 +295,17 @@ let currentPage = ref(1)
         </div>
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 3">
             <p class="mb-2 text-lg">{{ t("main_photo") }}</p>
-            <FileUpload :show-alert="showAlert" v-model="formValue.main_photo" />
+            <FileUpload :show-alert="showAlert" v-model="formValue.main_photo" v-model:isUploading="isUploading" />
+            <div>
+                <p class="mb-2 text-lg">{{ t("photos", { n: 4 }) }}</p>
+                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 1" :show-alert="showAlert" v-model="formValue.photos_1" />
+                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 2 && formValue.photos_1" :show-alert="showAlert" v-model="formValue.photos_2" />
+                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 3 && formValue.photos_2" :show-alert="showAlert" v-model="formValue.photos_3" />
+                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 2 && formValue.photos_3" :show-alert="showAlert" v-model="formValue.photos_4" />
+                <button @click="noOfOtherUploads++" class="p-3 rounded-lg bg-purple-500 text-white hover:bg-purple-600">
+                    Add More +
+                </button>
+            </div>
             <div class="flex w-full justify-between">
                 <a href="#page-2"
                     class="bg-purple-600 px-4 rounded-md active:bg-purple-700 hover:bg-purple-700 font-semibold py-2 text-white">{{
@@ -298,15 +316,11 @@ let currentPage = ref(1)
             </div>
         </div>
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 4">
-            <div>
-                <p class="mb-2 text-lg">{{ t("photos", { n: 4 }) }}</p>
-                <FileUpload v-show="noOfOtherUploads > 1" :show-alert="showAlert" v-model="formValue.photos_1" />
-                <FileUpload v-show="noOfOtherUploads > 2 && formValue.photos_1" :show-alert="showAlert" v-model="formValue.photos_2" />
-                <FileUpload v-show="noOfOtherUploads > 3 && formValue.photos_2" :show-alert="showAlert" v-model="formValue.photos_3" />
-                <FileUpload v-show="noOfOtherUploads > 2 && formValue.photos_3" :show-alert="showAlert" v-model="formValue.photos_4" />
-                <button @click="noOfOtherUploads++" class="p-3 rounded-lg bg-purple-500 text-white hover:bg-purple-600">
-                    Add More +
-                </button>
+            <div class="flex flex-col ml-2">
+                <label for="description" class="mb-2 text-lg">{{ t("description") }}</label>
+                <textarea name="description" :placeholder="(i18next(`forms.report.questions.description.placeholder`) as string)"
+                    id="description" v-model="formValue.description" cols="30" rows="10"></textarea>
+                <span class="mt-1 text-gray-600 ml-1">{{ i18next(`forms.report.questions.description.subtitle`) }}</span>
             </div>
             <div class="flex w-full justify-between">
                 <a href="#page-3"
@@ -318,12 +332,7 @@ let currentPage = ref(1)
             </div>
         </div>
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 5">
-            <div class="flex flex-col ml-2">
-                <label for="description" class="mb-2 text-lg">{{ t("description") }}</label>
-                <textarea name="description" :placeholder="(i18next(`forms.report.questions.description.placeholder`) as string)"
-                    id="description" v-model="formValue.description" cols="30" rows="10"></textarea>
-                <span class="mt-1 text-gray-600 ml-1">{{ i18next(`forms.report.questions.description.subtitle`) }}</span>
-            </div>
+            <InputField type="email" v-model="formValue.mail" title="enter_email" />
             <div class="flex w-full justify-between">
                 <a href="#page-4"
                     class="bg-purple-600 px-4 rounded-md active:bg-purple-700 hover:bg-purple-700 font-semibold py-2 text-white">{{
@@ -333,18 +342,7 @@ let currentPage = ref(1)
                         nextText }}</a>
             </div>
         </div>
-        <div class="flex flex-col gap-12 w-full" v-show="currentPage === 6">
-            <InputField type="email" v-model="formValue.mail" title="enter_email" />
-            <div class="flex w-full justify-between">
-                <a href="#page-5"
-                    class="bg-purple-600 px-4 rounded-md active:bg-purple-700 hover:bg-purple-700 font-semibold py-2 text-white">{{
-                        backText }}</a>
-                <a href="#page-7"
-                    class="bg-purple-600 px-4 rounded-md active:bg-purple-700 hover:bg-purple-700 font-semibold py-2 text-white">{{
-                        submitText }}</a>
-            </div>
-        </div>
-        <div class="flex flex-col w-full h-full justify-center" v-show="currentPage === 7">
+        <div class="flex flex-col w-full h-full justify-center" v-show="currentPage === 6">
             <EmailIcon class="h-40 text-3xl text-purple-500" />
             <h1 class="text-3xl mb-4 font-semibold text-center">{{ i18next("pages.report_form.thank.title") }}</h1>
             <h1 class="text-xl mb-4 font-semibold text-center">{{ i18next("pages.report_form.thank.sub_title") }}</h1>
