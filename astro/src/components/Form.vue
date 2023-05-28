@@ -21,6 +21,8 @@ import GoogleMap from "./GoogleMap.vue"
 
 const props = withDefaults(defineProps<{
     currency?: string, bikeBrand: { key: string, value: string }[],
+    lang: string,
+    maxUpload: number
 }>(), {
     currency: "EU",
 })
@@ -258,7 +260,7 @@ let currentPage = ref(1)
                 <DatePicker :disabled-start-date="{
                     to: new Date('01.01.2010'),
                     from: Date.now()
-                }" lang="en" v-model="theftDateUnformated" class="w-full" />
+                }" :lang="props.lang" v-model="theftDateUnformated" class="w-full" />
                                 <span class="mt-1 text-sm font-semibold text-gray-500 ml-1">{{
                     i18next(`forms.report.questions.theft_date.subtitle`) }}</span>
 
@@ -297,7 +299,7 @@ let currentPage = ref(1)
             <p class="mb-2 text-lg">{{ t("main_photo") }}</p>
             <FileUpload :show-alert="showAlert" v-model="formValue.main_photo" v-model:isUploading="isUploading" />
             <div>
-                <p class="mb-2 text-lg">{{ t("photos", { n: 4 }) }}</p>
+                <p class="mb-2 text-lg">{{ t("photos", { n: $props.maxUpload }) }}</p>
                 <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 1" :show-alert="showAlert" v-model="formValue.photos_1" />
                 <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 2 && formValue.photos_1" :show-alert="showAlert" v-model="formValue.photos_2" />
                 <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 3 && formValue.photos_2" :show-alert="showAlert" v-model="formValue.photos_3" />
