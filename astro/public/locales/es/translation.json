@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Búsqueda y reporte de bicicletas robadas"
+    "title": "Búsqueda y reporte de bicicletas robadas",
+    "hero": {
+      "pre_cta": "Descubre la verdad. Localiza bicicletas robadas con nuestra épica búsqueda de imágenes.",
+      "title": "¿Se te robó tu bicicleta?",
+      "cta_add_listing": "Enumera tu bicicleta robada."
+    }
   },
   "pages": {
     "report_form": {
@@ -8,24 +13,24 @@
       "subtitle": "Inserte datos relacionados con el robo de bicicletas, serán agregados al motor de búsqueda.",
       "buttons": {
         "next": "Siguiente",
-        "back": "Atrás"
+        "back": "Atrás",
+        "submit": "Enviar informe"
       }
-    },
-    "homepage": {
-      "pre_cta": "Descubre la verdad. Encuentra bicicletas robadas con nuestra increíble búsqueda de imágenes."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Bicicleta robada marca"
+          "title": "Bicicleta robada marca",
+          "subtitle": "Busca el nombre de la marca, si no lo encuentras, puedes escribirlo. Si no lo sabes, deja este campo en blanco."
         },
         "bike_model": {
           "title": ":es\nModelo de bicicleta robada"
         },
         "colors": {
-          "title": "Colores principales de la bicicleta."
+          "title": "Colores principales de la bicicleta.",
+          "subtitle": "Colores del cuadro de la bicicleta, agregue cada color separado por una coma."
         },
         "is_electric": {
           "title": "¿Es una bicicleta eléctrica?",
@@ -35,10 +40,12 @@
           }
         },
         "approximate_value": {
-          "title": "Valor aproximado"
+          "title": "Valor aproximado",
+          "subtitle": "Escriba un valor aproximado de la bicicleta, en {{moneda}}."
         },
         "theft_date": {
-          "title": "Fecha de robo"
+          "title": "Fecha de robo",
+          "subtitle": "Selecciona la fecha en la que robaron tu bicicleta, mientras más precisa, mejor."
         },
         "location_type": {
           "title": "¿Dónde estaba la bicicleta?",
@@ -47,7 +54,8 @@
             "park": "Parque",
             "cellar": "Bodega",
             "garage": "Garaje",
-            "train": "Tren"
+            "train": "Tren",
+            "garden": "Jardín"
           }
         },
         "lock_type": {
@@ -61,7 +69,8 @@
         },
         "location": {
           "title": "Dirección y coordenadas.",
-          "subtitle": "Seleccione un punto en el mapa donde ocurrió el robo."
+          "subtitle": "Seleccione un punto en el mapa donde ocurrió el robo.",
+          "placeholder": "Lo siento, no puedo hacer eso ya que no hay contenido para traducir en esta tarea. Por favor, proporcione el contenido que desea que yo traduzca."
         },
         "main_photo": {
           "title": "Bicicleta robada foto principal"
@@ -78,7 +87,17 @@
             "afternoon": "Tarde",
             "evening": "Noche.",
             "night": "Noche"
-          }
+          },
+          "title": "Marco temporal diurno.",
+          "subtitle": "Seleccione un marco de tiempo aproximado cuando su bicicleta fue robada."
+        },
+        "bike_details": {
+          "title": "Detalles de la bicicleta",
+          "subtitle": "Agrega cualquier detalle que pueda ayudar a hacer que tu bicicleta sea reconocible."
+        },
+        "enter_email": {
+          "title": "Dirección de correo electrónico.",
+          "subtitle": "Le enviaremos un enlace de verificación y utilizaremos su correo electrónico solamente para comunicación estrictamente relacionada."
         }
       }
     },

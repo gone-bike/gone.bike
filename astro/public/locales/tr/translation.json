@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Çalınan bisiklet arama ve raporlama"
+    "title": "Çalınan bisiklet arama ve raporlama",
+    "hero": {
+      "pre_cta": "Gerçeği keşfedin. Epik resim arama özelliğimizle çalınan bisikletleri takip edin.",
+      "title": "Motosikletin çalındı mı?",
+      "cta_add_listing": "Çalınan bisikletlerinizi listeleyin."
+    }
   },
   "pages": {
     "report_form": {
@@ -8,24 +13,24 @@
       "subtitle": "Bisiklet hırsızlığıyla ilgili verileri ekleyin, bunlar arama motoruna eklenecektir.",
       "buttons": {
         "next": "Sonraki",
-        "back": "Geri dönünüz."
+        "back": "Geri dönünüz.",
+        "submit": "Rapor gönder"
       }
-    },
-    "homepage": {
-      "pre_cta": "Gerçeği keşfedin. Epik resim arama özelliğimizle çalınan bisikletleri takip edin."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Çalınan bisiklet markası"
+          "title": "Çalınan bisiklet markası",
+          "subtitle": "Marka adını arayın, bulamazsanız yazabilirsiniz. Bilmiyorsanız bu alanı boş bırakın."
         },
         "bike_model": {
           "title": "Çalınmış bisiklet modeli"
         },
         "colors": {
-          "title": "Bisiklet ana renkleri"
+          "title": "Bisiklet ana renkleri",
+          "subtitle": "Bisiklet şasi renkleri, her rengi virgülle ayırarak ekleyin."
         },
         "is_electric": {
           "title": "Elektrikli bir bisiklet mi?",
@@ -35,10 +40,12 @@
           }
         },
         "approximate_value": {
-          "title": "Yaklaşık değer"
+          "title": "Yaklaşık değer",
+          "subtitle": "\" Bisikletin yaklaşık değerini {{currency}} cinsinden yazın. \"\n\n(Note: The language locale \"tr\" is for Turkish)"
         },
         "theft_date": {
-          "title": "Hırsızlık tarihi"
+          "title": "Hırsızlık tarihi",
+          "subtitle": "Çalan bisikletinizin tarihini seçin, ne kadar doğru olursa o kadar iyi."
         },
         "location_type": {
           "title": "Bisiklet neredeydi?",
@@ -47,7 +54,8 @@
             "park": "Park",
             "cellar": "Kiler",
             "garage": "Garaj",
-            "train": "Tren"
+            "train": "Tren",
+            "garden": "Bahçe"
           }
         },
         "lock_type": {
@@ -61,7 +69,8 @@
         },
         "location": {
           "title": "Adres ve koordinatlar",
-          "subtitle": "Hırsızlığın gerçekleştiği harita noktasını seçin."
+          "subtitle": "Hırsızlığın gerçekleştiği harita noktasını seçin.",
+          "placeholder": "Bu gönderiyi tercüme edin."
         },
         "main_photo": {
           "title": "Çalınmış bisiklet ana fotoğrafı"
@@ -78,7 +87,17 @@
             "afternoon": "Öğleden sonra",
             "evening": "Akşam",
             "night": "Gece"
-          }
+          },
+          "title": "Gündüz zaman dilimi",
+          "subtitle": "Bisikletinizin çalındığı yaklaşık zaman aralığını seçin."
+        },
+        "bike_details": {
+          "title": "Bisiklet detayları",
+          "subtitle": "Bisikletinizin tanınabilirliğini artırmak için yardımcı olabilecek herhangi bir detay ekleyin."
+        },
+        "enter_email": {
+          "title": "E-posta adresi",
+          "subtitle": "Size doğrulama bağlantısı göndereceğiz ve e-postanızı sadece sıkı ilişkili iletişim için kullanacağız."
         }
       }
     },

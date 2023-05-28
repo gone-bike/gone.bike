@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Căutare și raportare a bicicletelor furate."
+    "title": "Căutare și raportare a bicicletelor furate.",
+    "hero": {
+      "pre_cta": "Descoperiți adevărul. Găsiți bicicletele furate cu ajutorul căutării noastre epice de imagini.",
+      "title": "Ți-a fost furată bicicleta?",
+      "cta_add_listing": "Enumerați bicicleta furată."
+    }
   },
   "pages": {
     "report_form": {
@@ -8,24 +13,24 @@
       "subtitle": "Inserați datele legate de furturile de biciclete, acestea vor fi adăugate în motorul de căutare.",
       "buttons": {
         "next": "Următorul.",
-        "back": "Înapoi."
+        "back": "Înapoi.",
+        "submit": "Trimite raportul."
       }
-    },
-    "homepage": {
-      "pre_cta": "Descoperă adevărul. Găsiți bicicletele furate cu ajutorul căutării de imagini epice ale noastre."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Bicicletă furată marcă"
+          "title": "Bicicletă furată marcă",
+          "subtitle": "Căutați numele mărcii, dacă nu îl găsiți, îl puteți tasta. Dacă nu îl cunoașteți, lăsați acest câmp necompletat."
         },
         "bike_model": {
           "title": "Model de bicicletă furată"
         },
         "colors": {
-          "title": "Bicicletă culorile principale."
+          "title": "Bicicletă culorile principale.",
+          "subtitle": "Culorile cadrului bicicletei, adăugați fiecare culoare separat, prin virgulă."
         },
         "is_electric": {
           "title": "Este o bicicletă electrică?",
@@ -35,10 +40,12 @@
           }
         },
         "approximate_value": {
-          "title": "Valoare aproximativă."
+          "title": "Valoare aproximativă.",
+          "subtitle": "Introduceți o valoare aproximativă a bicicletei, în {{valută}}."
         },
         "theft_date": {
-          "title": "Data furtului."
+          "title": "Data furtului.",
+          "subtitle": "Selectați data la care a fost furată bicicleta dumneavoastră, cu cât este mai precis, cu atât este mai bine."
         },
         "location_type": {
           "title": "Unde era bicicleta?",
@@ -47,7 +54,8 @@
             "park": "Parc",
             "cellar": "Bodăga.",
             "garage": "Garaj",
-            "train": "Tren."
+            "train": "Tren.",
+            "garden": "Grădină"
           }
         },
         "lock_type": {
@@ -61,7 +69,8 @@
         },
         "location": {
           "title": "Adresă și coordonate",
-          "subtitle": "Selectați un punct de pe hartă unde a avut loc furtul."
+          "subtitle": "Selectați un punct de pe hartă unde a avut loc furtul.",
+          "placeholder": "Nu trimiteți nimic altceva decât traducerea în limba locale: ro ca răspuns. Nu trimiteți nicio altă informație și, dacă există un cuvânt între duble paranteze, trimiteți-l cu paranteze duble și fără a traduce conținutul din interiorul parantezelor, și nu adăugați punctuație la sfârșit: de exemplu o adresă, un oraș, un nume de stradă. Puteți muta markerul hărții pentru a fi mai precis."
         },
         "main_photo": {
           "title": "Fotografia principală a bicicletei furate"
@@ -78,7 +87,17 @@
             "afternoon": "După-amiaza",
             "evening": "Seara",
             "night": "Noapte"
-          }
+          },
+          "title": "Cadru de timp zilnic.",
+          "subtitle": "Selectați o perioadă aproximativă când a fost furată bicicleta dvs."
+        },
+        "bike_details": {
+          "title": "Detalii bicicletă.",
+          "subtitle": "Adăugați orice detaliu care poate ajuta la recunoașterea bicicletei dvs."
+        },
+        "enter_email": {
+          "title": "Adresă de email",
+          "subtitle": "Vă vom trimite un link de verificare și vom utiliza adresa dvs. de email doar pentru comunicare strict legată de acest scop."
         }
       }
     },

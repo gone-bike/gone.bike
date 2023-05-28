@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Hledání a hlášení odcizeného kola"
+    "title": "Hledání a hlášení odcizeného kola",
+    "hero": {
+      "pre_cta": "Objevte pravdu. Vystopujte ukradená kola pomocí naší epické vyhledávačem obrázků.",
+      "title": "Byl váš bicykl ukraden?",
+      "cta_add_listing": "Seznam vašeho odcizeného kola."
+    }
   },
   "pages": {
     "report_form": {
@@ -8,24 +13,24 @@
       "subtitle": "Vložte údaje týkající se krádeže kol, budou přidány do vyhledávače.",
       "buttons": {
         "next": "Následující",
-        "back": "Zpět"
+        "back": "Zpět",
+        "submit": "Odeslat zprávu"
       }
-    },
-    "homepage": {
-      "pre_cta": "Objevte pravdu. Vystopujte ukradená kola pomocí naší epické vyhledávačem obrázků."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Ukradené kolo značky."
+          "title": "Ukradené kolo značky.",
+          "subtitle": "Hledejte název značky, pokud ho nenajdete, můžete jej napsat. Pokud ho neznáte, nechte toto pole prázdné."
         },
         "bike_model": {
           "title": "Ukradené kolo modelu"
         },
         "colors": {
-          "title": "Hlavní barvy jízdních kol"
+          "title": "Hlavní barvy jízdních kol",
+          "subtitle": "Barvy rámů kol, přidejte každou barvu oddělenou čárkou."
         },
         "is_electric": {
           "title": "Je to elektrické kolo?",
@@ -35,10 +40,12 @@
           }
         },
         "approximate_value": {
-          "title": "Přibližná hodnota"
+          "title": "Přibližná hodnota",
+          "subtitle": "Zadejte přibližnou hodnotu kola v {{měna}}."
         },
         "theft_date": {
-          "title": "Datum krádeže"
+          "title": "Datum krádeže",
+          "subtitle": "Zvolte datum, kdy bylo vaše kolo odcizeno, čím přesnější, tím lépe."
         },
         "location_type": {
           "title": "Kde bylo kolo?",
@@ -47,7 +54,8 @@
             "park": "Park",
             "cellar": "Sklep",
             "garage": "Garáž",
-            "train": "Vlak"
+            "train": "Vlak",
+            "garden": "Zahrada"
           }
         },
         "lock_type": {
@@ -61,7 +69,8 @@
         },
         "location": {
           "title": "Adresa a souřadnice",
-          "subtitle": "Vyberte bod na mapě, kde došlo k odcizení."
+          "subtitle": "Vyberte bod na mapě, kde došlo k odcizení.",
+          "placeholder": "Následující obsah nebyl poskytnut. Prosím, pošlete obsah, který je třeba přeložit."
         },
         "main_photo": {
           "title": "Odcizené kolo hlavní foto."
@@ -78,7 +87,17 @@
             "afternoon": "Odpoledne.",
             "evening": "Večer",
             "night": "Noc"
-          }
+          },
+          "title": "Den denní rámec.",
+          "subtitle": "Vyberte přibližný časový rámec, kdy bylo vaše kolo odcizeno."
+        },
+        "bike_details": {
+          "title": "Detaily kola",
+          "subtitle": "Přidejte jakékoliv detaily, které mohou pomoci vaší kolo identifikovat."
+        },
+        "enter_email": {
+          "title": "E-mailová adresa.",
+          "subtitle": "Pošleme vám ověřovací odkaz a vaši e-mailovou adresu použijeme pouze pro přísně související komunikaci."
         }
       }
     },
