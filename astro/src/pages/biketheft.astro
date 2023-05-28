@@ -10,22 +10,30 @@ const args = {
 
 await i18next.changeLanguage(args.locale);
 
-let origin = new URL(Astro.url).origin
+let origin = new URL(Astro.url).origin;
 
-let photoTranslation = t(`forms.report.questions.photos.title`, { n: 4 })
+let photoTranslation = t(`forms.report.questions.photos.title`, { n: 4 });
 
-let fff = {data: []}
+let fff = { data: [] };
 
-try{
-  fff = await (
-    await fetch(`${origin}/api/bike_brand.json`)
-  ).json()
-} catch(e){
-  console.log("Error")
+let errorText = "Error";
+let addressFieldRequiredError = "Address field is required";
+let photoRequiredError = "Photo is Required";
+let waitWhileUploadError = "Please wait while uploading";
+let validEmailError = "Enter valid email";
+
+try {
+  fff = await (await fetch(`${origin}/api/bike_brand.json`)).json();
+} catch (e) {
+  console.log("Error");
 }
 ---
 
-<BaseLayout title={t("pages.report_form.title")} description="" lang={args.locale}>
+<BaseLayout
+  title={t("pages.report_form.title")}
+  description=""
+  lang={args.locale}
+>
   <div class="container max-w-3xl mx-auto mt-10">
     <div class="border">
       <div class="p-4 text-center">
@@ -34,7 +42,19 @@ try{
       </div>
       <div class="w-full h-[1px] bg-gray-200"></div>
       <div class="p-4">
-        <Form client:load bikeBrand={fff.data} lang={args.locale} photoTranslation={photoTranslation} maxUploads={4} currency="EU"/>
+        <Form
+          client:load
+          bikeBrand={fff.data}
+          lang={args.locale}
+          photoTranslation={photoTranslation}
+          maxUploads={4}
+          currency="EU"
+          errorText={errorText}
+          addressFieldRequiredError={addressFieldRequiredError}
+          photoRequiredError={photoRequiredError}
+          waitWhileUploadError={waitWhileUploadError}
+          validEmailError={validEmailError}
+          />
       </div>
     </div>
   </div>

@@ -14,7 +14,6 @@ let tagModel = ref(props.modelValue)
 watch(tagModel, function(val){
     if(val === "") return
     if(val.slice(0, val.length-2).trim() === "") return
-    if(val.split("").map(e=>e===",").filter(e=>e).length) return
     if(val[val.length-1]=== ","){
         let newtags = [...tags.value, val.slice(0, val.length-2)]
         tags.value = newtags
@@ -41,9 +40,11 @@ function remove(tag: string) {
 
 <template>
     <div class="flex flex-col">
-        <label :for="props.title" class="text-lg">{{ t(`forms.report.questions.${props.title}.title`) }}</label>
+        <label :for="props.title" class="text-lg mb-2">{{ t(`forms.report.questions.${props.title}.title`) }}</label>
         <input type="text" @keydown.enter="handleAdd" autocomplete="off" :name="props.title"
             :placeholder="t(`forms.report.questions.${props.title}.placeholder`) as string" :id="props.title" v-model="tagModel" /> 
+            <span class="mt-2 text-sm font-normal text-gray-400 italic ">{{ t(`forms.report.questions.${props.title}.subtitle`)
+            }}</span>
         <ul class="flex gap-2 mt-2">
             <li v-for="tag in tags" :key="tag"
                 class="w-fit flex items-center gap-2 rounded-lg cursor-pointer hover:scale-105 transition-all duration-200 bg-purple-400 px-3 py-1 font-semibold text-white">
@@ -52,8 +53,6 @@ function remove(tag: string) {
                 </button>
             </li>
         </ul>
-            <span class="mb-2 text-sm font-normal text-gray-400 italic ">{{ t(`forms.report.questions.${props.title}.subtitle`)
-            }}</span>
 
     </div>
 </template>

@@ -19,14 +19,24 @@ import Stepper from "./Stepper.vue";
 import GoogleMap from "./GoogleMap.vue"
 
 
-
 const props = defineProps<{
     currency: string,
     bikeBrand: { key: number, value: string }[],
     lang: string,
     maxUploads: number,
-    photoTranslation: string
+    photoTranslation: string,
+    errorText: string,
+    addressFieldRequiredError: string,
+    photoRequiredError: string,
+    waitWhileUploadError: string,
+    validEmailError: string
 }>()
+
+let errorText = props.errorText
+let addressFieldRequiredError = props.addressFieldRequiredError
+let photoRequiredError = props.photoRequiredError
+let waitWhileUploadError = props.waitWhileUploadError
+let validEmailError = props.validEmailError
 
 function validateEmail(email: string) {
     return String(email)
@@ -138,8 +148,8 @@ onMounted(() => {
                 errors.location = false
             } else {
                 showAlert({
-                    title: "Error",
-                    subtitle: "Address Field is required"
+                    title: errorText,
+                    subtitle: addressFieldRequiredError
                 })
                 errors.location = true
                 window.location.hash = "#page-2"
@@ -147,14 +157,14 @@ onMounted(() => {
         } else if (prevPage === 3 && page === 4) {
             if (typeof formValue.main_photo === "string") {
                 showAlert({
-                    title: "Error",
-                    subtitle: "Photo is Required"
+                    title: errorText,
+                    subtitle: photoRequiredError
                 })
                 window.location.hash = "#page-3"
             } else if (isUploading.value) {
                 showAlert({
-                    title: "Error",
-                    subtitle: "Please wait while uploading"
+                    title: errorText,
+                    subtitle: waitWhileUploadError
                 })
                 window.location.hash = "#page-3"
             }
@@ -163,8 +173,8 @@ onMounted(() => {
                 onSubmit(toRaw(formValue))
             } else {
                 showAlert({
-                    title: "Error",
-                    subtitle: "Enter Valid Email"
+                    title: errorText,
+                    subtitle: validEmailError
                 })
                 window.location.hash = `#page-6`
             }
@@ -173,8 +183,8 @@ onMounted(() => {
     }
 })
 
-let alertTitle = ref("Error")
-let alertSubtitle = ref("Error")
+let alertTitle = ref(errorText)
+let alertSubtitle = ref(errorText)
 let alertIsOpen = ref(false)
 function openAlert() {
     alertIsOpen.value = true
@@ -224,7 +234,7 @@ let currentPage = ref(1)
                 <label for="bike_details" class="mb-2 text-lg">{{ t("bike_details") }}</label>
                 <textarea name="bike_details" id="bike_details" v-model="formValue.bike_details" cols="30" rows="7"
                     :placeholder="(i18next(`forms.report.questions.bike_details.placeholder`) as string)"> </textarea>
-                <span class="mt-1 text-sm font-normal text-gray-400 italic ">{{
+                <span class="mt-2 text-sm font-normal text-gray-400 italic ">{{
                     i18next(`forms.report.questions.bike_details.subtitle`) }}</span>
 
             </div>
@@ -261,7 +271,7 @@ let currentPage = ref(1)
                     to: new Date('01.01.2010'),
                     from: Date.now()
                 }" :lang="props.lang" v-model="theftDateUnformated" class="w-full" />
-                <span class="mt-1 text-sm font-normal text-gray-400 italic ">{{
+                <span class="mt-2 text-sm font-normal text-gray-400 italic ">{{
                     i18next(`forms.report.questions.theft_date.subtitle`) }}</span>
 
             </div>
@@ -275,7 +285,7 @@ let currentPage = ref(1)
                 :list='["tree", "gate", "fence", "post", "self_bike", "other_bike"]' />
             <div class="flex flex-col">
                 <label for="location" class="text-lg">{{ t("location") }}</label>
-                <p class="text-sm text-gray-400 mb-2 font-normal italic">{{ i18next("forms.report.questions.location.subtitle")
+                <p class="text-sm text-gray-400 mb-1 font-normal italic">{{ i18next("forms.report.questions.location.subtitle")
                 }}
                 </p>
                 <GoogleMap v-model:address="formValue.location_address" v-model:coords="formValue.location_coords"
@@ -328,7 +338,7 @@ let currentPage = ref(1)
                 <textarea name="description"
                     :placeholder="(i18next(`forms.report.questions.description.placeholder`) as string)" id="description"
                     v-model="formValue.description" cols="30" rows="10"></textarea>
-                <span class="mt-1 font-normal italic text-gray-400">{{ i18next(`forms.report.questions.description.subtitle`) }}</span>
+                <span class="mt-2 font-normal italic text-gray-400">{{ i18next(`forms.report.questions.description.subtitle`) }}</span>
             </div>
             <div class="flex w-full justify-between">
                 <a href="#page-3"

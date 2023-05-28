@@ -100,7 +100,7 @@ function searchEnter(result?: string) {
                     </div>
                 </div>
             </div>
-            <span class="text-sm mt-2 font-medium italic text-gray-400">{{
+            <span class="text-sm mt-2 font-normal italic text-gray-400">{{
                 t(`forms.report.questions.${props.title}.subtitle`)
             }}</span>
         </div>
