@@ -44,7 +44,8 @@
           "subtitle": "Podaj przybliżoną wartość roweru, w {{currency}}"
         },
         "theft_date": {
-          "title": "Data kradzieży"
+          "title": "Data kradzieży",
+          "subtitle": "Wybierz datę kradzieży swojego roweru, im dokładniejsza, tym lepiej."
         },
         "location_type": {
           "title": "Gdzie był rower?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Adres i koordynaty.",
-          "subtitle": "Wybierz punkt na mapie, w którym doszło do kradzieży."
+          "subtitle": "Wybierz punkt na mapie, w którym doszło do kradzieży.",
+          "placeholder": "Niebieski samochód zatrzymał się przy czerwonym domu. {{John}} wysiadł z samochodu i wszedł do domu."
         },
         "main_photo": {
           "title": "Skradziony rower główne zdjęcie."

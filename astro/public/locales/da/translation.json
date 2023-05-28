@@ -44,7 +44,8 @@
           "subtitle": "Angiv en omtrentlig værdi af cyklen, i {{currency}}."
         },
         "theft_date": {
-          "title": "Tyveridato."
+          "title": "Tyveridato.",
+          "subtitle": "Vælg datoen, hvor din cykel blev stjålet, jo mere nøjagtig, jo bedre."
         },
         "location_type": {
           "title": "Hvor var cyklen?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Adresse og koordinater.",
-          "subtitle": "Vælg et kortpunkt, hvor tyveriet fandt sted."
+          "subtitle": "Vælg et kortpunkt, hvor tyveriet fandt sted.",
+          "placeholder": "Sorry, can you please provide the content for translation?"
         },
         "main_photo": {
           "title": "Stjålet cykel hovedfoto"

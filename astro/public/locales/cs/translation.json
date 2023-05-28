@@ -44,7 +44,8 @@
           "subtitle": "Zadejte přibližnou hodnotu kola v {{měna}}."
         },
         "theft_date": {
-          "title": "Datum krádeže"
+          "title": "Datum krádeže",
+          "subtitle": "Zvolte datum, kdy bylo vaše kolo odcizeno, čím přesnější, tím lépe."
         },
         "location_type": {
           "title": "Kde bylo kolo?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Adresa a souřadnice",
-          "subtitle": "Vyberte bod na mapě, kde došlo k odcizení."
+          "subtitle": "Vyberte bod na mapě, kde došlo k odcizení.",
+          "placeholder": "Následující obsah nebyl poskytnut. Prosím, pošlete obsah, který je třeba přeložit."
         },
         "main_photo": {
           "title": "Odcizené kolo hlavní foto."

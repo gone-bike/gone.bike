@@ -44,7 +44,8 @@
           "subtitle": "Въведете приблизителна стойност на колелото в {{currency}}."
         },
         "theft_date": {
-          "title": "Дата на кражбата"
+          "title": "Дата на кражбата",
+          "subtitle": "Изберете датата, когато е била открадната вашата велосипед, колкото по-точно, толкова по-добре."
         },
         "location_type": {
           "title": "Къде беше колелото?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Адрес и координати",
-          "subtitle": "Изберете точка на картата, където е станало кражбата."
+          "subtitle": "Изберете точка на картата, където е станало кражбата.",
+          "placeholder": "Sorry, as an AI language model I'm unable to see any content or context for translation. Please provide the text you want me to translate in order to proceed."
         },
         "main_photo": {
           "title": "Главна снимка на откраднат велосипед."

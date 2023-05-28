@@ -44,7 +44,8 @@
           "subtitle": "Geben Sie einen ungefähren Wert des Fahrrads in {{currency}} ein."
         },
         "theft_date": {
-          "title": "Diebstahldatum"
+          "title": "Diebstahldatum",
+          "subtitle": "Wählen Sie das Datum aus, an dem Ihr Fahrrad gestohlen wurde, je genauer, desto besser."
         },
         "location_type": {
           "title": "Wo war das Fahrrad?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Adresse und Koordinaten",
-          "subtitle": "Wählen Sie einen Kartenausschnitt aus, an dem der Diebstahl stattgefunden hat."
+          "subtitle": "Wählen Sie einen Kartenausschnitt aus, an dem der Diebstahl stattgefunden hat.",
+          "placeholder": "Bitte bewegen Sie den Marker auf die genaue Adresse."
         },
         "main_photo": {
           "title": "Gestohlenes Fahrrad Hauptfoto"

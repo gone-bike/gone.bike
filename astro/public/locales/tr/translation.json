@@ -44,7 +44,8 @@
           "subtitle": "\" Bisikletin yaklaşık değerini {{currency}} cinsinden yazın. \"\n\n(Note: The language locale \"tr\" is for Turkish)"
         },
         "theft_date": {
-          "title": "Hırsızlık tarihi"
+          "title": "Hırsızlık tarihi",
+          "subtitle": "Çalan bisikletinizin tarihini seçin, ne kadar doğru olursa o kadar iyi."
         },
         "location_type": {
           "title": "Bisiklet neredeydi?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Adres ve koordinatlar",
-          "subtitle": "Hırsızlığın gerçekleştiği harita noktasını seçin."
+          "subtitle": "Hırsızlığın gerçekleştiği harita noktasını seçin.",
+          "placeholder": "Bu gönderiyi tercüme edin."
         },
         "main_photo": {
           "title": "Çalınmış bisiklet ana fotoğrafı"

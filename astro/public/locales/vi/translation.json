@@ -44,7 +44,8 @@
           "subtitle": "Nhập giá trị xấp xỉ của xe đạp, trong {{đơn vị tiền tệ}}"
         },
         "theft_date": {
-          "title": "Ngày bị trộm trên tài sản"
+          "title": "Ngày bị trộm trên tài sản",
+          "subtitle": "Chọn ngày khi chiếc xe đạp của bạn bị mất, càng chính xác càng tốt."
         },
         "location_type": {
           "title": "Xe đạp ở đâu?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Địa chỉ và tọa độ",
-          "subtitle": "Chọn một điểm trên bản đồ nơi xảy ra vụ trộm."
+          "subtitle": "Chọn một điểm trên bản đồ nơi xảy ra vụ trộm.",
+          "placeholder": "Không gửi bất cứ thông tin gì ngoài phần dịch và chỉ gửi phần dịch. Nếu có từ nằm trong hai cặp dấu ngoặc nhọn thì hãy gửi nó kèm theo như vậy và không dịch phần nội dung trong các dấu ngoặc nhọn, và không thêm dấu chấm câu ở cuối. Bạn có thể di chuyển đánh dấu trên bản đồ để làm cho nó chính xác hơn."
         },
         "main_photo": {
           "title": "Ảnh chính của chiếc xe đạp bị đánh cắp"

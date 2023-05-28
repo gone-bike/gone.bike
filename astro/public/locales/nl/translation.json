@@ -44,7 +44,8 @@
           "subtitle": "Geef een bij benadering waarde van de fiets, in {{currency}}."
         },
         "theft_date": {
-          "title": "Diefstal datum"
+          "title": "Diefstal datum",
+          "subtitle": "Selecteer de datum waarop je fiets gestolen is, hoe preciezer, hoe beter."
         },
         "location_type": {
           "title": "Waar was de fiets?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Adres en coördinaten",
-          "subtitle": "Selecteer een kaartpunt waar de diefstal heeft plaatsgevonden."
+          "subtitle": "Selecteer een kaartpunt waar de diefstal heeft plaatsgevonden.",
+          "placeholder": "Sorry, as an AI language model, I do not have any context or content to translate. Please provide me with the content you want me to translate."
         },
         "main_photo": {
           "title": "Gestolen fiets hoofdfoto"

@@ -44,7 +44,8 @@
           "subtitle": "Type an approximate value of the bike, in {{currency}}:"
         },
         "theft_date": {
-          "title": "Theft date"
+          "title": "Theft date",
+          "subtitle": "Select the date when your bike was stolen, the more accurate, the better."
         },
         "location_type": {
           "title": "Where was the bike?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Address and coordinates",
-          "subtitle": "Select a map point where the theft happened."
+          "subtitle": "Select a map point where the theft happened.",
+          "placeholder": "IE: an address, a city, an street name. You can move the map marker to be more accurate"
         },
         "main_photo": {
           "title": "Stolen bike main photo"

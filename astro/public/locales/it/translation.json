@@ -44,7 +44,8 @@
           "subtitle": "Inserire un valore approssimativo della bicicletta, in {{currency}}"
         },
         "theft_date": {
-          "title": "Data di furto"
+          "title": "Data di furto",
+          "subtitle": "Seleziona la data in cui la tua bicicletta è stata rubata, più accurata è, meglio è."
         },
         "location_type": {
           "title": "Dov'era la bici?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Indirizzo e coordinate.",
-          "subtitle": "Seleziona un punto sulla mappa dove è avvenuto il furto."
+          "subtitle": "Seleziona un punto sulla mappa dove è avvenuto il furto.",
+          "placeholder": "Non inviare nulla oltre alla traduzione. Sposta il marcatore della mappa per ottenere una maggiore precisione."
         },
         "main_photo": {
           "title": "Foto principale della bici rubata."

@@ -44,7 +44,8 @@
           "subtitle": "自転車のおおよその価値を、{{currency}}で入力してください。"
         },
         "theft_date": {
-          "title": "盗難日付"
+          "title": "盗難日付",
+          "subtitle": "自転車が盗まれた日付を選択してください。なるべく正確な方が良いです。"
         },
         "location_type": {
           "title": "自転車はどこでしたか？",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "住所と座標",
-          "subtitle": "盗難事件が起こった地図上のポイントを選択してください。"
+          "subtitle": "盗難事件が起こった地図上のポイントを選択してください。",
+          "placeholder": null
         },
         "main_photo": {
           "title": "盗まれた自転車のメイン写真"

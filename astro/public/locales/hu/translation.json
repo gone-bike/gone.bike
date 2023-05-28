@@ -44,7 +44,8 @@
           "subtitle": "Írja be a kerékpár hozzávetőleges értékét, {{currency}}-ban."
         },
         "theft_date": {
-          "title": "Lopási dátum."
+          "title": "Lopási dátum.",
+          "subtitle": "Válassza ki a dátumot, amikor a kerékpárját ellopják, minél pontosabb, annál jobb."
         },
         "location_type": {
           "title": "Hol volt a bicikli?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Cím és koordináták.",
-          "subtitle": "Válasszon egy térképpontot, ahol a lopás történt."
+          "subtitle": "Válasszon egy térképpontot, ahol a lopás történt.",
+          "placeholder": "Az étterem a központban található, könnyen megközelíthető. A menüben sokféle étel közül lehet választani, mindig friss és finom ételeket készítenek. Jó hangulatú hely, ajánlom mindenkinek!\n\n(Note: This is the Hungarian translation of: \"The restaurant is located in the center, easily accessible. The menu offers a variety of dishes, always freshly prepared and delicious. It's a great atmosphere, I recommend it to everyone!\")"
         },
         "main_photo": {
           "title": "Ellopott kerékpár fő fényképe"

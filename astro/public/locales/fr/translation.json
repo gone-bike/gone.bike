@@ -44,7 +44,8 @@
           "subtitle": "Entrez une valeur approximative du vélo en {{devise}}"
         },
         "theft_date": {
-          "title": "Date de vol"
+          "title": "Date de vol",
+          "subtitle": "Sélectionnez la date à laquelle votre vélo a été volé, plus précise sera meilleure."
         },
         "location_type": {
           "title": "Où était le vélo?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Adresse et coordonnées.",
-          "subtitle": "Sélectionnez un point de carte où le vol a eu lieu."
+          "subtitle": "Sélectionnez un point de carte où le vol a eu lieu.",
+          "placeholder": "Le chat mange du fromage."
         },
         "main_photo": {
           "title": "Vélo volé photo principale"

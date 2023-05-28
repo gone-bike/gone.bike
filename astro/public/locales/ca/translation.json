@@ -44,7 +44,8 @@
           "subtitle": "Escriu una valor aproximada de la bicicleta, en {{currency}}."
         },
         "theft_date": {
-          "title": "Data de robatori"
+          "title": "Data de robatori",
+          "subtitle": "Seleccione la data en què es va robar la seva bicicleta, quant més precisa millor."
         },
         "location_type": {
           "title": "On estava la bicicleta?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Adreça i coordenades.",
-          "subtitle": "Seleccioneu un punt del mapa on va succeir el robatori."
+          "subtitle": "Seleccioneu un punt del mapa on va succeir el robatori.",
+          "placeholder": "No pugueu deixar les llavors de la vida que us han estat donades! "
         },
         "main_photo": {
           "title": "Bicicleta robada foto principal"

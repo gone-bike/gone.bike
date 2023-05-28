@@ -44,7 +44,8 @@
           "subtitle": "Digite um valor aproximado da bicicleta, em {{currency}}."
         },
         "theft_date": {
-          "title": "Data do roubo."
+          "title": "Data do roubo.",
+          "subtitle": "Selecione a data em que sua bicicleta foi roubada, quanto mais precisa, melhor."
         },
         "location_type": {
           "title": "Onde estava a bicicleta?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Endereço e coordenadas.",
-          "subtitle": "Selecione um ponto no mapa onde ocorreu o roubo."
+          "subtitle": "Selecione um ponto no mapa onde ocorreu o roubo.",
+          "placeholder": "Não consigo fazer isso, pois não há nenhum conteúdo fornecido para mim traduzir. Por favor, forneça o conteúdo que precisa ser traduzido."
         },
         "main_photo": {
           "title": "Foto principal da bicicleta roubada"

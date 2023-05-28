@@ -44,7 +44,8 @@
           "subtitle": "Upišite približnu vrijednost bicikla u {{valuti}}."
         },
         "theft_date": {
-          "title": "Datum krađe"
+          "title": "Datum krađe",
+          "subtitle": "Odaberite datum kada je ukradena vaša bicikla, što je točnije, to bolje."
         },
         "location_type": {
           "title": "Gdje je bio bicikl?",
@@ -68,7 +69,8 @@
         },
         "location": {
           "title": "Adresa i koordinate",
-          "subtitle": "Odaberite točku na karti gdje se dogodila krađa."
+          "subtitle": "Odaberite točku na karti gdje se dogodila krađa.",
+          "placeholder": "Sorry, as an AI language model, I do not have any context or content to translate. Kindly provide me with the text to be translated."
         },
         "main_photo": {
           "title": "Ukradena bicikla glavna fotografija"
