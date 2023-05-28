@@ -362,6 +362,7 @@ let currentPage = ref(1)
 }
 input::placeholder, textarea::placeholder{
     color:#9ca3af;
+    word-spacing: 1px;
      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 </style>
