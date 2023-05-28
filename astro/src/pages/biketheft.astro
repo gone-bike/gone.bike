@@ -1,11 +1,11 @@
 ---
 import i18next, { t } from "i18next";
+import config from "@utils/config";
 import BaseLayout from "@layouts/Base.astro";
 import Form from "@components/Form.vue";
 
 const args = {
-  locale: Astro.url.searchParams.get("locale") || "en",
-  id: Astro.url.searchParams.get("id") || 0,
+  locale: Astro.url.searchParams.get("locale") || "en"
 };
 
 await i18next.changeLanguage(args.locale);
@@ -42,10 +42,10 @@ try {
       <div class="w-full h-[1px] bg-gray-200"></div>
 
       <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
-      <script>
+      <script define:vars={{ sitekey: config.CLOUDFLARE_CAPTCHA_KEY }}>
       window.onloadTurnstileCallback = function () {
           turnstile.render('#captcha-challenge', {
-              sitekey: '3x00000000000000000000FF',
+              sitekey: sitekey,
               callback: function(token) {
                 document.getElementById("vue_app").removeAttribute("hidden")
                 document.getElementById("captcha-challenge").classList.add("hidden");
@@ -64,7 +64,7 @@ try {
           lang={args.locale}
           photoTranslation={photoTranslation}
           maxUploads={4}
-          currency="EU"
+          currency="EUR"
           errorText={errorText}
           addressFieldRequiredError={addressFieldRequiredError}
           photoRequiredError={photoRequiredError}

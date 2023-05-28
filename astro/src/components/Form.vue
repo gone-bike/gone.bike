@@ -309,8 +309,14 @@ let currentPage = ref(1)
             <p class="mb-2 text-lg">{{ t("main_photo") }}</p>
             <FileUpload :show-alert="showAlert" v-model="formValue.main_photo" v-model:isUploading="isUploading" />
             <div v-show="formValue.main_photo">
-                <p class="mb-2 text-lg">{{ $props.photoTranslation.replace(props.maxUploads.toString(), `${noOfOtherUploads - 1}
+
+<!--                 <p class="mb-2 text-lg">{{ $props.photoTranslation.replace(props.maxUploads.toString(), `${noOfOtherUploads - 1}
                                     / ${props.maxUploads}`) }}</p>
+ -->
+
+                <p class="mb-2 text-lg">{{ $props.photoTranslation }}</p>
+
+
                 <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 0" @upload="noOfOtherUploads++" :show-alert="showAlert"
                     v-model="formValue.photos_1" />
                 <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 1 && formValue.photos_1"
