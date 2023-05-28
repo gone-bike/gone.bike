@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Pesquisa e relatório de bicicleta roubada."
+    "title": "Pesquisa e relatório de bicicleta roubada.",
+    "hero": {
+      "pre_cta": "Descubra a verdade. Rastreie bicicletas roubadas com nossa épica busca por imagens.",
+      "title": "Sua bicicleta foi roubada?",
+      "cta_add_listing": "Liste sua bicicleta roubada."
+    }
   },
   "pages": {
     "report_form": {
@@ -11,9 +16,6 @@
         "back": "De volta.",
         "submit": "Enviar relatório."
       }
-    },
-    "homepage": {
-      "pre_cta": "Descubra a verdade. Rastreie bicicletas roubadas com nossa épica busca por imagens."
     }
   },
   "forms": {

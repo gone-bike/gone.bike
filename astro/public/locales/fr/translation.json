@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Recherche et signalement de vélo volé."
+    "title": "Recherche et signalement de vélo volé.",
+    "hero": {
+      "pre_cta": "Découvrez la vérité. Poursuivez les vélos volés avec notre recherche d'images épique.",
+      "title": "Est-ce que votre vélo a été volé?",
+      "cta_add_listing": "Listez votre vélo volé."
+    }
   },
   "pages": {
     "report_form": {
@@ -11,9 +16,6 @@
         "back": "Retour",
         "submit": "Soumettre le rapport."
       }
-    },
-    "homepage": {
-      "pre_cta": "Découvrez la vérité. Poursuivez les vélos volés avec notre recherche d'images épique."
     }
   },
   "forms": {

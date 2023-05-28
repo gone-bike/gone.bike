@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Stjålet cykelsøgning og rapport"
+    "title": "Stjålet cykelsøgning og rapport",
+    "hero": {
+      "pre_cta": "Opdag sandheden. Spor stjålne cykler med vores episke billedsøgning.",
+      "title": "Blev din cykel stjålet?",
+      "cta_add_listing": "List din stjålne cykel."
+    }
   },
   "pages": {
     "report_form": {
@@ -11,9 +16,6 @@
         "back": "Tilbage",
         "submit": "Indsend rapport."
       }
-    },
-    "homepage": {
-      "pre_cta": "Opdag sandheden. Spor stjålne cykler med vores episke billedsøgning."
     }
   },
   "forms": {

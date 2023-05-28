@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Stolen bike search and report"
+    "title": "Stolen bike search and report",
+    "hero": {
+      "pre_cta": "Discover the truth. Track down stolen bikes with our epic image search.",
+      "title": "Did your bike get stolen?",
+      "cta_add_listing": "List your stolen bike"
+    }
   },
   "pages": {
     "report_form": {
@@ -11,9 +16,6 @@
         "back": "Back",
         "submit": "Submit report."
       }
-    },
-    "homepage": {
-      "pre_cta": "Discover the truth. Track down stolen bikes with our epic image search."
     }
   },
   "forms": {

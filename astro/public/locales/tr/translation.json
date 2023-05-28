@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Çalınan bisiklet arama ve raporlama"
+    "title": "Çalınan bisiklet arama ve raporlama",
+    "hero": {
+      "pre_cta": "Gerçeği keşfedin. Epik resim arama özelliğimizle çalınan bisikletleri takip edin.",
+      "title": "Motosikletin çalındı mı?",
+      "cta_add_listing": "Çalınan bisikletlerinizi listeleyin."
+    }
   },
   "pages": {
     "report_form": {
@@ -11,9 +16,6 @@
         "back": "Geri dönünüz.",
         "submit": "Rapor gönder"
       }
-    },
-    "homepage": {
-      "pre_cta": "Gerçeği keşfedin. Epik resim arama özelliğimizle çalınan bisikletleri takip edin."
     }
   },
   "forms": {

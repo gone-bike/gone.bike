@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Ricerca e segnalazione di biciclette rubate"
+    "title": "Ricerca e segnalazione di biciclette rubate",
+    "hero": {
+      "pre_cta": "Scopri la verità. Rintraccia le biciclette rubate con la nostra epica ricerca di immagini.",
+      "title": "La tua bicicletta è stata rubata?",
+      "cta_add_listing": "Elenca la tua bicicletta rubata."
+    }
   },
   "pages": {
     "report_form": {
@@ -11,9 +16,6 @@
         "back": "Indietro",
         "submit": "Inviare il report"
       }
-    },
-    "homepage": {
-      "pre_cta": "Scopri la verità. Rintraccia le biciclette rubate con la nostra epica ricerca di immagini."
     }
   },
   "forms": {

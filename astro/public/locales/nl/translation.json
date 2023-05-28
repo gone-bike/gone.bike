@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Gestolen fiets zoeken en rapporteren."
+    "title": "Gestolen fiets zoeken en rapporteren.",
+    "hero": {
+      "pre_cta": "Ontdek de waarheid. Volg gestolen fietsen op met onze epische afbeeldingszoekfunctie.",
+      "title": "Is je fiets gestolen?",
+      "cta_add_listing": "Lijst uw gestolen fiets op."
+    }
   },
   "pages": {
     "report_form": {
@@ -11,9 +16,6 @@
         "back": "Terug",
         "submit": "Indienen van rapport"
       }
-    },
-    "homepage": {
-      "pre_cta": "Ontdek de waarheid. Volg gestolen fietsen op met onze epische afbeeldingszoekfunctie."
     }
   },
   "forms": {

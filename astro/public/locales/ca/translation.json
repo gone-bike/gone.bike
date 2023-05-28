@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Cerca i denúncia de bicicletes robades."
+    "title": "Cerca i denúncia de bicicletes robades.",
+    "hero": {
+      "pre_cta": "Descobreix la veritat. Rastreja les bicicletes robades amb la nostra èpica recerca d'imatges.",
+      "title": "La teva bicicleta va ser robada?",
+      "cta_add_listing": "Llista la teva bicicleta robada."
+    }
   },
   "pages": {
     "report_form": {
@@ -11,9 +16,6 @@
         "back": "End",
         "submit": "Enviar informe"
       }
-    },
-    "homepage": {
-      "pre_cta": "Descobreix la veritat. Rastreja les bicicletes robades amb la nostra èpica recerca d'imatges."
     }
   },
   "forms": {

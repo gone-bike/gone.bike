@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Căutare și raportare a bicicletelor furate."
+    "title": "Căutare și raportare a bicicletelor furate.",
+    "hero": {
+      "pre_cta": "Descoperiți adevărul. Găsiți bicicletele furate cu ajutorul căutării noastre epice de imagini.",
+      "title": "Ți-a fost furată bicicleta?",
+      "cta_add_listing": "Enumerați bicicleta furată."
+    }
   },
   "pages": {
     "report_form": {
@@ -11,9 +16,6 @@
         "back": "Înapoi.",
         "submit": "Trimite raportul."
       }
-    },
-    "homepage": {
-      "pre_cta": "Descoperiți adevărul. Găsiți bicicletele furate cu ajutorul căutării noastre epice de imagini."
     }
   },
   "forms": {

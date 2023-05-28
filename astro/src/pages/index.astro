@@ -1,14 +1,10 @@
 ---
-import i18next, { t } from "i18next";
-
-const args = {
-  locale: Astro.url.searchParams.get("locale") || "en",
-  id: Astro.url.searchParams.get("id") || 0,
-};
-
-await i18next.changeLanguage(args.locale);
+import { t, changeLanguage } from "i18next";
+import { localizePath } from "astro-i18next";
 
 import BaseLayout from "@layouts/Base.astro";
+
+changeLanguage(Astro.url.searchParams.get("locale") || "en");
 ---
 
 <BaseLayout title={t("homepage.title")} description="">
@@ -26,9 +22,9 @@ import BaseLayout from "@layouts/Base.astro";
   <div class="w-full">
     <div class="hero w-full h-[50vh] flex flex-col items-center justify-center">
       <div class="pre-cta text-lg font-bold">
-        {t("pages.homepage.pre_cta")}
+        {t("homepage.hero.pre_cta")}
       </div>
-      <div class="cta text-6xl font-extrabold">Did your bike get stolen?</div>
+      <h1 class="cta text-6xl font-extrabold">{t("homepage.hero.title")}</div>
       <div
         class="input mt-10 mb-6 bg-white border-dashed border-gray-500 rounded border py-2 px-4"
       >
@@ -44,8 +40,8 @@ import BaseLayout from "@layouts/Base.astro";
         <span class="text-gray-400">No luck?</span> Try to listing your bike
       </div>
       <a
-        class="list-button text-white bg-[#2DA771] rounded py-2 px-4"
-        href="/listing">List Your Stolen Bike</a
+        class="list-button text-white bg-[#2DA771] rounded py-2 px-4 tracking-wider uppercase text-sm"
+        href={localizePath("/report")}>{t("homepage.hero.cta_add_listing")}</a
       >
     </div>
     <div class="listing"></div>

@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Tìm kiếm và báo cáo xe đạp bị mất"
+    "title": "Tìm kiếm và báo cáo xe đạp bị mất",
+    "hero": {
+      "pre_cta": "Khám phá sự thật. Tìm kiếm các chiếc xe bị đánh cắp với công cụ tìm kiếm ấn tượng của chúng tôi.",
+      "title": "Bạn có bị mất xe đạp không?",
+      "cta_add_listing": "Danh sách xe đạp của bạn đã bị mất."
+    }
   },
   "pages": {
     "report_form": {
@@ -11,9 +16,6 @@
         "back": "Quay lại",
         "submit": "Gửi báo cáo"
       }
-    },
-    "homepage": {
-      "pre_cta": "Khám phá sự thật. Tìm kiếm các chiếc xe bị đánh cắp với công cụ tìm kiếm ấn tượng của chúng tôi."
     }
   },
   "forms": {

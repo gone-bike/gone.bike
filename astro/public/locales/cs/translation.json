@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Hledání a hlášení odcizeného kola"
+    "title": "Hledání a hlášení odcizeného kola",
+    "hero": {
+      "pre_cta": "Objevte pravdu. Vystopujte ukradená kola pomocí naší epické vyhledávačem obrázků.",
+      "title": "Byl váš bicykl ukraden?",
+      "cta_add_listing": "Seznam vašeho odcizeného kola."
+    }
   },
   "pages": {
     "report_form": {
@@ -11,9 +16,6 @@
         "back": "Zpět",
         "submit": "Odeslat zprávu"
       }
-    },
-    "homepage": {
-      "pre_cta": "Objevte pravdu. Vystopujte ukradená kola pomocí naší epické vyhledávačem obrázků."
     }
   },
   "forms": {

@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Poszukiwanie skradzionego roweru i zgłoszenie."
+    "title": "Poszukiwanie skradzionego roweru i zgłoszenie.",
+    "hero": {
+      "pre_cta": "Odkryj prawdę. Śledź skradzione rowery za pomocą naszego epickiego wyszukiwania obrazów.",
+      "title": "Czy twoj rower został skradziony?",
+      "cta_add_listing": "Wymień swój skradziony rower."
+    }
   },
   "pages": {
     "report_form": {
@@ -11,9 +16,6 @@
         "back": "Back",
         "submit": "Prześlij raport."
       }
-    },
-    "homepage": {
-      "pre_cta": "Odkryj prawdę. Śledź skradzione rowery za pomocą naszego epickiego wyszukiwania obrazów."
     }
   },
   "forms": {

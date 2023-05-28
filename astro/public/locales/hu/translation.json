@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Lopott kerékpár keresés és bejelentés."
+    "title": "Lopott kerékpár keresés és bejelentés.",
+    "hero": {
+      "pre_cta": "Fedezze fel az igazságot. Kövesse nyomon az ellopott kerékpárokat epikus képkeresőnkkel.",
+      "title": "Ellopták a biciklidet?",
+      "cta_add_listing": "Lista az ellopott biciklidről"
+    }
   },
   "pages": {
     "report_form": {
@@ -11,9 +16,6 @@
         "back": "Vissza",
         "submit": "Jelentés beküldése"
       }
-    },
-    "homepage": {
-      "pre_cta": "Fedezze fel az igazságot. Kövesse nyomon az ellopott kerékpárokat epikus képkeresőnkkel."
     }
   },
   "forms": {

@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Pretraživanje ukradenog bicikla i prijava."
+    "title": "Pretraživanje ukradenog bicikla i prijava.",
+    "hero": {
+      "pre_cta": "Otkrijte istinu. Pružite trag ukradenim biciklima uz našu epohalnu pretragu slika.",
+      "title": "Je li vam ukradena bicikla?",
+      "cta_add_listing": "Popis vaše ukradene bicikle."
+    }
   },
   "pages": {
     "report_form": {
@@ -11,9 +16,6 @@
         "back": "Natrag",
         "submit": "Podnesi izvještaj."
       }
-    },
-    "homepage": {
-      "pre_cta": "Otkrijte istinu. Pružite trag ukradenim biciklima uz našu epohalnu pretragu slika."
     }
   },
   "forms": {
