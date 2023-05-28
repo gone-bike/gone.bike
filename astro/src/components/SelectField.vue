@@ -24,7 +24,7 @@ function handleOtherField(e: any) {
 const isOther = ref(false)
 </script>
 <template>
-    <div class="flex flex-col ml-2">
+    <div class="flex flex-col">
         <label :for="props.title" class="mb-2 text-lg">{{ t(`forms.report.questions.${props.title}.title`) }}</label>
         <select :placeholder="props.modelValue"
             :class='{ "bg-gray-200": isOther, "text-gray-500": props.modelValue === "" }' :value="props.modelValue"
@@ -39,6 +39,6 @@ const isOther = ref(false)
             <input type="text" :class="['w-52', !isOther ? 'border-gray-500 bg-gray-100 pointer-events-none' : '']"
                 :value="isOther ? props.modelValue : ''" @input="handleOtherField">
         </div>
-        <span v-show="!isOther" class="mt-1 text-sm font-semibold text-gray-500 ml-1">{{ t(`forms.report.questions.${props.title}.subtitle`)  }}</span>
+        <span v-show="!isOther" class="mt-1 text-sm font-semibold text-gray-500">{{ t(`forms.report.questions.${props.title}.subtitle`)  }}</span>
     </div>
 </template>

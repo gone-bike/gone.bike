@@ -37,9 +37,9 @@ function remove(tag: string) {
 </script>
 
 <template>
-    <div class="flex flex-col ml-2">
+    <div class="flex flex-col">
         <label :for="props.title" class="text-lg">{{ t(`forms.report.questions.${props.title}.title`) }}</label>
-        <span class="mb-2 text-sm font-semibold text-gray-500 ml-1">{{ t(`forms.report.questions.${props.title}.subtitle`)
+        <span class="mb-2 text-sm font-semibold text-gray-500">{{ t(`forms.report.questions.${props.title}.subtitle`)
         }}</span>
         <input type="text" @keydown.enter="handleAdd" autocomplete="off" :name="props.title"
             :placeholder="t(`forms.report.questions.${props.title}.placeholder`) as string" :id="props.title" v-model="tagModel" /> 

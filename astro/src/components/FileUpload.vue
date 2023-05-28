@@ -110,7 +110,7 @@ async function handleMainFileUpload() {
                     <p class="text-sm m-2 font-mono ml-5 absolute">{{ progressBarName }}</p>
                 </div>
                 <p></p>
-                <button @click="deleteFile" class="bg-red-300 text-red-700 p-1 ml-2 rounded-lg hover:bg-red-400">
+                <button @click="deleteFile" class="bg-red-300 text-red-700 p-1 rounded-lg hover:bg-red-400">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="h-6 w-6">
                         <path stroke-linecap="round" stroke-linejoin="round"

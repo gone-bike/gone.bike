@@ -19,8 +19,13 @@ import Stepper from "./Stepper.vue";
 import GoogleMap from "./GoogleMap.vue"
 
 
+
 const props = withDefaults(defineProps<{
-    currency?: string, bikeBrand: { key: string, value: string }[],
+    currency?: string,
+    bikeBrand: { key: number, value: string }[],
+    lang: string,
+    maxUploads: number,
+    photoTranslation: string
 }>(), {
     currency: "EU",
 })
@@ -35,12 +40,13 @@ function validateEmail(email: string) {
 
 let bikeModelsApi = ref<{ key: string, value: string }[]>([]);
 
-let bikeBrandApi: { key: string, value: string }[] = props.bikeBrand
+let bikeBrandApi: { key: number, value: string }[] = props.bikeBrand
 
 let noOfOtherUploads = ref(1)
 
 let isUploading = ref(false)
 
+console.log(`${noOfOtherUploads.value} / ${props.maxUploads}`)
 let formValue = reactive({
     bike_brand: '',
     bike_brand_id: '',
@@ -113,6 +119,7 @@ function t(str: string, param?: {}) {
     }
     return i18next(`forms.report.questions.${str}.title`)
 }
+let photoi8next = t(`forms.report.questions.photos.title`, { n: props.maxUploads })
 let stack = ref<number[]>([])
 
 async function onSubmit(formData: typeof formValue) {
@@ -149,7 +156,7 @@ onMounted(() => {
                     subtitle: "Photo is Required"
                 })
                 window.location.hash = "#page-3"
-            }else if(isUploading.value){
+            } else if (isUploading.value) {
                 showAlert({
                     title: "Error",
                     subtitle: "Please wait while uploading"
@@ -218,28 +225,28 @@ let currentPage = ref(1)
             <InputField v-show="formValue.bike_brand && !bikeModelsApi.length" v-model="formValue.bike_model"
                 title="bike_model" />
             <ColorField v-model="formValue.colors" title="colors" />
-            <div class="flex flex-col ml-2">
+            <div class="flex flex-col">
                 <label for="bike_details" class="mb-2 text-lg">{{ t("bike_details") }}</label>
                 <textarea name="bike_details" id="bike_details" v-model="formValue.bike_details" cols="30" rows="7"
                     :placeholder="(i18next(`forms.report.questions.bike_details.placeholder`) as string)"> </textarea>
-                <span class="mt-1 text-sm font-semibold text-gray-500 ml-1">{{
+                <span class="mt-1 text-sm font-semibold text-gray-500">{{
                     i18next(`forms.report.questions.bike_details.subtitle`) }}</span>
 
             </div>
-            <div class="ml-2">
+            <div>
                 <label for="is_electric" class="mb-2 text-lg">{{ t("is_electric") }}</label>
                 <br />
                 <div class="flex items-center mt-3">
-                    <input type="radio" value="1" aria-labelledby="is_electric" class="h-4 w-4 ml-2" name="is_electric"
+                    <input type="radio" value="1" aria-labelledby="is_electric" class="h-4 w-4  " name="is_electric"
                         id="is_electric_1">
-                    <label for="is_electric_1" class="ml-2 text-sm">{{
+                    <label for="is_electric_1" class="text-sm">{{
                         i18next("forms.report.questions.is_electric.choices.yes")
                     }}</label>
                 </div>
                 <div class="flex items-center mt-2">
-                    <input type="radio" value="2" aria-labelledby="is_electric" class="h-4 w-4 ml-2" name="is_electric"
+                    <input type="radio" value="2" aria-labelledby="is_electric" class="h-4 w-4" name="is_electric"
                         id="is_electric_2">
-                    <label for="is_electric_2" class="ml-2 text-sm">{{
+                    <label for="is_electric_2" class="text-sm">{{
                         i18next("forms.report.questions.is_electric.choices.no")
                     }}</label>
                 </div>
@@ -253,13 +260,13 @@ let currentPage = ref(1)
             </div>
         </div>
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 2">
-            <div class="flex flex-col ml-2 w-full">
+            <div class="flex flex-col w-full">
                 <label for="theft_date" class="mb-2 text-lg">{{ t("theft_date") }}</label>
                 <DatePicker :disabled-start-date="{
                     to: new Date('01.01.2010'),
                     from: Date.now()
-                }" lang="en" v-model="theftDateUnformated" class="w-full" />
-                                <span class="mt-1 text-sm font-semibold text-gray-500 ml-1">{{
+                }" :lang="props.lang" v-model="theftDateUnformated" class="w-full" />
+                <span class="mt-1 text-sm font-semibold text-gray-500">{{
                     i18next(`forms.report.questions.theft_date.subtitle`) }}</span>
 
             </div>
@@ -271,7 +278,7 @@ let currentPage = ref(1)
                 :list='["chain", "lock", "no_lock", "unlock", "fold"]' />
             <SelectField v-model="formValue.lock_anchor" title="lock_anchor"
                 :list='["tree", "gate", "fence", "post", "self_bike", "other_bike"]' />
-            <div class="flex flex-col ml-2">
+            <div class="flex flex-col">
                 <label for="location" class="text-lg">{{ t("location") }}</label>
                 <p class="text-sm text-gray-500 mb-2 font-semibold">{{ i18next("forms.report.questions.location.subtitle")
                 }}
@@ -296,12 +303,17 @@ let currentPage = ref(1)
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 3">
             <p class="mb-2 text-lg">{{ t("main_photo") }}</p>
             <FileUpload :show-alert="showAlert" v-model="formValue.main_photo" v-model:isUploading="isUploading" />
-            <div>
-                <p class="mb-2 text-lg">{{ t("photos", { n: 4 }) }}</p>
-                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 1" :show-alert="showAlert" v-model="formValue.photos_1" />
-                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 2 && formValue.photos_1" :show-alert="showAlert" v-model="formValue.photos_2" />
-                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 3 && formValue.photos_2" :show-alert="showAlert" v-model="formValue.photos_3" />
-                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 2 && formValue.photos_3" :show-alert="showAlert" v-model="formValue.photos_4" />
+            <div v-show="formValue.main_photo">
+                <p class="mb-2 text-lg">{{ $props.photoTranslation.replace(props.maxUploads.toString(), `${noOfOtherUploads - 1}
+                                    / ${props.maxUploads}`) }}</p>
+                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 1" :show-alert="showAlert"
+                    v-model="formValue.photos_1" />
+                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 2 && formValue.photos_1"
+                    :show-alert="showAlert" v-model="formValue.photos_2" />
+                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 3 && formValue.photos_2"
+                    :show-alert="showAlert" v-model="formValue.photos_3" />
+                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 4 && formValue.photos_3"
+                    :show-alert="showAlert" v-model="formValue.photos_4" />
                 <button @click="noOfOtherUploads++" class="p-3 rounded-lg bg-purple-500 text-white hover:bg-purple-600">
                     Add More +
                 </button>
@@ -316,11 +328,12 @@ let currentPage = ref(1)
             </div>
         </div>
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 4">
-            <div class="flex flex-col ml-2">
+            <div class="flex flex-col">
                 <label for="description" class="mb-2 text-lg">{{ t("description") }}</label>
-                <textarea name="description" :placeholder="(i18next(`forms.report.questions.description.placeholder`) as string)"
-                    id="description" v-model="formValue.description" cols="30" rows="10"></textarea>
-                <span class="mt-1 text-gray-600 ml-1">{{ i18next(`forms.report.questions.description.subtitle`) }}</span>
+                <textarea name="description"
+                    :placeholder="(i18next(`forms.report.questions.description.placeholder`) as string)" id="description"
+                    v-model="formValue.description" cols="30" rows="10"></textarea>
+                <span class="mt-1 text-gray-600">{{ i18next(`forms.report.questions.description.subtitle`) }}</span>
             </div>
             <div class="flex w-full justify-between">
                 <a href="#page-3"
@@ -339,7 +352,7 @@ let currentPage = ref(1)
                         backText }}</a>
                 <a href="#page-6"
                     class="bg-purple-600 px-4 rounded-md active:bg-purple-700 hover:bg-purple-700 font-semibold py-2 text-white">{{
-                        nextText }}</a>
+                        submitText }}</a>
             </div>
         </div>
         <div class="flex flex-col w-full h-full justify-center" v-show="currentPage === 6">
@@ -349,8 +362,6 @@ let currentPage = ref(1)
         </div>
     </div>
 </template>
-<style>
-:root {
+<style>:root {
     --v-calendar-datepicker-icon-color: #9333EA !important;
-}
-</style>
+}</style>
