@@ -7,47 +7,47 @@ import config from '@utils/config'
 
 export async function post({ request }: APIContext) {
 
-  const SECRET_KEY = '0x4AAAAAAAFUGCIr4PQcCxTADclqq4nl3aY';
+  // const SECRET_KEY = '';
 
-	const token = body.get('cf-turnstile-response');
-	const ip = request.headers.get('CF-Connecting-IP');
+	// const token = body.get('cf-turnstile-response');
+	// const ip = request.headers.get('CF-Connecting-IP');
 
-	// Validate the token by calling the
-	// "/siteverify" API endpoint.
-	let formData = new FormData();
-	formData.append('secret', SECRET_KEY);
-	formData.append('response', token);
-	formData.append('remoteip', ip);
-	const idempotencyKey = crypto.randomUUID();
-	formData.append('idempotency_key', idempotencyKey);
+	// // Validate the token by calling the
+	// // "/siteverify" API endpoint.
+	// let formData = new FormData();
+	// formData.append('secret', SECRET_KEY);
+	// formData.append('response', token);
+	// formData.append('remoteip', ip);
+	// const idempotencyKey = crypto.randomUUID();
+	// formData.append('idempotency_key', idempotencyKey);
 
-	const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
-	const firstResult = await fetch(url, {
-		body: formData,
-		method: 'POST',
-	});
-	const firstOutcome = await firstResult.json();
-	if (firstOutcome.success) {
-		// ...
-	}
+	// const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+	// const firstResult = await fetch(url, {
+	// 	body: formData,
+	// 	method: 'POST',
+	// });
+	// const firstOutcome = await firstResult.json();
+	// if (firstOutcome.success) {
+	// 	// ...
+	// }
 
-	// A subsequent validation request to the "/siteverify"
-	// API endpoint for the same token as before, providing
-	// the associated idempotency key as well.
-	const subsequentResult = await fetch(url, {
-		body: formData,
-		method: 'POST',
-	});
+	// // A subsequent validation request to the "/siteverify"
+	// // API endpoint for the same token as before, providing
+	// // the associated idempotency key as well.
+	// const subsequentResult = await fetch(url, {
+	// 	body: formData,
+	// 	method: 'POST',
+	// });
 
-	const subsequentOutcome = await firstResult.json();
-	if (!subsequentOutcome.success) {
-      return new Response(JSON.stringify({ error: 'captcha failure' }), {
-        status: 403,
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-	}
+	// const subsequentOutcome = await firstResult.json();
+	// if (!subsequentOutcome.success) {
+  //     return new Response(JSON.stringify({ error: 'captcha failure' }), {
+  //       status: 403,
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       }
+  //     });
+	// }
 
 
 

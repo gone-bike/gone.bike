@@ -10,21 +10,6 @@ console.log(i18next.language)
 ---
 
 <BaseLayout title={t("homepage.title")} lang={i18next.language} description="">
-
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
-<script>
-window.onloadTurnstileCallback = function () {
-    turnstile.render('#example-container', {
-      size: 'compact',
-        sitekey: '0x4AAAAAAAFUGAm8uaSlNEMe',
-        callback: function(token) {
-            console.log(`Challenge Success ${token}`);
-        },
-    });
-};
-</script>
-  <div id="example-container"</div>
-
   <style>
     .hero {
       background: linear-gradient(
