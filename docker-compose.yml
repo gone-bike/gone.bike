@@ -1,6 +1,11 @@
 ---
 version: '3.4'
 services:
+
+  mail:
+    image: bytemark/smtp
+    restart: always
+
   weaviate:
     volumes:
       - .data/weaviate:/var/lib/weaviate
