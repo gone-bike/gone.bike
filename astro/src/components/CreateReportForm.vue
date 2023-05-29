@@ -198,7 +198,7 @@ onMounted(() => {
                 closeAlert()
             }
         } else if (prevPage === 5 && page === 6) {
-            if (formValue.mail && validateEmail(formValue.mail)) {
+            if (formValue.email && validateEmail(formValue.email)) {
                 closeAlert()
                 onSubmit(toRaw(formValue))
             } else {
