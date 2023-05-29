@@ -8,6 +8,8 @@ const app = express();
 app.use(morgan('combined'))
 
 app.use(express.static('./dist/client/'))
+app.use('/tmp', express.static('./public/tmp/'))
+
 
 app.use(astroSsrHandler);
 
