@@ -194,7 +194,7 @@ onMounted(() => {
                     title: errorText,
                     subtitle: validEmailError
                 })
-                window.location.hash = `#page-6`
+                window.location.hash = `#page-5`
             }
         } else {
         }
