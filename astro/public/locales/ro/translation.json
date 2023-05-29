@@ -20,7 +20,8 @@
         "title": "Mulțumesc!",
         "sub_title": "Trimiterea ta a fost primită corect."
       },
-      "enter_here": "ro: Scrieți."
+      "enter_here": "ro: Scrieți.",
+      "loading": null
     }
   },
   "forms": {

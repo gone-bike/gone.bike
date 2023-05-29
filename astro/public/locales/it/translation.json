@@ -14,13 +14,14 @@
       "buttons": {
         "next": "Avanti",
         "back": "Indietro",
-        "submit": "Inviare il report"
+        "submit": "Invia la segnalazione"
       },
       "thank": {
         "title": "Grazie!",
         "sub_title": "La tua proposta è stata ricevuta correttamente."
       },
-      "enter_here": "Inserisci"
+      "enter_here": "Inserisci",
+      "loading": "Aspetta..."
     }
   },
   "forms": {

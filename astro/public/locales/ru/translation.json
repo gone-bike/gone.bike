@@ -20,7 +20,8 @@
         "title": "Спасибо!",
         "sub_title": "Ваша заявка была получена правильно."
       },
-      "enter_here": "введите"
+      "enter_here": "введите",
+      "loading": null
     }
   },
   "forms": {

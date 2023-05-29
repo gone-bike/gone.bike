@@ -20,7 +20,8 @@
         "title": "Danke dir!",
         "sub_title": "Ihre Einsendung wurde korrekt empfangen."
       },
-      "enter_here": "Bitte geben Sie ein."
+      "enter_here": "Bitte geben Sie ein.",
+      "loading": null
     }
   },
   "forms": {

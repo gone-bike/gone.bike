@@ -20,7 +20,8 @@
         "title": "Tak skal du have!",
         "sub_title": "Din indsendelse er blevet modtaget korrekt."
       },
-      "enter_here": "Oversæt følgende indhold til sprog locale: da og send kun oversættelsen som svar. Send ikke noget andet, selvom du har oplysninger, du gerne vil give, og hvis der er et ord inde i dobbelte krølleparenteser {{}}, så send det med dobbelt krølleparenteser og uden at oversætte indholdet inde i parenteserne, og tilføj ikke tegnsætning i slutningen: Type in"
+      "enter_here": "Oversæt følgende indhold til sprog locale: da og send kun oversættelsen som svar. Send ikke noget andet, selvom du har oplysninger, du gerne vil give, og hvis der er et ord inde i dobbelte krølleparenteser {{}}, så send det med dobbelt krølleparenteser og uden at oversætte indholdet inde i parenteserne, og tilføj ikke tegnsætning i slutningen: Type in",
+      "loading": null
     }
   },
   "forms": {
