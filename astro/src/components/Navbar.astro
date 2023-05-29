@@ -1,7 +1,12 @@
+---
+import { localizePath } from "astro-i18next";
+---
 <div class="flex justify-between items-center py-10 px-4">
     <div class="container-1 flex items-center gap-5">
       <div class="hamburger-menu"></div>
-      <div class="logo text-xl font-extrabold">BiciRubbate</div>
+      <div class="logo text-xl font-extrabold">
+        <a href={localizePath("/")}>Gone.Bike</a>
+      </div>
       <div class="actual-navbar flex gap-3">
         <div>Home</div>
         <div>Blog</div>
