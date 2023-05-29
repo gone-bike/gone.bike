@@ -62,7 +62,7 @@
             "street": "Đường",
             "park": "Công viên",
             "cellar": "Ngăn chứa rượu.",
-            "garage": "Garage.",
+            "garage": "Garage",
             "train": "Tàu hỏa",
             "garden": "Vườn",
             "home": "Trang chủ",
@@ -124,7 +124,10 @@
           "subtitle": "Chúng tôi sẽ gửi cho bạn một liên kết xác minh và sử dụng địa chỉ email của bạn chỉ cho việc liên lạc liên quan chặt chẽ.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Điều khác"
+        "other_choice": "Điều khác",
+        "location_address": {
+          "error_msg": "Vui lòng chọn địa chỉ và chọn tọa độ."
+        }
       }
     },
     "report_form": {

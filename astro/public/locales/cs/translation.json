@@ -124,7 +124,10 @@
           "subtitle": "Pošleme vám ověřovací odkaz a vaši e-mailovou adresu použijeme pouze pro přísně související komunikaci.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Jiné."
+        "other_choice": "Jiné.",
+        "location_address": {
+          "error_msg": "Vyberte prosím adresu a zvolte souřadnice."
+        }
       }
     },
     "report_form": {

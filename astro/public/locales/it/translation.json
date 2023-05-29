@@ -12,7 +12,7 @@
       "title": "Rapporto di furto di biciclette",
       "subtitle": "Inserire i dati correlati al furto di biciclette, saranno aggiunti al motore di ricerca",
       "buttons": {
-        "next": "Prossimo",
+        "next": "Avanti",
         "back": "Indietro",
         "submit": "Inviare il report"
       },
@@ -67,7 +67,7 @@
             "garden": "Giardino",
             "home": "Casa",
             "office": "Ufficio",
-            "car": "ro signifie automobile."
+            "car": "Auto"
           }
         },
         "lock_type": {
@@ -82,7 +82,7 @@
           "title": "Punto di ancoraggio.",
           "choices": {
             "tree": "Albero",
-            "gate": "Gate",
+            "gate": "Cancello",
             "post": "Recinzione",
             "self_bike": "A se stesso",
             "other_bike": "A altre biciclette"
@@ -111,7 +111,7 @@
             "evening": "Sera",
             "night": "Notte"
           },
-          "title": "Intervallo di tempo diurno",
+          "title": "Periodo della giornata",
           "subtitle": "Seleziona un intervallo di tempo approssimativo in cui la tua bicicletta è stata rubata."
         },
         "bike_details": {
@@ -124,7 +124,10 @@
           "subtitle": "Ti invieremo un link di verifica e utilizzeremo la tua email solo per comunicazioni strettamente correlate.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Altro"
+        "other_choice": "Altro",
+        "location_address": {
+          "error_msg": "Seleziona un indirizzo e scegli le coordinate."
+        }
       }
     },
     "report_form": {

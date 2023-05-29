@@ -124,7 +124,10 @@
           "subtitle": "Vă vom trimite un link de verificare și vom utiliza adresa dvs. de email doar pentru comunicare strict legată de acest scop.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Alte"
+        "other_choice": "Alte",
+        "location_address": {
+          "error_msg": "Vă rugăm să selectați o adresă și să alegeți coordonatele."
+        }
       }
     },
     "report_form": {

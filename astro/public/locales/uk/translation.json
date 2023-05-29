@@ -124,7 +124,10 @@
           "subtitle": "Ми надішлемо вам посилання для підтвердження та використовуємо вашу електронну пошту лише для строго пов'язаної комунікації.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "In Ukraine:\n\nІнше"
+        "other_choice": "In Ukraine:\n\nІнше",
+        "location_address": {
+          "error_msg": "Будь ласка, виберіть адресу та виберіть координати."
+        }
       }
     },
     "report_form": {

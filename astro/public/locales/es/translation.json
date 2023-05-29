@@ -124,7 +124,10 @@
           "subtitle": "Le enviaremos un enlace de verificación y utilizaremos su correo electrónico solamente para comunicación estrictamente relacionada.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Otros"
+        "other_choice": "Otros",
+        "location_address": {
+          "error_msg": "Por favor, seleccione una dirección y elija las coordenadas."
+        }
       }
     },
     "report_form": {

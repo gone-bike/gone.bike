@@ -124,7 +124,10 @@
           "subtitle": "Size doğrulama bağlantısı göndereceğiz ve e-postanızı sadece sıkı ilişkili iletişim için kullanacağız.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Diğer."
+        "other_choice": "Diğer.",
+        "location_address": {
+          "error_msg": "Lütfen bir adres seçin ve koordinatları seçin."
+        }
       }
     },
     "report_form": {
