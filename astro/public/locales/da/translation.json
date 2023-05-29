@@ -97,14 +97,16 @@
           "subtitle": "Skriv en adresse eller placering og vælg et punkt på kortet, hvor tyveriet skete. Jo mere præcist jo bedre."
         },
         "main_photo": {
-          "title": "Stjålet cykel hovedfoto"
+          "title": "Stjålet cykel hovedfoto",
+          "subtitle": "Et foto af den stjålne cykel. Bedst hvis taget fra siden."
         },
         "photos": {
           "title": "Du kan tilføje op til {{n}} billeder."
         },
         "description": {
           "title": "Beskriv hvad der skete.",
-          "subtitle": "Jo flere detaljer du giver om, hvad der skete, jo bedre."
+          "subtitle": "Jo flere detaljer du giver om, hvad der skete, jo bedre.",
+          "placeholder": "Jeg efterlod min cykel uden opsyn i en halv time, og den var væk."
         },
         "theft_timeframe": {
           "choices": {
@@ -129,6 +131,9 @@
         "other_choice": "Andejfjfjdf.jdjdj.",
         "location_address": {
           "error_msg": "Vælg venligst en adresse og vælg koordinater."
+        },
+        "file_upload": {
+          "cta_text": "Vælg et foto."
         }
       }
     },

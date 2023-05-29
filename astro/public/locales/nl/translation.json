@@ -97,14 +97,16 @@
           "subtitle": "Typ een adres of een locatie en selecteer een kaartpunt waar de diefstal heeft plaatsgevonden. Hoe nauwkeuriger, hoe beter."
         },
         "main_photo": {
-          "title": "Gestolen fiets hoofdfoto"
+          "title": "Gestolen fiets hoofdfoto",
+          "subtitle": "Een foto van de gestolen fiets. Beter als deze van opzij is genomen."
         },
         "photos": {
           "title": "Je kunt maximaal {{n}} foto's toevoegen."
         },
         "description": {
           "title": "Beschrijf wat er is gebeurd.",
-          "subtitle": "Hoe meer details je geeft over wat er is gebeurd, hoe beter."
+          "subtitle": "Hoe meer details je geeft over wat er is gebeurd, hoe beter.",
+          "placeholder": "Ik liet mijn fiets een half uur onbeheerd achter en hij was weg."
         },
         "theft_timeframe": {
           "choices": {
@@ -129,6 +131,9 @@
         "other_choice": "than English, Dutch is also spoken in Belgium and Suriname.",
         "location_address": {
           "error_msg": "Selecteer alstublieft een adres en kies coördinaten."
+        },
+        "file_upload": {
+          "cta_text": "Selecteer een foto"
         }
       }
     },

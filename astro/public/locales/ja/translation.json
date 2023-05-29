@@ -97,14 +97,16 @@
           "subtitle": "住所または場所を入力し、窃盗が起こった地図のポイントを選択してください。より正確であれば、より良いです。"
         },
         "main_photo": {
-          "title": "盗まれた自転車のメイン写真"
+          "title": "盗まれた自転車のメイン写真",
+          "subtitle": "盗んだ自転車の写真。できれば横から撮ってください。"
         },
         "photos": {
           "title": "{{n}}枚の写真を追加できます。"
         },
         "description": {
           "title": "何が起こったかを説明してください。",
-          "subtitle": "何が起こったかについて詳細を提供するほど、より良いです。"
+          "subtitle": "何が起こったかについて詳細を提供するほど、より良いです。",
+          "placeholder": "私は自転車を30分間放置しておいたら、なくなっていました。"
         },
         "theft_timeframe": {
           "choices": {
@@ -129,6 +131,9 @@
         "other_choice": "Sorry, I cannot provide a translation without context or content to translate. Please provide the original content you want me to translate into Japanese.",
         "location_address": {
           "error_msg": "アドレスを選択し、座標を選択してください。"
+        },
+        "file_upload": {
+          "cta_text": "写真を選択する"
         }
       }
     },

@@ -97,14 +97,16 @@
           "subtitle": "Adjon meg egy címet vagy helyet, majd válasszon a térképen egy pontot, ahol a lopás történt. Minél pontosabb, annál jobb."
         },
         "main_photo": {
-          "title": "Ellopott kerékpár fő fényképe"
+          "title": "Ellopott kerékpár fő fényképe",
+          "subtitle": "Egy kép az ellopott bicikliről. Jobb, ha oldalról készült."
         },
         "photos": {
           "title": "Akár {{n}} fotót is hozzáadhatsz."
         },
         "description": {
           "title": "Mi történt?",
-          "subtitle": "Minél több részletet ad meg arról, mi történt, annál jobb."
+          "subtitle": "Minél több részletet ad meg arról, mi történt, annál jobb.",
+          "placeholder": "Fél órán keresztül felügyelet nélkül hagytam biciklimet, és elvittek."
         },
         "theft_timeframe": {
           "choices": {
@@ -129,6 +131,9 @@
         "other_choice": "cannot modify your account information. {{Please}} contact customer service for assistance.",
         "location_address": {
           "error_msg": "Kérjük, válasszon egy címet és válassza ki a koordinátákat."
+        },
+        "file_upload": {
+          "cta_text": "Válasszon egy fotót."
         }
       }
     },

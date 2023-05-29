@@ -97,14 +97,16 @@
           "subtitle": "Wpisz adres lub lokalizację i wybierz punkt na mapie, gdzie doszło do kradzieży. Im dokładniej, tym lepiej."
         },
         "main_photo": {
-          "title": "Skradziony rower główne zdjęcie."
+          "title": "Skradziony rower główne zdjęcie.",
+          "subtitle": "Zdjęcie skradzionego roweru. Lepiej, jeśli zrobione z boku."
         },
         "photos": {
           "title": "Możesz dodać do {{n}} zdjęć."
         },
         "description": {
           "title": "Opisz, co się stało.",
-          "subtitle": "Im więcej szczegółów podasz na temat tego, co się stało, tym lepiej."
+          "subtitle": "Im więcej szczegółów podasz na temat tego, co się stało, tym lepiej.",
+          "placeholder": "Zostawiłem mój rower bez nadzoru na pół godziny i zniknął."
         },
         "theft_timeframe": {
           "choices": {
@@ -129,6 +131,9 @@
         "other_choice": "Inne",
         "location_address": {
           "error_msg": "Proszę wybrać adres i wybrać współrzędne."
+        },
+        "file_upload": {
+          "cta_text": "Wybierz zdjęcie."
         }
       }
     },

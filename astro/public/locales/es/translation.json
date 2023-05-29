@@ -97,14 +97,16 @@
           "subtitle": "Escriba una dirección o una ubicación y seleccione un punto en el mapa donde ocurrió el robo. Cuanto más preciso, mejor."
         },
         "main_photo": {
-          "title": "Bicicleta robada foto principal"
+          "title": "Bicicleta robada foto principal",
+          "subtitle": "Una foto de la bicicleta robada. Mejor si es tomada desde el costado."
         },
         "photos": {
           "title": "Puede agregar hasta {{n}} fotos."
         },
         "description": {
           "title": "Describir lo que sucedió.",
-          "subtitle": "Cuanto más detalles proporciones sobre lo que sucedió, mejor."
+          "subtitle": "Cuanto más detalles proporciones sobre lo que sucedió, mejor.",
+          "placeholder": "Dejé mi bicicleta sin supervisión durante media hora y desapareció."
         },
         "theft_timeframe": {
           "choices": {
@@ -129,6 +131,9 @@
         "other_choice": "Otros",
         "location_address": {
           "error_msg": "Por favor, seleccione una dirección y elija las coordenadas."
+        },
+        "file_upload": {
+          "cta_text": "Seleccionar una foto."
         }
       }
     },

@@ -12,7 +12,7 @@
       "title": "Bike theft report",
       "subtitle": "Insert bike theft related data, they will be added to the search engine",
       "buttons": {
-        "next": "Next.",
+        "next": "Next",
         "back": "Back",
         "submit": "Submit report."
       },
@@ -97,14 +97,16 @@
           "subtitle": "Type an address or a location and select a map point where the theft happened. The more precise, the better."
         },
         "main_photo": {
-          "title": "Stolen bike main photo"
+          "title": "Stolen bike main photo",
+          "subtitle": "A photo of the stolen bike. Better if taken from the side."
         },
         "photos": {
           "title": "You can add up to {{n}} photos"
         },
         "description": {
           "title": "Describe what happened",
-          "subtitle": "The more details you give about what happened, the better"
+          "subtitle": "The more details you give about what happened, the better",
+          "placeholder": "I left my bike unattended for half hour and it was gone"
         },
         "theft_timeframe": {
           "choices": {
@@ -129,6 +131,9 @@
         "other_choice": "Other",
         "location_address": {
           "error_msg": "Please select an address and choose coordinates"
+        },
+        "file_upload": {
+          "cta_text": "Select a photo"
         }
       }
     },
