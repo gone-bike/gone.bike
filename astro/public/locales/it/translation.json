@@ -9,8 +9,8 @@
   },
   "pages": {
     "report_form": {
-      "title": "Rapporto di furto di biciclette",
-      "subtitle": "Inserire i dati correlati al furto di biciclette, saranno aggiunti al motore di ricerca",
+      "title": "Segnalazione furto bicicletta",
+      "subtitle": "Inserire i dati correlati al furto della tua bici, saranno aggiunti al motore di ricerca",
       "buttons": {
         "next": "Avanti",
         "back": "Indietro",
@@ -80,7 +80,7 @@
             "ulock": "U-Lock",
             "folding": "Blocco pieghevole"
           },
-          "subtitle": "Seleziona una delle opzioni."
+          "subtitle": "Seleziona una delle opzioni"
         },
         "lock_anchor": {
           "title": "Punto di ancoraggio.",
