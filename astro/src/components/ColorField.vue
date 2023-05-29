@@ -41,8 +41,8 @@ function remove(tag: string) {
 <template>
     <div class="flex flex-col">
         <label :for="props.title" class="text-lg mb-2">{{ t(`forms.report.questions.${props.title}.title`) }}</label>
-        <input type="text" @keydown.enter="handleAdd" autocomplete="off" :name="props.title"
-            :placeholder="t(`forms.report.questions.${props.title}.placeholder`) as string" :id="props.title" v-model="tagModel" /> 
+        <input type="text" class="report-placeholder" @keydown.enter="handleAdd" autocomplete="off" :name="props.title"
+            :placeholder="(t(`forms.report.questions.${props.title}.placeholder`) as string)" :id="props.title" v-model="tagModel" /> 
             <span class="mt-2 text-sm font-normal text-gray-400 italic ">{{ t(`forms.report.questions.${props.title}.subtitle`)
             }}</span>
         <ul class="flex gap-2 mt-2">

@@ -86,6 +86,7 @@ let formValue = reactive({
     photos_4: '' as string | { upload: string, name: string },
     description: '',
     mail: '',
+    captchaToken: ''
 })
 
 let modelCache: Record<string, typeof bikeModelsApi.value> = reactive({})
@@ -131,18 +132,25 @@ function t(str: string, param?: {}) {
 let stack = ref<number[]>([])
 
 async function onSubmit(formData: typeof formValue) {
-    let dat = await axios.post("/api/input/report-submit", formData)
-    console.log(dat.data)
+    try {
+        let dat = await axios.post("/api/input/report-submit", formData)
+        console.log(dat.data)
+        currentPage.value = 7
+    } catch {
+        currentPage.value = 8
+    }
 }
 
 let canChange = ref<boolean>(false)
 onMounted(() => {
     canChange.value = true
+    // @ts-ignore
+    formValue.captchaToken = window.captchaToken
     window.location.hash = "#page-1"
-    window.onhashchange = function (win) {
+    window.onhashchange = function () {
         const page = +window.location.hash.slice(6)
         currentPage.value = page
-        window.scrollTo({ top: 0 })
+        window.scrollTo({ top: 0, behavior: "smooth" })
         let prevPage = stack.value[stack.value.length - 1]
         stack.value = [...stack.value, page]
         if (prevPage === 2 && page === 3) {
@@ -225,16 +233,18 @@ let currentPage = ref(1)
         </div>
         <Stepper :step="currentPage" />
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 1">
-            <AutoComplete v-model:topOffset="topOffset" v-model:new-item="formValue.bike_brand" v-model:listed="formValue.bike_brand_id"
-                :api="bikeBrandApi" title="bike_brand" />
-            <AutoComplete v-model:topOffset="topOffset" v-show="bikeModelsApi.length && !formValue.bike_brand" v-model:listed="formValue.bike_model_id"
-                v-model:new-item="formValue.bike_model" :api="bikeModelsApi" title="bike_model" />
+            <AutoComplete v-model:topOffset="topOffset" v-model:new-item="formValue.bike_brand"
+                v-model:listed="formValue.bike_brand_id" :api="bikeBrandApi" title="bike_brand" />
+            <AutoComplete v-model:topOffset="topOffset" v-show="bikeModelsApi.length && !formValue.bike_brand"
+                v-model:listed="formValue.bike_model_id" v-model:new-item="formValue.bike_model" :api="bikeModelsApi"
+                title="bike_model" />
             <InputField v-show="formValue.bike_brand && !bikeModelsApi.length" v-model="formValue.bike_model"
                 title="bike_model" />
             <ColorField v-model="formValue.colors" title="colors" />
             <div class="flex flex-col">
                 <label for="bike_details" class="mb-2 text-lg">{{ t("bike_details") }}</label>
-                <textarea name="bike_details" id="bike_details" v-model="formValue.bike_details" cols="30" rows="7"
+                <textarea name="bike_details" id="bike_details" class="report-placeholder" v-model="formValue.bike_details"
+                    cols="30" rows="7"
                     :placeholder="(i18next(`forms.report.questions.bike_details.placeholder`) as string)"> </textarea>
                 <span class="mt-2 text-sm font-normal text-gray-400 italic ">{{
                     i18next(`forms.report.questions.bike_details.subtitle`) }}</span>
@@ -258,7 +268,8 @@ let currentPage = ref(1)
                     }}</label>
                 </div>
             </div>
-            <InputField type="number" :isCurrency="props.currency" v-model="formValue.approximate_value" title="approximate_value" />
+            <InputField type="number" :isCurrency="props.currency" v-model="formValue.approximate_value"
+                title="approximate_value" />
             <div class="flex w-full justify-between">
                 <span></span>
                 <a href="#page-2"
@@ -287,7 +298,8 @@ let currentPage = ref(1)
                 :list='["tree", "gate", "fence", "post", "self_bike", "other_bike"]' />
             <div class="flex flex-col">
                 <label for="location" class="text-lg">{{ t("location") }}</label>
-                <p class="text-sm text-gray-400 mb-1 font-normal italic">{{ i18next("forms.report.questions.location.subtitle")
+                <p class="text-sm text-gray-400 mb-1 font-normal italic">{{
+                    i18next("forms.report.questions.location.subtitle")
                 }}
                 </p>
                 <GoogleMap v-model:address="formValue.location_address" v-model:coords="formValue.location_coords"
@@ -308,32 +320,23 @@ let currentPage = ref(1)
             </div>
         </div>
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 3">
-            <div class="mb-2">
-                <p  class="text-lg">{{ t("main_photo") }}</p>
-                <span class="mt-2 font-normal italic text-gray-400">{{ i18next(`forms.report.questions.main_photo.subtitle`) }}</span>
-            </div>
+
+            <p class="mb-2 text-lg">{{ t("main_photo") }}</p>
+            <p class="text-sm text-gray-400 mb-1 font-normal italic">{{i18next("forms.report.questions.main_photo.subtitle")}}</p>
 
             <FileUpload :show-alert="showAlert" v-model="formValue.main_photo" v-model:isUploading="isUploading" />
             <div v-show="formValue.main_photo">
-
-<!--                 <p class="mb-2 text-lg">{{ $props.photoTranslation.replace(props.maxUploads.toString(), `${noOfOtherUploads - 1}
-                                    / ${props.maxUploads}`) }}</p>
- -->
-
                 <p class="mb-2 text-lg">{{ $props.photoTranslation }}</p>
 
 
-                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 0" @upload="noOfOtherUploads++" :show-alert="showAlert"
-                    v-model="formValue.photos_1" />
+                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 0" @upload="noOfOtherUploads++"
+                    :show-alert="showAlert" v-model="formValue.photos_1" />
                 <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 1 && formValue.photos_1"
-                    @upload="noOfOtherUploads++"
-                    :show-alert="showAlert" v-model="formValue.photos_2" />
+                    @upload="noOfOtherUploads++" :show-alert="showAlert" v-model="formValue.photos_2" />
                 <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 2 && formValue.photos_2"
-                    @upload="noOfOtherUploads++"
-                    :show-alert="showAlert" v-model="formValue.photos_3" />
+                    @upload="noOfOtherUploads++" :show-alert="showAlert" v-model="formValue.photos_3" />
                 <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 3 && formValue.photos_3"
-                    @upload="noOfOtherUploads++"
-                    :show-alert="showAlert" v-model="formValue.photos_4" />
+                    @upload="noOfOtherUploads++" :show-alert="showAlert" v-model="formValue.photos_4" />
             </div>
             <div class="flex w-full justify-between">
                 <a href="#page-2"
@@ -347,10 +350,11 @@ let currentPage = ref(1)
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 4">
             <div class="flex flex-col">
                 <label for="description" class="mb-2 text-lg">{{ t("description") }}</label>
-                <textarea name="description"
+                <textarea name="description" class="report-placeholder"
                     :placeholder="(i18next(`forms.report.questions.description.placeholder`) as string)" id="description"
                     v-model="formValue.description" cols="30" rows="10"></textarea>
-                <span class="mt-2 font-normal italic text-gray-400">{{ i18next(`forms.report.questions.description.subtitle`) }}</span>
+                <span class="mt-2 font-normal italic text-gray-400">{{
+                    i18next(`forms.report.questions.description.subtitle`) }}</span>
             </div>
             <div class="flex w-full justify-between">
                 <a href="#page-3"
@@ -372,19 +376,35 @@ let currentPage = ref(1)
                         submitText }}</a>
             </div>
         </div>
-        <div class="flex flex-col w-full h-full justify-center" v-show="currentPage === 6">
+        <div class="flex flex-col items-center w-full h-full justify-center" v-show="currentPage === 6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="w-14 animate-spin ease-in-out h-14 text-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+            </svg>
+            <h1 class="text-3xl mb-4 font-semibold text-gray-500 mt-3 text-center">{{ i18next("pages.report_form.loading")
+            }}</h1>
+        </div>
+        <div class="flex flex-col w-full h-full justify-center" v-show="currentPage === 7">
             <EmailIcon class="h-40 text-3xl text-purple-500" />
             <h1 class="text-3xl mb-4 font-semibold text-center">{{ i18next("pages.report_form.thank.title") }}</h1>
             <h1 class="text-xl mb-4 font-semibold text-center">{{ i18next("pages.report_form.thank.sub_title") }}</h1>
         </div>
+        <div class="flex flex-col items-center w-full h-full justify-center" v-show="currentPage === 8">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="w-14 h-14 text-red-500">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+            </svg>
+            <h1 class="text-3xl mt-3 text-red-700 mb-4 font-semibold text-center">{{ i18next("pages.report_form.error_page.title") }}</h1>
+        </div>
     </div>
 </template>
-<style>:root {
+<style lang="postcss">
+:root {
     --v-calendar-datepicker-icon-color: #9333EA !important;
 }
-input::placeholder, textarea::placeholder{
-    color:#9ca3af;
-    word-spacing: 1px;
-     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-</style>
+
+.report-placeholder {
+    @apply placeholder-gray-400 font-mono
+}</style>
