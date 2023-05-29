@@ -19,7 +19,8 @@
       "thank": {
         "title": "Các sản phẩm mới đã về đến cửa hàng của chúng tôi, hãy đến và khám phá ngay hôm nay!\nXin cảm ơn!",
         "sub_title": "Đã nhận được đăng ký của bạn đúng tại chỗ."
-      }
+      },
+      "enter_here": "vi\nNhập vào"
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Cổng",
             "post": "Hàng rào",
             "self_bike": "Đến chính nó",
-            "other_bike": "Đến xe đạp khác"
+            "other_bike": "Đến xe đạp khác",
+            "fence": "Hàng rào."
           },
           "subtitle": "Nếu bạn đã neo xe đạp vào điều gì đó, vui lòng cho chúng tôi biết đó là gì."
         },

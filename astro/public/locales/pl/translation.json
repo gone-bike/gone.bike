@@ -19,7 +19,8 @@
       "thank": {
         "title": "Dziękuję!",
         "sub_title": "Twoje zgłoszenie zostało poprawnie odebrane."
-      }
+      },
+      "enter_here": "Wpisz"
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Brama",
             "post": "Płot",
             "self_bike": "Do samoistnie.",
-            "other_bike": "Do innego roweru."
+            "other_bike": "Do innego roweru.",
+            "fence": "Płot"
           },
           "subtitle": "Jeśli przypiąłeś rower do czegoś, powiedz nam, do czego to było."
         },

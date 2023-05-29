@@ -19,7 +19,8 @@
       "thank": {
         "title": "Gràcies!",
         "sub_title": "La teva submissió ha estat rebuda correctament."
-      }
+      },
+      "enter_here": "Escriviu"
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Porta",
             "post": "Valla",
             "self_bike": "A si mateix",
-            "other_bike": "A altres bicicleta."
+            "other_bike": "A altres bicicleta.",
+            "fence": "Valla"
           },
           "subtitle": "Si has lligat la bicicleta a alguna cosa, si us plau, digues-nos a què estava lligada."
         },

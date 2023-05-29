@@ -19,7 +19,8 @@
       "thank": {
         "title": "Kérjük, válassza ki a nyelvet.",
         "sub_title": "Az ön beküldése sikeresen megérkezett."
-      }
+      },
+      "enter_here": "Magyar (Hungarian) Translation: Írja be."
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Kapu",
             "post": "Kerítés",
             "self_bike": "Magának",
-            "other_bike": "A másik kerékpárhoz"
+            "other_bike": "A másik kerékpárhoz",
+            "fence": "Kerítés"
           },
           "subtitle": "Ha valamihez lehorgonyoztad a biciklit, kérjük, mondd el nekünk, hogy mi volt az."
         },
