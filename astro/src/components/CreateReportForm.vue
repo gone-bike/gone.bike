@@ -136,7 +136,7 @@ async function onSubmit(formData: typeof formValue) {
         // @ts-ignore
         formData['cf_turnstile_response'] = window.captchaToken;
         let dat = await axios.post("/api/input/report-submit", formData, {
-            validateStatus: function(status){
+            validateStatus: function (status) {
                 return status === 200
             }
         })
@@ -160,6 +160,7 @@ onMounted(() => {
         if (prevPage === 2 && page === 3) {
             if (formValue.location_address) {
                 errors.location = false
+                closeAlert()
             } else {
                 showAlert({
                     title: errorText,
@@ -181,9 +182,12 @@ onMounted(() => {
                     subtitle: waitWhileUploadError
                 })
                 window.location.hash = "#page-3"
+            } else {
+                closeAlert()
             }
         } else if (prevPage === 5 && page === 6) {
             if (formValue.mail && validateEmail(formValue.mail)) {
+                closeAlert()
                 onSubmit(toRaw(formValue))
             } else {
                 showAlert({
@@ -296,8 +300,7 @@ let currentPage = ref(1)
                 :list='["morning", "afternoon", "evening", "night"]' />
             <SelectField v-model="formValue.theft_location_type" title="location_type"
                 :list='["street", "park", "cellar", "garage", "garden", "home", "office", "car", "train"]' />
-            <SelectField v-model="formValue.lock_type" title="lock_type"
-                :list='["chain", "ulock", "folding"]' />
+            <SelectField v-model="formValue.lock_type" title="lock_type" :list='["chain", "ulock", "folding"]' />
             <SelectField v-model="formValue.lock_anchor" title="lock_anchor"
                 :list='["tree", "gate", "fence", "post", "self_bike", "other_bike"]' />
             <div class="flex flex-col">
@@ -325,17 +328,23 @@ let currentPage = ref(1)
         </div>
         <div class="flex flex-col gap-1 w-full" v-show="currentPage === 3">
             <p class="text-lg">{{ t("main_photo") }}</p>
-            <p class="text-sm text-gray-400 mb-3 font-normal italic">{{i18next("forms.report.questions.main_photo.subtitle")}}</p>
-            <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText" :show-alert="showAlert" v-model="formValue.main_photo" v-model:isUploading="isUploading" />
+            <p class="text-sm text-gray-400 mb-3 font-normal italic">
+                {{ i18next("forms.report.questions.main_photo.subtitle") }}</p>
+            <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText"
+                :show-alert="showAlert" v-model="formValue.main_photo" v-model:isUploading="isUploading" />
             <div v-show="formValue.main_photo">
                 <p class="mb-2 text-lg">{{ $props.photoTranslation }}</p>
-                <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText" v-model:isUploading="isUploading" v-show="noOfOtherUploads > 0" @upload="noOfOtherUploads++"
+                <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText"
+                    v-model:isUploading="isUploading" v-show="noOfOtherUploads > 0" @upload="noOfOtherUploads++"
                     :show-alert="showAlert" v-model="formValue.photos_1" />
-                <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText" v-model:isUploading="isUploading" v-show="noOfOtherUploads > 1 && formValue.photos_1"
+                <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText"
+                    v-model:isUploading="isUploading" v-show="noOfOtherUploads > 1 && formValue.photos_1"
                     @upload="noOfOtherUploads++" :show-alert="showAlert" v-model="formValue.photos_2" />
-                <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText" v-model:isUploading="isUploading" v-show="noOfOtherUploads > 2 && formValue.photos_2"
+                <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText"
+                    v-model:isUploading="isUploading" v-show="noOfOtherUploads > 2 && formValue.photos_2"
                     @upload="noOfOtherUploads++" :show-alert="showAlert" v-model="formValue.photos_3" />
-                <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText" v-model:isUploading="isUploading" v-show="noOfOtherUploads > 3 && formValue.photos_3"
+                <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText"
+                    v-model:isUploading="isUploading" v-show="noOfOtherUploads > 3 && formValue.photos_3"
                     @upload="noOfOtherUploads++" :show-alert="showAlert" v-model="formValue.photos_4" />
             </div>
             <div class="flex w-full justify-between">
@@ -396,7 +405,8 @@ let currentPage = ref(1)
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
             </svg>
-            <h1 class="text-3xl mt-3 text-red-700 mb-4 font-semibold text-center">{{ i18next("pages.report_form.error_page.title") }}</h1>
+            <h1 class="text-3xl mt-3 text-red-700 mb-4 font-semibold text-center">{{
+                i18next("pages.report_form.error_page.title") }}</h1>
         </div>
     </div>
 </template>
@@ -407,4 +417,5 @@ let currentPage = ref(1)
 
 .report-placeholder {
     @apply placeholder-gray-400
-}</style>
+}
+</style>

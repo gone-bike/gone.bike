@@ -17,6 +17,8 @@ const props = defineProps<{
     someThingWentWrongError: string
 }>()
 
+const isError = ref(false)
+
 const emit = defineEmits(["update:modelValue", "update:isUploading", "delete", "upload"])
 
 const fileUploadEl = ref<HTMLInputElement>()
@@ -44,6 +46,7 @@ function deleteFile() {
 }
 let uploadSignal = ref(new AbortController())
 async function handleMainFileUpload() {
+    isError.value = false
     let file = fileUploadEl.value?.files?.item(0) as File
     if (file.type.slice(0, 5) !== "image") {
         props.showAlert({
@@ -76,10 +79,11 @@ async function handleMainFileUpload() {
             emit("update:modelValue", { upload: resp.data.upload, name: resp.data.name })
         }
     } catch {
+        isError.value = true
         emit("update:isUploading", false)
         props.showAlert({
-            title:props.errorText,
-            subtitle:props.someThingWentWrongError
+            title: props.errorText,
+            subtitle: props.someThingWentWrongError
         })
     }
 }
@@ -92,12 +96,17 @@ async function handleMainFileUpload() {
                 <path
                     d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
             </svg>
-              <span class="mt-2 text-base leading-normal">{{ i18next("forms.report.questions.file_upload.cta_text") }}</span>
-            <input spellcheck="off" type='file' class="hidden" ref="fileUploadEl" @input="handleMainFileUpload" />
+            <span class="mt-2 text-base leading-normal">{{ i18next("forms.report.questions.file_upload.cta_text") }}</span>
+            <input spellcheck="false" type='file' class="hidden" ref="fileUploadEl" @input="handleMainFileUpload" />
         </label>
+        <p v-show="isError" class="text-sm flex justify-between mt-3 bg-red-200 text-red-600 p-2 font-mono">
+            <span>{{ i18next(`forms.report.questions.file_upload.error_msg`) }}</span>
+            <button @click="isError = false">&#10006;</button>
+        </p>
         <div class="w-full flex items-center flex-col">
             <div v-if="uploadData">
-                <img :src="uploadData.href" class="mt-2" :width="uploadData.width" :height="uploadData.height" :alt="uploadData.name">
+                <img :src="uploadData.href" class="mt-2" :width="uploadData.width" :height="uploadData.height"
+                    :alt="uploadData.name">
             </div>
             <div v-if="progressBarIsOpen"
                 class="w-full mt-3 relative px-1 h-10 flex justify-between items-center border rounded bg-purple-300 transition-all duration-300">
