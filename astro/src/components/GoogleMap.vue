@@ -70,8 +70,8 @@ function addressComponents(data: {
     zip
   }
 }
-async function getLocationFromCoOrd(coord: { lat: number, lng: number }): Promise<{ address: string, zip: string, city: string }> {
-  const data = await (await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coord.lat},${coord.lng}&key=${GMAP_API_KEY}`)).json()
+async function getLocationFromCoOrd(apikey: string, coord: { lat: number, lng: number }): Promise<{ address: string, zip: string, city: string }> {
+  const data = await (await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coord.lat},${coord.lng}&key=${apikey}`)).json()
   if (data.status === "OK") {
     return addressComponents(data)
   } else if (data.status === "ZERO_RESULTS") {
@@ -110,7 +110,7 @@ function syncMapProps(coords: {
 function useCurrentLocation() {
   navigator.geolocation.getCurrentPosition(async function (pos) {
     let coords = { lat: pos.coords.latitude, lng: pos.coords.longitude }
-    let resp = await getLocationFromCoOrd(coords)
+    let resp = await getLocationFromCoOrd(props.apikey, coords)
     let inputEl = document.getElementById("place-search") as HTMLInputElement
     inputEl.value = resp.address
     inputEl.value = resp.address

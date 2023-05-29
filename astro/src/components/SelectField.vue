@@ -40,7 +40,7 @@ const isOther = ref(false)
         </select>
         <div v-if="props.other" v-show="isOther" class="flex flex-col gap-2 mt-3">
             <label class="mt-2 mb-1" :for="`enter_here_${props.title}`">{{ t("pages.report_form.enter_here") }}</label>
-            <input type="text" :placeholder='(t("pages.report_form.enter_here_subtitle") as string)' :class="['w-52', !isOther ? 'border-gray-500 report-placeholder bg-gray-100 pointer-events-none' : '']"
+            <input type="text" :placeholder='(t("pages.report_form.enter_here") as string)' :class="['w-52', !isOther ? 'border-gray-500 report-placeholder bg-gray-100 pointer-events-none' : '']"
                 :value="isOther ? props.modelValue : ''" @input="handleOtherField">
         </div>
         <span v-show="!isOther" class="mt-1 text-sm font-normal text-gray-400 italic ">{{ t(`forms.report.questions.${props.title}.subtitle`)  }}</span>
