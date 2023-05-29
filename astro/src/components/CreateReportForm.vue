@@ -156,9 +156,13 @@ async function onSubmit(formData: typeof formValue) {
 let canChange = ref<boolean>(false)
 onMounted(() => {
     canChange.value = true
-    window.location.hash = "#page-1"
     window.onhashchange = function () {
-        const page = +window.location.hash.slice(6)
+        let page = 0
+        if(window.location.hash === ""){
+           page = 1         
+        }else{
+           page = +window.location.hash.slice(6)
+        }
         currentPage.value = page
         window.scrollTo({ top: 0, behavior: "smooth" })
         let prevPage = stack.value[stack.value.length - 1]
