@@ -97,7 +97,8 @@
           "subtitle": "Upišite adresu ili lokaciju i odaberite točku na karti gdje se dogodila krađa. Što preciznije, to bolje."
         },
         "main_photo": {
-          "title": "Ukradena bicikla glavna fotografija"
+          "title": "Ukradena bicikla glavna fotografija",
+          "subtitle": "Slika ukradenog bicikla. Bolje ako je snimljena s boka."
         },
         "photos": {
           "title": "Možete dodati do {{n}} fotografija."
@@ -129,6 +130,9 @@
         "other_choice": "Drugi",
         "location_address": {
           "error_msg": "Molimo odaberite adresu i odaberite koordinate."
+        },
+        "file_upload": {
+          "cta_text": "Odaberite fotografiju."
         }
       }
     },

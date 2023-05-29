@@ -97,7 +97,8 @@
           "subtitle": "Escriu una adreça o una ubicació i selecciona un punt del mapa on va succeir el robatori. Com més precís, millor."
         },
         "main_photo": {
-          "title": "Bicicleta robada foto principal"
+          "title": "Bicicleta robada foto principal",
+          "subtitle": "Una foto de la bicicleta robada. Millor si es pren des del costat."
         },
         "photos": {
           "title": "Podeu afegir fins a {{n}} fotos."
@@ -129,6 +130,9 @@
         "other_choice": "Altres",
         "location_address": {
           "error_msg": "Si us plau, seleccioneu una adreça i escolliu les coordenades."
+        },
+        "file_upload": {
+          "cta_text": "Selecciona una foto"
         }
       }
     },

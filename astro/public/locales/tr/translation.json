@@ -97,7 +97,8 @@
           "subtitle": "Bir adres veya konum yazın ve hırsızlık olayının meydana geldiği bir harita noktası seçin. Ne kadar hassas olursanız o kadar iyi."
         },
         "main_photo": {
-          "title": "Çalınmış bisiklet ana fotoğrafı"
+          "title": "Çalınmış bisiklet ana fotoğrafı",
+          "subtitle": null
         },
         "photos": {
           "title": "{{n}} fotoğraf ekleyebilirsiniz."
@@ -129,6 +130,9 @@
         "other_choice": "Diğer.",
         "location_address": {
           "error_msg": "Lütfen bir adres seçin ve koordinatları seçin."
+        },
+        "file_upload": {
+          "cta_text": "Bir fotoğraf seçin."
         }
       }
     },
