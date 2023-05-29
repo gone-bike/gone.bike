@@ -8,6 +8,7 @@ let celery_redis = new URL(process.env.CELERY_REDIS_URI || import.meta.env.CELER
  */
 
 const config = {
+    MAX_PHOTOS_UPLOAD: process.env.INTERNAL_URI || import.meta.env.INTERNAL_URI || 4,
     INTERNAL_URI: process.env.INTERNAL_URI || import.meta.env.INTERNAL_URI || 'http://localhost:3000',
     CLOUDFLARE_CAPTCHA_KEY: process.env.CLOUDFLARE_CAPTCHA_KEY || import.meta.env.CLOUDFLARE_CAPTCHA_KEY || '3x00000000000000000000FF',
     CLOUDFLARE_CAPTCHA_SECRET: process.env.CLOUDFLARE_CAPTCHA_SECRET || import.meta.env.CLOUDFLARE_CAPTCHA_SECRET || '2x0000000000000000000000000000000AA',

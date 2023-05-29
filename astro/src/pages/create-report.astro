@@ -4,11 +4,6 @@ import config from "@utils/config";
 import BaseLayout from "@layouts/Base.astro";
 import CreateReportForm from "@components/CreateReportForm.vue";
 
-const args = {
-  locale: Astro.url.searchParams.get("locale") || "en"
-};
-
-await i18next.changeLanguage(args.locale);
 
 let photoTranslation = t(`forms.report.questions.photos.title`, { n: 4 });
 
