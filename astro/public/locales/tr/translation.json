@@ -21,7 +21,7 @@
         "sub_title": "Gönderiniz başarıyla alındı."
       },
       "enter_here": "the following code to proceed: {{code123}}.\n\nAşağıdaki kodu girerek devam edin: {{code123}}.",
-      "loading": null
+      "loading": "Bekle..."
     }
   },
   "forms": {
@@ -140,6 +140,15 @@
     },
     "report_form": {
       "you_choose": "Seçiniz"
+    }
+  },
+  "components": {
+    "listing_card": {
+      "view_report_button": {
+        "title": "Raporu Görüntüle"
+      },
+      "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
+      "theft_date": "Hırsızlık Tarihi"
     }
   }
 }

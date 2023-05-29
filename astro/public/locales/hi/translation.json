@@ -21,7 +21,7 @@
         "sub_title": "आपकी जमा पूर्णतः प्राप्त हुई है।"
       },
       "enter_here": "हिन्दी.",
-      "loading": null
+      "loading": "रुको..."
     }
   },
   "forms": {
@@ -140,6 +140,15 @@
     },
     "report_form": {
       "you_choose": "चुनें।"
+    }
+  },
+  "components": {
+    "listing_card": {
+      "view_report_button": {
+        "title": "देखें रिपोर्ट"
+      },
+      "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
+      "theft_date": "चोरी की तारीख"
     }
   }
 }
