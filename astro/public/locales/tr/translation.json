@@ -70,7 +70,8 @@
             "home": "Ev",
             "office": "Ofis",
             "car": "Araba"
-          }
+          },
+          "subtitle": "Bir seçenek seçin."
         },
         "lock_type": {
           "title": "Kilit türü",
@@ -78,7 +79,8 @@
             "chain": "Zincir",
             "ulock": "U-Lock",
             "folding": "Katlanabilir kilit"
-          }
+          },
+          "subtitle": "Bir seçenek seçin."
         },
         "lock_anchor": {
           "title": "Bağlantı noktası",

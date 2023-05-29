@@ -70,7 +70,8 @@
             "home": "Dom",
             "office": "Biuro",
             "car": "Samochód"
-          }
+          },
+          "subtitle": "Wybierz jedną z opcji."
         },
         "lock_type": {
           "title": "Typ zamka",
@@ -78,7 +79,8 @@
             "chain": "Łańcuch",
             "ulock": "U-Lock",
             "folding": "Złożony zamek"
-          }
+          },
+          "subtitle": "Wybierz jedną z opcji."
         },
         "lock_anchor": {
           "title": "Punkt kotwiczenia",

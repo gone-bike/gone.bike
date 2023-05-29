@@ -70,7 +70,8 @@
             "home": "Accueil",
             "office": "Bureau",
             "car": "Sorry, there is no content provided to translate."
-          }
+          },
+          "subtitle": "Sélectionnez l'une des options."
         },
         "lock_type": {
           "title": "Type de verrouillage",
@@ -78,7 +79,8 @@
             "chain": "Chaîne",
             "ulock": "U-Lock",
             "folding": "Serrure pliante"
-          }
+          },
+          "subtitle": "Sélectionnez l'une des options."
         },
         "lock_anchor": {
           "title": "Point d'ancrage",

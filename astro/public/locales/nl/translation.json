@@ -70,7 +70,8 @@
             "home": "Thuis",
             "office": "Kantoor",
             "car": "Auto"
-          }
+          },
+          "subtitle": "Kies één van de opties."
         },
         "lock_type": {
           "title": "Type slot",
@@ -78,7 +79,8 @@
             "chain": "Keten",
             "ulock": "U-Lock",
             "folding": "Opvouwbaar slot"
-          }
+          },
+          "subtitle": "Kies één van de opties"
         },
         "lock_anchor": {
           "title": "Ankerpunt.",

@@ -70,7 +70,8 @@
             "home": "Home",
             "office": "Office",
             "car": "Car"
-          }
+          },
+          "subtitle": " "
         },
         "lock_type": {
           "title": "Lock type",
@@ -78,7 +79,8 @@
             "chain": "Chain",
             "ulock": "U-Lock",
             "folding": "Folding lock"
-          }
+          },
+          "subtitle": "Select one of the options"
         },
         "lock_anchor": {
           "title": "Anchor point",

@@ -70,7 +70,8 @@
             "home": "Trang chủ",
             "office": "Văn phòng",
             "car": "Xe hơi"
-          }
+          },
+          "subtitle": "Chọn một trong các tùy chọn."
         },
         "lock_type": {
           "title": "Loại khóa",
@@ -78,7 +79,8 @@
             "chain": "Chuỗi",
             "ulock": "U-Lock",
             "folding": "Khóa gập"
-          }
+          },
+          "subtitle": "Chọn một trong các lựa chọn."
         },
         "lock_anchor": {
           "title": "Điểm neo",

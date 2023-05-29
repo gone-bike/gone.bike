@@ -70,7 +70,8 @@
             "home": "Casa",
             "office": "Ufficio",
             "car": "Auto"
-          }
+          },
+          "subtitle": "Seleziona una delle opzioni"
         },
         "lock_type": {
           "title": "Tipo di blocco",
@@ -78,7 +79,8 @@
             "chain": "Catena",
             "ulock": "U-Lock",
             "folding": "Blocco pieghevole"
-          }
+          },
+          "subtitle": "Seleziona una delle opzioni."
         },
         "lock_anchor": {
           "title": "Punto di ancoraggio.",

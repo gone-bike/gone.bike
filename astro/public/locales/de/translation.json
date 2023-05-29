@@ -70,7 +70,8 @@
             "home": "Startseite",
             "office": "Büro",
             "car": "Auto"
-          }
+          },
+          "subtitle": "Wählen Sie eine der Optionen aus."
         },
         "lock_type": {
           "title": "Schlosstyp",
@@ -78,7 +79,8 @@
             "chain": "Kette",
             "ulock": "U-Lock",
             "folding": "Faltenschloss"
-          }
+          },
+          "subtitle": "Wählen Sie eine der Optionen aus."
         },
         "lock_anchor": {
           "title": "Ankerpunkt",

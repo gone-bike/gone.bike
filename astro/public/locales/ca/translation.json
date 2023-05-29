@@ -70,7 +70,8 @@
             "home": "Inici",
             "office": "Oficina",
             "car": "Cotxe"
-          }
+          },
+          "subtitle": "Selecciona una de les opcions."
         },
         "lock_type": {
           "title": "Tipus de bloqueig.",
@@ -78,7 +79,8 @@
             "chain": "Cadena",
             "ulock": "U-Lock",
             "folding": "Claus de plegat"
-          }
+          },
+          "subtitle": "Selecciona una de les opcions."
         },
         "lock_anchor": {
           "title": "Punt d'ancoratge",

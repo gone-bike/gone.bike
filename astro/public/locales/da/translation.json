@@ -70,7 +70,8 @@
             "home": "Hjem",
             "office": "Kontor",
             "car": "Bil"
-          }
+          },
+          "subtitle": "Vælg en af ​​mulighederne."
         },
         "lock_type": {
           "title": "Låsetype",
@@ -78,7 +79,8 @@
             "chain": "Kæde",
             "ulock": "U-Lock",
             "folding": "Sammenklappeligt lås"
-          }
+          },
+          "subtitle": "Vælg en af ​​mulighederne."
         },
         "lock_anchor": {
           "title": "Ankerpunkt",

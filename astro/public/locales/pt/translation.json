@@ -70,7 +70,8 @@
             "home": "Casa",
             "office": "Escritório",
             "car": "ro cliente, obrigado por escolher nossos serviços. Seu pedido será entregue em {{2}} dias úteis. Para acompanhar o status do seu pedido, visite nossa página de rastreamento com o número do seu pedido: {{1234}}. Obrigado novamente por sua preferência. \n\nTranslation: Caro cliente, obrigado por escolher os nossos serviços. O seu pedido será entregue em {{2}} dias úteis. Para acompanhar o estado do seu pedido, visite a nossa página de rastreio com o número do seu pedido: {{1234}}. Obrigado novamente pela sua preferência."
-          }
+          },
+          "subtitle": "Selecione uma das opções."
         },
         "lock_type": {
           "title": "Tipo de bloqueio",
@@ -78,7 +79,8 @@
             "chain": "Corrente.",
             "ulock": "U-Lock",
             "folding": "Trava dobrável."
-          }
+          },
+          "subtitle": "Selecione uma das opções."
         },
         "lock_anchor": {
           "title": "Ponto de ancoragem.",

@@ -70,7 +70,8 @@
             "home": "Domov",
             "office": "Kancelář",
             "car": "Auto"
-          }
+          },
+          "subtitle": "Vyberte jednu z možností."
         },
         "lock_type": {
           "title": "Typ zámku",
@@ -78,7 +79,8 @@
             "chain": "Řetěz.",
             "ulock": "U-Lock",
             "folding": "Skládací zámek."
-          }
+          },
+          "subtitle": "Vyberte jednu z možností."
         },
         "lock_anchor": {
           "title": "Kotvicí bod",

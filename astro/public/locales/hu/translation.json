@@ -70,7 +70,8 @@
             "home": "Otthon",
             "office": "Iroda.",
             "car": "Autó"
-          }
+          },
+          "subtitle": "Válasszon az opciók közül"
         },
         "lock_type": {
           "title": "Zártípus",
@@ -78,7 +79,8 @@
             "chain": "Lánc",
             "ulock": "U-Lock",
             "folding": "Hajtogató lakat."
-          }
+          },
+          "subtitle": "Válasszon az opciók közül."
         },
         "lock_anchor": {
           "title": "Horgonyzó pont.",

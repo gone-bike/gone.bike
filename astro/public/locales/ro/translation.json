@@ -70,7 +70,8 @@
             "home": "Acasă",
             "office": "Birou",
             "car": "Automobil"
-          }
+          },
+          "subtitle": "Selectați una dintre opțiuni."
         },
         "lock_type": {
           "title": "Tipul de blocare",
@@ -78,7 +79,8 @@
             "chain": "Lanț",
             "ulock": "U-Lock",
             "folding": "Încuietoare pliabilă"
-          }
+          },
+          "subtitle": "Selectați una dintre opțiuni."
         },
         "lock_anchor": {
           "title": "Punct de ancorare.",

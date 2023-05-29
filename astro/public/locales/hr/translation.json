@@ -70,7 +70,8 @@
             "home": "Domaćište",
             "office": "ured",
             "car": "Auto"
-          }
+          },
+          "subtitle": "Odaberite jednu od opcija."
         },
         "lock_type": {
           "title": "Vrsta brave",
@@ -78,7 +79,8 @@
             "chain": "Lanac",
             "ulock": "U-Lock",
             "folding": "Sklapajući katanac."
-          }
+          },
+          "subtitle": "Izaberite jednu od opcija."
         },
         "lock_anchor": {
           "title": "Sidrišna točka",
