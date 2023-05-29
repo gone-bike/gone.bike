@@ -87,7 +87,6 @@ let formValue = reactive({
     photos_4: '' as string | { upload: string, name: string },
     description: '',
     mail: '',
-    captchaToken: ''
 })
 
 let modelCache: Record<string, typeof bikeModelsApi.value> = reactive({})
@@ -134,6 +133,7 @@ let stack = ref<number[]>([])
 
 async function onSubmit(formData: typeof formValue) {
     try {
+        formData['cf_turnstile_response'] = window.captchaToken;
         let dat = await axios.post("/api/input/report-submit", formData)
         console.log(dat.data)
         currentPage.value = 7
@@ -145,8 +145,6 @@ async function onSubmit(formData: typeof formValue) {
 let canChange = ref<boolean>(false)
 onMounted(() => {
     canChange.value = true
-    // @ts-ignore
-    formValue.captchaToken = window.captchaToken
     window.location.hash = "#page-1"
     window.onhashchange = function () {
         const page = +window.location.hash.slice(6)
