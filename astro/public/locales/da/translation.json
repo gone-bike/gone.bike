@@ -97,7 +97,8 @@
           "subtitle": "Skriv en adresse eller placering og vælg et punkt på kortet, hvor tyveriet skete. Jo mere præcist jo bedre."
         },
         "main_photo": {
-          "title": "Stjålet cykel hovedfoto"
+          "title": "Stjålet cykel hovedfoto",
+          "subtitle": "Et foto af den stjålne cykel. Bedst hvis taget fra siden."
         },
         "photos": {
           "title": "Du kan tilføje op til {{n}} billeder."
@@ -129,6 +130,9 @@
         "other_choice": "Andejfjfjdf.jdjdj.",
         "location_address": {
           "error_msg": "Vælg venligst en adresse og vælg koordinater."
+        },
+        "file_upload": {
+          "cta_text": "Vælg et foto."
         }
       }
     },

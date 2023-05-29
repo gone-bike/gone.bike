@@ -97,7 +97,8 @@
           "subtitle": "Geben Sie eine Adresse oder einen Standort ein und wählen Sie einen Kartenpunkt aus, an dem der Diebstahl stattgefunden hat. Je genauer, desto besser."
         },
         "main_photo": {
-          "title": "Gestohlenes Fahrrad Hauptfoto"
+          "title": "Gestohlenes Fahrrad Hauptfoto",
+          "subtitle": "Ein Foto des gestohlenen Fahrrads. Besser, wenn es von der Seite aufgenommen wurde."
         },
         "photos": {
           "title": "Sie können bis zu {{n}} Fotos hinzufügen."
@@ -129,6 +130,9 @@
         "other_choice": "Andere.",
         "location_address": {
           "error_msg": "Bitte wählen Sie eine Adresse aus und wählen Sie Koordinaten aus."
+        },
+        "file_upload": {
+          "cta_text": "Wählen Sie ein Foto."
         }
       }
     },

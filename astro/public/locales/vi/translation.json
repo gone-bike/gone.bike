@@ -97,7 +97,8 @@
           "subtitle": "Nhập địa chỉ hoặc vị trí và chọn một điểm trên bản đồ nơi mà việc trộm xảy ra. Càng chính xác càng tốt."
         },
         "main_photo": {
-          "title": "Ảnh chính của chiếc xe đạp bị đánh cắp"
+          "title": "Ảnh chính của chiếc xe đạp bị đánh cắp",
+          "subtitle": null
         },
         "photos": {
           "title": "Bạn có thể thêm lên đến {{n}} ảnh."
@@ -129,6 +130,9 @@
         "other_choice": "Điều khác",
         "location_address": {
           "error_msg": "Vui lòng chọn địa chỉ và chọn tọa độ."
+        },
+        "file_upload": {
+          "cta_text": "Chọn một bức ảnh."
         }
       }
     },

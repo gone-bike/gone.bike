@@ -97,7 +97,8 @@
           "subtitle": "Escriba una dirección o una ubicación y seleccione un punto en el mapa donde ocurrió el robo. Cuanto más preciso, mejor."
         },
         "main_photo": {
-          "title": "Bicicleta robada foto principal"
+          "title": "Bicicleta robada foto principal",
+          "subtitle": null
         },
         "photos": {
           "title": "Puede agregar hasta {{n}} fotos."
@@ -129,6 +130,9 @@
         "other_choice": "Otros",
         "location_address": {
           "error_msg": "Por favor, seleccione una dirección y elija las coordenadas."
+        },
+        "file_upload": {
+          "cta_text": "Seleccionar una foto."
         }
       }
     },

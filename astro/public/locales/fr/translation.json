@@ -97,7 +97,8 @@
           "subtitle": "Entrez une adresse ou un lieu et sélectionnez un point sur la carte où le vol s'est produit. Plus c'est précis, mieux c'est."
         },
         "main_photo": {
-          "title": "Vélo volé photo principale"
+          "title": "Vélo volé photo principale",
+          "subtitle": "Une photo du vélo volé. Mieux vaut si elle est prise de côté."
         },
         "photos": {
           "title": "Vous pouvez ajouter jusqu'à {{n}} photos."
@@ -129,6 +130,9 @@
         "other_choice": "Autre",
         "location_address": {
           "error_msg": "Veuillez sélectionner une adresse et choisir les coordonnées."
+        },
+        "file_upload": {
+          "cta_text": null
         }
       }
     },

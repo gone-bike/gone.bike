@@ -97,7 +97,8 @@
           "subtitle": "Wpisz adres lub lokalizację i wybierz punkt na mapie, gdzie doszło do kradzieży. Im dokładniej, tym lepiej."
         },
         "main_photo": {
-          "title": "Skradziony rower główne zdjęcie."
+          "title": "Skradziony rower główne zdjęcie.",
+          "subtitle": null
         },
         "photos": {
           "title": "Możesz dodać do {{n}} zdjęć."
@@ -129,6 +130,9 @@
         "other_choice": "Inne",
         "location_address": {
           "error_msg": "Proszę wybrać adres i wybrać współrzędne."
+        },
+        "file_upload": {
+          "cta_text": "Wybierz zdjęcie."
         }
       }
     },

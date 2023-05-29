@@ -97,7 +97,8 @@
           "subtitle": "Zadejte adresu nebo místo a vyberte bod na mapě, kde došlo k odcizení. Čím přesnější, tím lépe."
         },
         "main_photo": {
-          "title": "Odcizené kolo hlavní foto."
+          "title": "Odcizené kolo hlavní foto.",
+          "subtitle": "Fotografie odcizeného kola. Lepší, když je pořízená ze strany."
         },
         "photos": {
           "title": "Můžete přidat až {{n}} fotografií."
@@ -129,6 +130,9 @@
         "other_choice": "Jiné.",
         "location_address": {
           "error_msg": "Vyberte prosím adresu a zvolte souřadnice."
+        },
+        "file_upload": {
+          "cta_text": "Vyberte fotografii."
         }
       }
     },

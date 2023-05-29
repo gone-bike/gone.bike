@@ -97,7 +97,8 @@
           "subtitle": "Introduceți o adresă sau o locație și selectați un punct de pe hartă unde a avut loc furtul. Cu cât este mai precis, cu atât este mai bine."
         },
         "main_photo": {
-          "title": "Fotografia principală a bicicletei furate"
+          "title": "Fotografia principală a bicicletei furate",
+          "subtitle": null
         },
         "photos": {
           "title": "Poți adăuga până la {{n}} fotografii."
@@ -129,6 +130,9 @@
         "other_choice": "Alte",
         "location_address": {
           "error_msg": "Vă rugăm să selectați o adresă și să alegeți coordonatele."
+        },
+        "file_upload": {
+          "cta_text": "Selectați o fotografie."
         }
       }
     },
