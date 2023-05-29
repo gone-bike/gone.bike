@@ -120,7 +120,7 @@ function searchEnter(result?: string) {
             }}</label>
             <div :id="`dropdown-${props.title}`" class="w-full">
                 <input @focus="firstClick = true" :id="`dropdown-label-${props.title}`"
-                    :placeholder="t(`forms.report.questions.${props.title}.placeholder`) as string" class="z-10 w-full"
+                    :placeholder="(t(`forms.report.questions.${props.title}.placeholder`) as string)" class="z-10 w-full report-placeholder"
                     @keydown.enter="function () { searchEnter() }" @keydown.arrow-down="searchKeyDown"
                     @keydown.arrow-up="searchKeyUp" @focusin="isOpen = true" :value="searchQuery" type="search"
                     @input="handleChange">
