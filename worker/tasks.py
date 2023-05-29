@@ -204,6 +204,17 @@ def report_submit(self, *args, **kwargs):
             bike_model = bike_model["data"][0]["id"]
 
 
+    language= None
+    if "language" in kwargs:
+        url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/language?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
+
+        language = requests.get(f'{url}&filter[locale_code][_eq]={ kwargs.get("language") }')
+        if language.status_code == 200:
+            language = language.json()
+            if len(language["data"]) == 1:
+                language = language["data"][0]["id"]
+
+
     # @TODO colors will be submitted in different languages, normalization function here is due
     try:
         colors = kwargs.get("colors","").replace('/',',').replace( 'and ', ',').split(',') if 'colors' in kwargs else []
@@ -221,10 +232,12 @@ def report_submit(self, *args, **kwargs):
         "approximate_value": kwargs.get("approximate_value"),
         "approximate_value_currency": kwargs.get("approximate_value_currency"),
         "colors": colors,
-        "is_electric": bool(kwargs.get("is_electric")) if kwargs.get('is_electrict') else None,
+        "is_electric": bool(kwargs.get("is_electric")) if kwargs.get('is_electric') else None,
         "theft_date": kwargs.get("theft_date"),
         "theft_timeframe": kwargs.get("theft_timeframe"),
         "theft_location_type": kwargs.get("theft_location_type"),
+        "language" : language,
+        "bike_type": kwargs.get('bike_type'),
         "lock_type": kwargs.get("lock_type"),
         "lock_anchor": kwargs.get("lock_anchor"),
         "location_address": kwargs.get("location_address"),
