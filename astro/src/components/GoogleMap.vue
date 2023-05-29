@@ -3,7 +3,6 @@ import { onMounted, ref } from "vue"
 // @ts-ignore
 import { Loader } from "@utils/gmap"
 import './gmap.d.ts'
-import config from "@utils/config"
 
 import { t } from "i18next"
 
@@ -16,13 +15,14 @@ interface Props {
     city: string,
     zip: string
   },
-  address: string
+  address: string,
+  apikey: string
 }
 
 const props = defineProps<Props>()
 const emit = defineEmits(["update:coords", "update:details", "update:address"])
 
-let GMAP_API_KEY = config.GMAP_API_KEY
+let GMAP_API_KEY = "mykey"
 
 let placeRef = ref<HTMLInputElement>()
 
@@ -87,7 +87,6 @@ async function getLocationFromCoOrd(coord: { lat: number, lng: number }): Promis
   }
 }
 
-const loader = new Loader({ apiKey: GMAP_API_KEY, libraries: ["places"] })
 
 const mapRef = ref<HTMLDivElement>()
 
@@ -125,6 +124,8 @@ function useCurrentLocation() {
 onMounted(async () => {
   const isSupported = 'navigator' in window && "geolocation" in navigator
   if (isSupported) {
+    const loader = new Loader({ apiKey: props.apikey, libraries: ["places"] })
+
     await loader.load()
     let coords = { lat: props.coords.lat, lng: props.coords.lng }
     map.value = new google.maps.Map(mapRef.value!, {

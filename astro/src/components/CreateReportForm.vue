@@ -32,7 +32,8 @@ const props = defineProps<{
     photoRequiredError: string,
     waitWhileUploadError: string,
     validEmailError: string,
-    someThingWentWrongError: string
+    someThingWentWrongError: string,
+    mapsApiKey: string
 }>()
 
 let errorText = props.errorText
@@ -96,7 +97,7 @@ watch(() => formValue.bike_brand_id, async function (val) {
         if (modelCache[val]) {
             bikeModelsApi.value = modelCache[val]
         } else {
-            const modelData = await (await fetch(`${location.origin}/api/bike_model.json?brand=${val}`)).json()
+            const modelData = await (await fetch(`/api/bike_model.json?brand=${val}`)).json()
             bikeModelsApi.value = modelData.data
             modelCache[val] = modelData.data
         }
@@ -110,7 +111,8 @@ let theftDateUnformated = ref<Date>(new Date(Date.now()))
 watchEffect(() => {
     let date = theftDateUnformated.value
     if (date) {
-        formValue.theft_date = `${date.getFullYear()}-${date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth()}-${date.getDate() < 10 ? `0${date.getDate()}`: date.getDate() }`
+        let month = date.getMonth()+1, day = date.getDate();
+        formValue.theft_date = `${date.getFullYear()}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}`: day }`
     }
 })
 
@@ -309,7 +311,7 @@ let currentPage = ref(1)
                     i18next("forms.report.questions.location.subtitle")
                 }}
                 </p>
-                <GoogleMap v-model:address="formValue.location_address" v-model:coords="formValue.location_coords"
+                <GoogleMap :apikey="mapsApiKey" v-model:address="formValue.location_address" v-model:coords="formValue.location_coords"
                     v-model:details="formValue.location_details" />
                 <p v-show="errors.location" class="text-sm flex justify-between mt-3 bg-red-200 text-red-600 p-2 font-mono">
                     <span>{{ i18next(`forms.report.questions.location_address.error_msg`) }}</span>

@@ -8,11 +8,12 @@ let celery_redis = new URL(process.env.CELERY_REDIS_URI || import.meta.env.CELER
  */
 
 const config = {
+    INTERNAL_URI: process.env.INTERNAL_URI || import.meta.env.INTERNAL_URI || 'http://localhost:3000',
     CLOUDFLARE_CAPTCHA_KEY: process.env.CLOUDFLARE_CAPTCHA_KEY || import.meta.env.CLOUDFLARE_CAPTCHA_KEY || '3x00000000000000000000FF',
     CLOUDFLARE_CAPTCHA_SECRET: process.env.CLOUDFLARE_CAPTCHA_SECRET || import.meta.env.CLOUDFLARE_CAPTCHA_SECRET || '2x0000000000000000000000000000000AA',
-    
+
     GMAP_API_KEY: process.env.GMAP_API_KEY || import.meta.env.GMAP_API_KEY,
-    
+
     DEV_DATA_MODE: process.env.DEV_DATA_MODE || import.meta.env.DEV_DATA_MODE || 0,
 
     IMG_MAX_H: process.env.IMG_MAX_H || import.meta.env.IMG_MAX_H || 2048,
@@ -45,9 +46,9 @@ const config = {
      * @returns Response
      */
     http404: async function () {
-        let html, status, url = process.env.NOT_FOUND_INTERNAL_URL || import.meta.env.NOT_FOUND_INTERNAL_URL || "http://localhost:3000/404"
+        let html, status, url = process.env.NOT_FOUND_INTERNAL_URL || import.meta.env.NOT_FOUND_INTERNAL_URL || "/404"
         try {
-            const response = await fetch(url);
+            const response = await fetch(`${this.INTERNAL_URI}${url}`);
             html = await response.body;
             status = 404
         } catch (e) {

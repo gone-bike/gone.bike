@@ -6,9 +6,11 @@ export default {
   ],
   routes: {
     it: {
+      "create-report": "segnala-furto",
       report: "denuncia",
     },
     es: {
+
       report: "denuncia",
     },
     fr: {

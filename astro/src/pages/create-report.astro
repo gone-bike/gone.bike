@@ -22,7 +22,8 @@ let validEmailError = "Enter valid email";
 let someThingWentWrongError = "Something went wrong"
 
 try {
-  fff = await (await fetch('/api/bike_brand.json')).json();
+  fff = await (await fetch(`${config.INTERNAL_URI}/api/bike_brand.json`)).json();
+  console.log(fff)
 } catch (e) {
   console.log("Error");
 }
@@ -70,6 +71,7 @@ try {
           waitWhileUploadError={waitWhileUploadError}
           validEmailError={validEmailError}
           someThingWentWrongError={someThingWentWrongError}
+          mapsApiKey={config.GMAP_API_KEY}
           />
       </div>
     </div>
