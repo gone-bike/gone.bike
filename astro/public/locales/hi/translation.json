@@ -139,12 +139,19 @@
           "cta_text": "फोटो का चयन करें।"
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "सीरियल नंबर",
+          "subtitle": "यह आमतौर पर बाइक फ्रेम पर स्थित होता है, पैडल्स के बीच।"
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "बाइक प्रकार",
+          "subtitle": "एक विकल्प चुनें।",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

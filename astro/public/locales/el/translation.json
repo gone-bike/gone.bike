@@ -139,12 +139,19 @@
           "cta_text": "Επιλέξτε μια φωτογραφία"
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Αριθμός σειράς",
+          "subtitle": "Συνήθως βρίσκεται στο σκελετό του ποδηλάτου, ανάμεσα στα πεντάλ."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Τύπος ποδηλάτου",
+          "subtitle": "Επιλέξτε μία επιλογή.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

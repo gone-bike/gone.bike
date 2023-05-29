@@ -139,12 +139,19 @@
           "cta_text": "Chọn một bức ảnh."
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Số serial",
+          "subtitle": "Thường được đặt trên khung xe đạp, giữa hai bàn đạp."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Loại xe đạp",
+          "subtitle": "Chọn một tùy chọn",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

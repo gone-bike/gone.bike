@@ -139,12 +139,19 @@
           "cta_text": "Vælg et foto."
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Serienummer",
+          "subtitle": "Det er normalt placeret på cykelrammen, mellem pedalerne."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Cykeltype",
+          "subtitle": null,
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

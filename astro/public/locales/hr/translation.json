@@ -139,12 +139,19 @@
           "cta_text": "Odaberite fotografiju."
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Serijiski broj",
+          "subtitle": "Obično se nalazi na okviru bicikla, između pedala."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Vrsta bicikla",
+          "subtitle": "Odaberite jednu opciju.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

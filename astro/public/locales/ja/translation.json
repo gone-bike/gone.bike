@@ -139,12 +139,19 @@
           "cta_text": "写真を選択する"
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "シリアル番号",
+          "subtitle": "通常、自転車のフレームとペダルの間に設置されます。"
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "バイクタイプ",
+          "subtitle": "選択肢を1つ選択してください。",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

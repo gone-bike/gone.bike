@@ -140,11 +140,18 @@
         },
         "serial_number": {
           "title": "Сериен номер",
-          "subtitle": null
+          "subtitle": "Обикновено се намира на рамката на велосипеда, между педалите."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Вид на велосипеда",
+          "subtitle": "Изберете една опция.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

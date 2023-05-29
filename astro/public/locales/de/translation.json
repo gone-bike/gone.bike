@@ -139,12 +139,19 @@
           "cta_text": "Wählen Sie ein Foto."
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Seriennummer",
+          "subtitle": "Es befindet sich normalerweise am Fahrradrahmen zwischen den Pedalen."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Fahrradtyp",
+          "subtitle": "Wählen Sie eine Option.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

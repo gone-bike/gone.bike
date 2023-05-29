@@ -139,12 +139,19 @@
           "cta_text": "Sélectionnez une photo."
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Numéro de série",
+          "subtitle": "Il est généralement situé sur le cadre du vélo, entre les pédales."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Type de vélo",
+          "subtitle": "Sélectionnez une option.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

@@ -144,7 +144,14 @@
         },
         "bike_type": {
           "title": "Bike type",
-          "subtitle": "Select one option"
+          "subtitle": "Select one option",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": "Folding bike",
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

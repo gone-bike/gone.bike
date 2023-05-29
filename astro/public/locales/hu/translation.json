@@ -139,12 +139,19 @@
           "cta_text": "Válasszon egy fotót."
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Sorozatszám",
+          "subtitle": "Általában a kerékpár vázán található, a pedálok között."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Bicikli típusa",
+          "subtitle": "Válasszon egy lehetőséget.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

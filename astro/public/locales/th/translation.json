@@ -139,12 +139,19 @@
           "cta_text": "เลือกรูปภาพ"
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "หมายเลขซีเรียล",
+          "subtitle": "มันตั้งอยู่บนกรอบจักรยานมักอยู่ระหว่างพีดัล"
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "ประเภทของจักรยาน",
+          "subtitle": "เลือกหนึ่งตัวเลือก",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

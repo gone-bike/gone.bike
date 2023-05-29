@@ -139,12 +139,19 @@
           "cta_text": "Vyberte fotografii."
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Sériové číslo.",
+          "subtitle": "Obvykle se nachází na rámu kola, mezi pedály."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Typ kola",
+          "subtitle": "Vyberte jednu možnost.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

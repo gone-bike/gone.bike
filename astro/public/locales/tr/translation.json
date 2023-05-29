@@ -139,12 +139,19 @@
           "cta_text": "Bir fotoğraf seçin."
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Seri Numarası",
+          "subtitle": "Genellikle bisiklet şasisinin, pedal arasında bulunur."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Bisiklet tipi.",
+          "subtitle": "Bir seçenek seçin.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

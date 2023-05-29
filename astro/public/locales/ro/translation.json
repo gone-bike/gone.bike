@@ -139,12 +139,19 @@
           "cta_text": "Selectați o fotografie."
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Număr de serie",
+          "subtitle": "De obicei, se află pe cadru bicicletei, între pedale."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Tip de bicicletă",
+          "subtitle": "Selectați o opțiune.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

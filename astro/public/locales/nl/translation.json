@@ -139,12 +139,19 @@
           "cta_text": "Selecteer een foto"
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Serienummer",
+          "subtitle": "Het bevindt zich meestal op het fietsframe tussen de pedalen."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Fiets type",
+          "subtitle": "Kies één optie.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

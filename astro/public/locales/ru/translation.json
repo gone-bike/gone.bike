@@ -139,12 +139,19 @@
           "cta_text": "Выбрать фото"
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Серийный номер",
+          "subtitle": "Обычно он расположен на велосипедном каркасе между педалями."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Тип велосипеда",
+          "subtitle": "Выберите один вариант.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

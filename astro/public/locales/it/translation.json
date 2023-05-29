@@ -139,12 +139,19 @@
           "cta_text": "Seleziona una foto."
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Numero seriale",
+          "subtitle": "Solitamente si trova sul telaio della bicicletta, tra i pedali."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Tipo di bicicletta",
+          "subtitle": "Seleziona una opzione.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

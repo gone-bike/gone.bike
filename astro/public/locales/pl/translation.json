@@ -139,12 +139,19 @@
           "cta_text": "Wybierz zdjęcie."
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Numer seryjny",
+          "subtitle": "Zazwyczaj znajduje się na ramie roweru, między pedałami."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Rodzaj roweru",
+          "subtitle": "Wybierz jedną opcję.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },

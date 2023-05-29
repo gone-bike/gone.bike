@@ -139,12 +139,19 @@
           "cta_text": "Seleccionar una foto."
         },
         "serial_number": {
-          "title": null,
-          "subtitle": null
+          "title": "Número de serie",
+          "subtitle": "Por lo general, se encuentra en el marco de la bicicleta, entre los pedales."
         },
         "bike_type": {
-          "title": null,
-          "subtitle": null
+          "title": "Tipo de bicicleta",
+          "subtitle": "Seleccionar una opción",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike"
+          }
         }
       }
     },
