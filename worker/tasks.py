@@ -12,6 +12,7 @@ from celery.exceptions import SoftTimeLimitExceeded
 import weaviate
 from weaviate.util import generate_uuid5
 
+from mailer import send_email
 
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
@@ -307,6 +308,21 @@ def report_submit(self, *args, **kwargs):
     # @TODO - some error control
     print(data.status_code)
     print(data.json())
+
+
+     # @TODO temporary strings
+    x = send_email(
+        kwargs.get("email"),
+        os.environ["WORKER_MAIL_FROM"],
+        "Enable your report",
+        "test message txt",
+        "test message html",
+        relay=os.environ["WORKER_MAIL_RELAY"],
+        dkim_private_key_path=os.environ["WORKER_MAIL_DKIM_PEM_PATH"],
+        dkim_selector=os.environ["WORKER_MAIL_DKIM_SELECTOR"],
+    );
+
+    print(x)
 
 
     return 'ok'

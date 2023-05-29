@@ -23,7 +23,6 @@ let someThingWentWrongError = "Something went wrong"
 
 try {
   fff = await (await fetch(`${config.INTERNAL_URI}/api/bike_brand.json`)).json();
-  console.log(fff)
 } catch (e) {
   console.log("Error");
 }

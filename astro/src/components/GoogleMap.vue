@@ -22,8 +22,6 @@ interface Props {
 const props = defineProps<Props>()
 const emit = defineEmits(["update:coords", "update:details", "update:address"])
 
-let GMAP_API_KEY = "mykey"
-
 let placeRef = ref<HTMLInputElement>()
 
 function addressComponents(data: {

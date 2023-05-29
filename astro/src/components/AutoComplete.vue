@@ -21,6 +21,9 @@ const prevQuery = ref<string[]>([])
 const searchQuery = ref('')
 const queryResults = computed(() => {
     prevQuery.value = queryResults.value
+    if (props.api.length == 0) {
+        return [ searchQuery.value ];
+    }
     let tempresult = props.api.map(e => e.value).filter(q => q.toLowerCase().includes(searchQuery.value.toLowerCase()))
     let result = startIdx.value === 0 ? tempresult : tempresult.slice(startIdx.value, tempresult.length - 1)
     if (result.length === 0) {
