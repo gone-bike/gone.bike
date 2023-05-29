@@ -155,9 +155,13 @@ def test(self, *args, **kwargs):
 
 
 
+### When a new report entry is submitted to the website, it enters a queue that is then processed by this function
 @app.task(bind=True, acks_late=False)
 def report_submit(self, *args, **kwargs):
     print(kwargs)
+
+
+    # Bike brand / model normalization: if existing at db level, use it, otherwise create a new entry
 
     bike_brand = None
     bike_model = None
@@ -199,11 +203,14 @@ def report_submit(self, *args, **kwargs):
             bike_model = bike_model["data"][0]["id"]
 
 
+    # @TODO colors will be submitted in different languages, normalization function here is due
     try:
         colors = kwargs.get("colors","").replace('/',',').replace( 'and ', ',').split(',') if 'colors' in kwargs else []
         colors = list(map(lambda c : slugify(c) , colors))
     except Exception as e:
         colors = []
+
+
 
     entry = {
         "bike_brand_model": bike_model,
@@ -228,12 +235,12 @@ def report_submit(self, *args, **kwargs):
 
     }
 
+
+    # Location can be either explicit coordinates or an address that is then geocoded using Nominatim. Best effort approach
     if kwargs.get('location_coords'):
         entry['location'] = { "coordinates": [ kwargs.get("location_coords",{}).get('lng'), kwargs.get("location_coords",{}).get('lat') ], "type": "Point"}
 
     elif kwargs.get('location_address_raw'):
-
-
         location = geocode(kwargs.get('location_address_raw'))
         try:
             entry['location_address'] = location.address
@@ -247,8 +254,7 @@ def report_submit(self, *args, **kwargs):
 
 
 
-    # return 'ok'
-
+    # Files are sent as either full URLs or <upload,name> tuples. They are imported in Directus using directus API
     uploads = {}
     for pid in range(0,9):
         e = 'main_photo' if pid == 0 else f'photos_{pid}'
@@ -265,6 +271,7 @@ def report_submit(self, *args, **kwargs):
             print(f"Importing {photo_url}")
 
 
+            # @TODO - env-based folder ids
             url = f'{os.environ["WORKER_DIRECTUS_URI"]}/files/import?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
             data = requests.post(url, json={
                 "url": photo_url,
@@ -276,18 +283,11 @@ def report_submit(self, *args, **kwargs):
             })
             response = data.json()
             uploads[e] = response["data"]["id"]
-        # "bike_brand_model":{
-        #     "bike_brand": {
-        #         "key":"aa",
-        #         "name":"bb"
-        #     },
-        #     "name":"xcccc"
-        # }
+
 
     entry["main_photo"] = uploads.get('main_photo')
 
-    entry["photos"] = {
-        "create": [ ] }
+    entry["photos"] = { "create": [ ] }
 
     for x in uploads:
       if x != 'main_photo':
@@ -304,14 +304,9 @@ def report_submit(self, *args, **kwargs):
     url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/report?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
     data = requests.post(url, json=entry)
 
+    # @TODO - some error control
     print(data.status_code)
     print(data.json())
 
 
     return 'ok'
-
-
-#     // POST /files/import
-
-
-#     print(kwargs)
