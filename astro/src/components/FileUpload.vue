@@ -18,6 +18,7 @@ const props = defineProps<{
 }>()
 
 const isError = ref(false)
+const cancelError = ref(false)
 
 const emit = defineEmits(["update:modelValue", "update:isUploading", "delete", "upload"])
 
@@ -42,11 +43,13 @@ function deleteFile() {
     emit("update:isUploading", false)
     progressBarIsOpen.value = false
     uploadData.value = undefined
+    cancelError.value = true
     emit("update:modelValue", "")
 }
 let uploadSignal = ref(new AbortController())
 async function handleMainFileUpload() {
     isError.value = false
+    cancelError.value = false
     let file = fileUploadEl.value?.files?.item(0) as File
     if (file.type.slice(0, 5) !== "image") {
         props.showAlert({
@@ -79,7 +82,9 @@ async function handleMainFileUpload() {
             emit("update:modelValue", { upload: resp.data.upload, name: resp.data.name })
         }
     } catch {
-        isError.value = true
+        if (!cancelError.value) {
+            isError.value = true
+        }
         emit("update:isUploading", false)
         props.showAlert({
             title: props.errorText,
@@ -102,6 +107,10 @@ async function handleMainFileUpload() {
         <p v-show="isError" class="text-sm flex justify-between mt-3 bg-red-200 text-red-600 p-2 font-mono">
             <span>{{ i18next(`forms.report.questions.file_upload.error_msg`) }}</span>
             <button @click="isError = false">&#10006;</button>
+        </p>
+        <p v-show="cancelError" class="text-sm flex justify-between mt-3 bg-red-200 text-red-600 p-2 font-mono">
+            <span>{{ i18next(`forms.report.questions.file_upload.cancel_error_msg`) }}</span>
+            <button @click="cancelError = false">&#10006;</button>
         </p>
         <div class="w-full flex items-center flex-col">
             <div v-if="uploadData">
