@@ -110,7 +110,7 @@ let theftDateUnformated = ref<Date>(new Date(Date.now()))
 watchEffect(() => {
     let date = theftDateUnformated.value
     if (date) {
-        formValue.theft_date = `${date.getFullYear()}-${date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth()}-${date.getDate()}`
+        formValue.theft_date = `${date.getFullYear()}-${date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth()}-${date.getDate() < 10 ? `0${date.getDate()}`: date.getDate() }`
     }
 })
 
