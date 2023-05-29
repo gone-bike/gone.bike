@@ -175,7 +175,7 @@ def report_submit(self, *args, **kwargs):
         bike_brand_slug = slugify(kwargs['bike_brand'])
         bike_brand = requests.get(f'{url}&filter[key][_eq]={ bike_brand_slug }')
         if bike_brand.status_code != 200:
-            return {"status": "fail", "input": kwargs, "output": bike_brand.content }
+            return {"status": "fail", "output": bike_brand.content }
         bike_brand = bike_brand.json()
 
         if len(bike_brand["data"]) == 0:
@@ -185,17 +185,17 @@ def report_submit(self, *args, **kwargs):
         else:
             bike_brand = bike_brand["data"][0]["id"]
 
-    if "bike_model_id" in kwargs and bike_model and kwargs.get('bike_model_id') != "":
-        bike_model = int(kwargs.get('bike_model_id'))
+    # if "bike_model_id" in kwargs and kwargs.get('bike_model_id') != "":
+    #     bike_model = int(kwargs.get('bike_model_id'))
 
-    elif "bike_model" in kwargs and bike_brand:
+    if "bike_model" in kwargs:
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand_model?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
 
         bike_model_slug = slugify(kwargs['bike_model'])
 
         bike_model = requests.get(f'{url}&filter[key][_eq]={ bike_model_slug }')
         if bike_model.status_code != 200:
-            return {"status": "fail", "input": kwargs }
+            return {"status": "fail", "output": bike_model.content  }
         bike_model = bike_model.json()
         if len(bike_model["data"]) == 0:
             bike_model = requests.post(url, json={ "bike_brand": bike_brand, "key": bike_model_slug, "name": kwargs["bike_model"] }).json()
@@ -233,9 +233,10 @@ def report_submit(self, *args, **kwargs):
         "description": kwargs.get("description"),
         "email": kwargs.get("email"),
         "ref_url": kwargs.get("ref_url"),
-
     }
 
+    print("Entry...")
+    print(json.dumps(entry))
 
     # Location can be either explicit coordinates or an address that is then geocoded using Nominatim. Best effort approach
     if kwargs.get('location_coords'):

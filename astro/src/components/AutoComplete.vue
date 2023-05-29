@@ -125,7 +125,7 @@ function searchEnter(result?: string) {
                 <input @focus="firstClick = true" :id="`dropdown-label-${props.title}`"
                     :placeholder="(t(`forms.report.questions.${props.title}.placeholder`) as string)" class="z-10 w-full report-placeholder"
                     @keydown.enter="function () { searchEnter() }" @keydown.arrow-down="searchKeyDown"
-                    @keydown.arrow-up="searchKeyUp" @focusin="isOpen = true" :value="searchQuery" type="search"
+                    @keydown.arrow-up="searchKeyUp" @focusin="isOpen = true" :value="searchQuery" type="search" autocomplete="off"
                     @input="handleChange">
                 <div
                     :class="['border-gray-400 mt-1 border top-26 z-50 absolute w-full h-fit max-h-64 overflow-y-scroll bg-white', { 'hidden': !isOpen }]">
