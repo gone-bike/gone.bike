@@ -31,7 +31,8 @@ const props = defineProps<{
     addressFieldRequiredError: string,
     photoRequiredError: string,
     waitWhileUploadError: string,
-    validEmailError: string
+    validEmailError: string,
+    someThingWentWrongError: string
 }>()
 
 let errorText = props.errorText
@@ -231,7 +232,7 @@ let currentPage = ref(1)
                 </svg>
             </button>
         </div>
-        <Stepper :step="currentPage" />
+        <Stepper v-if="currentPage < 6" :step="currentPage" />
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 1">
             <AutoComplete v-model:topOffset="topOffset" v-model:new-item="formValue.bike_brand"
                 v-model:listed="formValue.bike_brand_id" :api="bikeBrandApi" title="bike_brand" />
@@ -293,7 +294,7 @@ let currentPage = ref(1)
             <SelectField v-model="formValue.theft_location_type" title="location_type"
                 :list='["street", "park", "cellar", "garage", "garden", "home", "office", "car", "train"]' />
             <SelectField v-model="formValue.lock_type" title="lock_type"
-                :list='["chain", "ulock", "folding"]' />
+                :list='["chain", "lock", "no_lock", "unlock", "fold"]' />
             <SelectField v-model="formValue.lock_anchor" title="lock_anchor"
                 :list='["tree", "gate", "fence", "post", "self_bike", "other_bike"]' />
             <div class="flex flex-col">
@@ -319,23 +320,19 @@ let currentPage = ref(1)
                         nextText }}</a>
             </div>
         </div>
-        <div class="flex flex-col gap-12 w-full" v-show="currentPage === 3">
-
-            <p class="mb-2 text-lg">{{ t("main_photo") }}</p>
-            <p class="text-sm text-gray-400 mb-1 font-normal italic">{{i18next("forms.report.questions.main_photo.subtitle")}}</p>
-
-            <FileUpload :show-alert="showAlert" v-model="formValue.main_photo" v-model:isUploading="isUploading" />
+        <div class="flex flex-col gap-1 w-full" v-show="currentPage === 3">
+            <p class="text-lg">{{ t("main_photo") }}</p>
+            <p class="text-sm text-gray-400 mb-3 font-normal italic">{{i18next("forms.report.questions.main_photo.subtitle")}}</p>
+            <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText" :show-alert="showAlert" v-model="formValue.main_photo" v-model:isUploading="isUploading" />
             <div v-show="formValue.main_photo">
                 <p class="mb-2 text-lg">{{ $props.photoTranslation }}</p>
-
-
-                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 0" @upload="noOfOtherUploads++"
+                <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText" v-model:isUploading="isUploading" v-show="noOfOtherUploads > 0" @upload="noOfOtherUploads++"
                     :show-alert="showAlert" v-model="formValue.photos_1" />
-                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 1 && formValue.photos_1"
+                <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText" v-model:isUploading="isUploading" v-show="noOfOtherUploads > 1 && formValue.photos_1"
                     @upload="noOfOtherUploads++" :show-alert="showAlert" v-model="formValue.photos_2" />
-                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 2 && formValue.photos_2"
+                <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText" v-model:isUploading="isUploading" v-show="noOfOtherUploads > 2 && formValue.photos_2"
                     @upload="noOfOtherUploads++" :show-alert="showAlert" v-model="formValue.photos_3" />
-                <FileUpload v-model:isUploading="isUploading" v-show="noOfOtherUploads > 3 && formValue.photos_3"
+                <FileUpload :someThingWentWrongError="props.someThingWentWrongError" :errorText="props.errorText" v-model:isUploading="isUploading" v-show="noOfOtherUploads > 3 && formValue.photos_3"
                     @upload="noOfOtherUploads++" :show-alert="showAlert" v-model="formValue.photos_4" />
             </div>
             <div class="flex w-full justify-between">
