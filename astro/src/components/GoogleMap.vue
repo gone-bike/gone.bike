@@ -181,7 +181,7 @@ onMounted(async () => {
 <template>
   <div class="w-full">
     <div class="flex w-full gap-2 items-center">
-      <input autocomplete="off" :placeholder="(t('forms.report.questions.location.placeholder') as string)" id="place-search" type="text" class="my-4 w-full report-placeholder" ref="placeRef" />
+      <input spellcheck="off" autocomplete="off" :placeholder="(t('forms.report.questions.location.placeholder') as string)" id="place-search" type="text" class="my-4 w-full report-placeholder" ref="placeRef" />
       <button @click="useCurrentLocation"
         class="p-2 rounded-xl bg-purple-300  text-purple-900 hover:bg-purple-400 focus:bg-purple-400">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
