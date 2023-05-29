@@ -134,7 +134,11 @@ let stack = ref<number[]>([])
 async function onSubmit(formData: typeof formValue) {
     try {
         formData['cf_turnstile_response'] = window.captchaToken;
-        let dat = await axios.post("/api/input/report-submit", formData)
+        let dat = await axios.post("/api/input/report-submit", formData, {
+            validateStatus: function(status){
+                return status === 200
+            }
+        })
         console.log(dat.data)
         currentPage.value = 7
     } catch {
