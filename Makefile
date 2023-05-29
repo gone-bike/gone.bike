@@ -15,10 +15,10 @@ update: ## ## Updates codebase & rebuild. Used in production deploy pipeline
 	docker-compose up -d worker
 
 
-sync-s3: ## ## Temporary testing dumps of s3 buckets
+sync-s3: ## target=path/to/folder ## Downloads all remote images, creates a tgz archive
 	$$(cat .env | grep AWS_ |xargs -L 1 echo export) && \
-	aws s3 ls s3://${AWS_S3_BUCKET}
-
+	aws s3 sync s3://${AWS_S3_BUCKET} ${target}
+	tar cfz ${target}/../gone.bike.images.$(date +"%Y-%m-%d").tgz ${target}
 
 dump-db: ## ## Dumps db, nullifying local references to users
 	docker-compose up -d postgresql
