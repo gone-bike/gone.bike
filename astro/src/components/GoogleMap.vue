@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue"
 // @ts-ignore
-import { Loader } from "@googlemaps/js-api-loader"
+import { Loader } from "@utils/gmap"
 import './gmap.d.ts'
 import config from "@utils/config"
 
@@ -190,7 +190,7 @@ onMounted(async () => {
           <path stroke-linecap="round" stroke-linejoin="round"
             d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
         </svg>
-      </button> 
+      </button>
     </div>
     <div ref="mapRef" style="width:100%;height: 500px"></div>
   </div>
