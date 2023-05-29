@@ -282,7 +282,7 @@ let currentPage = ref(1)
             <SelectField v-model="formValue.theft_location_type" title="location_type"
                 :list='["street", "park", "cellar", "garage", "garden", "home", "office", "car", "train"]' />
             <SelectField v-model="formValue.lock_type" title="lock_type"
-                :list='["chain", "lock", "no_lock", "unlock", "fold"]' />
+                :list='["chain", "ulock", "folding"]' />
             <SelectField v-model="formValue.lock_anchor" title="lock_anchor"
                 :list='["tree", "gate", "fence", "post", "self_bike", "other_bike"]' />
             <div class="flex flex-col">
@@ -308,7 +308,11 @@ let currentPage = ref(1)
             </div>
         </div>
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 3">
-            <p class="mb-2 text-lg">{{ t("main_photo") }}</p>
+            <div class="mb-2">
+                <p  class="text-lg">{{ t("main_photo") }}</p>
+                <span class="mt-2 font-normal italic text-gray-400">{{ i18next(`forms.report.questions.main_photo.subtitle`) }}</span>
+            </div>
+
             <FileUpload :show-alert="showAlert" v-model="formValue.main_photo" v-model:isUploading="isUploading" />
             <div v-show="formValue.main_photo">
 
