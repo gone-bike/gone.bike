@@ -2,9 +2,13 @@
 import { t } from 'i18next'
 import { ref } from 'vue';
 
-const props = withDefaults(defineProps<{ modelValue: string, title: string, list: string[], other?: boolean }>(), {
-    other: true
-})
+const props = withDefaults(defineProps<{ modelValue: string, title: string, list: string[], other?: boolean, isSort?: boolean }>(), {
+    other: true,
+    isSort: true
+});
+
+let list = props.isSort ? props.list.sort() : props.list;
+
 const emit = defineEmits(['update:modelValue'])
 
 function handleChange(e: any) {
@@ -30,7 +34,7 @@ const isOther = ref(false)
             :class='{ "bg-gray-200": isOther, "report-placeholder": props.modelValue === "" }' :value="props.modelValue"
             @input="handleChange" :name="props.title" :id="props.title">
             <option selected value="">{{ t("forms.report_form.you_choose") }}</option>
-            <option v-for="item in props.list" :key="item" :value="item">{{
+            <option v-for="item in list" :key="item" :value="item">{{
                 t(`forms.report.questions.${props.title}.choices.${item}`) }}</option>
             <option v-if="props.other" value="others">{{ t("forms.report.questions.other_choice") }}</option>
         </select>
