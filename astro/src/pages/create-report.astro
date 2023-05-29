@@ -2,7 +2,7 @@
 import i18next, { t } from "i18next";
 import config from "@utils/config";
 import BaseLayout from "@layouts/Base.astro";
-import Form from "@components/Form.vue";
+import CreateReportForm from "@components/CreateReportForm.vue";
 
 const args = {
   locale: Astro.url.searchParams.get("locale") || "en"
@@ -11,7 +11,7 @@ const args = {
 await i18next.changeLanguage(args.locale);
 
 let origin = new URL(Astro.url).origin;
-origin = "https://ajaythewizard-legendary-space-telegram-67xxwrjwj59crgqv-3000.preview.app.github.dev/"
+
 let photoTranslation = t(`forms.report.questions.photos.title`, { n: 4 });
 
 let fff = { data: [] };
@@ -21,6 +21,7 @@ let addressFieldRequiredError = "Address field is required";
 let photoRequiredError = "Photo is Required";
 let waitWhileUploadError = "Please wait while uploading";
 let validEmailError = "Enter valid email";
+let someThingWentWrongError = "Something went wrong"
 
 try {
   fff = await (await fetch(`${origin}/api/bike_brand.json`)).json();
@@ -58,7 +59,7 @@ try {
 
       <div class="p-10 flex justify-center items-center" id="captcha-challenge"></div>
       <div class="p-4" id="vue_app" hidden>
-        <Form
+        <CreateReportForm
           client:load
           bikeBrand={fff.data}
           lang={args.locale}
@@ -70,6 +71,7 @@ try {
           photoRequiredError={photoRequiredError}
           waitWhileUploadError={waitWhileUploadError}
           validEmailError={validEmailError}
+          someThingWentWrongError={someThingWentWrongError}
           />
       </div>
     </div>
