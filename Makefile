@@ -16,8 +16,8 @@ update: ## ## Updates codebase & rebuild. Used in production deploy pipeline
 
 
 sync-s3: ## ## Temporary testing dumps of s3 buckets
-	$$(cat .env |xargs -L 1 echo export) && \
-	aws s3 ls s3://${S3_BUCKET}
+	$$(cat .env | grep AWS_ |xargs -L 1 echo export) && \
+	aws s3 ls s3://${AWS_S3_BUCKET}
 
 
 dump-db: ## ## Dumps db, nullifying local references to users
