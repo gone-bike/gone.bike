@@ -19,7 +19,8 @@
       "thank": {
         "title": "¡Gracias!",
         "sub_title": "Tu envío ha sido recibido correctamente."
-      }
+      },
+      "enter_here": "Escriba."
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Puerta",
             "post": "Valla",
             "self_bike": "A sí mismo",
-            "other_bike": "A otras bicicletas."
+            "other_bike": "A otras bicicletas.",
+            "fence": "Cerca"
           },
           "subtitle": "Si anclaste la bicicleta a algo, por favor dinos qué era."
         },

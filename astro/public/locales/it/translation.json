@@ -19,7 +19,8 @@
       "thank": {
         "title": "Grazie!",
         "sub_title": "La tua proposta è stata ricevuta correttamente."
-      }
+      },
+      "enter_here": "Inserisci"
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Cancello",
             "post": "Recinzione",
             "self_bike": "A se stesso",
-            "other_bike": "A altre biciclette"
+            "other_bike": "A altre biciclette",
+            "fence": "Recinto"
           },
           "subtitle": "Se hai ancorato la bici a qualcosa, per favore dicci a cosa era ancorata."
         },
