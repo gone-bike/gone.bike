@@ -35,7 +35,7 @@
         "bike_model": {
           "title": "Modello di bicicletta rubata",
           "placeholder": "IE: Diverge Expert Carbon",
-          "subtitle": "Se conosci il modello della tua moto, aggiungilo qui. Se corrisponde alle suggerimenti dati, selezionalo per favore."
+          "subtitle": "Se conosci il modello della tua moto, aggiungilo qui, altrimenti lascia il campo vuoto"
         },
         "colors": {
           "title": "Bici colori principali",
@@ -64,7 +64,7 @@
             "street": "Strada",
             "park": "Parco",
             "cellar": "Cantina",
-            "garage": "Garage.",
+            "garage": "Garage",
             "train": "Treno",
             "garden": "Giardino",
             "home": "Casa",
@@ -137,6 +137,14 @@
         },
         "file_upload": {
           "cta_text": "Seleziona una foto."
+        },
+        "serial_number": {
+          "title": null,
+          "subtitle": null
+        },
+        "bike_type": {
+          "title": null,
+          "subtitle": null
         }
       }
     },

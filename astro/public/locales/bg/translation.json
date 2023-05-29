@@ -137,6 +137,14 @@
         },
         "file_upload": {
           "cta_text": "Изберете снимка."
+        },
+        "serial_number": {
+          "title": "Сериен номер",
+          "subtitle": null
+        },
+        "bike_type": {
+          "title": null,
+          "subtitle": null
         }
       }
     },

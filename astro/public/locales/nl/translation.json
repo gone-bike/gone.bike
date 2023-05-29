@@ -137,6 +137,14 @@
         },
         "file_upload": {
           "cta_text": "Selecteer een foto"
+        },
+        "serial_number": {
+          "title": null,
+          "subtitle": null
+        },
+        "bike_type": {
+          "title": null,
+          "subtitle": null
         }
       }
     },

@@ -137,6 +137,14 @@
         },
         "file_upload": {
           "cta_text": "写真を選択する"
+        },
+        "serial_number": {
+          "title": null,
+          "subtitle": null
+        },
+        "bike_type": {
+          "title": null,
+          "subtitle": null
         }
       }
     },

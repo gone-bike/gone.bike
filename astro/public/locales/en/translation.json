@@ -35,7 +35,7 @@
         "bike_model": {
           "title": "Stolen bike model",
           "placeholder": "IE: Diverge Expert Carbon",
-          "subtitle": "If you know the model of your bike, add it here. If it matches given suggestions, please select it."
+          "subtitle": "If you know the model of your bike, add it here, otherwise leave it blank"
         },
         "colors": {
           "title": "Bike main colors\n",
@@ -137,6 +137,14 @@
         },
         "file_upload": {
           "cta_text": "Select a photo"
+        },
+        "serial_number": {
+          "title": "Serial Number",
+          "subtitle": "It is usually located on the bike frame, between the pedals"
+        },
+        "bike_type": {
+          "title": "Bike type",
+          "subtitle": "Select one option"
         }
       }
     },
