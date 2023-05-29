@@ -134,7 +134,6 @@ onMounted(async () => {
     marker.value = new google.maps.Marker({
       position: coords,
       map: map.value,
-      title: "Hello World!",
       draggable: true
     });
 
