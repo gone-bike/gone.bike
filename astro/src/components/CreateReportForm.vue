@@ -133,6 +133,7 @@ let stack = ref<number[]>([])
 
 async function onSubmit(formData: typeof formValue) {
     try {
+        // @ts-ignore
         formData['cf_turnstile_response'] = window.captchaToken;
         let dat = await axios.post("/api/input/report-submit", formData, {
             validateStatus: function(status){
@@ -291,7 +292,7 @@ let currentPage = ref(1)
                     i18next(`forms.report.questions.theft_date.subtitle`) }}</span>
 
             </div>
-            <SelectField :other="false" v-model="formValue.theft_timeframe" title="theft_timeframe"
+            <SelectField :is-sort="false" :other="false" v-model="formValue.theft_timeframe" title="theft_timeframe"
                 :list='["morning", "afternoon", "evening", "night"]' />
             <SelectField v-model="formValue.theft_location_type" title="location_type"
                 :list='["street", "park", "cellar", "garage", "garden", "home", "office", "car", "train"]' />
