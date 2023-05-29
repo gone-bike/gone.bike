@@ -20,7 +20,8 @@
         "title": "Dziękuję!",
         "sub_title": "Twoje zgłoszenie zostało poprawnie odebrane."
       },
-      "enter_here": "Wpisz"
+      "enter_here": "Wpisz",
+      "loading": null
     }
   },
   "forms": {

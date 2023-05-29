@@ -20,7 +20,8 @@
         "title": "Děkuji!",
         "sub_title": "Vaše podání bylo správně přijato."
       },
-      "enter_here": "Zadejte"
+      "enter_here": "Zadejte",
+      "loading": null
     }
   },
   "forms": {

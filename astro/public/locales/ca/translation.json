@@ -20,7 +20,8 @@
         "title": "Gràcies!",
         "sub_title": "La teva submissió ha estat rebuda correctament."
       },
-      "enter_here": "Escriviu"
+      "enter_here": "Escriviu",
+      "loading": null
     }
   },
   "forms": {

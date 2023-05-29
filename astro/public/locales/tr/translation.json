@@ -20,7 +20,8 @@
         "title": "Teşekkürler!",
         "sub_title": "Gönderiniz başarıyla alındı."
       },
-      "enter_here": "the following code to proceed: {{code123}}.\n\nAşağıdaki kodu girerek devam edin: {{code123}}."
+      "enter_here": "the following code to proceed: {{code123}}.\n\nAşağıdaki kodu girerek devam edin: {{code123}}.",
+      "loading": null
     }
   },
   "forms": {

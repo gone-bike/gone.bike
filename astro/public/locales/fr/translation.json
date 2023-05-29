@@ -20,7 +20,8 @@
         "title": "Merci!",
         "sub_title": "Votre soumission a été reçue correctement."
       },
-      "enter_here": "le texte ici."
+      "enter_here": "le texte ici.",
+      "loading": null
     }
   },
   "forms": {
