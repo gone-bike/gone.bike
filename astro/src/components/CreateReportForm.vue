@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { t as i18next } from "i18next"
+import { t as i18next, resolvedLanguage } from "i18next"
 import { onMounted, reactive, ref, toRaw, watch, watchEffect } from "vue"
 
 import axios from "axios";
@@ -88,6 +88,10 @@ let formValue = reactive({
     photos_4: '' as string | { upload: string, name: string },
     description: '',
     email: '',
+    language: resolvedLanguage,
+    is_electric: "",
+    serial_number: "",
+    bike_type: "",
 })
 
 let modelCache: Record<string, typeof bikeModelsApi.value> = reactive({})
@@ -249,10 +253,16 @@ let currentPage = ref(1)
             <!-- <AutoComplete v-model:topOffset="topOffset" :api="bikeModelsApi"
                 v-model:listed="formValue.bike_model_id" v-model:new-item="formValue.bike_model"
                 title="bike_model" /> -->
-
+            
             <InputField v-model="formValue.bike_model"
                 title="bike_model" />
 
+            <InputField v-model="formValue.serial_number"
+                title="serial_number" />
+
+            <SelectField v-model="formValue.bike_type" title="bike_type"
+                :list='["bmx", "city_bike", "road_bike", "mountain_bike", "folding", "fixie", "fat", "cargo"]' />
+            
             <InputField v-show="formValue.bike_brand && !bikeModelsApi.length" v-model="formValue.bike_model"
                 title="bike_model" />
             <ColorField v-model="formValue.colors" title="colors" />
@@ -269,14 +279,14 @@ let currentPage = ref(1)
                 <label for="is_electric" class="mb-2 ita text-lg">{{ t("is_electric") }}</label>
                 <br />
                 <div class="flex items-center mt-3">
-                    <input type="radio" value="1" aria-labelledby="is_electric" class="h-4 w-4  " name="is_electric"
+                    <input type="radio" value="true" v-model="formValue.is_electric" aria-labelledby="is_electric" class="h-4 w-4 " name="is_electric"
                         id="is_electric_1">
                     <label for="is_electric_1" class="text-sm ml-2">{{
                         i18next("forms.report.questions.is_electric.choices.yes")
                     }}</label>
                 </div>
                 <div class="flex items-center mt-2">
-                    <input type="radio" value="2" aria-labelledby="is_electric" class="h-4 w-4" name="is_electric"
+                    <input type="radio" value="false" v-model="formValue.is_electric" aria-labelledby="is_electric" class="h-4 w-4" name="is_electric"
                         id="is_electric_2">
                     <label for="is_electric_2" class="text-sm ml-2">{{
                         i18next("forms.report.questions.is_electric.choices.no")
@@ -307,6 +317,7 @@ let currentPage = ref(1)
                 :list='["morning", "afternoon", "evening", "night"]' />
             <SelectField v-model="formValue.theft_location_type" title="location_type"
                 :list='["street", "park", "cellar", "garage", "garden", "home", "office", "car", "train"]' />
+            
             <SelectField v-model="formValue.lock_type" title="lock_type" :list='["chain", "ulock", "folding"]' />
             <SelectField v-model="formValue.lock_anchor" title="lock_anchor"
                 :list='["tree", "gate", "fence", "post", "self_bike", "other_bike"]' />
