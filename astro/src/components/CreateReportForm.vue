@@ -157,6 +157,7 @@ async function onSubmit(formData: typeof formValue) {
 let canChange = ref<boolean>(false)
 onMounted(() => {
     canChange.value = true
+    window.location.hash = ""
     window.onhashchange = function () {
         let page = 0
         if(window.location.hash){
