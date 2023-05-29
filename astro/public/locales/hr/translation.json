@@ -105,7 +105,8 @@
         },
         "description": {
           "title": "Opišite što se dogodilo.",
-          "subtitle": "Što više detalja date o tome što se dogodilo, to bolje."
+          "subtitle": "Što više detalja date o tome što se dogodilo, to bolje.",
+          "placeholder": "Napustio sam svoj bicikl nečuvano pola sata i nestao je."
         },
         "theft_timeframe": {
           "choices": {

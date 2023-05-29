@@ -105,7 +105,8 @@
         },
         "description": {
           "title": "Décrivez ce qui s'est passé.",
-          "subtitle": "Plus vous donnez de détails sur ce qui s'est passé, mieux c'est."
+          "subtitle": "Plus vous donnez de détails sur ce qui s'est passé, mieux c'est.",
+          "placeholder": "J'ai laissé mon vélo sans surveillance pendant une demi-heure et il a disparu."
         },
         "theft_timeframe": {
           "choices": {
@@ -132,7 +133,7 @@
           "error_msg": "Veuillez sélectionner une adresse et choisir les coordonnées."
         },
         "file_upload": {
-          "cta_text": null
+          "cta_text": "Sélectionnez une photo."
         }
       }
     },

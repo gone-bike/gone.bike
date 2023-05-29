@@ -98,14 +98,15 @@
         },
         "main_photo": {
           "title": "Foto principal da bicicleta roubada",
-          "subtitle": null
+          "subtitle": "Uma foto da bicicleta roubada. Melhor se tirada de lado."
         },
         "photos": {
           "title": "Você pode adicionar até {{n}} fotos."
         },
         "description": {
           "title": "Descreva o que aconteceu.",
-          "subtitle": "Quanto mais detalhes você der sobre o que aconteceu, melhor."
+          "subtitle": "Quanto mais detalhes você der sobre o que aconteceu, melhor.",
+          "placeholder": "Deixei minha bicicleta sem vigilância por meia hora e ela desapareceu."
         },
         "theft_timeframe": {
           "choices": {

@@ -98,14 +98,15 @@
         },
         "main_photo": {
           "title": "Çalınmış bisiklet ana fotoğrafı",
-          "subtitle": null
+          "subtitle": "Çalınan bisikletin bir fotoğrafı. Yan taraftan çekilmiş daha iyi olur."
         },
         "photos": {
           "title": "{{n}} fotoğraf ekleyebilirsiniz."
         },
         "description": {
           "title": "Ne olduğunu açıklayın.",
-          "subtitle": "Ne kadar çok detay verirseniz, olayın ne olduğu hakkında o kadar iyi olur."
+          "subtitle": "Ne kadar çok detay verirseniz, olayın ne olduğu hakkında o kadar iyi olur.",
+          "placeholder": "Yarım saat boyunca bisikletimi gözetimsiz bıraktım ve gitti."
         },
         "theft_timeframe": {
           "choices": {

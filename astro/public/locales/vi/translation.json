@@ -98,14 +98,15 @@
         },
         "main_photo": {
           "title": "Ảnh chính của chiếc xe đạp bị đánh cắp",
-          "subtitle": null
+          "subtitle": "Một bức ảnh của xe đạp bị đánh cắp. Tốt hơn nếu chụp từ bên cạnh."
         },
         "photos": {
           "title": "Bạn có thể thêm lên đến {{n}} ảnh."
         },
         "description": {
           "title": "Mô tả những gì đã xảy ra.",
-          "subtitle": "Càng nhiều chi tiết bạn cung cấp về những gì đã xảy ra, càng tốt."
+          "subtitle": "Càng nhiều chi tiết bạn cung cấp về những gì đã xảy ra, càng tốt.",
+          "placeholder": "Tôi để chiếc xe đạp của tôi không có người trông coi trong nửa tiếng và nó đã mất."
         },
         "theft_timeframe": {
           "choices": {

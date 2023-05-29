@@ -98,14 +98,15 @@
         },
         "main_photo": {
           "title": "Gestolen fiets hoofdfoto",
-          "subtitle": null
+          "subtitle": "Een foto van de gestolen fiets. Beter als deze van opzij is genomen."
         },
         "photos": {
           "title": "Je kunt maximaal {{n}} foto's toevoegen."
         },
         "description": {
           "title": "Beschrijf wat er is gebeurd.",
-          "subtitle": "Hoe meer details je geeft over wat er is gebeurd, hoe beter."
+          "subtitle": "Hoe meer details je geeft over wat er is gebeurd, hoe beter.",
+          "placeholder": "Ik liet mijn fiets een half uur onbeheerd achter en hij was weg."
         },
         "theft_timeframe": {
           "choices": {

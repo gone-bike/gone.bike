@@ -105,7 +105,8 @@
         },
         "description": {
           "title": "Beschreiben Sie, was passiert ist.",
-          "subtitle": "Je mehr Details du über das Geschehene gibst, desto besser."
+          "subtitle": "Je mehr Details du über das Geschehene gibst, desto besser.",
+          "placeholder": "Ich ließ mein Fahrrad eine halbe Stunde unbeaufsichtigt und es war weg."
         },
         "theft_timeframe": {
           "choices": {

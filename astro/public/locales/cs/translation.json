@@ -105,7 +105,8 @@
         },
         "description": {
           "title": "Popište, co se stalo.",
-          "subtitle": "Čím více podrobností poskytnete o tom, co se stalo, tím lépe."
+          "subtitle": "Čím více podrobností poskytnete o tom, co se stalo, tím lépe.",
+          "placeholder": "Nechal jsem své kolo bez dozoru půl hodiny a zmizelo."
         },
         "theft_timeframe": {
           "choices": {
