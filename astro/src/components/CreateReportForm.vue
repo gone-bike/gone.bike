@@ -405,5 +405,5 @@ let currentPage = ref(1)
 }
 
 .report-placeholder {
-    @apply placeholder-gray-400 font-mono
+    @apply placeholder-gray-400
 }</style>
