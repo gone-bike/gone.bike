@@ -245,9 +245,14 @@ let currentPage = ref(1)
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 1">
             <AutoComplete v-model:topOffset="topOffset" v-model:new-item="formValue.bike_brand"
                 v-model:listed="formValue.bike_brand_id" :api="bikeBrandApi" title="bike_brand" />
-            <AutoComplete v-model:topOffset="topOffset" :api="bikeModelsApi"
+
+            <!-- <AutoComplete v-model:topOffset="topOffset" :api="bikeModelsApi"
                 v-model:listed="formValue.bike_model_id" v-model:new-item="formValue.bike_model"
+                title="bike_model" /> -->
+
+            <InputField v-model="formValue.bike_model"
                 title="bike_model" />
+
             <InputField v-show="formValue.bike_brand && !bikeModelsApi.length" v-model="formValue.bike_model"
                 title="bike_model" />
             <ColorField v-model="formValue.colors" title="colors" />
