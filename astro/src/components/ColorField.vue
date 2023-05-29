@@ -13,9 +13,9 @@ let tagModel = ref(props.modelValue)
 
 watch(tagModel, function(val){
     if(val === "") return
-    if(val.slice(0, val.length-2).trim() === "") return
+    if(val.slice(0, val.length-1).trim() === "") return
     if(val[val.length-1]=== ","){
-        let newtags = [...tags.value, val.slice(0, val.length-2)]
+        let newtags = [...tags.value, val.slice(0, val.length-1)]
         tags.value = newtags
         emit("update:modelValue", newtags.join(","))
         tagModel.value = ""
@@ -23,7 +23,7 @@ watch(tagModel, function(val){
 })
 
 function handleAdd(){
-    if(tagModel.value.split("").map(e=>e==="," || e === " ").filter(e=>e).length) return
+    if(tagModel.value.split("").map(e=>e===",").filter(e=>e).length === tagModel.value.length) return
     if(tagModel.value.trim() && tagModel.value !== ","){
         let newLst = [...tags.value, tagModel.value.valueOf()]
         tags.value = newLst
