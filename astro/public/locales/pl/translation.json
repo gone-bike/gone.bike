@@ -98,14 +98,15 @@
         },
         "main_photo": {
           "title": "Skradziony rower główne zdjęcie.",
-          "subtitle": null
+          "subtitle": "Zdjęcie skradzionego roweru. Lepiej, jeśli zrobione z boku."
         },
         "photos": {
           "title": "Możesz dodać do {{n}} zdjęć."
         },
         "description": {
           "title": "Opisz, co się stało.",
-          "subtitle": "Im więcej szczegółów podasz na temat tego, co się stało, tym lepiej."
+          "subtitle": "Im więcej szczegółów podasz na temat tego, co się stało, tym lepiej.",
+          "placeholder": "Zostawiłem mój rower bez nadzoru na pół godziny i zniknął."
         },
         "theft_timeframe": {
           "choices": {

@@ -98,14 +98,15 @@
         },
         "main_photo": {
           "title": "Fotografia principală a bicicletei furate",
-          "subtitle": null
+          "subtitle": "O fotografie a bicicletei furate. Mai bine dacă este luată din lateral."
         },
         "photos": {
           "title": "Poți adăuga până la {{n}} fotografii."
         },
         "description": {
           "title": "Descrie ce s-a întâmplat.",
-          "subtitle": "Cu cat oferi mai multe detalii despre ce s-a intamplat, cu atat este mai bine."
+          "subtitle": "Cu cat oferi mai multe detalii despre ce s-a intamplat, cu atat este mai bine.",
+          "placeholder": "Mi-am lăsat bicicleta nesupravegheată timp de jumătate de oră și a dispărut."
         },
         "theft_timeframe": {
           "choices": {

@@ -105,7 +105,8 @@
         },
         "description": {
           "title": "Mi történt?",
-          "subtitle": "Minél több részletet ad meg arról, mi történt, annál jobb."
+          "subtitle": "Minél több részletet ad meg arról, mi történt, annál jobb.",
+          "placeholder": "Fél órán keresztül felügyelet nélkül hagytam biciklimet, és elvittek."
         },
         "theft_timeframe": {
           "choices": {

@@ -98,14 +98,15 @@
         },
         "main_photo": {
           "title": "盗まれた自転車のメイン写真",
-          "subtitle": null
+          "subtitle": "盗んだ自転車の写真。できれば横から撮ってください。"
         },
         "photos": {
           "title": "{{n}}枚の写真を追加できます。"
         },
         "description": {
           "title": "何が起こったかを説明してください。",
-          "subtitle": "何が起こったかについて詳細を提供するほど、より良いです。"
+          "subtitle": "何が起こったかについて詳細を提供するほど、より良いです。",
+          "placeholder": "私は自転車を30分間放置しておいたら、なくなっていました。"
         },
         "theft_timeframe": {
           "choices": {
