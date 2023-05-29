@@ -256,31 +256,25 @@ let currentPage = ref(1)
             <AutoComplete v-model:topOffset="topOffset" v-model:new-item="formValue.bike_brand"
                 v-model:listed="formValue.bike_brand_id" :api="bikeBrandApi" title="bike_brand" />
 
-            <!-- <AutoComplete v-model:topOffset="topOffset" :api="bikeModelsApi"
+            <!-- @TODO too much complexity to handle, left out for now
+            <AutoComplete v-model:topOffset="topOffset" :api="bikeModelsApi"
                 v-model:listed="formValue.bike_model_id" v-model:new-item="formValue.bike_model"
-                title="bike_model" /> -->
-            
+                title="bike_model" />
+            <InputField v-show="formValue.bike_brand && !bikeModelsApi.length" v-model="formValue.bike_model"
+                title="bike_model" />
+            -->
+
             <InputField v-model="formValue.bike_model"
                 title="bike_model" />
+
+            <SelectField v-model="formValue.bike_type" title="bike_type"
+                :list='["bmx", "city_bike", "road_bike", "mountain_bike", "folding", "fixie", "fat", "cargo"]' />
+
+            <ColorField v-model="formValue.colors" title="colors" />
 
             <InputField v-model="formValue.serial_number"
                 title="serial_number" />
 
-            <SelectField v-model="formValue.bike_type" title="bike_type"
-                :list='["bmx", "city_bike", "road_bike", "mountain_bike", "folding", "fixie", "fat", "cargo"]' />
-            
-            <InputField v-show="formValue.bike_brand && !bikeModelsApi.length" v-model="formValue.bike_model"
-                title="bike_model" />
-            <ColorField v-model="formValue.colors" title="colors" />
-            <div class="flex flex-col">
-                <label for="bike_details" class="mb-2 text-lg">{{ t("bike_details") }}</label>
-                <textarea name="bike_details" id="bike_details" class="report-placeholder" v-model="formValue.bike_details"
-                    cols="30" rows="7"
-                    :placeholder="(i18next(`forms.report.questions.bike_details.placeholder`) as string)"> </textarea>
-                <span class="mt-2 text-sm font-normal text-gray-400 italic ">{{
-                    i18next(`forms.report.questions.bike_details.subtitle`) }}</span>
-
-            </div>
             <div>
                 <label for="is_electric" class="mb-2 ita text-lg">{{ t("is_electric") }}</label>
                 <br />
@@ -301,6 +295,16 @@ let currentPage = ref(1)
             </div>
             <InputField type="number" :isCurrency="props.currency" v-model="formValue.approximate_value"
                 title="approximate_value" />
+
+                <div class="flex flex-col">
+                <label for="bike_details" class="mb-2 text-lg">{{ t("bike_details") }}</label>
+                <textarea name="bike_details" id="bike_details" class="report-placeholder" v-model="formValue.bike_details"
+                    cols="30" rows="7"
+                    :placeholder="(i18next(`forms.report.questions.bike_details.placeholder`) as string)"> </textarea>
+                <span class="mt-2 text-sm font-normal text-gray-400 italic ">{{
+                    i18next(`forms.report.questions.bike_details.subtitle`) }}</span>
+            </div>
+
             <div class="flex w-full justify-between">
                 <span></span>
                 <a href="#page-2"
@@ -323,7 +327,7 @@ let currentPage = ref(1)
                 :list='["morning", "afternoon", "evening", "night"]' />
             <SelectField v-model="formValue.theft_location_type" title="location_type"
                 :list='["street", "park", "cellar", "garage", "garden", "home", "office", "car", "train"]' />
-            
+
             <SelectField v-model="formValue.lock_type" title="lock_type" :list='["chain", "ulock", "folding"]' />
             <SelectField v-model="formValue.lock_anchor" title="lock_anchor"
                 :list='["tree", "gate", "fence", "post", "self_bike", "other_bike"]' />
