@@ -87,7 +87,7 @@ let formValue = reactive({
     photos_3: '' as string | { upload: string, name: string },
     photos_4: '' as string | { upload: string, name: string },
     description: '',
-    mail: '',
+    email: '',
 })
 
 let modelCache: Record<string, typeof bikeModelsApi.value> = reactive({})
@@ -382,7 +382,7 @@ let currentPage = ref(1)
             </div>
         </div>
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 5">
-            <InputField type="email" v-model="formValue.mail" title="enter_email" />
+            <InputField type="email" v-model="formValue.email" title="enter_email" />
             <div class="flex w-full justify-between">
                 <a href="#page-4"
                     class="bg-purple-600 px-4 rounded-md active:bg-purple-700 hover:bg-purple-700 font-semibold py-2 text-white">{{
