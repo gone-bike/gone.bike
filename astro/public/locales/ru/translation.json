@@ -124,7 +124,10 @@
           "subtitle": "Мы отправим вам ссылку для проверки и будем использовать вашу электронную почту только для строго связанной коммуникации.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Russian translation: Другое."
+        "other_choice": "Russian translation: Другое.",
+        "location_address": {
+          "error_msg": "Пожалуйста, выберите адрес и выберите координаты."
+        }
       }
     },
     "report_form": {

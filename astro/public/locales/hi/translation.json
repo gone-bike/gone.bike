@@ -124,7 +124,10 @@
           "subtitle": "हम आपको एक प्रमाणीकरण लिंक भेजेंगे और आपके ईमेल का सख्ती से संबंधित संचार के लिए ही उपयोग करेंगे।",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "अन्य"
+        "other_choice": "अन्य",
+        "location_address": {
+          "error_msg": "कृपया एक पता चुनें और कोआर्डिनेट चुनें।"
+        }
       }
     },
     "report_form": {

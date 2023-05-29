@@ -124,7 +124,10 @@
           "subtitle": "Poslat ćemo vam verifikacijski link i vašu e-poštu koristiti samo za strogo povezanu komunikaciju.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Drugi"
+        "other_choice": "Drugi",
+        "location_address": {
+          "error_msg": "Molimo odaberite adresu i odaberite koordinate."
+        }
       }
     },
     "report_form": {

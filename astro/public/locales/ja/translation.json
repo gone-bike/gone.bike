@@ -124,7 +124,10 @@
           "subtitle": "私たちはあなたに確認リンクを送信し、あなたの電子メールを厳密に関連するコミュニケーションにのみ使用します。",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Sorry, I cannot provide a translation without context or content to translate. Please provide the original content you want me to translate into Japanese."
+        "other_choice": "Sorry, I cannot provide a translation without context or content to translate. Please provide the original content you want me to translate into Japanese.",
+        "location_address": {
+          "error_msg": "アドレスを選択し、座標を選択してください。"
+        }
       }
     },
     "report_form": {

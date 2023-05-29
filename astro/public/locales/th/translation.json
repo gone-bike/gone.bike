@@ -124,7 +124,10 @@
           "subtitle": "เราจะส่งลิงก์การยืนยันให้คุณและใช้อีเมลของคุณเฉพาะสำหรับการสื่อสารที่เกี่ยวข้องแค่เท่านั้น",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "รายการอื่น"
+        "other_choice": "รายการอื่น",
+        "location_address": {
+          "error_msg": "โปรดเลือกที่อยู่และเลือกพิกัด"
+        }
       }
     },
     "report_form": {

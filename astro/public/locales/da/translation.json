@@ -124,7 +124,10 @@
           "subtitle": "Vi vil sende dig et verifikationslink og bruge din email kun til strikt relateret kommunikation.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Andejfjfjdf.jdjdj."
+        "other_choice": "Andejfjfjdf.jdjdj.",
+        "location_address": {
+          "error_msg": "Vælg venligst en adresse og vælg koordinater."
+        }
       }
     },
     "report_form": {

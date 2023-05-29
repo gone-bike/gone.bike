@@ -124,7 +124,10 @@
           "subtitle": "We zullen u een verificatielink sturen en uw e-mail alleen gebruiken voor strikt gerelateerde communicatie.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "than English, Dutch is also spoken in Belgium and Suriname."
+        "other_choice": "than English, Dutch is also spoken in Belgium and Suriname.",
+        "location_address": {
+          "error_msg": "Selecteer alstublieft een adres en kies coördinaten."
+        }
       }
     },
     "report_form": {
