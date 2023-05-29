@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { t as i18next, resolvedLanguage } from "i18next"
+import { t as i18next } from "i18next"
 import { onMounted, reactive, ref, toRaw, watch, watchEffect } from "vue"
 
 import axios from "axios";
@@ -33,7 +33,8 @@ const props = defineProps<{
     waitWhileUploadError: string,
     validEmailError: string,
     someThingWentWrongError: string,
-    mapsApiKey: string
+    mapsApiKey: string,
+    lang: string,
 }>()
 
 let errorText = props.errorText
@@ -88,7 +89,7 @@ let formValue = reactive({
     photos_4: '' as string | { upload: string, name: string },
     description: '',
     email: '',
-    language: resolvedLanguage,
+    language: props.lang,
     is_electric: "",
     serial_number: "",
     bike_type: "",
@@ -158,10 +159,10 @@ onMounted(() => {
     canChange.value = true
     window.onhashchange = function () {
         let page = 0
-        if(window.location.hash === ""){
-           page = 1         
-        }else{
+        if(window.location.hash){
            page = +window.location.hash.slice(6)
+        }else{
+           page = 1
         }
         currentPage.value = page
         window.scrollTo({ top: 0, behavior: "smooth" })
