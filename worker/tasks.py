@@ -167,7 +167,7 @@ def report_submit(self, *args, **kwargs):
     bike_brand = None
     bike_model = None
 
-    if "bike_brand_id" in kwargs:
+    if "bike_brand_id" in kwargs and kwargs.get('bike_brand_id') != "":
         bike_brand = int(kwargs.get('bike_brand_id'))
 
     elif "bike_brand" in kwargs and kwargs.get('bike_brand') != "":
@@ -185,7 +185,7 @@ def report_submit(self, *args, **kwargs):
         else:
             bike_brand = bike_brand["data"][0]["id"]
 
-    if "bike_model_id" in kwargs and bike_model:
+    if "bike_model_id" in kwargs and bike_model and kwargs.get('bike_model_id') != "":
         bike_model = int(kwargs.get('bike_model_id'))
 
     elif "bike_model" in kwargs and bike_brand:
