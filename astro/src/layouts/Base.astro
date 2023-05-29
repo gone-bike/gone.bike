@@ -1,6 +1,7 @@
 ---
 import { SEO } from "astro-seo";
 import Footer from "@components/Footer.astro";
+import i18next from "i18next";
 
 export interface Props {
   title: string;
@@ -23,7 +24,7 @@ const { title, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={i18next.language}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />

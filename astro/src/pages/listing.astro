@@ -3,7 +3,7 @@ import { Debug } from 'astro/components';
 
 import ListingEntry from "@components/listing/entry.astro";
 
-import i18next, { t } from "i18next";
+import i18next, { t, changeLanguage } from "i18next";
 
 import BaseLayout from "@layouts/Base.astro";
 import config from "@utils/config";
@@ -24,6 +24,8 @@ if (! listing ) {
 
 
 await i18next.changeLanguage(args.locale)
+
+changeLanguage("en")
 ---
 
 <BaseLayout title={t("test.x")} description="test">
