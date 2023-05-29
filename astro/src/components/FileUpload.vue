@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { t as i18next } from "i18next"
 import { ref } from 'vue';
 import axios from "axios"
 
@@ -12,7 +11,9 @@ const props = defineProps<{
         title: string;
         subtitle: string;
     }) => void,
-    isUploading: boolean
+    isUploading: boolean,
+    errorText: string,
+    someThingWentWrongError: string
 }>()
 
 const emit = defineEmits(["update:modelValue", "update:isUploading", "delete", "upload"])
@@ -45,15 +46,8 @@ async function handleMainFileUpload() {
     let file = fileUploadEl.value?.files?.item(0) as File
     if (file.type.slice(0, 5) !== "image") {
         props.showAlert({
-            title: "Error",
-            subtitle: "Given File is not a image"
-        })
-        return
-    }
-    if (file.type === 'image/svg+xml') {
-        props.showAlert({
-            title: "Error",
-            subtitle: "Svg Image is not supported"
+            title: props.errorText,
+            subtitle: props.someThingWentWrongError
         })
         return
     }
@@ -83,8 +77,8 @@ async function handleMainFileUpload() {
     } catch {
         emit("update:isUploading", false)
         props.showAlert({
-            title: "Error",
-            subtitle: "Oops! Something went wrong"
+            title:props.errorText,
+            subtitle:props.someThingWentWrongError
         })
     }
 }
@@ -97,16 +91,15 @@ async function handleMainFileUpload() {
                 <path
                     d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
             </svg>
-            <span class="mt-2 text-base leading-normal">{{ i18next("forms.report.questions.file_upload.cta_text")
-                }}</span>
-            <input type='file' class="hidden" ref="fileUploadEl" @input="handleMainFileUpload" />
+            <span class="mt-2 text-base leading-normal">Select a file</span>
+            <input spellcheck="off" type='file' class="hidden" ref="fileUploadEl" @input="handleMainFileUpload" />
         </label>
         <div class="w-full flex items-center flex-col">
             <div v-if="uploadData">
-                <img :src="uploadData.href" :width="uploadData.width" :height="uploadData.height" :alt="uploadData.name">
+                <img :src="uploadData.href" class="mt-2" :width="uploadData.width" :height="uploadData.height" :alt="uploadData.name">
             </div>
             <div v-if="progressBarIsOpen"
-                class="w-full relative px-1 h-10 flex justify-between items-center border rounded bg-purple-300 transition-all duration-300">
+                class="w-full mt-3 relative px-1 h-10 flex justify-between items-center border rounded bg-purple-300 transition-all duration-300">
                 <div class="h-7 text-white flex items-center bg-purple-800 rounded-md" :style="{
                     width: progressWidth
                 }">
