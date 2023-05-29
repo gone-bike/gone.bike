@@ -9,6 +9,7 @@ let celery_redis = new URL(process.env.CELERY_REDIS_URI || import.meta.env.CELER
 
 const config = {
     CLOUDFLARE_CAPTCHA_KEY: process.env.CLOUDFLARE_CAPTCHA_KEY || import.meta.env.CLOUDFLARE_CAPTCHA_KEY || '3x00000000000000000000FF',
+    CLOUDFLARE_CAPTCHA_SECRET: process.env.CLOUDFLARE_CAPTCHA_SECRET || import.meta.env.CLOUDFLARE_CAPTCHA_SECRET || '2x0000000000000000000000000000000AA',
 
     DEV_DATA_MODE: process.env.DEV_DATA_MODE || import.meta.env.DEV_DATA_MODE || 0,
 
