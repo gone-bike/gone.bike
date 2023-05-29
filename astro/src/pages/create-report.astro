@@ -5,7 +5,7 @@ import BaseLayout from "@layouts/Base.astro";
 import CreateReportForm from "@components/CreateReportForm.vue";
 
 
-let photoTranslation = t(`forms.report.questions.photos.title`, { n: 4 });
+let photoTranslation = t(`forms.report.questions.photos.title`, { n: config.MAX_PHOTOS_UPLOAD });
 
 let fff = { data: [] };
 
@@ -25,7 +25,7 @@ try {
 <BaseLayout
   title={t("pages.report_form.title")}
   description=""
-  lang={args.locale}
+  lang={i18next.language}
 >
   <div class="container max-w-3xl mx-auto my-10">
     <div class="border">
@@ -55,7 +55,7 @@ try {
         <CreateReportForm
           client:load
           bikeBrand={fff.data}
-          lang={args.locale}
+          lang={i18next.language}
           photoTranslation={photoTranslation}
           maxUploads={4}
           currency="EUR"
