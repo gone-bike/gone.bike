@@ -10,8 +10,6 @@ const args = {
 
 await i18next.changeLanguage(args.locale);
 
-let origin = new URL(Astro.url).origin;
-
 let photoTranslation = t(`forms.report.questions.photos.title`, { n: 4 });
 
 let fff = { data: [] };
@@ -24,7 +22,7 @@ let validEmailError = "Enter valid email";
 let someThingWentWrongError = "Something went wrong"
 
 try {
-  fff = await (await fetch(`${origin}/api/bike_brand.json`)).json();
+  fff = await (await fetch('/api/bike_brand.json')).json();
 } catch (e) {
   console.log("Error");
 }
