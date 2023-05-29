@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, toRaw, watch } from "vue"
+import { computed, nextTick, onBeforeMount, onMounted, ref, toRaw, watch } from "vue"
 import { t } from 'i18next'
 import { onClickOutside } from "@vueuse/core"
+import isMobile from "ismobilejs";
 
-const props = defineProps<{ api: { key: string | number, value: string }[], title: string, listed: string, newItem: string }>()
-const emit = defineEmits(['update:listed', 'update:newItem'])
+const props = defineProps<{ api: { key: string | number, value: string }[], title: string, listed: string, newItem: string, topOffset: number }>()
+const emit = defineEmits(['update:listed', 'update:newItem', 'update:topOffset'])
 const isOpen = ref(false)
 let startIdx = ref(0)
 function handleChange(e: Event) {
+    if (!firstClick.value) {
+        firstClick.value = true
+    }
     let val = (e.target as HTMLInputElement).value
     focusElIdx.value = 0
     searchQuery.value = val
@@ -24,6 +28,30 @@ const queryResults = computed(() => {
     }
     return result
 })
+let firstClick = ref(false)
+
+watch(firstClick, function (first) {
+    if (first && (isMobile(navigator.userAgent).phone || isMobile(navigator.userAgent).tablet)) {
+        if (props.title === "bike_brand") {
+            if (props.topOffset === 0) {
+                console.log(document.getElementById(`dropdown-label-${props.title}`)!.getClientRects().item(0)!.top)
+                emit("update:topOffset", document.getElementById(`dropdown-label-${props.title}`)!.getClientRects().item(0)!.top)
+                window.scrollTo({
+                    top: document.getElementById(`dropdown-label-${props.title}`)!.getClientRects().item(0)!.top,
+                    behavior: "smooth"
+                })
+            } else {
+            }
+            console.log(props.topOffset)
+        }else{
+            window.scrollTo({
+                top: props.topOffset + 150,
+                behavior: "smooth"
+            })
+        }
+    }
+})
+
 onMounted(() => {
     /**
      * Template ref wa avoided because It would have access to same element at All Instance of Autocomplete Component
@@ -31,6 +59,9 @@ onMounted(() => {
     searchEl.value = document.getElementById(`dropdown-${props.title}`) as HTMLInputElement
 })
 onClickOutside(searchEl, function () {
+    if (firstClick.value) {
+        firstClick.value = false
+    }
     isOpen.value = false
 })
 const focusElIdx = ref(0)
@@ -60,6 +91,9 @@ function searchKeyUp() {
     }
 }
 function searchEnter(result?: string) {
+    if (firstClick.value) {
+        firstClick.value = false
+    }
     if (result) {
         searchQuery.value = result
     } else {
@@ -81,11 +115,12 @@ function searchEnter(result?: string) {
 <template>
     <div class="relative w-full h-full">
         <div class="flex flex-col relative w-full">
-            <label :for="props.title" class='mb-2 text-lg w-full'>{{
+            <label :id="`dropdown-label-${props.title}`" :for="props.title" class='mb-2 text-lg w-full'>{{
                 t(`forms.report.questions.${props.title}.title`)
             }}</label>
             <div :id="`dropdown-${props.title}`" class="w-full">
-                <input :placeholder="t(`forms.report.questions.${props.title}.placeholder`) as string" class="z-10 w-full"
+                <input @focus="firstClick = true" :id="`dropdown-label-${props.title}`"
+                    :placeholder="t(`forms.report.questions.${props.title}.placeholder`) as string" class="z-10 w-full"
                     @keydown.enter="function () { searchEnter() }" @keydown.arrow-down="searchKeyDown"
                     @keydown.arrow-up="searchKeyUp" @focusin="isOpen = true" :value="searchQuery" type="search"
                     @input="handleChange">
@@ -134,4 +169,5 @@ select {
     font-size: 1rem;
     line-height: 1.5rem;
     --tw-shadow: 0 0 #0000;
-}</style>
+}
+</style>

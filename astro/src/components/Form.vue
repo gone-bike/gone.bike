@@ -19,6 +19,8 @@ import Stepper from "./Stepper.vue";
 import GoogleMap from "./GoogleMap.vue"
 
 
+let topOffset = ref(0)
+
 const props = defineProps<{
     currency: string,
     bikeBrand: { key: number, value: string }[],
@@ -223,9 +225,9 @@ let currentPage = ref(1)
         </div>
         <Stepper :step="currentPage" />
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 1">
-            <AutoComplete v-model:new-item="formValue.bike_brand" v-model:listed="formValue.bike_brand_id"
+            <AutoComplete v-model:topOffset="topOffset" v-model:new-item="formValue.bike_brand" v-model:listed="formValue.bike_brand_id"
                 :api="bikeBrandApi" title="bike_brand" />
-            <AutoComplete v-show="bikeModelsApi.length && !formValue.bike_brand" v-model:listed="formValue.bike_model_id"
+            <AutoComplete v-model:topOffset="topOffset" v-show="bikeModelsApi.length && !formValue.bike_brand" v-model:listed="formValue.bike_model_id"
                 v-model:new-item="formValue.bike_model" :api="bikeModelsApi" title="bike_model" />
             <InputField v-show="formValue.bike_brand && !bikeModelsApi.length" v-model="formValue.bike_model"
                 title="bike_model" />
