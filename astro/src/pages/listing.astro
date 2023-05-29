@@ -25,11 +25,11 @@ if (! listing ) {
 
 await i18next.changeLanguage(args.locale)
 
-changeLanguage("en")
+changeLanguage(args.locale)
 ---
 
 <BaseLayout title={t("test.x")} description="test">
   <div class="py-10 px-5 flex flex-wrap gap-6 justify-center">
-    {listing.map((report) => <ListingEntry {report} />)}
+    {listing.map((report) => <ListingEntry {report} language={args.locale} />)}
   </div>
 </BaseLayout>

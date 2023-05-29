@@ -3,8 +3,10 @@ import moment from 'moment';
 import 'moment/locale/it';
 import i18next, { t } from "i18next";
 
+const language = Astro.props.language
+
 const today = moment();
-moment.locale('en'); 
+moment.locale(language); 
 
 export interface Props {
 	report: Object;
