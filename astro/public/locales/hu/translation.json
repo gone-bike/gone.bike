@@ -20,7 +20,8 @@
         "title": "Kérjük, válassza ki a nyelvet.",
         "sub_title": "Az ön beküldése sikeresen megérkezett."
       },
-      "enter_here": "Magyar (Hungarian) Translation: Írja be."
+      "enter_here": "Magyar (Hungarian) Translation: Írja be.",
+      "loading": null
     }
   },
   "forms": {

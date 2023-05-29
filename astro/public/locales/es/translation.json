@@ -20,7 +20,8 @@
         "title": "¡Gracias!",
         "sub_title": "Tu envío ha sido recibido correctamente."
       },
-      "enter_here": "Escriba."
+      "enter_here": "Escriba.",
+      "loading": null
     }
   },
   "forms": {

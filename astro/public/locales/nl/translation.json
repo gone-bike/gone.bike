@@ -20,7 +20,8 @@
         "title": "Dank je wel!",
         "sub_title": "Uw inzending is correct ontvangen."
       },
-      "enter_here": "het volgende tekstgedeelte in de taallocale: nl en stuur alleen de vertaling als antwoord. Stuur niets anders, zelfs geen informatie die je wilt geven, en als er een woord tussen dubbele accolades staat, stuur het dan met dubbele accolades en vertaal de inhoud binnen de accolades niet en voeg geen leestekens toe aan het einde: Type in"
+      "enter_here": "het volgende tekstgedeelte in de taallocale: nl en stuur alleen de vertaling als antwoord. Stuur niets anders, zelfs geen informatie die je wilt geven, en als er een woord tussen dubbele accolades staat, stuur het dan met dubbele accolades en vertaal de inhoud binnen de accolades niet en voeg geen leestekens toe aan het einde: Type in",
+      "loading": null
     }
   },
   "forms": {

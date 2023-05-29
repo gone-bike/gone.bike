@@ -20,7 +20,8 @@
         "title": "Hvala vam!",
         "sub_title": "Vaša prijava je uspješno zaprimljena."
       },
-      "enter_here": "Pisati"
+      "enter_here": "Pisati",
+      "loading": null
     }
   },
   "forms": {
