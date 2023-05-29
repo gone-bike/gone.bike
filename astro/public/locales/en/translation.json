@@ -68,18 +68,5 @@
     "report_form": {
       "you_choose": "Select"
     }
-  },
-  "components": {
-    "report": {
-      "view_report_button" : {
-        "title": "View Report"
-      }
-    },
-    "listing": {
-      "card": {
-        "bike_brand_model": "{{bike_brand_name}} / {{bike_model_name}}"
-      }
-    },
-    "theft_date" : "Theft Date"
   }
 }
