@@ -33,7 +33,8 @@ const props = defineProps<{
     waitWhileUploadError: string,
     validEmailError: string,
     someThingWentWrongError: string,
-    mapsApiKey: string
+    mapsApiKey: string,
+    lang: string,
 }>()
 
 let errorText = props.errorText
@@ -87,7 +88,11 @@ let formValue = reactive({
     photos_3: '' as string | { upload: string, name: string },
     photos_4: '' as string | { upload: string, name: string },
     description: '',
-    mail: '',
+    email: '',
+    language: props.lang,
+    is_electric: "",
+    serial_number: "",
+    bike_type: "",
 })
 
 let modelCache: Record<string, typeof bikeModelsApi.value> = reactive({})
@@ -152,9 +157,14 @@ async function onSubmit(formData: typeof formValue) {
 let canChange = ref<boolean>(false)
 onMounted(() => {
     canChange.value = true
-    window.location.hash = "#page-1"
+    window.location.hash = ""
     window.onhashchange = function () {
-        const page = +window.location.hash.slice(6)
+        let page = 0
+        if(window.location.hash){
+           page = +window.location.hash.slice(6)
+        }else{
+           page = 1
+        }
         currentPage.value = page
         window.scrollTo({ top: 0, behavior: "smooth" })
         let prevPage = stack.value[stack.value.length - 1]
@@ -249,10 +259,16 @@ let currentPage = ref(1)
             <!-- <AutoComplete v-model:topOffset="topOffset" :api="bikeModelsApi"
                 v-model:listed="formValue.bike_model_id" v-model:new-item="formValue.bike_model"
                 title="bike_model" /> -->
-
+            
             <InputField v-model="formValue.bike_model"
                 title="bike_model" />
 
+            <InputField v-model="formValue.serial_number"
+                title="serial_number" />
+
+            <SelectField v-model="formValue.bike_type" title="bike_type"
+                :list='["bmx", "city_bike", "road_bike", "mountain_bike", "folding", "fixie", "fat", "cargo"]' />
+            
             <InputField v-show="formValue.bike_brand && !bikeModelsApi.length" v-model="formValue.bike_model"
                 title="bike_model" />
             <ColorField v-model="formValue.colors" title="colors" />
@@ -269,14 +285,14 @@ let currentPage = ref(1)
                 <label for="is_electric" class="mb-2 ita text-lg">{{ t("is_electric") }}</label>
                 <br />
                 <div class="flex items-center mt-3">
-                    <input type="radio" value="1" aria-labelledby="is_electric" class="h-4 w-4  " name="is_electric"
+                    <input type="radio" value="true" v-model="formValue.is_electric" aria-labelledby="is_electric" class="h-4 w-4 " name="is_electric"
                         id="is_electric_1">
                     <label for="is_electric_1" class="text-sm ml-2">{{
                         i18next("forms.report.questions.is_electric.choices.yes")
                     }}</label>
                 </div>
                 <div class="flex items-center mt-2">
-                    <input type="radio" value="2" aria-labelledby="is_electric" class="h-4 w-4" name="is_electric"
+                    <input type="radio" value="false" v-model="formValue.is_electric" aria-labelledby="is_electric" class="h-4 w-4" name="is_electric"
                         id="is_electric_2">
                     <label for="is_electric_2" class="text-sm ml-2">{{
                         i18next("forms.report.questions.is_electric.choices.no")
@@ -307,6 +323,7 @@ let currentPage = ref(1)
                 :list='["morning", "afternoon", "evening", "night"]' />
             <SelectField v-model="formValue.theft_location_type" title="location_type"
                 :list='["street", "park", "cellar", "garage", "garden", "home", "office", "car", "train"]' />
+            
             <SelectField v-model="formValue.lock_type" title="lock_type" :list='["chain", "ulock", "folding"]' />
             <SelectField v-model="formValue.lock_anchor" title="lock_anchor"
                 :list='["tree", "gate", "fence", "post", "self_bike", "other_bike"]' />
@@ -382,7 +399,7 @@ let currentPage = ref(1)
             </div>
         </div>
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 5">
-            <InputField type="email" v-model="formValue.mail" title="enter_email" />
+            <InputField type="email" v-model="formValue.email" title="enter_email" />
             <div class="flex w-full justify-between">
                 <a href="#page-4"
                     class="bg-purple-600 px-4 rounded-md active:bg-purple-700 hover:bg-purple-700 font-semibold py-2 text-white">{{
