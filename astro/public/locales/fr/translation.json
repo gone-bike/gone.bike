@@ -19,7 +19,8 @@
       "thank": {
         "title": "Merci!",
         "sub_title": "Votre soumission a été reçue correctement."
-      }
+      },
+      "enter_here": "le texte ici."
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Porte",
             "post": "Barrière",
             "self_bike": "À soi-même",
-            "other_bike": "Aux autres vélos"
+            "other_bike": "Aux autres vélos",
+            "fence": "Barrière."
           },
           "subtitle": "Si vous avez attaché le vélo à quelque chose, veuillez nous dire ce que c'était."
         },
@@ -124,7 +126,10 @@
           "subtitle": "Nous vous enverrons un lien de vérification et utiliserons votre adresse e-mail uniquement pour une communication strictement liée.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Autre"
+        "other_choice": "Autre",
+        "location_address": {
+          "error_msg": "Veuillez sélectionner une adresse et choisir les coordonnées."
+        }
       }
     },
     "report_form": {

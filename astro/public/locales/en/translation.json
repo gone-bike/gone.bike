@@ -19,7 +19,8 @@
       "thank": {
         "title": "Thank You!",
         "sub_title": "Your submission has been received correctly"
-      }
+      },
+      "enter_here": "Type in"
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Gate",
             "post": "Fence",
             "self_bike": "To itself",
-            "other_bike": "To other bike"
+            "other_bike": "To other bike",
+            "fence": "Fence"
           },
           "subtitle": "If you anchored the bike to something, please tell us what it was."
         },
@@ -124,7 +126,10 @@
           "subtitle": "We will send you a verification link and use your email only for strictly related communication.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Other"
+        "other_choice": "Other",
+        "location_address": {
+          "error_msg": "Please select an address and choose coordinates"
+        }
       }
     },
     "report_form": {

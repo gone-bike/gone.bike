@@ -19,7 +19,8 @@
       "thank": {
         "title": "Danke dir!",
         "sub_title": "Ihre Einsendung wurde korrekt empfangen."
-      }
+      },
+      "enter_here": "Bitte geben Sie ein."
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Tor",
             "post": "Zaun",
             "self_bike": "Zu sich selbst.",
-            "other_bike": "Zu einem anderen Fahrrad"
+            "other_bike": "Zu einem anderen Fahrrad",
+            "fence": "Zaun"
           },
           "subtitle": "Wenn Sie das Fahrrad an etwas angebunden haben, sagen Sie uns bitte, woran es angebunden war."
         },
@@ -124,7 +126,10 @@
           "subtitle": "Wir werden Ihnen einen Verifizierungslink senden und Ihre E-Mail nur für streng verwandte Kommunikation verwenden.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Andere."
+        "other_choice": "Andere.",
+        "location_address": {
+          "error_msg": "Bitte wählen Sie eine Adresse aus und wählen Sie Koordinaten aus."
+        }
       }
     },
     "report_form": {

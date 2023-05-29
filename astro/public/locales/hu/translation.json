@@ -19,7 +19,8 @@
       "thank": {
         "title": "Kérjük, válassza ki a nyelvet.",
         "sub_title": "Az ön beküldése sikeresen megérkezett."
-      }
+      },
+      "enter_here": "Magyar (Hungarian) Translation: Írja be."
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Kapu",
             "post": "Kerítés",
             "self_bike": "Magának",
-            "other_bike": "A másik kerékpárhoz"
+            "other_bike": "A másik kerékpárhoz",
+            "fence": "Kerítés"
           },
           "subtitle": "Ha valamihez lehorgonyoztad a biciklit, kérjük, mondd el nekünk, hogy mi volt az."
         },
@@ -124,7 +126,10 @@
           "subtitle": "Egy ellenőrző linket fogunk küldeni Önnek és az e-mailjét csak szigorúan kapcsolódó kommunikációra használjuk.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "cannot modify your account information. {{Please}} contact customer service for assistance."
+        "other_choice": "cannot modify your account information. {{Please}} contact customer service for assistance.",
+        "location_address": {
+          "error_msg": "Kérjük, válasszon egy címet és válassza ki a koordinátákat."
+        }
       }
     },
     "report_form": {

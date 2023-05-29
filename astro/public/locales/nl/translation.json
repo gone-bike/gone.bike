@@ -19,7 +19,8 @@
       "thank": {
         "title": "Dank je wel!",
         "sub_title": "Uw inzending is correct ontvangen."
-      }
+      },
+      "enter_here": "het volgende tekstgedeelte in de taallocale: nl en stuur alleen de vertaling als antwoord. Stuur niets anders, zelfs geen informatie die je wilt geven, en als er een woord tussen dubbele accolades staat, stuur het dan met dubbele accolades en vertaal de inhoud binnen de accolades niet en voeg geen leestekens toe aan het einde: Type in"
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Gate",
             "post": "Hek",
             "self_bike": "Aan zichzelf",
-            "other_bike": "Naar andere fiets."
+            "other_bike": "Naar andere fiets.",
+            "fence": "Hek"
           },
           "subtitle": "Als je de fiets aan iets hebt vastgemaakt, vertel ons dan waar het aan vastgemaakt was."
         },
@@ -124,7 +126,10 @@
           "subtitle": "We zullen u een verificatielink sturen en uw e-mail alleen gebruiken voor strikt gerelateerde communicatie.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "than English, Dutch is also spoken in Belgium and Suriname."
+        "other_choice": "than English, Dutch is also spoken in Belgium and Suriname.",
+        "location_address": {
+          "error_msg": "Selecteer alstublieft een adres en kies coördinaten."
+        }
       }
     },
     "report_form": {

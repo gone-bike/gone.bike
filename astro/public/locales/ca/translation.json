@@ -19,7 +19,8 @@
       "thank": {
         "title": "Gràcies!",
         "sub_title": "La teva submissió ha estat rebuda correctament."
-      }
+      },
+      "enter_here": "Escriviu"
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Porta",
             "post": "Valla",
             "self_bike": "A si mateix",
-            "other_bike": "A altres bicicleta."
+            "other_bike": "A altres bicicleta.",
+            "fence": "Valla"
           },
           "subtitle": "Si has lligat la bicicleta a alguna cosa, si us plau, digues-nos a què estava lligada."
         },
@@ -124,7 +126,10 @@
           "subtitle": "Us enviarem un enllaç de verificació i utilitzarem el vostre correu electrònic només per a comunicació estrictament relacionada.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Altres"
+        "other_choice": "Altres",
+        "location_address": {
+          "error_msg": "Si us plau, seleccioneu una adreça i escolliu les coordenades."
+        }
       }
     },
     "report_form": {

@@ -19,7 +19,8 @@
       "thank": {
         "title": "Děkuji!",
         "sub_title": "Vaše podání bylo správně přijato."
-      }
+      },
+      "enter_here": "Zadejte"
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Brána.",
             "post": "Plot.",
             "self_bike": "K sobě samému.",
-            "other_bike": "K jinému kolu."
+            "other_bike": "K jinému kolu.",
+            "fence": "Plot"
           },
           "subtitle": "Pokud jste kotvu kolovali na něčem, řekněte nám, co to bylo."
         },
@@ -124,7 +126,10 @@
           "subtitle": "Pošleme vám ověřovací odkaz a vaši e-mailovou adresu použijeme pouze pro přísně související komunikaci.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Jiné."
+        "other_choice": "Jiné.",
+        "location_address": {
+          "error_msg": "Vyberte prosím adresu a zvolte souřadnice."
+        }
       }
     },
     "report_form": {

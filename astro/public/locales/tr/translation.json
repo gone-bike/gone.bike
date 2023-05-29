@@ -19,7 +19,8 @@
       "thank": {
         "title": "Teşekkürler!",
         "sub_title": "Gönderiniz başarıyla alındı."
-      }
+      },
+      "enter_here": "the following code to proceed: {{code123}}.\n\nAşağıdaki kodu girerek devam edin: {{code123}}."
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Kapı",
             "post": "Çit",
             "self_bike": "Kendine",
-            "other_bike": "Diğer bisiklete"
+            "other_bike": "Diğer bisiklete",
+            "fence": "Çit"
           },
           "subtitle": "Eğer bisikleti bir şeye bağladıysanız, bize ne olduğunu söyleyin."
         },
@@ -124,7 +126,10 @@
           "subtitle": "Size doğrulama bağlantısı göndereceğiz ve e-postanızı sadece sıkı ilişkili iletişim için kullanacağız.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Diğer."
+        "other_choice": "Diğer.",
+        "location_address": {
+          "error_msg": "Lütfen bir adres seçin ve koordinatları seçin."
+        }
       }
     },
     "report_form": {

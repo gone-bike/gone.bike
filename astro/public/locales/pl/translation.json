@@ -19,7 +19,8 @@
       "thank": {
         "title": "Dziękuję!",
         "sub_title": "Twoje zgłoszenie zostało poprawnie odebrane."
-      }
+      },
+      "enter_here": "Wpisz"
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Brama",
             "post": "Płot",
             "self_bike": "Do samoistnie.",
-            "other_bike": "Do innego roweru."
+            "other_bike": "Do innego roweru.",
+            "fence": "Płot"
           },
           "subtitle": "Jeśli przypiąłeś rower do czegoś, powiedz nam, do czego to było."
         },
@@ -124,7 +126,10 @@
           "subtitle": "Wyślemy ci link weryfikacyjny i będziemy korzystać z twojego adresu e-mail wyłącznie do celów związanych z komunikacją.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Inne"
+        "other_choice": "Inne",
+        "location_address": {
+          "error_msg": "Proszę wybrać adres i wybrać współrzędne."
+        }
       }
     },
     "report_form": {

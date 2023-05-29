@@ -19,7 +19,8 @@
       "thank": {
         "title": "O meu nome é Sarah e eu sou uma assistente virtual. Como posso ajudá-lo hoje? \n\nMinha língua local é o português. Como posso ajudá-lo hoje?",
         "sub_title": "Sua submissão foi recebida corretamente."
-      }
+      },
+      "enter_here": "the following content:\n\n\"Welcome to our website! Our products are high quality and affordably priced. {{Stay tuned for upcoming promotions and discounts}}. Thank you for visiting!\"\n\nBem-vindo ao nosso site! Nossos produtos são de alta qualidade e com preço acessível. {{Fique ligado para próximas promoções e descontos}}. Obrigado pela visita!"
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Portão",
             "post": "Cerca",
             "self_bike": "Para si mesmo",
-            "other_bike": "Para outras bicicletas."
+            "other_bike": "Para outras bicicletas.",
+            "fence": "Cerca"
           },
           "subtitle": "Se você ancorou a bicicleta em algo, por favor nos diga o que era."
         },
@@ -124,7 +126,10 @@
           "subtitle": "Enviaremos um link de verificação e usaremos seu e-mail apenas para comunicação estritamente relacionada.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Outro"
+        "other_choice": "Outro",
+        "location_address": {
+          "error_msg": "Por favor, selecione um endereço e escolha as coordenadas."
+        }
       }
     },
     "report_form": {

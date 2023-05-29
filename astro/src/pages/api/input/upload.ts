@@ -5,10 +5,52 @@ import path from 'path'
 import sharp from 'sharp'
 import config from '@utils/config'
 
-// File routes export a get() function, which gets called to generate the file.
-// Return an object with `body` to save the file contents in your final build.
-// If you export a post() function, you can catch post requests, and respond accordingly
 export async function post({ request }: APIContext) {
+
+  // const SECRET_KEY = '';
+
+	// const token = body.get('cf-turnstile-response');
+	// const ip = request.headers.get('CF-Connecting-IP');
+
+	// // Validate the token by calling the
+	// // "/siteverify" API endpoint.
+	// let formData = new FormData();
+	// formData.append('secret', SECRET_KEY);
+	// formData.append('response', token);
+	// formData.append('remoteip', ip);
+	// const idempotencyKey = crypto.randomUUID();
+	// formData.append('idempotency_key', idempotencyKey);
+
+	// const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+	// const firstResult = await fetch(url, {
+	// 	body: formData,
+	// 	method: 'POST',
+	// });
+	// const firstOutcome = await firstResult.json();
+	// if (firstOutcome.success) {
+	// 	// ...
+	// }
+
+	// // A subsequent validation request to the "/siteverify"
+	// // API endpoint for the same token as before, providing
+	// // the associated idempotency key as well.
+	// const subsequentResult = await fetch(url, {
+	// 	body: formData,
+	// 	method: 'POST',
+	// });
+
+	// const subsequentOutcome = await firstResult.json();
+	// if (!subsequentOutcome.success) {
+  //     return new Response(JSON.stringify({ error: 'captcha failure' }), {
+  //       status: 403,
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       }
+  //     });
+	// }
+
+
+
   const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"));
   const targetFolder = path.join(__dirname, '../../../../public/tmp' )
   const formData = await request.formData();

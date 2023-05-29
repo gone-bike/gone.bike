@@ -6,7 +6,7 @@ import { localizePath } from "astro-i18next";
 import BaseLayout from "@layouts/Base.astro";
 
 changeLanguage(Astro.url.searchParams.get("locale") || "en");
-
+console.log(i18next.language)
 ---
 
 <BaseLayout title={t("homepage.title")} lang={i18next.language} description="">

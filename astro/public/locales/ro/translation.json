@@ -19,7 +19,8 @@
       "thank": {
         "title": "Mulțumesc!",
         "sub_title": "Trimiterea ta a fost primită corect."
-      }
+      },
+      "enter_here": "ro: Scrieți."
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Poartă",
             "post": "Gard",
             "self_bike": "În sine",
-            "other_bike": "Către altă bicicletă."
+            "other_bike": "Către altă bicicletă.",
+            "fence": "Plasă"
           },
           "subtitle": "Dacă ați ancorat bicicleta într-un obiect, vă rugăm să ne spuneți la ce ați ancorat-o."
         },
@@ -124,7 +126,10 @@
           "subtitle": "Vă vom trimite un link de verificare și vom utiliza adresa dvs. de email doar pentru comunicare strict legată de acest scop.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Alte"
+        "other_choice": "Alte",
+        "location_address": {
+          "error_msg": "Vă rugăm să selectați o adresă și să alegeți coordonatele."
+        }
       }
     },
     "report_form": {

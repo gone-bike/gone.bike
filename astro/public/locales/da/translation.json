@@ -19,7 +19,8 @@
       "thank": {
         "title": "Tak skal du have!",
         "sub_title": "Din indsendelse er blevet modtaget korrekt."
-      }
+      },
+      "enter_here": "Oversæt følgende indhold til sprog locale: da og send kun oversættelsen som svar. Send ikke noget andet, selvom du har oplysninger, du gerne vil give, og hvis der er et ord inde i dobbelte krølleparenteser {{}}, så send det med dobbelt krølleparenteser og uden at oversætte indholdet inde i parenteserne, og tilføj ikke tegnsætning i slutningen: Type in"
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Porten.",
             "post": "Hegn",
             "self_bike": "Til sig selv.",
-            "other_bike": "Til andre cykler."
+            "other_bike": "Til andre cykler.",
+            "fence": "Hegn"
           },
           "subtitle": "Hvis du har ankring af cyklen til noget, så fortæl os venligst, hvad det var."
         },
@@ -124,7 +126,10 @@
           "subtitle": "Vi vil sende dig et verifikationslink og bruge din email kun til strikt relateret kommunikation.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Andejfjfjdf.jdjdj."
+        "other_choice": "Andejfjfjdf.jdjdj.",
+        "location_address": {
+          "error_msg": "Vælg venligst en adresse og vælg koordinater."
+        }
       }
     },
     "report_form": {

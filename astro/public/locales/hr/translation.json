@@ -19,7 +19,8 @@
       "thank": {
         "title": "Hvala vam!",
         "sub_title": "Vaša prijava je uspješno zaprimljena."
-      }
+      },
+      "enter_here": "Pisati"
     }
   },
   "forms": {
@@ -85,7 +86,8 @@
             "gate": "Vrata",
             "post": "Ograda",
             "self_bike": "Samom sebi",
-            "other_bike": "Do you mean \"To another bike\" or \"To other bikers\"? Please provide more context."
+            "other_bike": "Do you mean \"To another bike\" or \"To other bikers\"? Please provide more context.",
+            "fence": "Ograda"
           },
           "subtitle": "Ako ste zakvačili bicikl za nešto, molimo vas da nam kažete na što ste ga zakvačili."
         },
@@ -124,7 +126,10 @@
           "subtitle": "Poslat ćemo vam verifikacijski link i vašu e-poštu koristiti samo za strogo povezanu komunikaciju.",
           "placeholder": "IE: my.email@email.com"
         },
-        "other_choice": "Drugi"
+        "other_choice": "Drugi",
+        "location_address": {
+          "error_msg": "Molimo odaberite adresu i odaberite koordinate."
+        }
       }
     },
     "report_form": {
