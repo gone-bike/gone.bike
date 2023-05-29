@@ -3,6 +3,7 @@ import { onMounted, ref } from "vue"
 // @ts-ignore
 import { Loader } from "@googlemaps/js-api-loader"
 import './gmap.d.ts'
+import config from "@utils/config"
 
 import { t } from "i18next"
 
@@ -21,7 +22,7 @@ interface Props {
 const props = defineProps<Props>()
 const emit = defineEmits(["update:coords", "update:details", "update:address"])
 
-let GMAP_API_KEY = "AIzaSyAsg25KoeTUKIX_cuHAx4GWoLgESDRGgnU"
+let GMAP_API_KEY = config.GMAP_API_KEY
 
 let placeRef = ref<HTMLInputElement>()
 
