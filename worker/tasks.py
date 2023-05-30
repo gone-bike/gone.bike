@@ -1,4 +1,7 @@
-import sys, os, json, logging, time, requests, psycopg2, base64
+import sys, os, json, logging, time, requests, psycopg2, base64, dotmap, re
+import weaviate
+
+import utils
 
 from slugify import slugify
 from time import time as tm
@@ -9,10 +12,7 @@ from celery.signals import celeryd_after_setup
 from celery.signals import task_failure
 from celery.exceptions import SoftTimeLimitExceeded
 
-import weaviate
 from weaviate.util import generate_uuid5
-
-from mailer import send_email
 
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
@@ -25,7 +25,6 @@ from dotenv import load_dotenv
 geolocator = Nominatim(user_agent="gone.bike")
 geocode = RateLimiter(geolocator.geocode, min_delay_seconds=10, error_wait_seconds=20)
 
-
 app = Celery('tasks')
 app.config_from_object({
     'worker_prefetch_multiplier': os.environ["WORKER_PREFETCH_MULTIPLIER"],
@@ -35,13 +34,8 @@ app.config_from_object({
     }
 })
 
-def fetch_picture(id):
-    url = f'{os.environ["WORKER_DIRECTUS_URI"]}/assets/{id}?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
-    print(url)
-    data = requests.get(url)
-    if 200 == data.status_code:
-        return base64.b64encode(data.content)
-    raise Exception(f"HTTP code: {data.status_code} for file id: {id}")
+utils.send_activation_email('en','n0cturnalx@gmail.com','test')
+
 
 @celeryd_after_setup.connect
 def capture_worker_name(sender, instance, **kwargs):
@@ -69,7 +63,7 @@ def test(self, *args, **kwargs):
         )
         with client.batch as batch:
             if 'main_photo' in payload and payload['main_photo'] is not None:
-                b64 = fetch_picture(payload['main_photo'])
+                b64 = utils.fetch_picture(payload['main_photo'])
                 batch.add_data_object(
                     class_name="Bike",
                     data_object={
@@ -82,7 +76,7 @@ def test(self, *args, **kwargs):
             if 'photos' in payload and 'create' in payload['photos'] and len(payload['photos']['create']) > 0:
                 for e in payload['photos']['create']:
                     phid = e['directus_files_id']['id']
-                    b64 = fetch_picture(phid)
+                    b64 = utils.fetch_picture(phid)
                     batch.add_data_object(
                         class_name="Bike",
                         data_object={
@@ -321,22 +315,14 @@ def report_submit(self, *args, **kwargs):
 
     # @TODO - some error control
     print(data.status_code)
-    print(data.json())
 
+    data = data.json()
+    print(data)
 
-     # @TODO temporary strings
-    x = send_email(
-        kwargs.get("email"),
-        os.environ["WORKER_MAIL_FROM"],
-        "Enable your report",
-        "test message txt",
-        "test message html",
-        relay=os.environ["WORKER_MAIL_RELAY"],
-        dkim_private_key_path=os.environ["WORKER_MAIL_DKIM_PEM_PATH"],
-        dkim_selector=os.environ["WORKER_MAIL_DKIM_SELECTOR"],
-    );
-
-    print(x)
-
+    send = utils.send_activation_email(kwargs.get('language'), kwargs.get('email'), data['data']['activation_code'])
+    print(send)
 
     return 'ok'
+
+
+

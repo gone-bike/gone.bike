@@ -171,5 +171,16 @@
       "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
       "theft_date": "Lopás dátuma"
     }
+  },
+  "mailer": {
+    "report_activation": {
+      "subject": "Engedélyezze jelentését."
+    },
+    "report_actiovation": {
+      "body": {
+        "txt": null,
+        "html": null
+      }
+    }
   }
 }

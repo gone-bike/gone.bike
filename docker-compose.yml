@@ -130,35 +130,13 @@ services:
       - "host.docker.internal:host-gateway"
 
     env_file:
-      - ${WORKER_ENV_FILE:-.worker.env}
-
-    environment:
-      ENV: ${ENV:-dev}
-
-      WORKER_WEAVIATE_URI: ${WORKER_WEAVIATE_URI:-http://weaviate:8080}
-      WORKER_DB_URI: ${WORKER_DB_URI:-postgresql://postgres:postgres@postgresql:5432/postgres}
-      WORKER_DIRECTUS_URI: ${WORKER_DIRECTUS_URI:-http://directus:8055}
-      WORKER_DIRECTUS_TOKEN: ${WORKER_DIRECTUS_TOKEN:-token}
-
-      CELERYD_CONCURRENCY: ${CELERYD_CONCURRENCY:-1}
-      BROKER_URL: "redis://redis:6379"
-      BROKER_POOL_LIMIT: ${BROKER_POOL_LIMIT:-0} # the connection pool will be disabled and connections will be established and closed for every use.
-
-      BROKER_TRANSPORT_OPTTION_VISIBILITY_TIMEOUT: ${BROKER_TRANSPORT_OPTTION_VISIBILITY_TIMEOUT:-30}
-      BROKER_TRANSPORT_OPTION_MAX_RETRIES: ${BROKER_TRANSPORT_OPTION_MAX_RETRIES:-1}
-      WORKER_PREFETCH_MULTIPLIER: ${WORKER_PREFETCH_MULTIPLIER:-1}
-
-      TASK_TIME_LIMIT: ${TASK_TIME_LIMIT:-60}
-      TASK_SOFT_TIME_LIMIT: ${TASK_SOFT_TIME_LIMIT:-10}
-      WORKER_CONCURRENCY: ${WORKER_CONCURRENCY:-1}
-      WORKER_DISABLE_RATE_LIMITS: ${WORKER_DISABLE_RATE_LIMITS:-true}
-
-      TASK_ACKS_LATE: ${TASK_ACKS_LATE:-false}
+      - ${WORKER_ENV_FILE:-.worker.env.example}
 
     command: celery --app=tasks worker --concurrency=${WORKER_CONCURRENCY:-1} --uid 1 -n %h-${VERSION:-1}@${HOSTNAME:-worker} -l ${LOG_LEVEL:-DEBUG}
     volumes:
       - ./worker:/app
       - .data/worker:/data
+      - ./astro/public/locales/:/locales
     working_dir: /app
     logging:
      options:
