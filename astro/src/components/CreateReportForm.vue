@@ -147,7 +147,7 @@ async function onSubmit(formData: typeof formValue) {
                 return status === 200
             }
         })
-        console.log(dat.data)
+        // console.log(dat.data)
         currentPage.value = 7
     } catch {
         currentPage.value = 8

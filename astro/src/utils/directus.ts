@@ -5,6 +5,7 @@ import config from "@utils/config"
 
 
 type Report = {
+    enable: Function;
     id: any;
     status: string;
     description: string;
@@ -19,6 +20,8 @@ type Report = {
 
     lock_type: string;
     lock_anchor: string;
+
+    activation_code: string | null;
 
     photos: {
         directus_files_id: {

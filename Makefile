@@ -7,6 +7,7 @@ help:
 
 update: ## ## Updates codebase & rebuild. Used in production deploy pipeline
 	cd astro && npm i
+	rm -rf astro/src/pages/{it,es,fr}/* && \
 	docker-compose run -it --rm web  npx astro-i18next generate && \
 	docker-compose run -it --rm web npm run build && \
 	docker-compose up -d web && \

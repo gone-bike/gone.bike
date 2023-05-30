@@ -1,0 +1,32 @@
+---
+import { Debug } from 'astro/components';
+import Report from '@models/report';
+import i18next, { t } from 'i18next';
+import config from '@utils/config';
+
+
+const args = {
+    code: Astro.url.searchParams.get("code"),
+    id: Astro.url.searchParams.get("id") || 0
+}
+
+if (!args.id || ! args.code) {
+    return await config.http404();
+}
+
+let report = await Report(args.id);
+
+if (! report || ! report?.activation_code ) {
+    return await config.http404();
+}
+
+if ( report?.activation_code != args.code ) {
+    return await config.http404();
+}
+
+report.enable();
+
+await i18next.changeLanguage(args.locale)
+---
+<!-- <Debug { report } /> -->
+hello <span>{ report.activation_code }</span>

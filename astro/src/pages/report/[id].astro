@@ -8,29 +8,24 @@ import config from "@utils/config";
 
 import Report from "@models/report";
 
-const args = {
-    locale: Astro.url.searchParams.get("locale") || 'en',
-    id: Astro.url.searchParams.get("id") || 0
-}
 
-if (!args.id) {
+if ( isNaN(Astro.params.id)) {
     return await config.http404();
 }
 
-let report = await Report(args.id);
+let report = await Report(Astro.params.id);
 
 if (! report ) {
     return await config.http404();
 }
 
-console.log(report)
+// console.log(report)
 
-await i18next.changeLanguage(args.locale)
 ---
 <BaseLayout title={t('test.x')} description="test">
     <div class="container mx-auto">
         <h1>{report.bike_brand_model.bike_brand.name } / {report.bike_brand_model.name }</h1>
-        <img src={report.getPhotos()[0]} >
+        <img src=`/photos/${report.main_photo.id}/${report.main_photo.filename_disk}`>
 
     { Object.keys(report).map( (e) => typeof(report[e]) == 'string' && (
             <div>
@@ -39,9 +34,7 @@ await i18next.changeLanguage(args.locale)
         )
 
     ) }
-    yy
     </div>
-    <!-- <img src=`/photos/${report.main_photo.id}/${data.main_photo.filename_disk}`> -->
 
     <!-- <Debug data={data}/> -->
 </BaseLayout>

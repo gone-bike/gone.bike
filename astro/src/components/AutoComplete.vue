@@ -37,7 +37,7 @@ watch(firstClick, function (first) {
     if (first && (isMobile(navigator.userAgent).phone || isMobile(navigator.userAgent).tablet)) {
         if (props.title === "bike_brand") {
             if (props.topOffset === 0) {
-                console.log(document.getElementById(`dropdown-label-${props.title}`)!.getClientRects().item(0)!.top)
+                // console.log(document.getElementById(`dropdown-label-${props.title}`)!.getClientRects().item(0)!.top)
                 emit("update:topOffset", document.getElementById(`dropdown-label-${props.title}`)!.getClientRects().item(0)!.top)
                 window.scrollTo({
                     top: document.getElementById(`dropdown-label-${props.title}`)!.getClientRects().item(0)!.top,
@@ -45,7 +45,7 @@ watch(firstClick, function (first) {
                 })
             } else {
             }
-            console.log(props.topOffset)
+            // console.log(props.topOffset)
         }else{
             window.scrollTo({
                 top: props.topOffset + 150,

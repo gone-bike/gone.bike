@@ -1,7 +1,6 @@
 import config from "@utils/config.js";
 import directus from "@utils/directus.js";
 
-console.log(config.DEV_DATA_MODE)
 export default async function(id: bigint) {
   try {
     let query = await directus.items('report').readByQuery({
@@ -37,29 +36,23 @@ export default async function(id: bigint) {
         "main_photo.filename_disk",
         "main_photo.type",
         "main_photo.width",
-        "main_photo.height"
+        "main_photo.height",
+        "activation_code"
       ]
     });
-    let data = query && query.data && query.data.length == 1 ? query.data[0] : []
+    let data = query && query.data && query.data.length == 1 ? query.data[0] : false
+    if (data) {
 
-
-    if (!data || data.length == 0) {
-      return false;
+      data.enable = async function() {
+        let update = await directus.items('report').updateOne(this.id, {
+            activation_code: null,
+            status: "published"
+        });
+        console.log(update)
+      }
     }
 
-    data.getPhotos = function() {
-      if (config.DEV_DATA_MODE ) {
-        return [
-          'https://placehold.co/600x400/orange/white',
-          'https://placehold.co/600x400/orange/white'
-
-        ];
-      } else {
-        return []
-      }
-    };
-
-    return data;
+    return !!data ? data : false;
 
   } catch (e) {
     throw e
