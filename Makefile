@@ -50,6 +50,8 @@ dump-db: ## target=path/to/folder ## Dumps db, nullifying local references to us
 	cd ${target} && rm -f gone.bike.db-dump.latest.sql.gz && \
 	ln -s gone.bike.db-dump.`date +"%Y%m%d"`.sql.gz gone.bike.db-dump.latest.sql.gz
 
+	docker-compose exec postgresql psql -U postgres -c "DROP DATABASE dump;" || true
+
 
 
 
