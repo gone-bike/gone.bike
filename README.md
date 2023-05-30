@@ -1,47 +1,61 @@
 # Gone.Bike
-
 OpenSource, OpenData stolen bikes database, search engine and reporting tool.
-Data is publicly accessible at [gone.bike/exports/](https://gone.bike/exports/), dumped on a daily basis (WIP).
+
+Data is publicly accessible at [gone.bike/exports/](https://gone.bike/exports/)
+
+## Tech Stack
+- [Astro](https://astro.build) / [VueJS](https://vuejs.org/) (Frontend)
+- [Celery](https://docs.celeryq.dev/en/stable/0) (Backend)
+- [Directus](https://directus.io) (Middleware / API)
+- [Docker](https://www.docker.com/) (DevOp)
+- [PostgreSQL](https://www.postgresql.org) (Backend)
+- [Redis](https://redis.io) (Backend)
+- [Weaviate](https://weaviate.io) (Backend)
+
 
 ## Dev requirements
+You need to have `npm` and `docker-compose` commands available.
 
-Different areas require different tools.
+## Development Setup
+This guide provides all necessary steps to have a fully functional local setup.
 
-### Website
-The website part is built with [Astro](https://astro.build), to run into dev mode requires having `npm` installed and being connected to the dev VPN or having a copy of the database up and ruinning locally.
-The only connection requirements for the website to run are `redis` and `directus`.
+Clone this repository and access the repository root directory:
 
-### Database
-The database part is built with `postgresql` as relational SQL main db, [Directus](https://directus.io) as CMS.
-In development mode a common database is used to avoid hassle of data transfering/synching and allow faster development.
-To connect to such database you need access to the dev VPN
-Alternatively, you can create a copy of the database locally (Slower)
-
-### Search (TODO)
-The search part with `elasticsearch` and `weaviate` to support image search and faceting.
-
-
-## Database setup
-1. Spin up a `postgresql` and `redis` instance. Easily done with `docker-compose up -d postgresql redis`
-2. Create a `.directus.env` file
-3. Install `directus` with `docker-compose up -d directus`
-4. Load the scheam with `cat database/schema.sql | docker-compose exec -T postgresql psql -U postgres`
-
-## Website dev setup (simple, frontend pages only)
-
-1. Clone this repository
-2. Run `cd astro && npm i`
-3. Run `npm run dev`
-
-
-## Website setup (db access, for SSR pages)
-1. Ensure you have a *redis* connection, and access to a directus instance containing the related db
-2. Create a `astro/.env` as follow
 ```
-WEAVIATE_URI=http://localhost:8080
-CELERY_REDIS_URI=redis://localhost:6379/0
-REDIS_URI=redis://localhost:6379/0
-DIRECTUS_URI=http://directus-url
-DIRECTUS_TOKEN="<your token>"
+git clone git@github.com:gone-bike/gone.bike.git && \
+cd gone.bike
 ```
 
+---
+
+### Frontend setup
+Create development env file in `astro/` directory and install dependencies:
+
+```
+cd astro && \
+cp .env.example .env && \
+npm i
+```
+
+For pages that do not require db connection, this is enough to have the dev environment up and running, otherwise you need to have the backend setup.
+
+Start the local server with:
+```npm run dev```
+
+---
+
+### Backend / Database setup
+Use template env files:
+
+```
+cp .env.example .env && \
+cp .worker.env.example .worker.env && \
+cp .directus.env.example .directus.env && \
+cp .astro.env.example .astro.env
+```
+
+Startup `postgresql`, `redis` and `directus` services:
+
+```docker-compose up -d postgresql redis directus```
+
+@TODO - continue setup
