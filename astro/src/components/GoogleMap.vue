@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue"
+    import { onMounted, ref } from "vue"
 // @ts-ignore
 import { Loader } from "@utils/gmap"
 import './gmap.d.ts'
@@ -21,6 +21,8 @@ interface Props {
 
 const props = defineProps<Props>()
 const emit = defineEmits(["update:coords", "update:details", "update:address"])
+
+let geoCoder = ref<google.map.Geocoder>()
 
 let placeRef = ref<HTMLInputElement>()
 
@@ -54,7 +56,7 @@ function addressComponents(data: {
       })
     }
   })
-  zip = answerRespo["postal_code"]
+  zip = answerRespo["postal_code"] ?? ""
   if (answerRespo["political-sublocality-sublocality_level_1"]) {
     city = answerRespo["political-sublocality-sublocality_level_1"]
   } else {
@@ -70,20 +72,24 @@ function addressComponents(data: {
     zip
   }
 }
-async function getLocationFromCoOrd(apikey: string, coord: { lat: number, lng: number }): Promise<{ address: string, zip: string, city: string }> {
-  const data = await (await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coord.lat},${coord.lng}&key=${apikey}`)).json()
-  if (data.status === "OK") {
-    return addressComponents(data)
-  } else if (data.status === "ZERO_RESULTS") {
-    return {
+async function getLocationFromCoOrd(coord: { lat: number, lng: number }): Promise<{ address: string, zip: string, city: string }> {
+   return geoCoder.value.geocode({ location: {  lat: coord.lat, lng: coord.lng } })
+    .then((response) => {
+        if(response?.results[0]){
+            console.log(response)
+            console.log(addressComponents(response))
+    return addressComponents(response)
+        }else{
+            return {
       address: "",
       city: "",
       zip: ""
     }
-  } else {
-    throw new Error("Something Wrong With Google Map API")
+        }
+    }).catch(e=>{
+        console.log(e)
+    })
   }
-}
 
 
 const mapRef = ref<HTMLDivElement>()
@@ -110,8 +116,9 @@ function syncMapProps(coords: {
 function useCurrentLocation() {
   navigator.geolocation.getCurrentPosition(async function (pos) {
     let coords = { lat: pos.coords.latitude, lng: pos.coords.longitude }
-    let resp = await getLocationFromCoOrd(props.apikey, coords)
+    let resp = await getLocationFromCoOrd(coords)
     let inputEl = document.getElementById("place-search") as HTMLInputElement
+    console.log(coords, resp)
     inputEl.value = resp.address
     inputEl.value = resp.address
     marker.value?.setPosition(coords)
@@ -135,7 +142,8 @@ onMounted(async () => {
       map: map.value,
       draggable: true
     });
-
+    const { Geocoder } = await google.maps.importLibrary("geocoding")
+    geoCoder.value = new Geocoder()
     const autocomplete = new google.maps.places.Autocomplete(placeRef.value!, {
       fields: ["address_components", "geometry", "formatted_address"],
       types: ["address"]
@@ -178,10 +186,10 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div class="w-full">
-    <div class="flex w-full gap-2 items-center">
-      <input spellcheck="off" autocomplete="off" :placeholder="(t('forms.report.questions.location.placeholder') as string)" id="place-search" type="text" class="my-4 w-full report-placeholder" ref="placeRef" />
-      <button @click="useCurrentLocation"
+    <div class="w-full">
+        <div class="flex w-full gap-2 items-center">
+            <input spellcheck="off" autocomplete="off" :placeholder="(t('forms.report.questions.location.placeholder') as string)" id="place-search" type="text" class="my-4 w-full report-placeholder" ref="placeRef" />
+            <button @click="useCurrentLocation"
         class="p-2 rounded-xl bg-purple-300  text-purple-900 hover:bg-purple-400 focus:bg-purple-400">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
           class="w-8 h-8">
@@ -190,7 +198,7 @@ onMounted(async () => {
             d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
         </svg>
       </button>
+        </div>
+        <div ref="mapRef" style="width:100%;height: 500px"></div>
     </div>
-    <div ref="mapRef" style="width:100%;height: 500px"></div>
-  </div>
 </template>
