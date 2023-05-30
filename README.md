@@ -39,23 +39,54 @@ npm i
 
 For pages that do not require db connection, this is enough to have the dev environment up and running, otherwise you need to have the backend setup.
 
+Generate multilanguage pages:
+```npx astro-i18next generate```
+
 Start the local server with:
 ```npm run dev```
 
 ---
 
-### Backend / Database setup
-Use template env files:
+### Database setup
+
+In repository root directory, use template env files:
 
 ```
-cp .env.example .env && \
+touch .env && \
 cp .worker.env.example .worker.env && \
 cp .directus.env.example .directus.env && \
 cp .astro.env.example .astro.env
+```
+
+Create local data and config folders:
+```
+mkdir -p .config .data/{directus,postgresql}
+```
+
+Create local config folder and files:
+```
+touch .config/redis.conf
 ```
 
 Startup `postgresql`, `redis` and `directus` services:
 
 ```docker-compose up -d postgresql redis directus```
 
-@TODO - continue setup
+Copy database schema inside directus container: and apply it:
+
+```
+docker-compose cp database/directus-schema.yml directus:/directus/ && \
+docker-compose exec directus npx directus schema apply -y directus-schema.yml
+```
+
+Verify successful schema install by accessing directus at [http://localhost:8055](http://localhost:8055)
+
+**NOTE**: It might be a directus bug, but in order to fully apply the schema and see it in the CMS, you need to perform a "Make collection invisible / Make collection visible" operation on any of the available collections. Operation can be applied twice in order to keep the state.
+
+You should now be able to see a empty but schemed database.
+
+
+
+---
+
+### Database import

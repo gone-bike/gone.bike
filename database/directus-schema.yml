@@ -1,0 +1,2721 @@
+version: 1
+directus: 11.0.1
+vendor: postgres
+collections:
+  - collection: Config
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: Config
+      color: '#A2B5CD'
+      display_template: null
+      group: null
+      hidden: false
+      icon: folder
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 4
+      sort_field: null
+      translations: null
+      unarchive_value: null
+  - collection: bike_brand
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: bike_brand
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: pedal_bike
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 1
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: bike_brand
+  - collection: bike_brand_model
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: bike_brand_model
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: pedal_bike
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 2
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: bike_brand_model
+  - collection: i18n
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: i18n
+      color: '#A2B5CD'
+      display_template: null
+      group: Config
+      hidden: false
+      icon: translate
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 1
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: i18n
+  - collection: i18n_translation
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: i18n_translation
+      color: '#A2B5CD'
+      display_template: null
+      group: Config
+      hidden: false
+      icon: translate
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 2
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: i18n_translation
+  - collection: language
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: language
+      color: '#A2B5CD'
+      display_template: null
+      group: Config
+      hidden: true
+      icon: translate
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 3
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: language
+  - collection: report
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: report
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: article
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 3
+      sort_field: null
+      translations: null
+      unarchive_value: draft
+    schema:
+      name: report
+  - collection: report_files
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: report_files
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 5
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: report_files
+fields:
+  - collection: bike_brand
+    field: date_created
+    type: dateTime
+    meta:
+      collection: bike_brand
+      conditions: null
+      display: datetime
+      display_options: null
+      field: date_created
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_created
+      table: bike_brand
+      data_type: timestamp without time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bike_brand
+    field: id
+    type: integer
+    meta:
+      collection: bike_brand
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: bike_brand
+      data_type: integer
+      default_value: nextval('bike_brand_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bike_brand
+    field: key
+    type: string
+    meta:
+      collection: bike_brand
+      conditions: null
+      display: formatted-value
+      display_options:
+        bold: true
+        font: monospace
+      field: key
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        font: monospace
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: key
+      table: bike_brand
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: true
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bike_brand
+    field: name
+    type: string
+    meta:
+      collection: bike_brand
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name
+      table: bike_brand
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: true
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bike_brand_model
+    field: bike_brand
+    type: integer
+    meta:
+      collection: bike_brand_model
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{key}}'
+      field: bike_brand
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{key}}'
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: bike_brand
+      table: bike_brand_model
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: bike_brand
+      foreign_key_column: id
+  - collection: bike_brand_model
+    field: id
+    type: integer
+    meta:
+      collection: bike_brand_model
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: bike_brand_model
+      data_type: integer
+      default_value: nextval('bike_brand_model_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bike_brand_model
+    field: key
+    type: string
+    meta:
+      collection: bike_brand_model
+      conditions: null
+      display: formatted-value
+      display_options:
+        bold: true
+        font: monospace
+      field: key
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        font: monospace
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: key
+      table: bike_brand_model
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: true
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bike_brand_model
+    field: name
+    type: string
+    meta:
+      collection: bike_brand_model
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name
+      table: bike_brand_model
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: i18n
+    field: base_translation
+    type: text
+    meta:
+      collection: i18n
+      conditions: null
+      display: formatted-value
+      display_options:
+        font: monospace
+      field: base_translation
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: English translation for this key
+      options:
+        font: monospace
+        placeholder: Write the English content for this key.
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: fill
+    schema:
+      name: base_translation
+      table: i18n
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: i18n
+    field: date_created
+    type: timestamp
+    meta:
+      collection: i18n
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: i18n
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: i18n
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: i18n
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: i18n
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: i18n
+    field: id
+    type: integer
+    meta:
+      collection: i18n
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: i18n
+      data_type: integer
+      default_value: nextval('i18n_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: i18n
+    field: key
+    type: string
+    meta:
+      collection: i18n
+      conditions: null
+      display: formatted-value
+      display_options:
+        bold: true
+        color: '#3399FF'
+        font: monospace
+      field: key
+      group: null
+      hidden: false
+      interface: input
+      note: >-
+        When creating a key, make sure that a parent key does allow it. If you
+        add **a.b.c.d** then a  key **a.b.c** must not exist
+      options:
+        font: monospace
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: key
+      table: i18n
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: true
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: i18n
+    field: translations
+    type: alias
+    meta:
+      collection: i18n
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{language.locale_code}} -> {{translation}}'
+      field: translations
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options:
+        enableCreate: false
+        enableLink: true
+        enableSearchFilter: true
+        enableSelect: false
+        fields:
+          - auto_translated
+          - date_updated
+          - language.locale_code
+          - translation
+        layout: table
+        limit: 50
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: fill
+  - collection: i18n_translation
+    field: auto_translated
+    type: boolean
+    meta:
+      collection: i18n_translation
+      conditions: null
+      display: boolean
+      display_options:
+        labelOff: 'No'
+        labelOn: 'Yes'
+      field: auto_translated
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: auto_translated
+      table: i18n_translation
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: i18n_translation
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: i18n_translation
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: i18n_translation
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: i18n_translation
+    field: i18n_key
+    type: integer
+    meta:
+      collection: i18n_translation
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{key}}'
+      field: i18n_key
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        enableCreate: false
+        template: '{{key}}: {{base_translation}}'
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: fill
+    schema:
+      name: i18n_key
+      table: i18n_translation
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: i18n
+      foreign_key_column: id
+  - collection: i18n_translation
+    field: id
+    type: integer
+    meta:
+      collection: i18n_translation
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: i18n_translation
+      data_type: integer
+      default_value: nextval('i18n_translation_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: i18n_translation
+    field: language
+    type: integer
+    meta:
+      collection: i18n_translation
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{locale_code}}'
+      field: language
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        enableCreate: false
+        template: '{{locale_code}}'
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: language
+      table: i18n_translation
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: language
+      foreign_key_column: id
+  - collection: i18n_translation
+    field: translation
+    type: text
+    meta:
+      collection: i18n_translation
+      conditions: null
+      display: null
+      display_options: null
+      field: translation
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: translation
+      table: i18n_translation
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: i18n_translation
+    field: user_updated
+    type: uuid
+    meta:
+      collection: i18n_translation
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: null
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: i18n_translation
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: language
+    field: id
+    type: integer
+    meta:
+      collection: language
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: language
+      data_type: integer
+      default_value: nextval('language_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: language
+    field: locale_code
+    type: string
+    meta:
+      collection: language
+      conditions: null
+      display: formatted-value
+      display_options:
+        color: '#FFC23B'
+        font: monospace
+      field: locale_code
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        font: monospace
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: locale_code
+      table: language
+      data_type: character varying
+      default_value: null
+      max_length: 16
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: activation_code
+    type: uuid
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: activation_code
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: activation_code
+      table: report
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: approximate_value
+    type: integer
+    meta:
+      collection: report
+      conditions: null
+      display: formatted-value
+      display_options:
+        font: monospace
+      field: approximate_value
+      group: bike
+      hidden: false
+      interface: input
+      note: null
+      options:
+        font: monospace
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: approximate_value
+      table: report
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: approximate_value_currency
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: formatted-value
+      display_options:
+        font: monospace
+      field: approximate_value_currency
+      group: bike
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: EUR
+            value: EUR
+          - text: USD
+            value: USD
+        font: monospace
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: approximate_value_currency
+      table: report
+      data_type: character varying
+      default_value: null
+      max_length: 3
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: bike
+    type: alias
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: bike
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options: {}
+      readonly: false
+      required: false
+      sort: 7
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: report
+    field: bike_brand_model
+    type: integer
+    meta:
+      collection: report
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{bike_brand.key}} / {{name}}'
+      field: bike_brand_model
+      group: bike
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{bike_brand.key}} / {{name}}'
+      readonly: false
+      required: false
+      sort: 1
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: bike_brand_model
+      table: report
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: bike_brand_model
+      foreign_key_column: id
+  - collection: report
+    field: bike_details
+    type: text
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: bike_details
+      group: bike
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: bike_details
+      table: report
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: bike_type
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: bike_type
+      group: bike
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        allowOther: true
+        choices:
+          - text: bmx
+            value: bmx
+          - text: city bike
+            value: city
+          - text: road bike
+            value: road
+          - text: mountain bike
+            value: mountain
+          - text: folding
+            value: folding
+          - text: fixie
+            value: fixie
+          - text: fat
+            value: fat
+          - text: cargo
+            value: cargo
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: bike_type
+      table: report
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: colors
+    type: json
+    meta:
+      collection: report
+      conditions: null
+      display: formatted-json-value
+      display_options: null
+      field: colors
+      group: bike
+      hidden: false
+      interface: tags
+      note: null
+      options:
+        capitalization: lowercase
+        whitespace: '-'
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: colors
+      table: report
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: date_created
+    type: timestamp
+    meta:
+      collection: report
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 3
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: report
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: report
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 4
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: report
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: description
+    type: text
+    meta:
+      collection: report
+      conditions: null
+      display: formatted-value
+      display_options: null
+      field: description
+      group: theft
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description
+      table: report
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: email
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: email
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: email
+      table: report
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: id
+    type: integer
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: report
+      data_type: integer
+      default_value: nextval('report_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: is_electric
+    type: boolean
+    meta:
+      collection: report
+      conditions: null
+      display: boolean
+      display_options:
+        labelOff: 'No'
+        labelOn: 'Yes'
+      field: is_electric
+      group: bike
+      hidden: false
+      interface: boolean
+      note: null
+      options:
+        label: 'Yes'
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: is_electric
+      table: report
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: language
+    type: integer
+    meta:
+      collection: report
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{locale_code}}'
+      field: language
+      group: theft
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        enableCreate: false
+        template: '{{locale_code}}'
+      readonly: false
+      required: false
+      sort: 10
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: language
+      table: report
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: language
+      foreign_key_column: id
+  - collection: report
+    field: location
+    type: geometry.Point
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: location
+      group: theft
+      hidden: false
+      interface: map
+      note: null
+      options:
+        defaultView:
+          bearing: 0
+          center:
+            lat: 5.684341886080802e-14
+            lng: -2.5798454474395385
+          pitch: 0
+          zoom: -0.3706434003783814
+        geometryType: Point
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: location
+      table: report
+      data_type: POINT
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: location_address
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: location_address
+      group: theft
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: location_address
+      table: report
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: location_details
+    type: json
+    meta:
+      collection: report
+      conditions: null
+      display: raw
+      display_options: null
+      field: location_details
+      group: theft
+      hidden: false
+      interface: input-code
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 6
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: location_details
+      table: report
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: lock_anchor
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: lock_anchor
+      group: theft
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        allowOther: true
+        choices:
+          - text: tree
+            value: tree
+          - text: other bike
+            value: bike
+          - text: gate
+            value: gate
+          - text: post
+            value: post
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: lock_anchor
+      table: report
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: lock_type
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: lock_type
+      group: theft
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        allowOther: true
+        choices:
+          - text: none
+            value: none
+          - text: chain
+            value: chain
+          - text: cable
+            value: cable
+          - text: ulock
+            value: ulock
+          - text: folding
+            value: folding
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: lock_type
+      table: report
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: main_photo
+    type: uuid
+    meta:
+      collection: report
+      conditions: null
+      display: image
+      display_options: null
+      field: main_photo
+      group: bike
+      hidden: false
+      interface: file-image
+      note: null
+      options:
+        folder: fa2b1d0e-2e58-4897-af16-eab29f26117d
+      readonly: false
+      required: false
+      sort: 9
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: main_photo
+      table: report
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: report
+    field: photos
+    type: alias
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: photos
+      group: bike
+      hidden: false
+      interface: files
+      note: null
+      options:
+        folder: 21f79529-85a1-4797-b4a1-7ddefdef654f
+      readonly: false
+      required: false
+      sort: 10
+      special:
+        - files
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: report
+    field: ref_url
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: formatted-value
+      display_options:
+        font: monospace
+      field: ref_url
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        font: monospace
+      readonly: false
+      required: false
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: ref_url
+      table: report
+      data_type: character varying
+      default_value: null
+      max_length: 2048
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: serial_number
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: formatted-value
+      display_options:
+        font: monospace
+      field: serial_number
+      group: bike
+      hidden: false
+      interface: input
+      note: Serial number is located on the frame
+      options:
+        font: monospace
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: serial_number
+      table: report
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: status
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: report
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: theft
+    type: alias
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: theft
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        headerIcon: transfer_within_a_station
+      readonly: false
+      required: false
+      sort: 8
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: report
+    field: theft_date
+    type: date
+    meta:
+      collection: report
+      conditions: null
+      display: datetime
+      display_options: null
+      field: theft_date
+      group: theft
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: theft_date
+      table: report
+      data_type: date
+      default_value: '2023-05-22'
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: theft_location_type
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: theft_location_type
+      group: theft
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        allowOther: true
+        choices:
+          - text: street
+            value: street
+          - text: park
+            value: park
+          - text: basement
+            value: basement
+          - text: garage
+            value: garage
+          - text: courtyard
+            value: courtyard
+          - text: home
+            value: home
+          - text: office
+            value: office
+          - text: car
+            value: car
+          - text: train
+            value: train
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: theft_location_type
+      table: report
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: theft_timeframe
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: theft_timeframe
+      group: theft
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: moring
+            value: morning
+          - text: afternoon
+            value: afternoon
+          - text: evening
+            value: evening
+          - text: night
+            value: night
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: theft_timeframe
+      table: report
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: user_created
+    type: uuid
+    meta:
+      collection: report
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 5
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: report
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: report
+    field: user_updated
+    type: uuid
+    meta:
+      collection: report
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 6
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: report
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: report_files
+    field: directus_files_id
+    type: uuid
+    meta:
+      collection: report_files
+      conditions: null
+      display: null
+      display_options: null
+      field: directus_files_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: directus_files_id
+      table: report_files
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: report_files
+    field: id
+    type: integer
+    meta:
+      collection: report_files
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: report_files
+      data_type: integer
+      default_value: nextval('report_files_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report_files
+    field: report_id
+    type: integer
+    meta:
+      collection: report_files
+      conditions: null
+      display: null
+      display_options: null
+      field: report_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: report_id
+      table: report_files
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: report
+      foreign_key_column: id
+relations:
+  - collection: bike_brand_model
+    field: bike_brand
+    related_collection: bike_brand
+    meta:
+      junction_field: null
+      many_collection: bike_brand_model
+      many_field: bike_brand
+      one_allowed_collections: null
+      one_collection: bike_brand
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: bike_brand_model
+      column: bike_brand
+      foreign_key_table: bike_brand
+      foreign_key_column: id
+      constraint_name: bike_brand_model_bike_brand_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: i18n_translation
+    field: i18n_key
+    related_collection: i18n
+    meta:
+      junction_field: null
+      many_collection: i18n_translation
+      many_field: i18n_key
+      one_allowed_collections: null
+      one_collection: i18n
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: translations
+      sort_field: null
+    schema:
+      table: i18n_translation
+      column: i18n_key
+      foreign_key_table: i18n
+      foreign_key_column: id
+      constraint_name: i18n_translation_i18n_key_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: i18n_translation
+    field: language
+    related_collection: language
+    meta:
+      junction_field: null
+      many_collection: i18n_translation
+      many_field: language
+      one_allowed_collections: null
+      one_collection: language
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: i18n_translation
+      column: language
+      foreign_key_table: language
+      foreign_key_column: id
+      constraint_name: i18n_translation_language_foreign
+      on_update: NO ACTION
+      on_delete: SET DEFAULT
+  - collection: i18n_translation
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: i18n_translation
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: i18n_translation
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: i18n_translation_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: report
+    field: bike_brand_model
+    related_collection: bike_brand_model
+    meta:
+      junction_field: null
+      many_collection: report
+      many_field: bike_brand_model
+      one_allowed_collections: null
+      one_collection: bike_brand_model
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: report
+      column: bike_brand_model
+      foreign_key_table: bike_brand_model
+      foreign_key_column: id
+      constraint_name: report_bike_brand_model_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: report
+    field: language
+    related_collection: language
+    meta:
+      junction_field: null
+      many_collection: report
+      many_field: language
+      one_allowed_collections: null
+      one_collection: language
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: report
+      column: language
+      foreign_key_table: language
+      foreign_key_column: id
+      constraint_name: report_language_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: report
+    field: main_photo
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: report
+      many_field: main_photo
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: report
+      column: main_photo
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: report_main_photo_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: report
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: report
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: report
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: report_user_created_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: report
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: report
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: report
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: report_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: report_files
+    field: directus_files_id
+    related_collection: directus_files
+    meta:
+      junction_field: report_id
+      many_collection: report_files
+      many_field: directus_files_id
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: report_files
+      column: directus_files_id
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: report_files_directus_files_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: report_files
+    field: report_id
+    related_collection: report
+    meta:
+      junction_field: directus_files_id
+      many_collection: report_files
+      many_field: report_id
+      one_allowed_collections: null
+      one_collection: report
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: photos
+      sort_field: null
+    schema:
+      table: report_files
+      column: report_id
+      foreign_key_table: report
+      foreign_key_column: id
+      constraint_name: report_files_report_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
