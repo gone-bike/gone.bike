@@ -47,7 +47,7 @@ dump-db: ## target=path/to/folder ## Dumps db, nullifying local references to us
 	 -t directus_files -t directus_folders | gzip -c > gone.bike.db-dump.`date +"%Y%m%d"`.sql.gz
 
 	mv -v gone.bike.db-dump.`date +"%Y%m%d"`.sql.gz ${target} && \
-	rm -f gone.bike.db-dump.latest.sql.gz && \
+	cd ${target} && rm -f gone.bike.db-dump.latest.sql.gz && \
 	ln -s gone.bike.db-dump.`date +"%Y%m%d"`.sql.gz gone.bike.db-dump.latest.sql.gz
 
 
