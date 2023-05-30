@@ -3,7 +3,7 @@ import { Debug } from 'astro/components';
 
 import ListingEntry from "@components/listing/entry.astro";
 
-import i18next, { t } from "i18next";
+import i18next, { t, changeLanguage } from "i18next";
 
 import BaseLayout from "@layouts/Base.astro";
 import config from "@utils/config";
@@ -24,15 +24,12 @@ if (! listing ) {
 
 
 await i18next.changeLanguage(args.locale)
+
+changeLanguage(args.locale)
 ---
-<BaseLayout title={t('test.x')} description="test">
 
-
-  <div class="container mx-auto grid grid-cols-1 gap-y-2 sm:grid-cols-4 sm:gap-4 ">
-  { listing.map( (report) => (
-    <ListingEntry {report}></ListingEntry>
-  )) }
-
-
+<BaseLayout title={t("test.x")} description="test">
+  <div class="py-10 px-5 flex flex-wrap gap-6 justify-center">
+    {listing.map((report) => <ListingEntry {report} language={args.locale} />)}
   </div>
 </BaseLayout>
