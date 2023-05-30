@@ -1,16 +1,19 @@
 ---
+export interface Props {
+	report: Object;
+  language: string;
+}
+
 import moment from 'moment';
 import 'moment/locale/it';
 import i18next, { t } from "i18next";
+import { localizePath } from "astro-i18next";
 
 const language = Astro.props.language
 
 const today = moment();
-moment.locale(language); 
+moment.locale(language);
 
-export interface Props {
-	report: Object;
-}
 
 const report = Astro.props.report
 
@@ -45,7 +48,7 @@ const formattedDate = moment(report.theft_date, 'D-M-YYYY').format('MMMM Do, YYY
       </p>
     </div>
     <div class=" h-12">
-      <a href={`/report?id=${report.id}`} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <a href={localizePath("/report/[id]").replace('[id]',report.id)} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
         {t("components.listing_card.view_report_button.title")}
       </a>
     </div>

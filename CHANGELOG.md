@@ -1,6 +1,12 @@
+# 2023-05-30 Setup guide, export procedures
+- Fully-featured README file to help setting up a local dev
+- Makefile commands to export data programmatically
+
+# 2023-05-29 Report form
+- Perfecting data acquisition via a user-friendly form
+
 # 2023-05-28 Multi-locale experiments
 - Set up to convert single-locale paths into multi-locale via `i18n-astro`
-
 
 # 2023-05-27 OpenSourceSaturday, first public homepage release!
 - Met `@fede03bill` who jumped in and helped on frontend side
