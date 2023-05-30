@@ -25,7 +25,7 @@ watch(tagModel, function(val){
 function handleAdd(){
     if(tagModel.value.split("").map(e=>e===",").filter(e=>e).length === tagModel.value.length) return
     if(tagModel.value.trim() && tagModel.value !== ","){
-        let newLst = [...tags.value, tagModel.value.valueOf()]
+        let newLst = [...tags.value, tagModel.value.trim()]
         tags.value = newLst
         tagModel.value = ""
         emit("update:modelValue", newLst.join(","))
