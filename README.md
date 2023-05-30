@@ -5,7 +5,7 @@ Data is publicly accessible at [gone.bike/exports/](https://gone.bike/exports/)
 
 ## Tech Stack
 - [Astro](https://astro.build) / [VueJS](https://vuejs.org/) (Frontend)
-- [Celery](https://docs.celeryq.dev/en/stable/0) (Backend)
+- [Celery](https://docs.celeryq.dev/) (Backend)
 - [Directus](https://directus.io) (Middleware / API)
 - [Docker](https://www.docker.com/) (DevOp)
 - [PostgreSQL](https://www.postgresql.org) (Backend)
