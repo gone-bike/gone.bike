@@ -48,8 +48,11 @@ function remove(tag: string) {
         <ul class="flex gap-2 mt-2">
             <li v-for="tag in tags" :key="tag"
                 class="w-fit flex items-center gap-2 rounded-lg cursor-pointer hover:scale-105 transition-all duration-200 bg-purple-400 px-3 py-1 font-semibold text-white">
+                <span>{{ tag }}</span>
                 <button @click="remove(tag)">
-                    <span>{{ tag }}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
             </li>
         </ul>
