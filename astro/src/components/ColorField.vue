@@ -25,7 +25,7 @@ watch(tagModel, function(val){
 function handleAdd(){
     if(tagModel.value.split("").map(e=>e===",").filter(e=>e).length === tagModel.value.length) return
     if(tagModel.value.trim() && tagModel.value !== ","){
-        let newLst = [...tags.value, tagModel.value.valueOf()]
+        let newLst = [...tags.value, tagModel.value.trim()]
         tags.value = newLst
         tagModel.value = ""
         emit("update:modelValue", newLst.join(","))
@@ -41,15 +41,18 @@ function remove(tag: string) {
 <template>
     <div class="flex flex-col">
         <label :for="props.title" class="text-lg mb-2">{{ t(`forms.report.questions.${props.title}.title`) }}</label>
-        <input type="text" class="report-placeholder" @keydown.enter="handleAdd" autocomplete="off" :name="props.title"
+        <input type="text" class="report-placeholder" @keydown.enter="handleAdd" @blur="handleAdd" autocomplete="off" :name="props.title"
             :placeholder="(t(`forms.report.questions.${props.title}.placeholder`) as string)" :id="props.title" v-model="tagModel" /> 
             <span class="mt-2 text-sm font-normal text-gray-400 italic ">{{ t(`forms.report.questions.${props.title}.subtitle`)
             }}</span>
         <ul class="flex gap-2 mt-2">
             <li v-for="tag in tags" :key="tag"
                 class="w-fit flex items-center gap-2 rounded-lg cursor-pointer hover:scale-105 transition-all duration-200 bg-purple-400 px-3 py-1 font-semibold text-white">
+                <span>{{ tag }}</span>
                 <button @click="remove(tag)">
-                    <span>{{ tag }}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
             </li>
         </ul>
