@@ -35,7 +35,7 @@ dump-db: ## target=path/to/folder ## Dumps db, nullifying local references to us
 	gunzip -c gone.bike.db-pre-dump.`date +"%Y%m%d"`.sql.gz | docker-compose exec -T postgresql psql -U postgres -d dump
 	rm -f gone.bike.db-pre-dump.`date +"%Y%m%d"`.sql.gz;
 
-	docker-compose exec postgresql psql -U postgres -d dump -c "UPDATE directus_files SET modified_by = NULL, uploaded_by = NULL;"
+	docker-compose exec postgresql psql -U postgres -d dump -c "UPDATE directus_files SET storage = 'local', modified_by = NULL, uploaded_by = NULL;"
 	docker-compose exec postgresql psql -U postgres -d dump -c "UPDATE report SET user_created = NULL, user_updated = NULL, email = NULL;"
 	docker-compose exec postgresql psql -U postgres -d dump -c "UPDATE i18n_translation SET user_updated = NULL;"
 	docker-compose exec postgresql psql -U postgres -d dump -c "DELETE FROM directus_users;"
