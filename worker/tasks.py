@@ -1,5 +1,4 @@
 import sys, os, json, logging, time, requests, psycopg2, base64, dotmap, re
-import weaviate
 
 import utils
 
@@ -55,37 +54,8 @@ def test(self, *args, **kwargs):
             key = kwargs['$trigger']['keys'][0]
         print(payload)
 
-        client = weaviate.Client(os.environ['WORKER_WEAVIATE_URI'])
-        client.batch.configure(
-            batch_size=None
-        )
-        with client.batch as batch:
-            if 'main_photo' in payload and payload['main_photo'] is not None:
-                b64 = utils.fetch_picture(payload['main_photo'])
-                batch.add_data_object(
-                    class_name="Bike",
-                    data_object={
-                        'report_id': int(key),
-                        'image': b64.decode("ascii")
-                    },
-                    uuid=payload['main_photo'],
-                )
-                pass
-            if 'photos' in payload and 'create' in payload['photos'] and len(payload['photos']['create']) > 0:
-                for e in payload['photos']['create']:
-                    phid = e['directus_files_id']['id']
-                    b64 = utils.fetch_picture(phid)
-                    batch.add_data_object(
-                        class_name="Bike",
-                        data_object={
-                            'report_id': int(key),
-                            'image': b64.decode("ascii")
-                        },
-                        uuid=phid,
-                    )
-
-            result = batch.create_objects()
-            return 'oks'
+        utils.index_directus_report_item_to_weaviate(payload)
+        return 'oks'
 
     if kwargs['$trigger']['event'] == 'report.items.delete' or kwargs['$trigger']['event'] == 'report.items.update':
         dburi = urlparse(os.environ["WORKER_DB_URI"])
@@ -112,31 +82,31 @@ def test(self, *args, **kwargs):
             """,
                 [ ])
 
-        wclient = weaviate.Client(os.environ['WORKER_WEAVIATE_URI'])
+        # wclient = weaviate.Client(os.environ['WORKER_WEAVIATE_URI'])
 
-        while True:
-            rows = cur.fetchmany(5000)
-            print(rows)
-            if not rows:
-                break
+        # while True:
+        #     rows = cur.fetchmany(5000)
+        #     print(rows)
+        #     if not rows:
+        #         break
 
-            for row in rows:
-                url = f'{os.environ["WORKER_DIRECTUS_URI"]}/files/{row[0]}?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
-                print(f"Deleting from Directus {url}...")
-                result = requests.delete(url)
-                print(result)
+        #     for row in rows:
+        #         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/files/{row[0]}?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
+        #         print(f"Deleting from Directus {url}...")
+        #         result = requests.delete(url)
+        #         print(result)
 
-                print('Deleting from weaviate...')
+        #         print('Deleting from weaviate...')
 
-                try:
-                    result = wclient.data_object.delete(
-                        uuid=row[0],
-                        class_name='Bike'
-                    )
-                    print(result)
-                except Exception as e:
-                    print(e)
-                    pass
+        #         try:
+        #             result = wclient.data_object.delete(
+        #                 uuid=row[0],
+        #                 class_name='Bike'
+        #             )
+        #             print(result)
+        #         except Exception as e:
+        #             print(e)
+        #             pass
 
         dbconn.close()
 
@@ -317,8 +287,9 @@ def report_submit(self, *args, **kwargs):
     data = data.json()
     print(data)
 
-    send = utils.send_activation_email(kwargs.get('language'), kwargs.get('email'), data['data']['activation_code'])
-    print(send)
+    if kwargs.get('email'):
+        send = utils.send_activation_email(kwargs.get('language'), kwargs.get('email'), data['data']['activation_code'])
+        print(send)
 
     return 'ok'
 

@@ -96,7 +96,13 @@ docker-compose cp database/directus-schema.yml directus:/directus/ && \
 docker-compose exec directus npx directus schema apply -y directus-schema.yml
 ```
 
-Verify successful schema install by accessing directus at [http://localhost:8055](http://localhost:8055)
+Verify successful schema install by accessing directus at [http://localhost:8055](http://localhost:8055) using default user and password (configurable in `.directus.env` file before first startup):
+
+```
+username: dev@gone.bike
+password: dev
+```
+
 
 **NOTE**: It might be a directus bug, but in order to fully apply the schema and see it in the CMS, you need to perform a "Make collection invisible / Make collection visible" operation on any of the available collections. Operation can be applied twice in order to keep the state. After that, access the [/admin/settings/data-model/bike_brand](http://localhost:8055/admin/settings/data-model/bike_brand) address to enforce Directus metadata reload.
 

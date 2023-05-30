@@ -1,4 +1,5 @@
-import requests, json, dotmap, os, re
+import requests, json, dotmap, os, re, weaviate
+
 from mailer import send_email
 
 # Converts placeholders into python string.format() friendly.
@@ -15,7 +16,7 @@ def fetch_picture(id):
         return base64.b64encode(data.content)
     raise Exception(f"HTTP code: {data.status_code} for file id: {id}")
 
-
+# Guess what? Sends an activation email
 def send_activation_email(language, recipient, activation_code ):
      # @TODO temporary strings
     locale_file = f'/locales/{language}/translation.json'
@@ -42,3 +43,37 @@ def send_activation_email(language, recipient, activation_code ):
 
     return x
 
+
+
+
+def index_directus_report_item_to_weaviate(payload):
+    client = weaviate.Client(os.environ['WORKER_WEAVIATE_URI'])
+    client.batch.configure(
+        batch_size=None
+    )
+    with client.batch as batch:
+        if 'main_photo' in payload and payload['main_photo'] is not None:
+            b64 = fetch_picture(payload['main_photo'])
+            batch.add_data_object(
+                class_name="Bike",
+                data_object={
+                    'report_id': None, # int(key), -- @TODO
+                    'image': b64.decode("ascii")
+                },
+                uuid=payload['main_photo'],
+            )
+            pass
+        if 'photos' in payload and 'create' in payload['photos'] and len(payload['photos']['create']) > 0:
+            for e in payload['photos']['create']:
+                phid = e['directus_files_id']['id']
+                b64 = fetch_picture(phid)
+                batch.add_data_object(
+                    class_name="Bike",
+                    data_object={
+                        'report_id': None, # int(key), -- @TODO
+                        'image': b64.decode("ascii")
+                    },
+                    uuid=phid,
+                )
+
+        return batch.create_objects()
