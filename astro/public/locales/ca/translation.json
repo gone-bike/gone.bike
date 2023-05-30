@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Cerca i denúncia de bicicletes robades."
+    "title": "Cerca i denúncia de bicicletes robades.",
+    "hero": {
+      "pre_cta": "Descobreix la veritat. Rastreja les bicicletes robades amb la nostra èpica recerca d'imatges.",
+      "title": "La teva bicicleta va ser robada?",
+      "cta_add_listing": "Llista la teva bicicleta robada."
+    }
   },
   "pages": {
     "report_form": {
@@ -8,65 +13,174 @@
       "subtitle": "Insereix les dades relacionades amb el robatori de bicicletes, seran afegides al cercador.",
       "buttons": {
         "next": "Següent.",
-        "back": "End"
-      }
+        "back": "End",
+        "submit": "Enviar informe"
+      },
+      "thank": {
+        "title": "Gràcies!",
+        "sub_title": "La teva submissió ha estat rebuda correctament."
+      },
+      "enter_here": "Escriviu",
+      "loading": "Espera..."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Bicicleta robada marca"
+          "title": "Bicicleta robada marca",
+          "subtitle": "Cerca el nom de la marca, si no la trobes, pots escriure-la. Si no la coneixes, deixa aquest camp en blanc.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Bicicleta robada de model"
+          "title": "Bicicleta robada de model",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Si coneixeu el model de la vostra moto, afegiu-lo aquí. Si coincideix amb les suggerències donades, seleccioneu-lo."
         },
         "colors": {
-          "title": "Colors principals de bicicleta."
+          "title": "Colors principals de bicicleta.",
+          "subtitle": "Colors de la estructura de bicicleta, afegiu cada color separat per una coma.",
+          "placeholder": "negre, vermell"
         },
         "is_electric": {
-          "title": "És una bicicleta elèctrica?"
+          "title": "És una bicicleta elèctrica?",
+          "choices": {
+            "no": "Bicicleta no elèctrica.",
+            "yes": "Bicicleta elèctrica"
+          }
         },
         "approximate_value": {
-          "title": "Valor aproximat."
+          "title": "Valor aproximat.",
+          "subtitle": "Escriu una valor aproximada de la bicicleta, en {{currency}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
-          "title": "Data de robatori"
+          "title": "Data de robatori",
+          "subtitle": "Seleccione la data en què es va robar la seva bicicleta, quant més precisa millor."
         },
         "location_type": {
-          "title": "On estava la bicicleta?"
+          "title": "On estava la bicicleta?",
+          "choices": {
+            "street": "Carrer",
+            "park": "Parc",
+            "cellar": "Celler",
+            "garage": "Garatge",
+            "train": "Tren.",
+            "garden": "Jardí",
+            "home": "Inici",
+            "office": "Oficina",
+            "car": "Cotxe"
+          },
+          "subtitle": "Selecciona una de les opcions."
         },
         "lock_type": {
-          "title": "Tipus de bloqueig."
+          "title": "Tipus de bloqueig.",
+          "choices": {
+            "chain": "Cadena",
+            "ulock": "U-Lock",
+            "folding": "Claus de plegat"
+          },
+          "subtitle": "Selecciona una de les opcions."
         },
         "lock_anchor": {
-          "title": "Punt d'ancoratge"
+          "title": "Punt d'ancoratge",
+          "choices": {
+            "tree": "Arbre",
+            "gate": "Porta",
+            "post": "Valla",
+            "self_bike": "A si mateix",
+            "other_bike": "A altres bicicleta.",
+            "fence": "Valla"
+          },
+          "subtitle": "Si has lligat la bicicleta a alguna cosa, si us plau, digues-nos a què estava lligada."
         },
         "location": {
           "title": "Adreça i coordenades.",
-          "subtitle": "Seleccioneu un punt del mapa on va succeir el robatori."
+          "placeholder": "centre de la ciutat de Londres",
+          "subtitle": "Escriu una adreça o una ubicació i selecciona un punt del mapa on va succeir el robatori. Com més precís, millor."
         },
         "main_photo": {
-          "title": "Bicicleta robada foto principal"
+          "title": "Bicicleta robada foto principal",
+          "subtitle": "Una foto de la bicicleta robada. Millor si es pren des del costat."
         },
         "photos": {
           "title": "Podeu afegir fins a {{n}} fotos."
         },
         "description": {
-          "title": "Descriu el que va passar."
+          "title": "Descriu el que va passar.",
+          "subtitle": "Com més detalls donis sobre el que va passar, millor.",
+          "placeholder": "Vaig deixar la meva bicicleta sense vigilància durant mitja hora i va desaparèixer."
         },
         "theft_timeframe": {
           "choices": {
             "morning": "Matí",
             "afternoon": "Tarda.",
-            "evening": null,
+            "evening": "Vespre",
             "night": "Nit"
+          },
+          "title": "Horari de dia",
+          "subtitle": "Seleccione un marc de temps aproximadament quan es va robar la seva bicicleta."
+        },
+        "bike_details": {
+          "title": "Detalls de la bicicleta",
+          "subtitle": "Afegeix qualsevol detall que pugui ajudar a fer que la teva bicicleta sigui identificable.",
+          "placeholder": "La bicicleta té una dent trencada al plató de la cadena."
+        },
+        "enter_email": {
+          "title": "Adreça electrònica",
+          "subtitle": "Us enviarem un enllaç de verificació i utilitzarem el vostre correu electrònic només per a comunicació estrictament relacionada.",
+          "placeholder": "IE: my.email@email.com"
+        },
+        "other_choice": "Altres",
+        "location_address": {
+          "error_msg": "Si us plau, seleccioneu una adreça i escolliu les coordenades."
+        },
+        "file_upload": {
+          "cta_text": "Selecciona una foto"
+        },
+        "serial_number": {
+          "title": "Número de sèrie",
+          "subtitle": "Normalment es troba al marc de la bicicleta, entre els pedals."
+        },
+        "bike_type": {
+          "title": "Tipus de bicicleta",
+          "subtitle": "Selecioneu una opció.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": "Bicicleta plegable.",
+            "mountain_bike": "Bicicleta de muntanya",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }
     },
     "report_form": {
       "you_choose": "Seleccionar"
+    }
+  },
+  "components": {
+    "listing_card": {
+      "view_report_button": {
+        "title": "Veure informe"
+      },
+      "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
+      "theft_date": "Data del robatori"
+    }
+  },
+  "mailer": {
+    "report_activation": {
+      "subject": "Habilita el teu informe."
+    },
+    "report_actiovation": {
+      "body": {
+        "txt": null,
+        "html": null
+      }
     }
   }
 }

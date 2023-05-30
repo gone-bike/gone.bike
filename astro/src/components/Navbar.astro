@@ -1,0 +1,23 @@
+---
+import { localizePath } from "astro-i18next";
+import { LanguageSelector } from "astro-i18next/components";
+
+---
+<div class="container mx-auto flex justify-between items-center py-10 px-4">
+    <div class="container-1 flex items-center gap-5">
+      <div class="hamburger-menu"></div>
+      <div class="logo text-xl font-extrabold">
+        <a href={localizePath("/")}>Gone.Bike</a>
+      </div>
+      <div class="actual-navbar flex gap-3">
+        <div>Home</div>
+        <div>Blog</div>
+        <div>About Project</div>
+      </div>
+    </div>
+    <div class="container-2 flex items-center gap-5">
+      <!-- <div class="favorites">❤️</div>
+      <div class="user">👤</div> -->
+      <LanguageSelector showFlag={true} class="border-gray-300" />
+    </div>
+  </div>

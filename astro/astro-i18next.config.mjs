@@ -3,6 +3,20 @@ export default {
   defaultLocale: "en",
   locales: [
       "it", "fr", "es"
-    ]
+  ],
+  routes: {
+    it: {
+      "create-report": "segnala-furto",
+      report: "denuncia",
+    },
+    es: {
+
+      report: "denuncia",
+    },
+    fr: {
+      report: "reportfr"
+    }
+  },
+
 
 };

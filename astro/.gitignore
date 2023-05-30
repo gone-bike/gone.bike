@@ -19,3 +19,9 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+
+# generated languages
+src/pages/it/*
+src/pages/es/*
+src/pages/fr/*

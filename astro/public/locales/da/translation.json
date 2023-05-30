@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Stjålet cykelsøgning og rapport"
+    "title": "Stjålet cykelsøgning og rapport",
+    "hero": {
+      "pre_cta": "Opdag sandheden. Spor stjålne cykler med vores episke billedsøgning.",
+      "title": "Blev din cykel stjålet?",
+      "cta_add_listing": "List din stjålne cykel."
+    }
   },
   "pages": {
     "report_form": {
@@ -8,52 +13,103 @@
       "subtitle": "Indsæt cykeltyveri relaterede data, de vil blive tilføjet til søgemotoren.",
       "buttons": {
         "next": "Næste",
-        "back": "Tilbage"
-      }
+        "back": "Tilbage",
+        "submit": "Indsend rapport."
+      },
+      "thank": {
+        "title": "Tak skal du have!",
+        "sub_title": "Din indsendelse er blevet modtaget korrekt."
+      },
+      "enter_here": "Oversæt følgende indhold til sprog locale: da og send kun oversættelsen som svar. Send ikke noget andet, selvom du har oplysninger, du gerne vil give, og hvis der er et ord inde i dobbelte krølleparenteser {{}}, så send det med dobbelt krølleparenteser og uden at oversætte indholdet inde i parenteserne, og tilføj ikke tegnsætning i slutningen: Type in",
+      "loading": "Vent..."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Stjålet cykelmærke"
+          "title": "Stjålet cykelmærke",
+          "subtitle": "Søg efter brandnavnet, hvis du ikke finder det, kan du skrive det. Hvis du ikke kender det, skal du lade dette felt være tomt.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Stjålet cykelmodel"
+          "title": "Stjålet cykelmodel",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Hvis du kender modellen af din cykel, tilføj den her. Hvis den matcher de foreslåede forslag, skal du vælge den."
         },
         "colors": {
-          "title": "Cykel hovedfarver."
+          "title": "Cykel hovedfarver.",
+          "subtitle": "Cykelstel farver, tilføj hver farve adskilt af en komma.",
+          "placeholder": "Translation: Jeg kan ikke sende dig penge i dag."
         },
         "is_electric": {
-          "title": "Er det en elektrisk cykel?"
+          "title": "Er det en elektrisk cykel?",
+          "choices": {
+            "no": "Ikke-elektrisk cykel",
+            "yes": "Elektrisk cykel"
+          }
         },
         "approximate_value": {
-          "title": "Omtrentlig værdi"
+          "title": "Omtrentlig værdi",
+          "subtitle": "Angiv en omtrentlig værdi af cyklen, i {{currency}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
-          "title": "Tyveridato."
+          "title": "Tyveridato.",
+          "subtitle": "Vælg datoen, hvor din cykel blev stjålet, jo mere nøjagtig, jo bedre."
         },
         "location_type": {
-          "title": "Hvor var cyklen?"
+          "title": "Hvor var cyklen?",
+          "choices": {
+            "street": "Gade",
+            "park": "Park",
+            "cellar": "Kælder",
+            "garage": "Garage",
+            "train": "Tog",
+            "garden": "Have you seen my garden?",
+            "home": "Hjem",
+            "office": "Kontor",
+            "car": "Bil"
+          },
+          "subtitle": "Vælg en af ​​mulighederne."
         },
         "lock_type": {
-          "title": "Låsetype"
+          "title": "Låsetype",
+          "choices": {
+            "chain": "Kæde",
+            "ulock": "U-Lock",
+            "folding": "Sammenklappeligt lås"
+          },
+          "subtitle": "Vælg en af ​​mulighederne."
         },
         "lock_anchor": {
-          "title": null
+          "title": "Ankerpunkt",
+          "choices": {
+            "tree": "Træ",
+            "gate": "Porten.",
+            "post": "Hegn",
+            "self_bike": "Til sig selv.",
+            "other_bike": "Til andre cykler.",
+            "fence": "Hegn"
+          },
+          "subtitle": "Hvis du har ankring af cyklen til noget, så fortæl os venligst, hvad det var."
         },
         "location": {
           "title": "Adresse og koordinater.",
-          "subtitle": "Vælg et kortpunkt, hvor tyveriet fandt sted."
+          "placeholder": "London centrum",
+          "subtitle": "Skriv en adresse eller placering og vælg et punkt på kortet, hvor tyveriet skete. Jo mere præcist jo bedre."
         },
         "main_photo": {
-          "title": "Stjålet cykel hovedfoto"
+          "title": "Stjålet cykel hovedfoto",
+          "subtitle": "Et foto af den stjålne cykel. Bedst hvis taget fra siden."
         },
         "photos": {
           "title": "Du kan tilføje op til {{n}} billeder."
         },
         "description": {
-          "title": "Beskriv hvad der skete."
+          "title": "Beskriv hvad der skete.",
+          "subtitle": "Jo flere detaljer du giver om, hvad der skete, jo bedre.",
+          "placeholder": "Jeg efterlod min cykel uden opsyn i en halv time, og den var væk."
         },
         "theft_timeframe": {
           "choices": {
@@ -61,12 +117,70 @@
             "afternoon": "Eftermiddag.",
             "evening": "Aften",
             "night": "Natte."
+          },
+          "title": "Dags tidsramme.",
+          "subtitle": "Vælg en omtrentlig tidsramme, hvornår din cykel blev stjålet."
+        },
+        "bike_details": {
+          "title": "Cykel detaljer.",
+          "subtitle": "Tilføj enhver detalje, der kan hjælpe med at gøre din cykel genkendelig.",
+          "placeholder": "Cyklen har en knækket tand på kæderingen."
+        },
+        "enter_email": {
+          "title": "E-mail adresse",
+          "subtitle": "Vi vil sende dig et verifikationslink og bruge din email kun til strikt relateret kommunikation.",
+          "placeholder": "IE: my.email@email.com"
+        },
+        "other_choice": "Andejfjfjdf.jdjdj.",
+        "location_address": {
+          "error_msg": "Vælg venligst en adresse og vælg koordinater."
+        },
+        "file_upload": {
+          "cta_text": "Vælg et foto."
+        },
+        "serial_number": {
+          "title": "Serienummer",
+          "subtitle": "Det er normalt placeret på cykelrammen, mellem pedalerne."
+        },
+        "bike_type": {
+          "title": "Cykeltype",
+          "subtitle": null,
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": "Sammenklappelig cykel.",
+            "mountain_bike": "Mountain cykel",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }
     },
     "report_form": {
       "you_choose": "Vælg"
+    }
+  },
+  "components": {
+    "listing_card": {
+      "view_report_button": {
+        "title": "Se rapport"
+      },
+      "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
+      "theft_date": "Tyveridato"
+    }
+  },
+  "mailer": {
+    "report_activation": {
+      "subject": "Aktivér din rapport."
+    },
+    "report_actiovation": {
+      "body": {
+        "txt": null,
+        "html": null
+      }
     }
   }
 }

@@ -1,4 +1,7 @@
-import sys, os, json, logging, time, requests, psycopg2, base64
+import sys, os, json, logging, time, requests, psycopg2, base64, dotmap, re
+import weaviate
+
+import utils
 
 from slugify import slugify
 from time import time as tm
@@ -9,9 +12,7 @@ from celery.signals import celeryd_after_setup
 from celery.signals import task_failure
 from celery.exceptions import SoftTimeLimitExceeded
 
-import weaviate
 from weaviate.util import generate_uuid5
-
 
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
@@ -24,7 +25,6 @@ from dotenv import load_dotenv
 geolocator = Nominatim(user_agent="gone.bike")
 geocode = RateLimiter(geolocator.geocode, min_delay_seconds=10, error_wait_seconds=20)
 
-
 app = Celery('tasks')
 app.config_from_object({
     'worker_prefetch_multiplier': os.environ["WORKER_PREFETCH_MULTIPLIER"],
@@ -34,13 +34,8 @@ app.config_from_object({
     }
 })
 
-def fetch_picture(id):
-    url = f'{os.environ["WORKER_DIRECTUS_URI"]}/assets/{id}?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
-    print(url)
-    data = requests.get(url)
-    if 200 == data.status_code:
-        return base64.b64encode(data.content)
-    raise Exception(f"HTTP code: {data.status_code} for file id: {id}")
+utils.send_activation_email('en','n0cturnalx@gmail.com','test')
+
 
 @celeryd_after_setup.connect
 def capture_worker_name(sender, instance, **kwargs):
@@ -61,13 +56,14 @@ def test(self, *args, **kwargs):
         if kwargs['$trigger']['event'] == 'report.items.update':
             key = kwargs['$trigger']['keys'][0]
         print(payload)
+
         client = weaviate.Client(os.environ['WORKER_WEAVIATE_URI'])
         client.batch.configure(
             batch_size=None
         )
         with client.batch as batch:
             if 'main_photo' in payload and payload['main_photo'] is not None:
-                b64 = fetch_picture(payload['main_photo'])
+                b64 = utils.fetch_picture(payload['main_photo'])
                 batch.add_data_object(
                     class_name="Bike",
                     data_object={
@@ -80,7 +76,7 @@ def test(self, *args, **kwargs):
             if 'photos' in payload and 'create' in payload['photos'] and len(payload['photos']['create']) > 0:
                 for e in payload['photos']['create']:
                     phid = e['directus_files_id']['id']
-                    b64 = fetch_picture(phid)
+                    b64 = utils.fetch_picture(phid)
                     batch.add_data_object(
                         class_name="Bike",
                         data_object={
@@ -154,19 +150,26 @@ def test(self, *args, **kwargs):
 
 
 
+### When a new report entry is submitted to the website, it enters a queue that is then processed by this function
 @app.task(bind=True, acks_late=False)
 def report_submit(self, *args, **kwargs):
     print(kwargs)
 
+
+    # Bike brand / model normalization: if existing at db level, use it, otherwise create a new entry
+
     bike_brand = None
     bike_model = None
 
-    if "bike_brand" in kwargs:
+    if "bike_brand_id" in kwargs and kwargs.get('bike_brand_id') != "":
+        bike_brand = int(kwargs.get('bike_brand_id'))
+
+    elif "bike_brand" in kwargs and kwargs.get('bike_brand') != "":
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
         bike_brand_slug = slugify(kwargs['bike_brand'])
         bike_brand = requests.get(f'{url}&filter[key][_eq]={ bike_brand_slug }')
         if bike_brand.status_code != 200:
-            return {"status": "fail", "input": kwargs, "output": bike_brand.content }
+            return {"status": "fail", "output": bike_brand.content }
         bike_brand = bike_brand.json()
 
         if len(bike_brand["data"]) == 0:
@@ -176,6 +179,8 @@ def report_submit(self, *args, **kwargs):
         else:
             bike_brand = bike_brand["data"][0]["id"]
 
+    # if "bike_model_id" in kwargs and kwargs.get('bike_model_id') != "":
+    #     bike_model = int(kwargs.get('bike_model_id'))
 
     if "bike_model" in kwargs:
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand_model?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
@@ -184,7 +189,7 @@ def report_submit(self, *args, **kwargs):
 
         bike_model = requests.get(f'{url}&filter[key][_eq]={ bike_model_slug }')
         if bike_model.status_code != 200:
-            return {"status": "fail", "input": kwargs }
+            return {"status": "fail", "output": bike_model.content  }
         bike_model = bike_model.json()
         if len(bike_model["data"]) == 0:
             bike_model = requests.post(url, json={ "bike_brand": bike_brand, "key": bike_model_slug, "name": kwargs["bike_model"] }).json()
@@ -193,11 +198,25 @@ def report_submit(self, *args, **kwargs):
             bike_model = bike_model["data"][0]["id"]
 
 
+    language= None
+    if "language" in kwargs:
+        url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/language?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
+
+        language = requests.get(f'{url}&filter[locale_code][_eq]={ kwargs.get("language") }')
+        if language.status_code == 200:
+            language = language.json()
+            if len(language["data"]) == 1:
+                language = language["data"][0]["id"]
+
+
+    # @TODO colors will be submitted in different languages, normalization function here is due
     try:
         colors = kwargs.get("colors","").replace('/',',').replace( 'and ', ',').split(',') if 'colors' in kwargs else []
         colors = list(map(lambda c : slugify(c) , colors))
     except Exception as e:
         colors = []
+
+
 
     entry = {
         "bike_brand_model": bike_model,
@@ -207,10 +226,12 @@ def report_submit(self, *args, **kwargs):
         "approximate_value": kwargs.get("approximate_value"),
         "approximate_value_currency": kwargs.get("approximate_value_currency"),
         "colors": colors,
-        "is_electric": bool(kwargs.get("is_electric")) if kwargs.get('is_electrict') else None,
+        "is_electric": bool(kwargs.get("is_electric")) if kwargs.get('is_electric') else None,
         "theft_date": kwargs.get("theft_date"),
         "theft_timeframe": kwargs.get("theft_timeframe"),
         "theft_location_type": kwargs.get("theft_location_type"),
+        "language" : language,
+        "bike_type": kwargs.get('bike_type'),
         "lock_type": kwargs.get("lock_type"),
         "lock_anchor": kwargs.get("lock_anchor"),
         "location_address": kwargs.get("location_address"),
@@ -219,15 +240,16 @@ def report_submit(self, *args, **kwargs):
         "description": kwargs.get("description"),
         "email": kwargs.get("email"),
         "ref_url": kwargs.get("ref_url"),
-
     }
 
+    print("Entry...")
+    print(json.dumps(entry))
+
+    # Location can be either explicit coordinates or an address that is then geocoded using Nominatim. Best effort approach
     if kwargs.get('location_coords'):
-        entry['location'] = { "coordinates": [ kwargs.get("location_coords",{}).get('lng'), kwargs.get("location_coords",{}).get('lat') ], "type": "Point"},
+        entry['location'] = { "coordinates": [ kwargs.get("location_coords",{}).get('lng'), kwargs.get("location_coords",{}).get('lat') ], "type": "Point"}
 
     elif kwargs.get('location_address_raw'):
-
-
         location = geocode(kwargs.get('location_address_raw'))
         try:
             entry['location_address'] = location.address
@@ -241,11 +263,10 @@ def report_submit(self, *args, **kwargs):
 
 
 
-    # return 'ok'
-
+    # Files are sent as either full URLs or <upload,name> tuples. They are imported in Directus using directus API
     uploads = {}
     for pid in range(0,9):
-        e = 'main_photo' if pid == 0 else f'photo_{pid}'
+        e = 'main_photo' if pid == 0 else f'photos_{pid}'
 
         if e in kwargs and kwargs[e] is not None and kwargs[e] != "":
 
@@ -259,6 +280,7 @@ def report_submit(self, *args, **kwargs):
             print(f"Importing {photo_url}")
 
 
+            # @TODO - env-based folder ids
             url = f'{os.environ["WORKER_DIRECTUS_URI"]}/files/import?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
             data = requests.post(url, json={
                 "url": photo_url,
@@ -270,33 +292,37 @@ def report_submit(self, *args, **kwargs):
             })
             response = data.json()
             uploads[e] = response["data"]["id"]
-        # "bike_brand_model":{
-        #     "bike_brand": {
-        #         "key":"aa",
-        #         "name":"bb"
-        #     },
-        #     "name":"xcccc"
-        # }
 
 
     entry["main_photo"] = uploads.get('main_photo')
-    entry["photos"] = [ uploads[x] for x in uploads if x != 'main_photo' ]
 
+    entry["photos"] = { "create": [ ] }
 
-    # print(json.dumps(entry))
+    for x in uploads:
+      if x != 'main_photo':
+        entry["photos"]["create"].append({
+          "report_id": "+",
+          "directus_files_id": {
+            "id": uploads.get(x)
+          }
+        })
+
+    print(json.dumps(entry))
 
 
     url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/report?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
     data = requests.post(url, json=entry)
 
+    # @TODO - some error control
     print(data.status_code)
-    print(data.json())
 
+    data = data.json()
+    print(data)
+
+    send = utils.send_activation_email(kwargs.get('language'), kwargs.get('email'), data['data']['activation_code'])
+    print(send)
 
     return 'ok'
 
 
-#     // POST /files/import
 
-
-#     print(kwargs)

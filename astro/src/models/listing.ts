@@ -25,11 +25,11 @@ export default async function() {
       ]
     });
     let data = query && query.data ? query.data : []
-
     return (!data || data.length == 0) ? false : data;
 
-  } catch (e) {
-    throw e
+  } catch (e: any) {
+    // console.log(e);
+    throw e;
   }
 
 }

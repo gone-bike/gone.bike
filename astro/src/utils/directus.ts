@@ -5,7 +5,7 @@ import config from "@utils/config"
 
 
 type Report = {
-    id: ID;
+    id: any;
     status: string;
     description: string;
     location: object;
@@ -22,7 +22,7 @@ type Report = {
 
     photos: {
         directus_files_id: {
-            id: ID;
+            id: any;
             filename_disk: string;
             type: string;
             width: Number;
@@ -32,7 +32,7 @@ type Report = {
     bike_brand_model: {
         name: string;
         bike_brand: {
-            id: ID,
+            id: any,
             key: string;
             name: string;
         }
@@ -41,7 +41,7 @@ type Report = {
         locale_code: string;
     };
     main_photo: {
-        id: ID;
+        id: any;
         filename_disk: string;
         type: string;
         width: Number;

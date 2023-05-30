@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Căutare și raportare a bicicletelor furate."
+    "title": "Căutare și raportare a bicicletelor furate.",
+    "hero": {
+      "pre_cta": "Descoperiți adevărul. Găsiți bicicletele furate cu ajutorul căutării noastre epice de imagini.",
+      "title": "Ți-a fost furată bicicleta?",
+      "cta_add_listing": "Enumerați bicicleta furată."
+    }
   },
   "pages": {
     "report_form": {
@@ -8,52 +13,103 @@
       "subtitle": "Inserați datele legate de furturile de biciclete, acestea vor fi adăugate în motorul de căutare.",
       "buttons": {
         "next": "Următorul.",
-        "back": "Înapoi."
-      }
+        "back": "Înapoi.",
+        "submit": "Trimite raportul."
+      },
+      "thank": {
+        "title": "Mulțumesc!",
+        "sub_title": "Trimiterea ta a fost primită corect."
+      },
+      "enter_here": "ro: Scrieți.",
+      "loading": "Așteaptă..."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Bicicletă furată marcă"
+          "title": "Bicicletă furată marcă",
+          "subtitle": "Căutați numele mărcii, dacă nu îl găsiți, îl puteți tasta. Dacă nu îl cunoașteți, lăsați acest câmp necompletat.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Model de bicicletă furată"
+          "title": "Model de bicicletă furată",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Dacă știți modelul bicicletei dumneavoastră, adăugați-l aici. Dacă se potrivește cu sugestiile date, vă rugăm să o selectați."
         },
         "colors": {
-          "title": "Bicicletă culorile principale."
+          "title": "Bicicletă culorile principale.",
+          "subtitle": "Culorile cadrului bicicletei, adăugați fiecare culoare separat, prin virgulă.",
+          "placeholder": "negru, roșu"
         },
         "is_electric": {
-          "title": "Este o bicicletă electrică?"
+          "title": "Este o bicicletă electrică?",
+          "choices": {
+            "no": "Bicicletă non-electrică.",
+            "yes": "Bicicletă electrică."
+          }
         },
         "approximate_value": {
-          "title": "Valoare aproximativă."
+          "title": "Valoare aproximativă.",
+          "subtitle": "Introduceți o valoare aproximativă a bicicletei, în {{valută}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
-          "title": "Data furtului."
+          "title": "Data furtului.",
+          "subtitle": "Selectați data la care a fost furată bicicleta dumneavoastră, cu cât este mai precis, cu atât este mai bine."
         },
         "location_type": {
-          "title": "Unde era bicicleta?"
+          "title": "Unde era bicicleta?",
+          "choices": {
+            "street": "Strada",
+            "park": "Parc",
+            "cellar": "Bodăga.",
+            "garage": "Garaj",
+            "train": "Tren.",
+            "garden": "Grădină",
+            "home": "Acasă",
+            "office": "Birou",
+            "car": "Automobil"
+          },
+          "subtitle": "Selectați una dintre opțiuni."
         },
         "lock_type": {
-          "title": "Tipul de blocare"
+          "title": "Tipul de blocare",
+          "choices": {
+            "chain": "Lanț",
+            "ulock": "U-Lock",
+            "folding": "Încuietoare pliabilă"
+          },
+          "subtitle": "Selectați una dintre opțiuni."
         },
         "lock_anchor": {
-          "title": "Punct de ancorare."
+          "title": "Punct de ancorare.",
+          "choices": {
+            "tree": "Copac",
+            "gate": "Poartă",
+            "post": "Gard",
+            "self_bike": "În sine",
+            "other_bike": "Către altă bicicletă.",
+            "fence": "Plasă"
+          },
+          "subtitle": "Dacă ați ancorat bicicleta într-un obiect, vă rugăm să ne spuneți la ce ați ancorat-o."
         },
         "location": {
           "title": "Adresă și coordonate",
-          "subtitle": "Selectați un punct de pe hartă unde a avut loc furtul."
+          "placeholder": "Centrul orașului Londra",
+          "subtitle": "Introduceți o adresă sau o locație și selectați un punct de pe hartă unde a avut loc furtul. Cu cât este mai precis, cu atât este mai bine."
         },
         "main_photo": {
-          "title": "Fotografia principală a bicicletei furate"
+          "title": "Fotografia principală a bicicletei furate",
+          "subtitle": "O fotografie a bicicletei furate. Mai bine dacă este luată din lateral."
         },
         "photos": {
           "title": "Poți adăuga până la {{n}} fotografii."
         },
         "description": {
-          "title": "Descrie ce s-a întâmplat."
+          "title": "Descrie ce s-a întâmplat.",
+          "subtitle": "Cu cat oferi mai multe detalii despre ce s-a intamplat, cu atat este mai bine.",
+          "placeholder": "Mi-am lăsat bicicleta nesupravegheată timp de jumătate de oră și a dispărut."
         },
         "theft_timeframe": {
           "choices": {
@@ -61,12 +117,70 @@
             "afternoon": "După-amiaza",
             "evening": "Seara",
             "night": "Noapte"
+          },
+          "title": "Cadru de timp zilnic.",
+          "subtitle": "Selectați o perioadă aproximativă când a fost furată bicicleta dvs."
+        },
+        "bike_details": {
+          "title": "Detalii bicicletă.",
+          "subtitle": "Adăugați orice detaliu care poate ajuta la recunoașterea bicicletei dvs.",
+          "placeholder": "Bicicleta are un dinte rupt pe coroana lanțului."
+        },
+        "enter_email": {
+          "title": "Adresă de email",
+          "subtitle": "Vă vom trimite un link de verificare și vom utiliza adresa dvs. de email doar pentru comunicare strict legată de acest scop.",
+          "placeholder": "IE: my.email@email.com"
+        },
+        "other_choice": "Alte",
+        "location_address": {
+          "error_msg": "Vă rugăm să selectați o adresă și să alegeți coordonatele."
+        },
+        "file_upload": {
+          "cta_text": "Selectați o fotografie."
+        },
+        "serial_number": {
+          "title": "Număr de serie",
+          "subtitle": "De obicei, se află pe cadru bicicletei, între pedale."
+        },
+        "bike_type": {
+          "title": "Tip de bicicletă",
+          "subtitle": "Selectați o opțiune.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": "Bicicletă pliabilă.",
+            "mountain_bike": "Mountain bike.",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }
     },
     "report_form": {
       "you_choose": "\"Select\" translates to \"Selectați\" in Romanian."
+    }
+  },
+  "components": {
+    "listing_card": {
+      "view_report_button": {
+        "title": "Vizualizează raportul."
+      },
+      "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
+      "theft_date": "Data furtului"
+    }
+  },
+  "mailer": {
+    "report_activation": {
+      "subject": "Activați raportul dvs."
+    },
+    "report_actiovation": {
+      "body": {
+        "txt": null,
+        "html": null
+      }
     }
   }
 }

@@ -1,59 +1,115 @@
 {
   "homepage": {
-    "title": "Ricerca e segnalazione di biciclette rubate"
+    "title": "Ricerca e segnalazione di biciclette rubate",
+    "hero": {
+      "pre_cta": "Scopri la verità. Rintraccia le biciclette rubate con la nostra epica ricerca di immagini.",
+      "title": "La tua bicicletta è stata rubata?",
+      "cta_add_listing": "Elenca la tua bicicletta rubata."
+    }
   },
   "pages": {
     "report_form": {
-      "title": "Rapporto di furto di biciclette",
-      "subtitle": "Inserire i dati correlati al furto di biciclette, saranno aggiunti al motore di ricerca",
+      "title": "Segnalazione furto bicicletta",
+      "subtitle": "Inserire i dati correlati al furto della tua bici, saranno aggiunti al motore di ricerca",
       "buttons": {
-        "next": "Prossimo",
-        "back": "Indietro"
-      }
+        "next": "Avanti",
+        "back": "Indietro",
+        "submit": "Invia la segnalazione"
+      },
+      "thank": {
+        "title": "Grazie!",
+        "sub_title": "La tua proposta è stata ricevuta correttamente."
+      },
+      "enter_here": "Inserisci",
+      "loading": "Aspetta..."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Marca della bicicletta rubata"
+          "title": "Marca della bicicletta rubata",
+          "subtitle": "Cerca il nome del marchio, se non lo trovi, puoi scriverlo. Se non lo conosci, lascia vuoto questo campo.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Modello di bicicletta rubata"
+          "title": "Modello di bicicletta rubata",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Se conosci il modello della tua moto, aggiungilo qui, altrimenti lascia il campo vuoto"
         },
         "colors": {
-          "title": "Bici colori principali"
+          "title": "Bici colori principali",
+          "subtitle": "Colori del telaio della bici, aggiungere ogni colore separato da una virgola.",
+          "placeholder": "nero, rosso"
         },
         "is_electric": {
-          "title": "È una bicicletta elettrica?"
+          "title": "È una bicicletta elettrica?",
+          "choices": {
+            "no": "Bicicletta non elettrica.",
+            "yes": "Bicicletta elettrica"
+          }
         },
         "approximate_value": {
-          "title": "Valore approssimativo"
+          "title": "Valore approssimativo",
+          "subtitle": "Inserire un valore approssimativo della bicicletta, in {{currency}}",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
-          "title": "Data di furto"
+          "title": "Data di furto",
+          "subtitle": "Seleziona la data in cui la tua bicicletta è stata rubata, più accurata è, meglio è."
         },
         "location_type": {
-          "title": "Dov'era la bici?"
+          "title": "Dov'era la bici?",
+          "choices": {
+            "street": "Strada",
+            "park": "Parco",
+            "cellar": "Cantina",
+            "garage": "Garage",
+            "train": "Treno",
+            "garden": "Giardino",
+            "home": "Casa",
+            "office": "Ufficio",
+            "car": "Auto"
+          },
+          "subtitle": "Seleziona una delle opzioni"
         },
         "lock_type": {
-          "title": "Tipo di blocco"
+          "title": "Tipo di blocco",
+          "choices": {
+            "chain": "Catena",
+            "ulock": "U-Lock",
+            "folding": "Blocco pieghevole"
+          },
+          "subtitle": "Seleziona una delle opzioni"
         },
         "lock_anchor": {
-          "title": "Punto di ancoraggio."
+          "title": "Punto di ancoraggio.",
+          "choices": {
+            "tree": "Albero",
+            "gate": "Cancello",
+            "post": "Recinzione",
+            "self_bike": "A se stesso",
+            "other_bike": "A altre biciclette",
+            "fence": "Recinto"
+          },
+          "subtitle": "Se hai ancorato la bici a qualcosa, per favore dicci a cosa era ancorata."
         },
         "location": {
           "title": "Indirizzo e coordinate.",
-          "subtitle": "Seleziona un punto sulla mappa dove è avvenuto il furto."
+          "placeholder": "centro città di Londra",
+          "subtitle": "Inserisci un indirizzo o una posizione e seleziona un punto sulla mappa dove è avvenuto il furto. Più preciso è, meglio è."
         },
         "main_photo": {
-          "title": "Foto principale della bici rubata."
+          "title": "Foto principale della bici rubata.",
+          "subtitle": "Una foto della bicicletta rubata. Meglio se scattata di lato."
         },
         "photos": {
           "title": "Puoi aggiungere fino a {{n}} foto."
         },
         "description": {
-          "title": "Descrivi cosa è successo."
+          "title": "Descrivi cosa è successo.",
+          "subtitle": "Più dettagli fornisci su ciò che è successo, meglio è.",
+          "placeholder": "Ho lasciato la mia bicicletta incustodita per mezz'ora e non c'era più."
         },
         "theft_timeframe": {
           "choices": {
@@ -61,12 +117,70 @@
             "afternoon": "Pomeriggio",
             "evening": "Sera",
             "night": "Notte"
+          },
+          "title": "Periodo della giornata",
+          "subtitle": "Seleziona un intervallo di tempo approssimativo in cui la tua bicicletta è stata rubata."
+        },
+        "bike_details": {
+          "title": "Dettagli della bici",
+          "subtitle": "Aggiungi qualsiasi dettaglio che possa aiutare a rendere la tua bici riconoscibile.",
+          "placeholder": "La bici ha un dente rotto sulla corona della catena."
+        },
+        "enter_email": {
+          "title": "Indirizzo email",
+          "subtitle": "Ti invieremo un link di verifica e utilizzeremo la tua email solo per comunicazioni strettamente correlate.",
+          "placeholder": "IE: my.email@email.com"
+        },
+        "other_choice": "Altro",
+        "location_address": {
+          "error_msg": "Seleziona un indirizzo e scegli le coordinate."
+        },
+        "file_upload": {
+          "cta_text": "Seleziona una foto."
+        },
+        "serial_number": {
+          "title": "Numero seriale",
+          "subtitle": "Solitamente si trova sul telaio della bicicletta, tra i pedali."
+        },
+        "bike_type": {
+          "title": "Tipo di bicicletta",
+          "subtitle": "Seleziona una opzione.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": "Bicicletta pieghevole",
+            "mountain_bike": "Mountain bike",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }
     },
     "report_form": {
       "you_choose": "Seleziona"
+    }
+  },
+  "components": {
+    "listing_card": {
+      "view_report_button": {
+        "title": "Visualizza rapporto."
+      },
+      "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
+      "theft_date": "Data del furto"
+    }
+  },
+  "mailer": {
+    "report_activation": {
+      "subject": "Abilita il tuo rapporto."
+    },
+    "report_actiovation": {
+      "body": {
+        "txt": null,
+        "html": null
+      }
     }
   }
 }

@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Pesquisa e relatório de bicicleta roubada."
+    "title": "Pesquisa e relatório de bicicleta roubada.",
+    "hero": {
+      "pre_cta": "Descubra a verdade. Rastreie bicicletas roubadas com nossa épica busca por imagens.",
+      "title": "Sua bicicleta foi roubada?",
+      "cta_add_listing": "Liste sua bicicleta roubada."
+    }
   },
   "pages": {
     "report_form": {
@@ -8,52 +13,103 @@
       "subtitle": "Insira dados relacionados a roubo de bicicletas, eles serão adicionados ao motor de busca.",
       "buttons": {
         "next": "Próximo",
-        "back": "De volta."
-      }
+        "back": "De volta.",
+        "submit": "Enviar relatório."
+      },
+      "thank": {
+        "title": "O meu nome é Sarah e eu sou uma assistente virtual. Como posso ajudá-lo hoje? \n\nMinha língua local é o português. Como posso ajudá-lo hoje?",
+        "sub_title": "Sua submissão foi recebida corretamente."
+      },
+      "enter_here": "the following content:\n\n\"Welcome to our website! Our products are high quality and affordably priced. {{Stay tuned for upcoming promotions and discounts}}. Thank you for visiting!\"\n\nBem-vindo ao nosso site! Nossos produtos são de alta qualidade e com preço acessível. {{Fique ligado para próximas promoções e descontos}}. Obrigado pela visita!",
+      "loading": "Espera..."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Bicicleta roubada da marca."
+          "title": "Bicicleta roubada da marca.",
+          "subtitle": "Pesquise o nome da marca, se você não encontrá-la, pode digitá-la. Se não souber, deixe este campo em branco.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Modelo de bicicleta roubada"
+          "title": "Modelo de bicicleta roubada",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Se você conhece o modelo da sua moto, adicione-o aqui. Se corresponder às sugestões dadas, selecione-o."
         },
         "colors": {
-          "title": "Cores principais da bicicleta"
+          "title": "Cores principais da bicicleta",
+          "subtitle": "Cores do quadro da bicicleta, adicione cada cor separada por vírgula.",
+          "placeholder": "Prezados clientes, nossa loja estará fechada para manutenção no dia 10 de agosto. Pedimos desculpas pelo transtorno e agradecemos pela compreensão."
         },
         "is_electric": {
-          "title": "É uma bicicleta elétrica?"
+          "title": "É uma bicicleta elétrica?",
+          "choices": {
+            "no": "Bicicleta não elétrica.",
+            "yes": "Bicicleta elétrica."
+          }
         },
         "approximate_value": {
-          "title": "Valor aproximado"
+          "title": "Valor aproximado",
+          "subtitle": "Digite um valor aproximado da bicicleta, em {{currency}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
-          "title": "Data do roubo."
+          "title": "Data do roubo.",
+          "subtitle": "Selecione a data em que sua bicicleta foi roubada, quanto mais precisa, melhor."
         },
         "location_type": {
-          "title": "Onde estava a bicicleta?"
+          "title": "Onde estava a bicicleta?",
+          "choices": {
+            "street": "Rua",
+            "park": "Parque",
+            "cellar": "Porão",
+            "garage": "Garagem",
+            "train": "Trem",
+            "garden": "Jardim",
+            "home": "Casa",
+            "office": "Escritório",
+            "car": "ro cliente, obrigado por escolher nossos serviços. Seu pedido será entregue em {{2}} dias úteis. Para acompanhar o status do seu pedido, visite nossa página de rastreamento com o número do seu pedido: {{1234}}. Obrigado novamente por sua preferência. \n\nTranslation: Caro cliente, obrigado por escolher os nossos serviços. O seu pedido será entregue em {{2}} dias úteis. Para acompanhar o estado do seu pedido, visite a nossa página de rastreio com o número do seu pedido: {{1234}}. Obrigado novamente pela sua preferência."
+          },
+          "subtitle": "Selecione uma das opções."
         },
         "lock_type": {
-          "title": "Tipo de bloqueio"
+          "title": "Tipo de bloqueio",
+          "choices": {
+            "chain": "Corrente.",
+            "ulock": "U-Lock",
+            "folding": "Trava dobrável."
+          },
+          "subtitle": "Selecione uma das opções."
         },
         "lock_anchor": {
-          "title": "Ponto de ancoragem."
+          "title": "Ponto de ancoragem.",
+          "choices": {
+            "tree": "Árvore",
+            "gate": "Portão",
+            "post": "Cerca",
+            "self_bike": "Para si mesmo",
+            "other_bike": "Para outras bicicletas.",
+            "fence": "Cerca"
+          },
+          "subtitle": "Se você ancorou a bicicleta em algo, por favor nos diga o que era."
         },
         "location": {
           "title": "Endereço e coordenadas.",
-          "subtitle": "Selecione um ponto no mapa onde ocorreu o roubo."
+          "placeholder": "centro da cidade de Londres",
+          "subtitle": "Digite um endereço ou localização e selecione um ponto no mapa onde ocorreu o furto. Quanto mais preciso, melhor."
         },
         "main_photo": {
-          "title": "Foto principal da bicicleta roubada"
+          "title": "Foto principal da bicicleta roubada",
+          "subtitle": "Uma foto da bicicleta roubada. Melhor se tirada de lado."
         },
         "photos": {
           "title": "Você pode adicionar até {{n}} fotos."
         },
         "description": {
-          "title": "Descreva o que aconteceu."
+          "title": "Descreva o que aconteceu.",
+          "subtitle": "Quanto mais detalhes você der sobre o que aconteceu, melhor.",
+          "placeholder": "Deixei minha bicicleta sem vigilância por meia hora e ela desapareceu."
         },
         "theft_timeframe": {
           "choices": {
@@ -61,12 +117,70 @@
             "afternoon": "Tarde",
             "evening": "Noite.",
             "night": "Noite."
+          },
+          "title": "Período diurno",
+          "subtitle": "Selecione um intervalo de tempo aproximado quando sua bicicleta foi roubada."
+        },
+        "bike_details": {
+          "title": "Detalhes da bicicleta",
+          "subtitle": "Adicione qualquer detalhe que possa ajudar a tornar sua bicicleta reconhecível.",
+          "placeholder": "A bicicleta tem um dente quebrado na coroa da corrente."
+        },
+        "enter_email": {
+          "title": "Endereço de e-mail",
+          "subtitle": "Enviaremos um link de verificação e usaremos seu e-mail apenas para comunicação estritamente relacionada.",
+          "placeholder": "IE: my.email@email.com"
+        },
+        "other_choice": "Outro",
+        "location_address": {
+          "error_msg": "Por favor, selecione um endereço e escolha as coordenadas."
+        },
+        "file_upload": {
+          "cta_text": "Selecionar uma foto"
+        },
+        "serial_number": {
+          "title": "Número de série",
+          "subtitle": "Normalmente está localizado no quadro da bicicleta, entre os pedais."
+        },
+        "bike_type": {
+          "title": "Tipo de bicicleta.",
+          "subtitle": "Selecione uma opção.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": "Bicicleta dobrável.",
+            "mountain_bike": "Bicicleta de montanha",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }
     },
     "report_form": {
       "you_choose": "Selecionar"
+    }
+  },
+  "components": {
+    "listing_card": {
+      "view_report_button": {
+        "title": "Visualizar relatório"
+      },
+      "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
+      "theft_date": "Data de roubo"
+    }
+  },
+  "mailer": {
+    "report_activation": {
+      "subject": "Habilitar seu relatório"
+    },
+    "report_actiovation": {
+      "body": {
+        "txt": null,
+        "html": null
+      }
     }
   }
 }

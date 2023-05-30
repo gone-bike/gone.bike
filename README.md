@@ -1,6 +1,7 @@
 # Gone.Bike
 
-Stolen bikes database, search engine and reporting tool.
+OpenSource, OpenData stolen bikes database, search engine and reporting tool.
+Data is publicly accessible at [gone.bike/exports/](https://gone.bike/exports/), dumped on a daily basis (WIP).
 
 ## Dev requirements
 

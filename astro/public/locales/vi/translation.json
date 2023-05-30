@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Tìm kiếm và báo cáo xe đạp bị mất"
+    "title": "Tìm kiếm và báo cáo xe đạp bị mất",
+    "hero": {
+      "pre_cta": "Khám phá sự thật. Tìm kiếm các chiếc xe bị đánh cắp với công cụ tìm kiếm ấn tượng của chúng tôi.",
+      "title": "Bạn có bị mất xe đạp không?",
+      "cta_add_listing": "Danh sách xe đạp của bạn đã bị mất."
+    }
   },
   "pages": {
     "report_form": {
@@ -8,52 +13,103 @@
       "subtitle": "Thêm dữ liệu liên quan đến việc mất trộm xe đạp, chúng sẽ được thêm vào công cụ tìm kiếm.",
       "buttons": {
         "next": "Trang sau",
-        "back": "Quay lại"
-      }
+        "back": "Quay lại",
+        "submit": "Gửi báo cáo"
+      },
+      "thank": {
+        "title": "Các sản phẩm mới đã về đến cửa hàng của chúng tôi, hãy đến và khám phá ngay hôm nay!\nXin cảm ơn!",
+        "sub_title": "Đã nhận được đăng ký của bạn đúng tại chỗ."
+      },
+      "enter_here": "vi\nNhập vào",
+      "loading": "Đợi chút..."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Xe đạp thương hiệu bị đánh cắp."
+          "title": "Xe đạp thương hiệu bị đánh cắp.",
+          "subtitle": "Tìm kiếm tên thương hiệu, nếu bạn không tìm thấy, bạn có thể gõ vào ô trống. Nếu bạn không biết, hãy để trống trường này.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Xe đạp bị đánh cắp, mẫu {{X}}."
+          "title": "Xe đạp bị đánh cắp, mẫu {{X}}.",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Nếu bạn biết model xe của mình, hãy thêm vào đây. Nếu nó phù hợp với các gợi ý được đưa ra, vui lòng chọn nó."
         },
         "colors": {
-          "title": "Màu chính của xe đạp"
+          "title": "Màu chính của xe đạp",
+          "subtitle": "Màu khung xe đạp, thêm mỗi màu cách nhau bằng dấu phẩy.",
+          "placeholder": "đen, đỏ"
         },
         "is_electric": {
-          "title": "Đây có phải là một chiếc xe đạp điện không?"
+          "title": "Đây có phải là một chiếc xe đạp điện không?",
+          "choices": {
+            "no": "Xe đạp không sử dụng điện.",
+            "yes": "Xe đạp điện"
+          }
         },
         "approximate_value": {
-          "title": "Giá trị xấp xỉ."
+          "title": "Giá trị xấp xỉ.",
+          "subtitle": "Nhập giá trị xấp xỉ của xe đạp, trong {{đơn vị tiền tệ}}",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
-          "title": "Ngày bị trộm trên tài sản"
+          "title": "Ngày bị trộm trên tài sản",
+          "subtitle": "Chọn ngày khi chiếc xe đạp của bạn bị mất, càng chính xác càng tốt."
         },
         "location_type": {
-          "title": "Xe đạp ở đâu?"
+          "title": "Xe đạp ở đâu?",
+          "choices": {
+            "street": "Đường",
+            "park": "Công viên",
+            "cellar": "Ngăn chứa rượu.",
+            "garage": "Garage",
+            "train": "Tàu hỏa",
+            "garden": "Vườn",
+            "home": "Trang chủ",
+            "office": "Văn phòng",
+            "car": "Xe hơi"
+          },
+          "subtitle": "Chọn một trong các tùy chọn."
         },
         "lock_type": {
-          "title": "Loại khóa"
+          "title": "Loại khóa",
+          "choices": {
+            "chain": "Chuỗi",
+            "ulock": "U-Lock",
+            "folding": "Khóa gập"
+          },
+          "subtitle": "Chọn một trong các lựa chọn."
         },
         "lock_anchor": {
-          "title": "Điểm neo"
+          "title": "Điểm neo",
+          "choices": {
+            "tree": "Cây",
+            "gate": "Cổng",
+            "post": "Hàng rào",
+            "self_bike": "Đến chính nó",
+            "other_bike": "Đến xe đạp khác",
+            "fence": "Hàng rào."
+          },
+          "subtitle": "Nếu bạn đã neo xe đạp vào điều gì đó, vui lòng cho chúng tôi biết đó là gì."
         },
         "location": {
           "title": "Địa chỉ và tọa độ",
-          "subtitle": "Chọn một điểm trên bản đồ nơi xảy ra vụ trộm."
+          "placeholder": "Trung tâm thành phố Luân Đôn",
+          "subtitle": "Nhập địa chỉ hoặc vị trí và chọn một điểm trên bản đồ nơi mà việc trộm xảy ra. Càng chính xác càng tốt."
         },
         "main_photo": {
-          "title": "Ảnh chính của chiếc xe đạp bị đánh cắp"
+          "title": "Ảnh chính của chiếc xe đạp bị đánh cắp",
+          "subtitle": "Một bức ảnh của xe đạp bị đánh cắp. Tốt hơn nếu chụp từ bên cạnh."
         },
         "photos": {
           "title": "Bạn có thể thêm lên đến {{n}} ảnh."
         },
         "description": {
-          "title": "Mô tả những gì đã xảy ra."
+          "title": "Mô tả những gì đã xảy ra.",
+          "subtitle": "Càng nhiều chi tiết bạn cung cấp về những gì đã xảy ra, càng tốt.",
+          "placeholder": "Tôi để chiếc xe đạp của tôi không có người trông coi trong nửa tiếng và nó đã mất."
         },
         "theft_timeframe": {
           "choices": {
@@ -61,12 +117,70 @@
             "afternoon": "Buổi chiều",
             "evening": "Buổi tối",
             "night": "Đêm"
+          },
+          "title": "Khung thời gian trong ngày",
+          "subtitle": "Chọn khung thời gian xấp xỉ khi chiếc xe đạp của bạn bị mất"
+        },
+        "bike_details": {
+          "title": "Chi tiết xe đạp",
+          "subtitle": "Thêm bất kỳ chi tiết nào để giúp làm cho xe đạp của bạn dễ nhận ra.",
+          "placeholder": "Xe đạp có một răng bị gãy trên vòng truyền động."
+        },
+        "enter_email": {
+          "title": "Địa chỉ email",
+          "subtitle": "Chúng tôi sẽ gửi cho bạn một liên kết xác minh và sử dụng địa chỉ email của bạn chỉ cho việc liên lạc liên quan chặt chẽ.",
+          "placeholder": "IE: my.email@email.com"
+        },
+        "other_choice": "Điều khác",
+        "location_address": {
+          "error_msg": "Vui lòng chọn địa chỉ và chọn tọa độ."
+        },
+        "file_upload": {
+          "cta_text": "Chọn một bức ảnh."
+        },
+        "serial_number": {
+          "title": "Số serial",
+          "subtitle": "Thường được đặt trên khung xe đạp, giữa hai bàn đạp."
+        },
+        "bike_type": {
+          "title": "Loại xe đạp",
+          "subtitle": "Chọn một tùy chọn",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": "Xe đạp gập",
+            "mountain_bike": "Xe đạp địa hình.",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }
     },
     "report_form": {
       "you_choose": "Lựa chọn"
+    }
+  },
+  "components": {
+    "listing_card": {
+      "view_report_button": {
+        "title": "Xem báo cáo"
+      },
+      "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
+      "theft_date": "Ngày mất cắp"
+    }
+  },
+  "mailer": {
+    "report_activation": {
+      "subject": "Kích hoạt báo cáo của bạn."
+    },
+    "report_actiovation": {
+      "body": {
+        "txt": null,
+        "html": null
+      }
     }
   }
 }

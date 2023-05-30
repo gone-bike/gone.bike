@@ -1,0 +1,73 @@
+---
+import i18next, { t } from "i18next";
+import config from "@utils/config";
+import BaseLayout from "@layouts/Base.astro";
+import CreateReportForm from "@components/CreateReportForm.vue";
+
+
+let photoTranslation = t(`forms.report.questions.photos.title`, { n: config.MAX_PHOTOS_UPLOAD });
+
+let fff = { data: [] };
+
+let errorText = "Error";
+let addressFieldRequiredError = "Address field is required";
+let photoRequiredError = "Photo is Required";
+let waitWhileUploadError = "Please wait while uploading";
+let validEmailError = "Enter valid email";
+let someThingWentWrongError = "Something went wrong"
+
+try {
+  fff = await (await fetch(`${config.INTERNAL_URI}/api/bike_brand.json`)).json();
+} catch (e) {
+  console.log("Error");
+}
+---
+<BaseLayout
+  title={t("pages.report_form.title")}
+  description=""
+  lang={i18next.language}
+>
+  <div class="container max-w-3xl mx-auto my-10">
+    <div class="border">
+      <div class="p-4 text-center">
+        <h1 class="text-2xl">{t("pages.report_form.title")}</h1>
+        <p class="mt-2">{t("pages.report_form.subtitle")}</p>
+      </div>
+      <div class="w-full h-[1px] bg-gray-200"></div>
+
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
+      <script define:vars={{ sitekey: config.CLOUDFLARE_CAPTCHA_KEY }}>
+      window.onloadTurnstileCallback = function () {
+          turnstile.render('#captcha-challenge', {
+              sitekey: sitekey,
+              callback: function(token) {
+                document.getElementById("vue_app").removeAttribute("hidden")
+                document.getElementById("captcha-challenge").classList.add("hidden");
+                window.captchaToken = token;
+              },
+          });
+      };
+      </script>
+
+
+      <div class="p-10 flex justify-center items-center" id="captcha-challenge"></div>
+      <div class="p-4" id="vue_app" hidden>
+        <CreateReportForm
+          client:load
+          bikeBrand={fff.data}
+          lang={i18next.language}
+          photoTranslation={photoTranslation}
+          maxUploads={4}
+          currency="EUR"
+          errorText={errorText}
+          addressFieldRequiredError={addressFieldRequiredError}
+          photoRequiredError={photoRequiredError}
+          waitWhileUploadError={waitWhileUploadError}
+          validEmailError={validEmailError}
+          someThingWentWrongError={someThingWentWrongError}
+          mapsApiKey={config.GMAP_API_KEY}
+          />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

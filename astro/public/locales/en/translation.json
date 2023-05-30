@@ -1,59 +1,115 @@
 {
   "homepage": {
-    "title": "Stolen bike search and report"
+    "title": "Stolen bike search and report",
+    "hero": {
+      "pre_cta": "Discover the truth. Track down stolen bikes with our epic image search.",
+      "title": "Did your bike get stolen?",
+      "cta_add_listing": "List your stolen bike"
+    }
   },
   "pages": {
     "report_form": {
       "title": "Bike theft report",
       "subtitle": "Insert bike theft related data, they will be added to the search engine",
       "buttons": {
-        "next": "Next.",
-        "back": "Back"
-      }
+        "next": "Next",
+        "back": "Back",
+        "submit": "Submit report"
+      },
+      "thank": {
+        "title": "Thank You!",
+        "sub_title": "Your submission has been received correctly"
+      },
+      "enter_here": "Type in",
+      "loading": "Wait..."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Stolen bike brand"
+          "title": "Stolen bike brand",
+          "subtitle": "Search the brand name, if you don't find it, you can type it in. If you don't know it, leave this field blank.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Stolen bike model"
+          "title": "Stolen bike model",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "If you know the model of your bike, add it here, otherwise leave it blank"
         },
         "colors": {
-          "title": "Bike main colors\n"
+          "title": "Bike main colors\n",
+          "subtitle": "Bike frame colors, add each color separated by a comma.",
+          "placeholder": "IE: black, red"
         },
         "is_electric": {
-          "title": "Is it an electric bike?"
+          "title": "Is it an electric bike?",
+          "choices": {
+            "no": "Non-electric bike",
+            "yes": "Electric bike"
+          }
         },
         "approximate_value": {
-          "title": "Approximate value"
+          "title": "Approximate value",
+          "subtitle": "Type an approximate value of the bike, in {{currency}}:",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
-          "title": "Theft date"
+          "title": "Theft date",
+          "subtitle": "Select the date when your bike was stolen, the more accurate, the better."
         },
         "location_type": {
-          "title": "Where was the bike?"
+          "title": "Where was the bike?",
+          "choices": {
+            "street": "Street",
+            "park": "Park",
+            "cellar": "Cellar",
+            "garage": "Garage",
+            "train": "Train",
+            "garden": "Garden",
+            "home": "Home",
+            "office": "Office",
+            "car": "Car"
+          },
+          "subtitle": " "
         },
         "lock_type": {
-          "title": "Lock type"
+          "title": "Lock type",
+          "choices": {
+            "chain": "Chain",
+            "ulock": "U-Lock",
+            "folding": "Folding lock"
+          },
+          "subtitle": "Select one of the options"
         },
         "lock_anchor": {
-          "title": "Anchor point"
+          "title": "Anchor point",
+          "choices": {
+            "tree": "Tree",
+            "gate": "Gate",
+            "post": "Fence",
+            "self_bike": "To itself",
+            "other_bike": "To other bike",
+            "fence": "Fence"
+          },
+          "subtitle": "If you anchored the bike to something, please tell us what it was."
         },
         "location": {
           "title": "Address and coordinates",
-          "subtitle": "Select a map point where the theft happened."
+          "placeholder": "IE: London city center",
+          "subtitle": "Type an address or a location and select a map point where the theft happened. The more precise, the better."
         },
         "main_photo": {
-          "title": "Stolen bike main photo"
+          "title": "Stolen bike main photo",
+          "subtitle": "A photo of the stolen bike. Better if taken from the side."
         },
         "photos": {
           "title": "You can add up to {{n}} photos"
         },
         "description": {
-          "title": "Describe what happened"
+          "title": "Describe what happened",
+          "subtitle": "The more details you give about what happened, the better",
+          "placeholder": "I left my bike unattended for half hour and it was gone"
         },
         "theft_timeframe": {
           "choices": {
@@ -61,12 +117,70 @@
             "afternoon": "Afternoon",
             "evening": "Evening",
             "night": "Night"
+          },
+          "title": "Day time frame",
+          "subtitle": "Select an approximate time frame when your bike was stolen."
+        },
+        "bike_details": {
+          "title": "Bike details",
+          "subtitle": "Add any detail that can help make your bike recognizable.",
+          "placeholder": "IE: The bike has a broken tooth on the chain ring."
+        },
+        "enter_email": {
+          "title": "Email address",
+          "subtitle": "We will send you a verification link and use your email only for strictly related communication.",
+          "placeholder": "IE: my.email@email.com"
+        },
+        "other_choice": "Other",
+        "location_address": {
+          "error_msg": "Please select an address and choose coordinates"
+        },
+        "file_upload": {
+          "cta_text": "Select a photo"
+        },
+        "serial_number": {
+          "title": "Serial Number",
+          "subtitle": "It is usually located on the bike frame, between the pedals"
+        },
+        "bike_type": {
+          "title": "Bike type",
+          "subtitle": "Select one option",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": "Folding bike",
+            "mountain_bike": "Mountain bike",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }
     },
     "report_form": {
       "you_choose": "Select"
+    }
+  },
+  "components": {
+    "listing_card": {
+      "view_report_button": {
+        "title": "View Report"
+      },
+      "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
+      "theft_date": "Theft Date"
+    }
+  },
+  "mailer": {
+    "report_activation": {
+      "subject": "Enable your report"
+    },
+    "report_actiovation": {
+      "body": {
+        "txt": "Here is your activation link: {{ activation_url }}\n\nThe link will be valid for 24h.\n\nYour report will be published after you activate it.",
+        "html": "<p>Here is your activation link: <a href=\"{{ activation_url }}\">{{ activation_url }}</a></p>\n\n<p>The link will be valid for 24h.</p>\n\n<p>Your report will be published after you activate it.</p>"
+      }
     }
   }
 }

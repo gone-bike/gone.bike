@@ -1,23 +1,62 @@
 ---
-import i18next, { t } from "i18next";
-
-const args = {
-    locale: Astro.url.searchParams.get("locale") || 'en',
-    id: Astro.url.searchParams.get("id") || 0
-}
-
-await i18next.changeLanguage(args.locale)
+import i18next from 'i18next'
+import { t, changeLanguage } from "i18next";
+import { localizePath } from "astro-i18next";
 
 import BaseLayout from "@layouts/Base.astro";
+
+changeLanguage(Astro.url.searchParams.get("locale") || "en");
+console.log(i18next.language)
 ---
 
-<BaseLayout title={t('homepage.title')} description="">
-  <div class="container max-w-3xl mx-auto mt-10">
-	 <div>
-		<h1 class="font-bold text-xl text-center">Template scaffolding</h1>
-		<p class="mt-2 p-5 font-mono border border-gray-300">
-			here some content
-		</p>
-	 </div>
- </div>
+<BaseLayout title={t("homepage.title")} lang={i18next.language} description="">
+  <style>
+    .hero {
+      background: linear-gradient(
+        90deg,
+        rgba(82, 241, 232, 0.24) 0%,
+        rgba(176, 253, 79, 0.24) 25%,
+        rgba(82, 241, 232, 0.24) 50%,
+        rgba(162, 251, 49, 0.24) 100%
+      );
+    }
+  </style>
+  <div class="w-full">
+    <div class="hero w-full h-[50vh] flex flex-col items-center justify-center">
+      <div class="pre-cta text-lg font-bold">
+        {t("homepage.hero.pre_cta")}
+      </div>
+      <h1 class="cta text-6xl font-extrabold">{t("homepage.hero.title")}</h1>
+
+      <a
+        class="list-button text-white bg-[#2DA771] rounded py-2 px-4 tracking-wider uppercase font-bold text-lg my-8"
+        href={localizePath("/create-report")}>{t("homepage.hero.cta_add_listing")}</a
+      >
+
+      <p class="p-4">This is a temporary homepage for the project.</p>
+    </div>
+      <!--
+          <div
+            class="input mt-10 mb-6 bg-white border-dashed border-gray-500 rounded border py-2 px-4"
+          >
+        <button class="flex gap-2 text-xs">
+          <span class="font-bold">Drag a stolen bike image here</span> or <span
+            class="text-green-500">upload a file</span
+          >
+          <img src="#" />
+          Search by Image
+        </button>
+      </div>
+      <div class="my-4">
+        <span class="text-gray-400">No luck?</span> Try to listing your bike
+      </div>
+      <a
+        class="list-button text-white bg-[#2DA771] rounded py-2 px-4 tracking-wider uppercase text-sm"
+        href={localizePath("/create-report")}>{t("homepage.hero.cta_add_listing")}</a
+      >
+    </div>
+    <div class="listing"></div>
+    <div class="blog"></div>
+     -->
+  </div>
 </BaseLayout>

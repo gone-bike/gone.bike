@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Recherche et signalement de vélo volé."
+    "title": "Recherche et signalement de vélo volé.",
+    "hero": {
+      "pre_cta": "Découvrez la vérité. Poursuivez les vélos volés avec notre recherche d'images épique.",
+      "title": "Est-ce que votre vélo a été volé?",
+      "cta_add_listing": "Listez votre vélo volé."
+    }
   },
   "pages": {
     "report_form": {
@@ -8,65 +13,174 @@
       "subtitle": "Insérez les données liées au vol de vélos, elles seront ajoutées au moteur de recherche.",
       "buttons": {
         "next": "Suivant",
-        "back": "Retour"
-      }
+        "back": "Retour",
+        "submit": "Soumettre le rapport."
+      },
+      "thank": {
+        "title": "Merci!",
+        "sub_title": "Votre soumission a été reçue correctement."
+      },
+      "enter_here": "le texte ici.",
+      "loading": "Attendre..."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Vélo volé de la marque."
+          "title": "Vélo volé de la marque.",
+          "subtitle": "Recherchez le nom de la marque, si vous ne le trouvez pas, vous pouvez le taper. Si vous ne le connaissez pas, laissez ce champ vide.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Vélo volé modèle"
+          "title": "Vélo volé modèle",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Si vous connaissez le modèle de votre vélo, veuillez l'ajouter ici. Si cela correspond aux suggestions proposées, veuillez le sélectionner."
         },
         "colors": {
-          "title": "Les principales couleurs de vélo."
+          "title": "Les principales couleurs de vélo.",
+          "subtitle": "Couleurs de cadre de vélo, ajouter chaque couleur séparée par une virgule.",
+          "placeholder": "No translation provided for this task. Please specify the content to be translated."
         },
         "is_electric": {
-          "title": "Est-ce un vélo électrique ?"
+          "title": "Est-ce un vélo électrique ?",
+          "choices": {
+            "no": "Vélo non électrique",
+            "yes": "Vélo électrique"
+          }
         },
         "approximate_value": {
-          "title": "Valeur approximative"
+          "title": "Valeur approximative",
+          "subtitle": "Entrez une valeur approximative du vélo en {{devise}}",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
-          "title": "Date de vol"
+          "title": "Date de vol",
+          "subtitle": "Sélectionnez la date à laquelle votre vélo a été volé, plus précise sera meilleure."
         },
         "location_type": {
-          "title": "Où était le vélo?"
+          "title": "Où était le vélo?",
+          "choices": {
+            "street": "Rue",
+            "park": "Parc",
+            "cellar": "Cave",
+            "garage": "Garage",
+            "train": "Train",
+            "garden": "Jardin",
+            "home": "Accueil",
+            "office": "Bureau",
+            "car": "Sorry, there is no content provided to translate."
+          },
+          "subtitle": "Sélectionnez l'une des options."
         },
         "lock_type": {
-          "title": "Type de verrouillage"
+          "title": "Type de verrouillage",
+          "choices": {
+            "chain": "Chaîne",
+            "ulock": "U-Lock",
+            "folding": "Serrure pliante"
+          },
+          "subtitle": "Sélectionnez l'une des options."
         },
         "lock_anchor": {
-          "title": "Point d'ancrage"
+          "title": "Point d'ancrage",
+          "choices": {
+            "tree": "Arbre",
+            "gate": "Porte",
+            "post": "Barrière",
+            "self_bike": "À soi-même",
+            "other_bike": "Aux autres vélos",
+            "fence": "Barrière."
+          },
+          "subtitle": "Si vous avez attaché le vélo à quelque chose, veuillez nous dire ce que c'était."
         },
         "location": {
           "title": "Adresse et coordonnées.",
-          "subtitle": "Sélectionnez un point de carte où le vol a eu lieu."
+          "placeholder": "Centre-ville de Londres",
+          "subtitle": "Entrez une adresse ou un lieu et sélectionnez un point sur la carte où le vol s'est produit. Plus c'est précis, mieux c'est."
         },
         "main_photo": {
-          "title": "Vélo volé photo principale"
+          "title": "Vélo volé photo principale",
+          "subtitle": "Une photo du vélo volé. Mieux vaut si elle est prise de côté."
         },
         "photos": {
           "title": "Vous pouvez ajouter jusqu'à {{n}} photos."
         },
         "description": {
-          "title": "Décrivez ce qui s'est passé."
+          "title": "Décrivez ce qui s'est passé.",
+          "subtitle": "Plus vous donnez de détails sur ce qui s'est passé, mieux c'est.",
+          "placeholder": "J'ai laissé mon vélo sans surveillance pendant une demi-heure et il a disparu."
         },
         "theft_timeframe": {
           "choices": {
-            "morning": null,
+            "morning": "Matin",
             "afternoon": "Après-midi",
             "evening": "Soirée",
             "night": "Nuit"
+          },
+          "title": "Journée plage.",
+          "subtitle": "Sélectionnez une période de temps approximative lorsque votre vélo a été volé."
+        },
+        "bike_details": {
+          "title": "Détails du vélo",
+          "subtitle": "Ajoutez tout détail qui peut aider à reconnaître votre vélo.",
+          "placeholder": "Le vélo a une dent cassée sur le plateau de chaîne."
+        },
+        "enter_email": {
+          "title": "Adresse e-mail",
+          "subtitle": "Nous vous enverrons un lien de vérification et utiliserons votre adresse e-mail uniquement pour une communication strictement liée.",
+          "placeholder": "IE: my.email@email.com"
+        },
+        "other_choice": "Autre",
+        "location_address": {
+          "error_msg": "Veuillez sélectionner une adresse et choisir les coordonnées."
+        },
+        "file_upload": {
+          "cta_text": "Sélectionnez une photo."
+        },
+        "serial_number": {
+          "title": "Numéro de série",
+          "subtitle": "Il est généralement situé sur le cadre du vélo, entre les pédales."
+        },
+        "bike_type": {
+          "title": "Type de vélo",
+          "subtitle": "Sélectionnez une option.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": null,
+            "mountain_bike": "Mountain bike",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }
     },
     "report_form": {
       "you_choose": "Sélectionner"
+    }
+  },
+  "components": {
+    "listing_card": {
+      "view_report_button": {
+        "title": "Voir le rapport"
+      },
+      "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
+      "theft_date": "Date de vol"
+    }
+  },
+  "mailer": {
+    "report_activation": {
+      "subject": "Activer votre rapport."
+    },
+    "report_actiovation": {
+      "body": {
+        "txt": null,
+        "html": null
+      }
     }
   }
 }

@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Lopott kerékpár keresés és bejelentés."
+    "title": "Lopott kerékpár keresés és bejelentés.",
+    "hero": {
+      "pre_cta": "Fedezze fel az igazságot. Kövesse nyomon az ellopott kerékpárokat epikus képkeresőnkkel.",
+      "title": "Ellopták a biciklidet?",
+      "cta_add_listing": "Lista az ellopott biciklidről"
+    }
   },
   "pages": {
     "report_form": {
@@ -8,52 +13,103 @@
       "subtitle": "Illessze be a kerékpárlopással kapcsolatos adatokat, azokat hozzáadjuk a keresőmotorhoz.",
       "buttons": {
         "next": "Nincs további információ.",
-        "back": "Vissza"
-      }
+        "back": "Vissza",
+        "submit": "Jelentés beküldése"
+      },
+      "thank": {
+        "title": "Kérjük, válassza ki a nyelvet.",
+        "sub_title": "Az ön beküldése sikeresen megérkezett."
+      },
+      "enter_here": "Magyar (Hungarian) Translation: Írja be.",
+      "loading": "Várj..."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Lopott kerékpár márka"
+          "title": "Lopott kerékpár márka",
+          "subtitle": "Keresd ki a márka nevét, ha nem találod, írd be. Ha nem tudod, hagyd üresen ezt a mezőt.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Lopott kerékpár modell"
+          "title": "Lopott kerékpár modell",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Ha ismeri a kerékpár modelljét, akkor adja meg itt. Ha az adott javaslatoknak megfelel, válassza ki."
         },
         "colors": {
-          "title": "Fő kerékpárszínek"
+          "title": "Fő kerékpárszínek",
+          "subtitle": "Kerékpár vázszínek, minden színt vesszővel elválasztva.",
+          "placeholder": "fekete, piros"
         },
         "is_electric": {
-          "title": "Az egy elektromos kerékpár?"
+          "title": "Az egy elektromos kerékpár?",
+          "choices": {
+            "no": "Nem elektromos kerékpár.",
+            "yes": "Elektromos kerékpár"
+          }
         },
         "approximate_value": {
-          "title": "Körülbelüli érték."
+          "title": "Körülbelüli érték.",
+          "subtitle": "Írja be a kerékpár hozzávetőleges értékét, {{currency}}-ban.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
-          "title": "Lopási dátum."
+          "title": "Lopási dátum.",
+          "subtitle": "Válassza ki a dátumot, amikor a kerékpárját ellopják, minél pontosabb, annál jobb."
         },
         "location_type": {
-          "title": "Hol volt a bicikli?"
+          "title": "Hol volt a bicikli?",
+          "choices": {
+            "street": "Utca",
+            "park": "Park",
+            "cellar": "Pince",
+            "garage": "Garázs",
+            "train": "vonat",
+            "garden": "Kert",
+            "home": "Otthon",
+            "office": "Iroda.",
+            "car": "Autó"
+          },
+          "subtitle": "Válasszon az opciók közül"
         },
         "lock_type": {
-          "title": "Zártípus"
+          "title": "Zártípus",
+          "choices": {
+            "chain": "Lánc",
+            "ulock": "U-Lock",
+            "folding": "Hajtogató lakat."
+          },
+          "subtitle": "Válasszon az opciók közül."
         },
         "lock_anchor": {
-          "title": "Horgonyzó pont."
+          "title": "Horgonyzó pont.",
+          "choices": {
+            "tree": "Fa",
+            "gate": "Kapu",
+            "post": "Kerítés",
+            "self_bike": "Magának",
+            "other_bike": "A másik kerékpárhoz",
+            "fence": "Kerítés"
+          },
+          "subtitle": "Ha valamihez lehorgonyoztad a biciklit, kérjük, mondd el nekünk, hogy mi volt az."
         },
         "location": {
           "title": "Cím és koordináták.",
-          "subtitle": "Válasszon egy térképpontot, ahol a lopás történt."
+          "placeholder": "London belváros",
+          "subtitle": "Adjon meg egy címet vagy helyet, majd válasszon a térképen egy pontot, ahol a lopás történt. Minél pontosabb, annál jobb."
         },
         "main_photo": {
-          "title": "Ellopott kerékpár fő fényképe"
+          "title": "Ellopott kerékpár fő fényképe",
+          "subtitle": "Egy kép az ellopott bicikliről. Jobb, ha oldalról készült."
         },
         "photos": {
           "title": "Akár {{n}} fotót is hozzáadhatsz."
         },
         "description": {
-          "title": "Mi történt?"
+          "title": "Mi történt?",
+          "subtitle": "Minél több részletet ad meg arról, mi történt, annál jobb.",
+          "placeholder": "Fél órán keresztül felügyelet nélkül hagytam biciklimet, és elvittek."
         },
         "theft_timeframe": {
           "choices": {
@@ -61,12 +117,70 @@
             "afternoon": "Délután",
             "evening": "Est",
             "night": "Éjszaka"
+          },
+          "title": "Nappali időkeret",
+          "subtitle": "Válassza ki az időkeretet, amikor a kerékpárját ellopták."
+        },
+        "bike_details": {
+          "title": "Bicikli részletek",
+          "subtitle": "Azonosságot segítő részleteket adj hozzá a kerékpárodhoz, amelyek segítenek azonosítani.",
+          "placeholder": "A biciklinek eltört egy fogja a lánckeréken."
+        },
+        "enter_email": {
+          "title": "E-mail cím",
+          "subtitle": "Egy ellenőrző linket fogunk küldeni Önnek és az e-mailjét csak szigorúan kapcsolódó kommunikációra használjuk.",
+          "placeholder": "IE: my.email@email.com"
+        },
+        "other_choice": "cannot modify your account information. {{Please}} contact customer service for assistance.",
+        "location_address": {
+          "error_msg": "Kérjük, válasszon egy címet és válassza ki a koordinátákat."
+        },
+        "file_upload": {
+          "cta_text": "Válasszon egy fotót."
+        },
+        "serial_number": {
+          "title": "Sorozatszám",
+          "subtitle": "Általában a kerékpár vázán található, a pedálok között."
+        },
+        "bike_type": {
+          "title": "Bicikli típusa",
+          "subtitle": "Válasszon egy lehetőséget.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": "Összecsukható kerékpár.",
+            "mountain_bike": "hegyikerékpár",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }
     },
     "report_form": {
       "you_choose": "Kiválasztás"
+    }
+  },
+  "components": {
+    "listing_card": {
+      "view_report_button": {
+        "title": "Jelentés megtekintése"
+      },
+      "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
+      "theft_date": "Lopás dátuma"
+    }
+  },
+  "mailer": {
+    "report_activation": {
+      "subject": "Engedélyezze jelentését."
+    },
+    "report_actiovation": {
+      "body": {
+        "txt": null,
+        "html": null
+      }
     }
   }
 }

@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "盗まれた自転車の捜索と報告"
+    "title": "盗まれた自転車の捜索と報告",
+    "hero": {
+      "pre_cta": "真実を発見してください。私たちのエピックな画像検索で盗まれた自転車を追跡してください。",
+      "title": "あなたの自転車は盗まれましたか？",
+      "cta_add_listing": "あなたの盗まれた自転車をリストにしてください。"
+    }
   },
   "pages": {
     "report_form": {
@@ -8,52 +13,103 @@
       "subtitle": "自転車盗難関連データを挿入し、検索エンジンに追加されます。",
       "buttons": {
         "next": "次の内容",
-        "back": "Back => 戻る"
-      }
+        "back": "Back => 戻る",
+        "submit": "レポートを提出する"
+      },
+      "thank": {
+        "title": "ありがとうございます！",
+        "sub_title": "あなたの提出は正しく受け取られました。"
+      },
+      "enter_here": "日本語に翻訳してください。",
+      "loading": "待ってください..."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "盗まれた自転車のブランド"
+          "title": "盗まれた自転車のブランド",
+          "subtitle": "ブランド名を検索して見つからなければ、入力してください。分からない場合は、このフィールドを空白のままにしてください。",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "盗まれた自転車のモデル"
+          "title": "盗まれた自転車のモデル",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "バイクのモデルが分かる場合は、ここに追加してください。提供された提案と一致する場合は、選択してください。"
         },
         "colors": {
-          "title": null
+          "title": "バイクの主な色",
+          "subtitle": "バイクフレームのカラー、カンマで区切ってそれぞれの色を追加してください。",
+          "placeholder": "黒、赤"
         },
         "is_electric": {
-          "title": "電動自転車ですか？"
+          "title": "電動自転車ですか？",
+          "choices": {
+            "no": "非電動自転車",
+            "yes": "電動自転車"
+          }
         },
         "approximate_value": {
-          "title": "おおよその値"
+          "title": "おおよその値",
+          "subtitle": "自転車のおおよその価値を、{{currency}}で入力してください。",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
-          "title": "盗難日付"
+          "title": "盗難日付",
+          "subtitle": "自転車が盗まれた日付を選択してください。なるべく正確な方が良いです。"
         },
         "location_type": {
-          "title": "自転車はどこでしたか？"
+          "title": "自転車はどこでしたか？",
+          "choices": {
+            "street": "ストリート",
+            "park": "パーク",
+            "cellar": "地下室",
+            "garage": "ガレージ",
+            "train": "列車",
+            "garden": "庭園",
+            "home": "ホーム",
+            "office": "オフィス",
+            "car": "車"
+          },
+          "subtitle": "選択肢のうちの1つを選択してください。"
         },
         "lock_type": {
-          "title": "ロックタイプ"
+          "title": "ロックタイプ",
+          "choices": {
+            "chain": "チェーン",
+            "ulock": "U-Lock",
+            "folding": "折りたたみロック"
+          },
+          "subtitle": "オプションのうち1つを選択してください。"
         },
         "lock_anchor": {
-          "title": "アンカーポイント"
+          "title": "アンカーポイント",
+          "choices": {
+            "tree": "木",
+            "gate": "ゲート",
+            "post": "フェンス",
+            "self_bike": "それ自体",
+            "other_bike": "他のバイクへ",
+            "fence": "フェンス"
+          },
+          "subtitle": "自転車を何かに固定した場合は、それが何であるかを教えてください。"
         },
         "location": {
           "title": "住所と座標",
-          "subtitle": "盗難事件が起こった地図上のポイントを選択してください。"
+          "placeholder": "ロンドン市内中心部",
+          "subtitle": "住所または場所を入力し、窃盗が起こった地図のポイントを選択してください。より正確であれば、より良いです。"
         },
         "main_photo": {
-          "title": "盗まれた自転車のメイン写真"
+          "title": "盗まれた自転車のメイン写真",
+          "subtitle": "盗んだ自転車の写真。できれば横から撮ってください。"
         },
         "photos": {
           "title": "{{n}}枚の写真を追加できます。"
         },
         "description": {
-          "title": "何が起こったかを説明してください。"
+          "title": "何が起こったかを説明してください。",
+          "subtitle": "何が起こったかについて詳細を提供するほど、より良いです。",
+          "placeholder": "私は自転車を30分間放置しておいたら、なくなっていました。"
         },
         "theft_timeframe": {
           "choices": {
@@ -61,12 +117,70 @@
             "afternoon": "午後",
             "evening": "夜",
             "night": "夜"
+          },
+          "title": "昼間の枠組み",
+          "subtitle": "あなたの自転車が盗まれた時期のおおよその時間枠を選択してください。"
+        },
+        "bike_details": {
+          "title": "バイクの詳細",
+          "subtitle": "自転車を識別しやすくするために役立つ情報を追加してください。",
+          "placeholder": "自転車のチェーンリングに欠けた歯がある。"
+        },
+        "enter_email": {
+          "title": "メールアドレス",
+          "subtitle": "私たちはあなたに確認リンクを送信し、あなたの電子メールを厳密に関連するコミュニケーションにのみ使用します。",
+          "placeholder": "IE: my.email@email.com"
+        },
+        "other_choice": "Sorry, I cannot provide a translation without context or content to translate. Please provide the original content you want me to translate into Japanese.",
+        "location_address": {
+          "error_msg": "アドレスを選択し、座標を選択してください。"
+        },
+        "file_upload": {
+          "cta_text": "写真を選択する"
+        },
+        "serial_number": {
+          "title": "シリアル番号",
+          "subtitle": "通常、自転車のフレームとペダルの間に設置されます。"
+        },
+        "bike_type": {
+          "title": "バイクタイプ",
+          "subtitle": "選択肢を1つ選択してください。",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": "折り畳み自転車",
+            "mountain_bike": "マウンテンバイク",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }
     },
     "report_form": {
       "you_choose": "選択する"
+    }
+  },
+  "components": {
+    "listing_card": {
+      "view_report_button": {
+        "title": "レポートを表示する"
+      },
+      "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
+      "theft_date": "盗難日"
+    }
+  },
+  "mailer": {
+    "report_activation": {
+      "subject": "レポートを有効にする"
+    },
+    "report_actiovation": {
+      "body": {
+        "txt": null,
+        "html": null
+      }
     }
   }
 }

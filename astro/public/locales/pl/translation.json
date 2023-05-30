@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Poszukiwanie skradzionego roweru i zgłoszenie."
+    "title": "Poszukiwanie skradzionego roweru i zgłoszenie.",
+    "hero": {
+      "pre_cta": "Odkryj prawdę. Śledź skradzione rowery za pomocą naszego epickiego wyszukiwania obrazów.",
+      "title": "Czy twoj rower został skradziony?",
+      "cta_add_listing": "Wymień swój skradziony rower."
+    }
   },
   "pages": {
     "report_form": {
@@ -8,52 +13,103 @@
       "subtitle": "Wprowadź dane dotyczące kradzieży rowerów, zostaną one dodane do wyszukiwarki.",
       "buttons": {
         "next": "Następny",
-        "back": "Back"
-      }
+        "back": "Back",
+        "submit": "Prześlij raport."
+      },
+      "thank": {
+        "title": "Dziękuję!",
+        "sub_title": "Twoje zgłoszenie zostało poprawnie odebrane."
+      },
+      "enter_here": "Wpisz",
+      "loading": "Czekać..."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Skradziony rower marki"
+          "title": "Skradziony rower marki",
+          "subtitle": "Wyszukaj nazwę marki, jeśli jej nie znajdziesz, możesz ją wpisać. Jeśli nie znasz nazwy marki, pozostaw to pole puste.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Stolen bike model\" - \"Model skradzionego roweru"
+          "title": "Stolen bike model\" - \"Model skradzionego roweru",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Jeśli znasz model swojego roweru, dodaj go tutaj. Jeśli odpowiada to podanym sugestiom, wybierz go. \n\nTranslation: Jeśli znasz model swojego roweru, dodaj go tutaj. Jeśli odpowiada to podanym sugestiom, wybierz go."
         },
         "colors": {
-          "title": "Główne kolory roweru"
+          "title": "Główne kolory roweru",
+          "subtitle": "Kolory ramy rowerowej, dodaj każdy kolor oddzielający przecinkiem.",
+          "placeholder": "czarny, czerwony"
         },
         "is_electric": {
-          "title": "Czy to rower elektryczny?"
+          "title": "Czy to rower elektryczny?",
+          "choices": {
+            "no": "Nieelektryczny rower.",
+            "yes": "Rower elektryczny."
+          }
         },
         "approximate_value": {
-          "title": "Orientacyjna wartość"
+          "title": "Orientacyjna wartość",
+          "subtitle": "Podaj przybliżoną wartość roweru, w {{currency}}",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
-          "title": "Data kradzieży"
+          "title": "Data kradzieży",
+          "subtitle": "Wybierz datę kradzieży swojego roweru, im dokładniejsza, tym lepiej."
         },
         "location_type": {
-          "title": "Gdzie był rower?"
+          "title": "Gdzie był rower?",
+          "choices": {
+            "street": "Ulica",
+            "park": "Park",
+            "cellar": "Piwnica",
+            "garage": "Garaż",
+            "train": "Pociąg",
+            "garden": "Ogród",
+            "home": "Dom",
+            "office": "Biuro",
+            "car": "Samochód"
+          },
+          "subtitle": "Wybierz jedną z opcji."
         },
         "lock_type": {
-          "title": "Typ zamka"
+          "title": "Typ zamka",
+          "choices": {
+            "chain": "Łańcuch",
+            "ulock": "U-Lock",
+            "folding": "Złożony zamek"
+          },
+          "subtitle": "Wybierz jedną z opcji."
         },
         "lock_anchor": {
-          "title": "Punkt kotwiczenia"
+          "title": "Punkt kotwiczenia",
+          "choices": {
+            "tree": "Drzewo",
+            "gate": "Brama",
+            "post": "Płot",
+            "self_bike": "Do samoistnie.",
+            "other_bike": "Do innego roweru.",
+            "fence": "Płot"
+          },
+          "subtitle": "Jeśli przypiąłeś rower do czegoś, powiedz nam, do czego to było."
         },
         "location": {
           "title": "Adres i koordynaty.",
-          "subtitle": "Wybierz punkt na mapie, w którym doszło do kradzieży."
+          "placeholder": "centrum miasta Londynu",
+          "subtitle": "Wpisz adres lub lokalizację i wybierz punkt na mapie, gdzie doszło do kradzieży. Im dokładniej, tym lepiej."
         },
         "main_photo": {
-          "title": "Skradziony rower główne zdjęcie."
+          "title": "Skradziony rower główne zdjęcie.",
+          "subtitle": "Zdjęcie skradzionego roweru. Lepiej, jeśli zrobione z boku."
         },
         "photos": {
           "title": "Możesz dodać do {{n}} zdjęć."
         },
         "description": {
-          "title": "Opisz, co się stało."
+          "title": "Opisz, co się stało.",
+          "subtitle": "Im więcej szczegółów podasz na temat tego, co się stało, tym lepiej.",
+          "placeholder": "Zostawiłem mój rower bez nadzoru na pół godziny i zniknął."
         },
         "theft_timeframe": {
           "choices": {
@@ -61,12 +117,70 @@
             "afternoon": "Po południu",
             "evening": "Wieczór",
             "night": "Noc"
+          },
+          "title": "Ramka czasowa dnia",
+          "subtitle": "Wybierz przybliżony okres czasu, kiedy został skradziony Twój rower."
+        },
+        "bike_details": {
+          "title": "Szczegóły roweru.",
+          "subtitle": "Dodaj jakieś detale, które pomogą w rozpoznaniu twojego roweru.",
+          "placeholder": "Rower ma złamany ząb na koronce łańcucha."
+        },
+        "enter_email": {
+          "title": "Adres e-mailowy",
+          "subtitle": "Wyślemy ci link weryfikacyjny i będziemy korzystać z twojego adresu e-mail wyłącznie do celów związanych z komunikacją.",
+          "placeholder": "IE: my.email@email.com"
+        },
+        "other_choice": "Inne",
+        "location_address": {
+          "error_msg": "Proszę wybrać adres i wybrać współrzędne."
+        },
+        "file_upload": {
+          "cta_text": "Wybierz zdjęcie."
+        },
+        "serial_number": {
+          "title": "Numer seryjny",
+          "subtitle": "Zazwyczaj znajduje się na ramie roweru, między pedałami."
+        },
+        "bike_type": {
+          "title": "Rodzaj roweru",
+          "subtitle": "Wybierz jedną opcję.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": "Rower składany.",
+            "mountain_bike": "Rower górski",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }
     },
     "report_form": {
       "you_choose": "Wybierz."
+    }
+  },
+  "components": {
+    "listing_card": {
+      "view_report_button": {
+        "title": "Wyświetl raport"
+      },
+      "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
+      "theft_date": "Data kradzieży"
+    }
+  },
+  "mailer": {
+    "report_activation": {
+      "subject": "Włącz swoje zgłoszenie."
+    },
+    "report_actiovation": {
+      "body": {
+        "txt": null,
+        "html": null
+      }
     }
   }
 }

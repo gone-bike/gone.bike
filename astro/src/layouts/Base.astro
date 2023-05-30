@@ -1,9 +1,12 @@
 ---
+import i18next from "i18next";
+import { HeadHrefLangs } from "astro-i18next/components";
 import { SEO } from "astro-seo";
 import Footer from "@components/Footer.astro";
-import i18next from "i18next";
+import Navbar from "@components/Navbar.astro";
 
 export interface Props {
+  lang: string;
   title: string;
   description: string;
 }
@@ -17,10 +20,7 @@ const resolvedImageWithDomain = new URL(
 ).toString();
 */
 
-
 const { title, description } = Astro.props;
-
-
 ---
 
 <!DOCTYPE html>
@@ -29,9 +29,8 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <!-- <meta name="generator" content={Astro.generator} /> -->
-
-
 
     <!-- Twitter
     <meta property="twitter:card" content="summary_large_image" />
@@ -42,10 +41,10 @@ const { title, description } = Astro.props;
     -->
 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
-    <SEO
-      title={title}
-      description={description}
-      {/*
+
+    <SEO title={title} description={description} />
+    {
+      /*
       canonical={canonicalURL}
       twitter={{
         creator: "@surjithctly",
@@ -64,11 +63,12 @@ const { title, description } = Astro.props;
           alt: title,
         },
       }}
-      */}
-    />
+      */
+    }
+    <HeadHrefLangs />
   </head>
   <body>
-
+    <Navbar />
     <slot />
     <Footer />
 
@@ -79,6 +79,5 @@ const { title, description } = Astro.props;
         content-visibility: auto;
       }
     </style>
-
   </body>
 </html>

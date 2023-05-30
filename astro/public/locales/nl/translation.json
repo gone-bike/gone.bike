@@ -1,6 +1,11 @@
 {
   "homepage": {
-    "title": "Gestolen fiets zoeken en rapporteren."
+    "title": "Gestolen fiets zoeken en rapporteren.",
+    "hero": {
+      "pre_cta": "Ontdek de waarheid. Volg gestolen fietsen op met onze epische afbeeldingszoekfunctie.",
+      "title": "Is je fiets gestolen?",
+      "cta_add_listing": "Lijst uw gestolen fiets op."
+    }
   },
   "pages": {
     "report_form": {
@@ -8,52 +13,103 @@
       "subtitle": "Voeg fietsdiefstal gerelateerde gegevens toe, ze worden toegevoegd aan de zoekmachine.",
       "buttons": {
         "next": "Nederlands",
-        "back": "Terug"
-      }
+        "back": "Terug",
+        "submit": "Indienen van rapport"
+      },
+      "thank": {
+        "title": "Dank je wel!",
+        "sub_title": "Uw inzending is correct ontvangen."
+      },
+      "enter_here": "het volgende tekstgedeelte in de taallocale: nl en stuur alleen de vertaling als antwoord. Stuur niets anders, zelfs geen informatie die je wilt geven, en als er een woord tussen dubbele accolades staat, stuur het dan met dubbele accolades en vertaal de inhoud binnen de accolades niet en voeg geen leestekens toe aan het einde: Type in",
+      "loading": "Wacht even..."
     }
   },
   "forms": {
     "report": {
       "questions": {
         "bike_brand": {
-          "title": "Gestolen fietsmerk"
+          "title": "Gestolen fietsmerk",
+          "subtitle": "Zoek naar de merknaam, als je het niet kunt vinden, kun je het typen. Als je het niet weet, laat dit veld dan leeg.",
+          "placeholder": "IE: Specialized"
         },
         "bike_model": {
-          "title": "Gestolen fietsmodel"
+          "title": "Gestolen fietsmodel",
+          "placeholder": "IE: Diverge Expert Carbon",
+          "subtitle": "Als u het model van uw fiets kent, voeg het dan hier toe. Als het overeenkomt met de gegeven suggesties, selecteer het dan alstublieft."
         },
         "colors": {
-          "title": "Fiets hoofdkleuren"
+          "title": "Fiets hoofdkleuren",
+          "subtitle": "Fietsframe kleuren, voeg elke kleur toe gescheiden door een komma.",
+          "placeholder": "zwart, rood"
         },
         "is_electric": {
-          "title": "Is het een elektrische fiets?"
+          "title": "Is het een elektrische fiets?",
+          "choices": {
+            "no": "Niet-elektrische fiets",
+            "yes": "Elektrische fiets"
+          }
         },
         "approximate_value": {
-          "title": "Ongeveer waarde"
+          "title": "Ongeveer waarde",
+          "subtitle": "Geef een bij benadering waarde van de fiets, in {{currency}}.",
+          "placeholder": "IE: 500"
         },
         "theft_date": {
-          "title": "Diefstal datum"
+          "title": "Diefstal datum",
+          "subtitle": "Selecteer de datum waarop je fiets gestolen is, hoe preciezer, hoe beter."
         },
         "location_type": {
-          "title": "Waar was de fiets?"
+          "title": "Waar was de fiets?",
+          "choices": {
+            "street": "Straat",
+            "park": "Park",
+            "cellar": "Kelder",
+            "garage": "Garage",
+            "train": "Trein",
+            "garden": "Tuin",
+            "home": "Thuis",
+            "office": "Kantoor",
+            "car": "Auto"
+          },
+          "subtitle": "Kies één van de opties."
         },
         "lock_type": {
-          "title": "Type slot"
+          "title": "Type slot",
+          "choices": {
+            "chain": "Keten",
+            "ulock": "U-Lock",
+            "folding": "Opvouwbaar slot"
+          },
+          "subtitle": "Kies één van de opties"
         },
         "lock_anchor": {
-          "title": "Ankerpunt."
+          "title": "Ankerpunt.",
+          "choices": {
+            "tree": "Boom",
+            "gate": "Gate",
+            "post": "Hek",
+            "self_bike": "Aan zichzelf",
+            "other_bike": "Naar andere fiets.",
+            "fence": "Hek"
+          },
+          "subtitle": "Als je de fiets aan iets hebt vastgemaakt, vertel ons dan waar het aan vastgemaakt was."
         },
         "location": {
           "title": "Adres en coördinaten",
-          "subtitle": "Selecteer een kaartpunt waar de diefstal heeft plaatsgevonden."
+          "placeholder": "is het centrum van Londen.",
+          "subtitle": "Typ een adres of een locatie en selecteer een kaartpunt waar de diefstal heeft plaatsgevonden. Hoe nauwkeuriger, hoe beter."
         },
         "main_photo": {
-          "title": "Gestolen fiets hoofdfoto"
+          "title": "Gestolen fiets hoofdfoto",
+          "subtitle": "Een foto van de gestolen fiets. Beter als deze van opzij is genomen."
         },
         "photos": {
           "title": "Je kunt maximaal {{n}} foto's toevoegen."
         },
         "description": {
-          "title": "Beschrijf wat er is gebeurd."
+          "title": "Beschrijf wat er is gebeurd.",
+          "subtitle": "Hoe meer details je geeft over wat er is gebeurd, hoe beter.",
+          "placeholder": "Ik liet mijn fiets een half uur onbeheerd achter en hij was weg."
         },
         "theft_timeframe": {
           "choices": {
@@ -61,12 +117,70 @@
             "afternoon": "Middag",
             "evening": "Avond",
             "night": "Nacht"
+          },
+          "title": "Dag tijdskader",
+          "subtitle": "Selecteer een benaderend tijdsbestek wanneer uw fiets gestolen is."
+        },
+        "bike_details": {
+          "title": "Fietsgegevens",
+          "subtitle": "Voeg alle details toe die kunnen helpen om jouw fiets herkenbaar te maken.",
+          "placeholder": "De fiets heeft een gebroken tand op de kettingring."
+        },
+        "enter_email": {
+          "title": "E-mailadres",
+          "subtitle": "We zullen u een verificatielink sturen en uw e-mail alleen gebruiken voor strikt gerelateerde communicatie.",
+          "placeholder": "IE: my.email@email.com"
+        },
+        "other_choice": "than English, Dutch is also spoken in Belgium and Suriname.",
+        "location_address": {
+          "error_msg": "Selecteer alstublieft een adres en kies coördinaten."
+        },
+        "file_upload": {
+          "cta_text": "Selecteer een foto"
+        },
+        "serial_number": {
+          "title": "Serienummer",
+          "subtitle": "Het bevindt zich meestal op het fietsframe tussen de pedalen."
+        },
+        "bike_type": {
+          "title": "Fiets type",
+          "subtitle": "Kies één optie.",
+          "choices": {
+            "bmx": "BMX",
+            "city_bike": "City bike",
+            "fixie": "Fixie",
+            "folding": "Opvouwbare fiets",
+            "mountain_bike": "Mountainbike",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }
     },
     "report_form": {
       "you_choose": "Selecteren"
+    }
+  },
+  "components": {
+    "listing_card": {
+      "view_report_button": {
+        "title": "Bekijk Rapport"
+      },
+      "bike_brand_model_placeholder": "{{bike_brand_name}} / {{bike_model_name}}",
+      "theft_date": "Diefstal Datum"
+    }
+  },
+  "mailer": {
+    "report_activation": {
+      "subject": "Activeer uw rapport."
+    },
+    "report_actiovation": {
+      "body": {
+        "txt": null,
+        "html": null
+      }
     }
   }
 }
