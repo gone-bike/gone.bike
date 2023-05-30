@@ -71,7 +71,23 @@ touch .config/redis.conf
 
 Startup `postgresql`, `redis` and `directus` services:
 
-```docker-compose up -d postgresql redis directus```
+```
+docker-compose up -d postgresql redis directus
+```
+
+Ensure server is running with:
+```
+docker-compose logs --tail 10 directus
+```
+
+that should show something smilar to this:
+```
+gone.bike.directus  | [12:35:20.420] INFO: Adding first admin user...
+gone.bike.directus  | [12:35:20.483] INFO: Done
+gone.bike.directus  | [12:35:23.050] INFO: Server started at http://0.0.0.0:8055
+```
+
+
 
 Copy database schema inside directus container: and apply it:
 
