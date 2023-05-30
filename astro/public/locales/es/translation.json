@@ -149,8 +149,12 @@
             "bmx": "BMX",
             "city_bike": "City bike",
             "fixie": "Fixie",
-            "folding": null,
-            "mountain_bike": "Mountain bike"
+            "folding": "Bicicleta plegable.",
+            "mountain_bike": "Bicicleta de montaña",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }

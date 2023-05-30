@@ -149,8 +149,12 @@
             "bmx": "BMX",
             "city_bike": "City bike",
             "fixie": "Fixie",
-            "folding": null,
-            "mountain_bike": "Mountain bike"
+            "folding": "Ποδήλατο αναδιπλούμενο",
+            "mountain_bike": "Ποδήλατο βουνού",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }

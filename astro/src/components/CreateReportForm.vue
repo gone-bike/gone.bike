@@ -268,7 +268,7 @@ let currentPage = ref(1)
                 title="bike_model" />
 
             <SelectField v-model="formValue.bike_type" title="bike_type"
-                :list='["bmx", "city_bike", "road_bike", "mountain_bike", "folding", "fixie", "fat", "cargo"]' />
+                :list='["bmx", "city_bike", "road_bike", "mountain_bike", "folding", "fixie", "fat", "cargo", "trekking"]' />
 
             <ColorField v-model="formValue.colors" title="colors" />
 

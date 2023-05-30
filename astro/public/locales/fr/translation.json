@@ -150,7 +150,11 @@
             "city_bike": "City bike",
             "fixie": "Fixie",
             "folding": null,
-            "mountain_bike": "Mountain bike"
+            "mountain_bike": "Mountain bike",
+            "cargo": "Cargo",
+            "fat": "Fat bike",
+            "road_bike": "Road bike",
+            "trekking": "Trekking"
           }
         }
       }
