@@ -34,8 +34,6 @@ app.config_from_object({
     }
 })
 
-utils.send_activation_email('en','n0cturnalx@gmail.com','test')
-
 
 @celeryd_after_setup.connect
 def capture_worker_name(sender, instance, **kwargs):
