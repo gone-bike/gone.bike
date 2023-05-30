@@ -129,7 +129,7 @@ function useCurrentLocation() {
 onMounted(async () => {
   const isSupported = 'navigator' in window && "geolocation" in navigator
   if (isSupported) {
-    const loader = new Loader({ apiKey: props.apikey || "AIzaSyB7ARkIpZHTer3qUU7_4eSOf4tLnoLAvdI", libraries: ["places"] })
+    const loader = new Loader({ apiKey: props.apikey, libraries: ["places"] })
 
     await loader.load()
     let coords = { lat: props.coords.lat, lng: props.coords.lng }
