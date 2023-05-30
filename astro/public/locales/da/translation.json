@@ -90,7 +90,8 @@
             "post": "Hegn",
             "self_bike": "Til sig selv.",
             "other_bike": "Til andre cykler.",
-            "fence": "Hegn"
+            "fence": "Hegn",
+            "rack": null
           },
           "subtitle": "Hvis du har ankring af cyklen til noget, så fortæl os venligst, hvad det var."
         },

@@ -90,7 +90,8 @@
             "post": "Hàng rào",
             "self_bike": "Đến chính nó",
             "other_bike": "Đến xe đạp khác",
-            "fence": "Hàng rào."
+            "fence": "Hàng rào.",
+            "rack": null
           },
           "subtitle": "Nếu bạn đã neo xe đạp vào điều gì đó, vui lòng cho chúng tôi biết đó là gì."
         },

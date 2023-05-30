@@ -90,7 +90,8 @@
             "post": "Valla",
             "self_bike": "A si mateix",
             "other_bike": "A altres bicicleta.",
-            "fence": "Valla"
+            "fence": "Valla",
+            "rack": null
           },
           "subtitle": "Si has lligat la bicicleta a alguna cosa, si us plau, digues-nos a què estava lligada."
         },

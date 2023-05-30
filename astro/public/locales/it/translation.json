@@ -90,7 +90,8 @@
             "post": "Recinzione",
             "self_bike": "A se stesso",
             "other_bike": "A altre biciclette",
-            "fence": "Recinto"
+            "fence": "Recinto",
+            "rack": "Rastrelliera"
           },
           "subtitle": "Se hai ancorato la bici a qualcosa, per favore dicci a cosa era ancorata."
         },

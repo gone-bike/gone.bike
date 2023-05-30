@@ -90,7 +90,8 @@
             "post": "Valla",
             "self_bike": "A sí mismo",
             "other_bike": "A otras bicicletas.",
-            "fence": "Cerca"
+            "fence": "Cerca",
+            "rack": null
           },
           "subtitle": "Si anclaste la bicicleta a algo, por favor dinos qué era."
         },

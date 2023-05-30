@@ -90,7 +90,8 @@
             "post": "Barrière",
             "self_bike": "À soi-même",
             "other_bike": "Aux autres vélos",
-            "fence": "Barrière."
+            "fence": "Barrière.",
+            "rack": null
           },
           "subtitle": "Si vous avez attaché le vélo à quelque chose, veuillez nous dire ce que c'était."
         },

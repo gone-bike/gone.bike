@@ -90,7 +90,8 @@
             "post": "Fence",
             "self_bike": "To itself",
             "other_bike": "To other bike",
-            "fence": "Fence"
+            "fence": "Fence",
+            "rack": "Bike rack"
           },
           "subtitle": "If you anchored the bike to something, please tell us what it was."
         },

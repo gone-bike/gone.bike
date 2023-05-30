@@ -90,7 +90,8 @@
             "post": "Çit",
             "self_bike": "Kendine",
             "other_bike": "Diğer bisiklete",
-            "fence": "Çit"
+            "fence": "Çit",
+            "rack": null
           },
           "subtitle": "Eğer bisikleti bir şeye bağladıysanız, bize ne olduğunu söyleyin."
         },

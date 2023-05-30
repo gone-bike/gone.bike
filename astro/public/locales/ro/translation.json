@@ -90,7 +90,8 @@
             "post": "Gard",
             "self_bike": "În sine",
             "other_bike": "Către altă bicicletă.",
-            "fence": "Plasă"
+            "fence": "Plasă",
+            "rack": null
           },
           "subtitle": "Dacă ați ancorat bicicleta într-un obiect, vă rugăm să ne spuneți la ce ați ancorat-o."
         },

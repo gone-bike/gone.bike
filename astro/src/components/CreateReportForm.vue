@@ -330,7 +330,7 @@ let currentPage = ref(1)
 
             <SelectField v-model="formValue.lock_type" title="lock_type" :list='["chain", "ulock", "folding"]' />
             <SelectField v-model="formValue.lock_anchor" title="lock_anchor"
-                :list='["tree", "gate", "fence", "post", "self_bike", "other_bike"]' />
+                :list='["tree", "gate", "fence", "post", "self_bike", "other_bike", "rack"]' />
             <div class="flex flex-col">
                 <label for="location" class="text-lg">{{ t("location") }}</label>
                 <p class="text-sm text-gray-400 mb-1 font-normal italic">{{

@@ -90,7 +90,8 @@
             "post": "Kerítés",
             "self_bike": "Magának",
             "other_bike": "A másik kerékpárhoz",
-            "fence": "Kerítés"
+            "fence": "Kerítés",
+            "rack": null
           },
           "subtitle": "Ha valamihez lehorgonyoztad a biciklit, kérjük, mondd el nekünk, hogy mi volt az."
         },

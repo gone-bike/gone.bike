@@ -90,7 +90,8 @@
             "post": "Plot.",
             "self_bike": "K sobě samému.",
             "other_bike": "K jinému kolu.",
-            "fence": "Plot"
+            "fence": "Plot",
+            "rack": null
           },
           "subtitle": "Pokud jste kotvu kolovali na něčem, řekněte nám, co to bylo."
         },

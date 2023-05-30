@@ -90,7 +90,8 @@
             "post": "Płot",
             "self_bike": "Do samoistnie.",
             "other_bike": "Do innego roweru.",
-            "fence": "Płot"
+            "fence": "Płot",
+            "rack": null
           },
           "subtitle": "Jeśli przypiąłeś rower do czegoś, powiedz nam, do czego to było."
         },

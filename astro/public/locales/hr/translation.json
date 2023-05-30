@@ -90,7 +90,8 @@
             "post": "Ograda",
             "self_bike": "Samom sebi",
             "other_bike": "Do you mean \"To another bike\" or \"To other bikers\"? Please provide more context.",
-            "fence": "Ograda"
+            "fence": "Ograda",
+            "rack": null
           },
           "subtitle": "Ako ste zakvačili bicikl za nešto, molimo vas da nam kažete na što ste ga zakvačili."
         },

@@ -90,7 +90,8 @@
             "post": "Cerca",
             "self_bike": "Para si mesmo",
             "other_bike": "Para outras bicicletas.",
-            "fence": "Cerca"
+            "fence": "Cerca",
+            "rack": null
           },
           "subtitle": "Se você ancorou a bicicleta em algo, por favor nos diga o que era."
         },

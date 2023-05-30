@@ -90,7 +90,8 @@
             "post": "Zaun",
             "self_bike": "Zu sich selbst.",
             "other_bike": "Zu einem anderen Fahrrad",
-            "fence": "Zaun"
+            "fence": "Zaun",
+            "rack": null
           },
           "subtitle": "Wenn Sie das Fahrrad an etwas angebunden haben, sagen Sie uns bitte, woran es angebunden war."
         },

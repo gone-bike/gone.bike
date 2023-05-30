@@ -90,7 +90,8 @@
             "post": "Hek",
             "self_bike": "Aan zichzelf",
             "other_bike": "Naar andere fiets.",
-            "fence": "Hek"
+            "fence": "Hek",
+            "rack": null
           },
           "subtitle": "Als je de fiets aan iets hebt vastgemaakt, vertel ons dan waar het aan vastgemaakt was."
         },
