@@ -60,7 +60,8 @@ cp .astro.env.example .astro.env
 
 Create local data and config folders:
 ```
-mkdir -p .config .data/{directus,postgresql}
+mkdir -p .config .data/{directus,postgresql} && \
+chmod 0777 .data/directus
 ```
 
 Create local config folder and files:
@@ -90,3 +91,17 @@ You should now be able to see a empty but schemed database.
 ---
 
 ### Database import
+
+SQL database
+
+```
+wget https://gone.bike/exports/gone.bike.db-dump.latest.sql.gz && \
+gunzip -c gone.bike.db-dump.latest.sql.gz | docker-compose exec -T postgresql psql -U postgres
+```
+
+Images
+
+```
+wget https://gone.bike/exports/gone.bike.images.latest.tgz  && \
+tar zxvf gone.bike.images.latest.tgz --directory .data/directus/
+```
