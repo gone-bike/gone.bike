@@ -37,12 +37,30 @@ try {
     .withClassName('Bike')
     .withFields('report_id bike_brand bike_model theft_date filename_download _additional {certainty id}')
     .withNearImage({ image: b64in })
-    .withWhere({
-        operator: 'Equal',
-        path: ['bike_brand'],
-        valueString: 'Specialized',
-     })
     .withLimit(30)
+
+
+  let operands = []
+
+  let searchable = ['bike_brand','bike_model']
+  for (let e in searchable) {
+    e = searchable[e]
+    if (Astro.url.searchParams.get(e)) {
+      operands.push({
+        operator: 'Equal',
+        path: [e],
+        valueString: Astro.url.searchParams.get(e),
+      })
+    }
+  }
+
+  if (operands.length > 0) {
+    query.withWhere({
+      operator: 'And',
+      operands: operands
+    })
+  }
+/*
 
   query
     .withWhere({
@@ -50,7 +68,7 @@ try {
       path: ['bike_model'],
       valueText: 'Caliber',
     })
-
+*/
 
   const resImage = await query.do();
 
