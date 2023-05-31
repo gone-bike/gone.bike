@@ -5,7 +5,10 @@ export default async function() {
   try {
     let query = await directus.items('report').readByQuery({
       "limit": 10,
-      "filter": { },
+      "meta": [ "total_count", "filter_count" ],
+      "filter": {
+        "status": "published"
+      },
       "fields": [
         "id",
         "status",
@@ -24,6 +27,7 @@ export default async function() {
         "main_photo.height"
       ]
     });
+    // console.log(query)
     let data = query && query.data ? query.data : []
     return (!data || data.length == 0) ? false : data;
 

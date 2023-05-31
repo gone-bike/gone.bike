@@ -1,4 +1,4 @@
-import requests, json, dotmap, os, re, weaviate
+import requests, json, dotmap, os, re, weaviate, base64
 
 from mailer import send_email
 

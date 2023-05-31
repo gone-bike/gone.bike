@@ -76,7 +76,8 @@ let formValue = reactive({
     location_address: '',
     location_details: {
         city: "",
-        zip: ""
+        zip: "",
+        address_components: {}
     },
     location_coords: {
         lat: 0,

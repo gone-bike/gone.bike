@@ -13,7 +13,8 @@ interface Props {
   },
   details: {
     city: string,
-    zip: string
+    zip: string,
+    address_components: object
   },
   address: string,
   apikey: string
@@ -32,7 +33,7 @@ function addressComponents(data: {
     address_components?: google.maps.GeocoderAddressComponent[];
     types: string[]
   }[]
-}): { address: string, zip: string, city: string } {
+}): { address: string, zip: string, city: string, address_components: object } {
 
   let address = ""
 
@@ -67,24 +68,26 @@ function addressComponents(data: {
     }
   }
   return {
-    address,
-    city,
-    zip
+    address: address,
+    city: city,
+    zip: zip,
+    address_components: data.results[0]
   }
 }
-async function getLocationFromCoOrd(coord: { lat: number, lng: number }): Promise<{ address: string, zip: string, city: string }> {
+async function getLocationFromCoOrd(coord: { lat: number, lng: number }): Promise<{ address: string, zip: string, city: string, address_components: object }> {
    return geoCoder.value.geocode({ location: {  lat: coord.lat, lng: coord.lng } })
     .then((response) => {
         if(response?.results[0]){
             console.log(response)
             console.log(addressComponents(response))
-    return addressComponents(response)
-        }else{
+            return addressComponents(response)
+        } else{
             return {
-      address: "",
-      city: "",
-      zip: ""
-    }
+              address: null,
+              city: null,
+              zip: null,
+              address_components: null
+            }
         }
     }).catch(e=>{
         console.log(e)
@@ -105,12 +108,13 @@ function syncMapProps(coords: {
   address: string;
   zip: string;
   city: string;
+  address_components: object;
 }) {
   map.value?.setCenter(coords)
   map.value?.setZoom(15)
   emit("update:coords", coords)
   emit("update:address", resp.address)
-  emit("update:details", { zip: resp.zip, city: resp.city })
+  emit("update:details", { zip: resp.zip, city: resp.city, address_components: resp.address_components })
 }
 
 function useCurrentLocation() {
@@ -180,7 +184,12 @@ onMounted(async () => {
       }
       let address = place.formatted_address ?? ""
       marker.value?.setPosition(coords)
-      syncMapProps(coords, { city, zip: '', address })
+      syncMapProps(coords, {
+        city: city,
+        zip: '',
+        address: address,
+        address_components: place?.address_components[0]
+      })
     })
   }
 })
