@@ -1,0 +1,36 @@
+---
+/**
+ * This wrapper allows urls to be written in the form of:
+ *
+ * `/photos/<uuid>/name.ext`
+ */
+
+import config from "@utils/config";
+import weaviate from '@utils/weaviate';
+
+let uuid = Astro.params.any;
+
+try {
+
+  const img = await weaviate
+    .data
+    .getterById()
+    .withClassName('Bike')
+    .withId(uuid)
+    // .withConsistencyLevel('ONE')  // default QUORUM
+    .do()
+
+    return await fetch(`data:image/jpeg;base64,${img.properties.image}`);
+
+  console.log()
+  // Write result to filesystem
+  // result = resImage.data.Get.Bike;
+
+} catch (e) {
+  throw e
+// console.log(e)
+//   return await config.http404();
+}
+
+
+---

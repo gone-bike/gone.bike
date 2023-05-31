@@ -26,7 +26,7 @@ type Report = {
     photos: {
         directus_files_id: {
             id: any;
-            filename_disk: string;
+            filename_download: string;
             type: string;
             width: Number;
             height: Number;
@@ -45,7 +45,7 @@ type Report = {
     };
     main_photo: {
         id: any;
-        filename_disk: string;
+        filename_download: string;
         type: string;
         width: Number;
         // height: Number;

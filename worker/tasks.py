@@ -42,6 +42,14 @@ def capture_worker_name(sender, instance, **kwargs):
     os.environ["WORKER_NAME"] = '{0}'.format(sender)
 
 
+
+@app.task(bind=True, acks_late=False)
+def test(self, *args, **kwargs):
+    print(args)
+    return True
+
+
+
 @app.task(bind=True, acks_late=False)
 def report_create(self, *args, **kwargs):
     # print(args)
@@ -78,7 +86,7 @@ def report_update(self, *args, **kwargs):
     return True
 
 
-@app.task(bind=True, acks_late=False, routing_key='test', exchange='test')
+@app.task(bind=True, acks_late=False)
 def report_delete(self, *args):
     for i in args:
         utils.deindex_directus_report_item_from_weaviate(i)
@@ -87,7 +95,7 @@ def report_delete(self, *args):
 
 
 ### When a new report entry is submitted to the website, it enters a queue that is then processed by this function
-@app.task(bind=True, acks_late=False, routing_key='test', exchange='test')
+@app.task(bind=True, acks_late=False)
 def report_submit(self, *args, **kwargs):
     print(kwargs)
 

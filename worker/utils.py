@@ -1,5 +1,5 @@
 import requests, json, dotmap, os, re, weaviate, base64, copy, psycopg2
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlencode
 
 from mailer import send_email
 
@@ -49,8 +49,10 @@ def fetch_item(id):
         'colors',
         'serial_number',
         'bike_type',
-        'main_photo',
-        'photos.directus_files_id',
+        'main_photo.id',
+        'main_photo.filename_download',
+        'photos.directus_files_id.id',
+        'photos.directus_files_id.filename_download'
         'is_electric',
         'bike_details'
 
@@ -63,7 +65,7 @@ def fetch_item(id):
         return data.json().get('data')
 
 
-# Give its id, downloads a file from Directus and returns it as base64_string
+# Given its id, downloads a file from Directus and returns it as base64_string
 def fetch_picture(id):
     url = f'{os.environ["WORKER_DIRECTUS_URI"]}/assets/{id}?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
     print(url)
@@ -71,6 +73,19 @@ def fetch_picture(id):
     if 200 == data.status_code:
         return base64.b64encode(data.content)
     raise Exception(f"HTTP code: {data.status_code} for file id: {id}")
+
+#
+def fetch_rembg_picture(id):
+    url = f'{os.environ["WORKER_DIRECTUS_URI"]}/assets/{id}?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
+    url = f'http://rembg:5000/api/remove?{urlencode({"url": url})}'
+    print(url)
+    data = requests.get(url)
+    if 200 == data.status_code:
+        return base64.b64encode(data.content)
+    raise Exception(f"HTTP code: {data.status_code} for file id: {id}")
+
+
+
 
 # Guess what? Sends an activation email
 def send_activation_email(language, recipient, activation_code ):
@@ -161,24 +176,36 @@ def index_directus_report_item_to_weaviate(payload):
 
     with client.batch as batch:
         if 'main_photo' in payload and payload['main_photo'] is not None:
-            b64 = fetch_picture(payload['main_photo'])
+            b64 = fetch_picture(payload['main_photo']['id'])
 
             data_object = copy.copy(metadata)
             data_object['image'] = b64.decode("ascii")
-
+            data_object['filename_download'] = payload['main_photo']['filename_download']
             batch.add_data_object(
                 class_name="Bike",
                 data_object=data_object,
-                uuid=payload['main_photo'],
+                uuid=payload['main_photo']['id'],
             )
+
+            b64 = fetch_rembg_picture(payload['main_photo']['id'])
+
+            data_object = copy.copy(metadata)
+            data_object['image'] = b64.decode("ascii")
+            data_object['filename_download'] = payload['main_photo']['filename_download']
+            batch.add_data_object(
+                class_name="Bike",
+                data_object=data_object,
+            )
+
 
         if 'photos' in payload and len(payload['photos']) > 0:
             for e in payload['photos']:
-                phid = e['directus_files_id']
+                phid = e['directus_files_id']['id']
                 b64 = fetch_picture(phid)
 
                 data_object = copy.copy(metadata)
                 data_object['image'] = b64.decode("ascii")
+                data_object['filename_download'] = e['directus_files_id']['filename_download']
 
                 batch.add_data_object(
                     class_name="Bike",

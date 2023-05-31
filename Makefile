@@ -61,13 +61,15 @@ delete-old-tmp: ## ## Shortcut to remove files in temporary upload folder
 
 
 
-delete-weaviate-report-files: ## id=x ## Deletes all indexed entries from Weaviate related to a report id
+weaviate-list-report-files: ## id=x
 	curl -s \
-		-X GET \
+		-X POST \
 		-H "Content-Type: application/json" \
-		-d '{"class": "Bike", "properties": { "report_id": '${id}' } }' \
-		${WEAVIATE_URI}/v1/objects | jq -c -M -r '.objects[] | del(.properties.image)' | \
-	jq -r .id | while read wid; do \
+		-d '{ "query": "{ Get { Bike(where: { path: [\"report_id\"], operator: Equal, valueInt: '${id}' }) { _additional { id distance  } } } }" }' \
+		${WEAVIATE_URI}/v1/graphql | jq -r .data.Get.Bike[]._additional.id
+
+delete-weaviate-report-files: ## id=x ## Deletes all indexed entries from Weaviate related to a report id
+	${MAKE} weaviate-list-report-files id=${id} | while read wid; do \
 		echo "Deleting $$wid ..." && \
 		curl -X DELETE ${WEAVIATE_URI}/v1/objects/Bike/$$wid; \
 	done

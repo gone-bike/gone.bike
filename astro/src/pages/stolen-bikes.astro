@@ -29,7 +29,7 @@ let query = await directus.items('report').readByQuery({
         "bike_brand_model.bike_brand.name",
         "bike_brand_model.bike_brand.key",
         "main_photo.id",
-        "main_photo.filename_disk",
+        "main_photo.filename_download",
         "main_photo.type",
         "main_photo.width",
         "main_photo.height"
@@ -51,7 +51,7 @@ if (!list || list.length == 0) {
     { list.map( (e) => (
             <div class="border border-gray-400">
                 <a href={`/report?id=${e.id}`}>
-                    <img class="w-32 h-32" src={`/photos/${e.main_photo.id}/${e.main_photo.filename_disk}`}>
+                    <img class="w-32 h-32" src={`/photos/${e.main_photo.id}/${e.main_photo.filename_download}`}>
                 </a>
                 <hr/>
                 <b class="block text-center">{e.id}</b>

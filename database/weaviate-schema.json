@@ -53,6 +53,10 @@
         {
             "name": "bike_type",
             "dataType": ["text"]
+        },
+        {
+            "name": "filename_download",
+            "dataType": ["text"]
         }
     ]
 }

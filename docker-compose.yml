@@ -121,6 +121,17 @@ services:
         max-file: ${DOCKER_LOG_MAX_FILE:-3}
     command: node ./express-server.js
 
+  rembg:
+    image: danielgatis/rembg
+    container_name: gone.bike.rembg
+    restart: "unless-stopped"
+    command: s
+    ports:
+      - "${REMBG_LISTEN:-127.0.0.1:5000}:5000"
+    logging:
+     options:
+        max-size: ${DOCKER_LOG_MAX_SIZE:-10m}
+        max-file: ${DOCKER_LOG_MAX_FILE:-3}
 
 
   celery:

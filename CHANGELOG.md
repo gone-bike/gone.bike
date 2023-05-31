@@ -1,3 +1,9 @@
+# 2023-05-301 Setup guide, export procedures
+- `filename_disk` to `filename_download` refactor
+- Playing around with `rembg` in order to index pictures with removed bg (increased accuracy?)
+- Worker componetization and event-driven approach
+- Simple weaviate endpoint wrapper to display images stored within the db
+
 # 2023-05-30 Setup guide, export procedures
 - Fully-featured README file to help setting up a local dev
 - Makefile commands to export data programmatically

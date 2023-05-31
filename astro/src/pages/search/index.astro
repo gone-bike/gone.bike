@@ -1,0 +1,128 @@
+---
+import BaseLayout from "@layouts/Base.astro";
+
+import ListingEntry from "@components/listing/entry.astro";
+
+
+import i18next from 'i18next'
+import { t, changeLanguage } from "i18next";
+import { localizePath } from "astro-i18next";
+
+changeLanguage("en");
+
+import type { APIRoute } from 'astro';
+import type { APIContext } from 'astro';
+import { v4 as uuidv4 } from 'uuid';
+import path from 'path'
+import sharp from 'sharp'
+import config from '@utils/config'
+import weaviate from '@utils/weaviate';
+
+
+let request = Astro.request;
+let result = []
+try {
+  const formData = await request.formData();
+
+  let file = formData.get('file');
+  let buf = await file.arrayBuffer();
+  let uuid = uuidv4();
+
+  let upload = await sharp(buf)
+    .resize(config.IMG_MAX_W, config.IMG_MAX_H, {
+      fit: sharp.fit.inside,
+      withoutEnlargement: true
+    })
+    .toFormat('jpeg', { "quality": 100 })
+    .toBuffer({resolveWithObject: true})
+
+  upload['name'] = file.name;
+
+  const fileNames = await Promise.all(
+    formData.getAll('file').map(async (file: File) => {
+      let buf = await file.arrayBuffer()
+      return {
+        webkitRelativePath: file.webkitRelativePath,
+        lastModified: file.lastModified,
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        buffer: {
+          type: 'Buffer',
+          value: Array.from(
+            new Int8Array(buf).values()
+          ),
+
+        },
+        b64: Buffer.from(buf).toString('base64')
+      };
+    })
+  );
+
+  // console.log(fileNames)
+
+
+
+
+  const resImage = await weaviate.graphql.get()
+    .withClassName('Bike')
+    .withFields('report_id bike_brand bike_model theft_date filename_download _additional {certainty id}')
+    .withNearImage({ image: fileNames[0].b64 })
+    .withLimit(30)
+    .do();
+
+  // Write result to filesystem
+  result = resImage.data.Get.Bike;
+
+  console.log(result)
+} catch (err) {
+  throw err;
+}
+
+
+---
+<BaseLayout title="Search" lang={i18next.language} description="">
+  <div class="container mx-auto">
+    <div class="py-10 px-5 flex flex-wrap gap-6 justify-center">
+    { result.map( (e) =>  (
+
+      <div class=" max-w-xs min-w-xs rounded shadow-lg ">
+        <!--
+        <img class="object-cover	h-64 w-full" src={`/photos/${e._additional.id}/${e.filename_download}`} alt={t("components.listing_card.bike_brand_model_placeholder")}>
+        -->
+        <img class="object-cover	h-64 w-full" src={`/photos/weaviate/${e._additional.id}`} alt={t("components.listing_card.bike_brand_model_placeholder", {
+                  bike_brand_name: e.bike_brand,
+                  bike_model_name: e.bike_model
+                  } )}>
+
+        <div class="p-5 flex justify-between flex-col">
+          <div class="h-32">
+            <span>Score: { e._additional.certainty }</span>
+
+            <a >
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                { t("components.listing_card.bike_brand_model_placeholder", {
+                  bike_brand_name: e.bike_brand,
+                  bike_model_name: e.bike_model
+                  })
+                }
+              </h5>
+            </a>
+            <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased mb-2">
+              { e.theft_date }
+            </p>
+          </div>
+          <div class=" h-12">
+            <a href={localizePath("/report/[id]").replace('[id]',e.report_id)} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              {t("components.listing_card.view_report_button.title")}
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+
+    ))}
+    </div>
+  </div>
+</BaseLayout>

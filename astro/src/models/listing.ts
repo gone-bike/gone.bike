@@ -21,7 +21,7 @@ export default async function() {
         "bike_brand_model.bike_brand.name",
         "bike_brand_model.bike_brand.key",
         "main_photo.id",
-        "main_photo.filename_disk",
+        "main_photo.filename_download",
         "main_photo.type",
         "main_photo.width",
         "main_photo.height"

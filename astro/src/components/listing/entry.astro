@@ -31,7 +31,7 @@ const formattedDate = moment(report.theft_date, 'D-M-YYYY').format('MMMM Do, YYY
 
 
 <div class=" max-w-xs min-w-xs rounded shadow-lg ">
-  <img class="object-cover	h-64 w-full" src={`/photos/${report.main_photo.id}`} alt={t("components.listing_card.bike_brand_model_placeholder")}>
+  <img class="object-cover	h-64 w-full" src={`/photos/${report.main_photo.id}/${report.main_photo.filename_download}`} alt={t("components.listing_card.bike_brand_model_placeholder")}>
   <div class="p-5 flex justify-between flex-col">
     <div class="h-32">
       <a >
