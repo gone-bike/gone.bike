@@ -26,6 +26,9 @@ geocode = RateLimiter(geolocator.geocode, min_delay_seconds=10, error_wait_secon
 
 app = Celery('tasks')
 app.config_from_object({
+    'task_default_queue': 'test',
+    'task_default_exchange': 'test',
+    'task_default_routing_key': 'test',
     'worker_prefetch_multiplier': os.environ["WORKER_PREFETCH_MULTIPLIER"],
     'broker_transport_options': {
         'visibility_timeout': 30, # BROKER_TRANSPORT_OPTTION_VISIBILITY_TIMEOUT
@@ -40,86 +43,51 @@ def capture_worker_name(sender, instance, **kwargs):
 
 
 @app.task(bind=True, acks_late=False)
-def test(self, *args, **kwargs):
-    if kwargs['$trigger']['event'] == 'report.items.update':
-        print(kwargs)
+def report_create(self, *args, **kwargs):
+    # print(args)
+    for i in args:
+        item = utils.fetch_item(i)
+        if item.get('status') == 'published':
+            x = utils.index_directus_report_item_to_weaviate(item)
+            print(x)
 
+    return True
 
-    if kwargs['$trigger']['event'] == 'report.items.create' or kwargs['$trigger']['event'] == 'report.items.update':
-        print(kwargs)
-        payload = kwargs['$trigger']['payload']
-        if kwargs['$trigger']['event'] == 'report.items.create':
-            key = kwargs['$trigger']['key']
-        if kwargs['$trigger']['event'] == 'report.items.update':
-            key = kwargs['$trigger']['keys'][0]
-        print(payload)
+@app.task(bind=True, acks_late=False)
+def report_update(self, *args, **kwargs):
+    for i in args:
+        item = utils.fetch_item(i)
+        print(json.dumps(item,indent=2))
 
-        utils.index_directus_report_item_to_weaviate(payload)
-        return 'oks'
+        # When an update occurs, it could be happening that an entry gets different associated photos
+        for e in utils.fetch_unlinked_files():
+            try:
+                utils.remove_weaviate_entry_by_id(e[0])
+            except Exception as e:
+                print(e)
+                pass
 
-    if kwargs['$trigger']['event'] == 'report.items.delete' or kwargs['$trigger']['event'] == 'report.items.update':
-        dburi = urlparse(os.environ["WORKER_DB_URI"])
-        dbconn = psycopg2.connect(host=dburi.hostname,
-                            user=dburi.username,
-                            dbname=dburi.path[1:],
-                            port=dburi.port)
-
-        dbconn.set_session(autocommit=True)
-        cur = dbconn.cursor()
-
-        cur.execute("""
-                SELECT DF.id
-                FROM directus_files AS DF
-                LEFT JOIN report_files AS RF ON (DF.id = RF.directus_files_id)
-                WHERE DF.folder = (SELECT id FROM directus_folders WHERE name = 'bike')
-                AND RF.id IS NULL
-                UNION ALL
-                SELECT DF.id
-                FROM directus_files AS DF
-                LEFT JOIN report AS R ON (DF.id = R.main_photo)
-                WHERE DF.folder = (SELECT id FROM directus_folders WHERE name = 'main_bike_photo')
-                AND R.id IS NULL;
-            """,
-                [ ])
-
-        # wclient = weaviate.Client(os.environ['WORKER_WEAVIATE_URI'])
-
-        # while True:
-        #     rows = cur.fetchmany(5000)
-        #     print(rows)
-        #     if not rows:
-        #         break
-
-        #     for row in rows:
-        #         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/files/{row[0]}?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
-        #         print(f"Deleting from Directus {url}...")
-        #         result = requests.delete(url)
-        #         print(result)
-
-        #         print('Deleting from weaviate...')
-
-        #         try:
-        #             result = wclient.data_object.delete(
-        #                 uuid=row[0],
-        #                 class_name='Bike'
-        #             )
-        #             print(result)
-        #         except Exception as e:
-        #             print(e)
-        #             pass
-
-        dbconn.close()
+        if item.get('status') == 'published':
+            x = utils.index_directus_report_item_to_weaviate(item)
+            print(x)
+        else:
+            utils.deindex_directus_report_item_from_weaviate(i)
 
 
 
+    return True
 
 
-    return "OK"
+@app.task(bind=True, acks_late=False, routing_key='test', exchange='test')
+def report_delete(self, *args):
+    for i in args:
+        utils.deindex_directus_report_item_from_weaviate(i)
+    return True
 
 
 
 ### When a new report entry is submitted to the website, it enters a queue that is then processed by this function
-@app.task(bind=True, acks_late=False)
+@app.task(bind=True, acks_late=False, routing_key='test', exchange='test')
 def report_submit(self, *args, **kwargs):
     print(kwargs)
 

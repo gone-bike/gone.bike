@@ -57,3 +57,17 @@ dump-db: ## target=path/to/folder ## Dumps db, nullifying local references to us
 
 delete-old-tmp: ## ## Shortcut to remove files in temporary upload folder
 	find astro/public/tmp/ -mmin +459 -type f -print | grep -v 'tmp/\.gitignore$$' | xargs -r -L 1 rm -fv
+
+
+
+
+delete-weaviate-report-files: ## id=x ## Deletes all indexed entries from Weaviate related to a report id
+	curl -s \
+		-X GET \
+		-H "Content-Type: application/json" \
+		-d '{"class": "Bike", "properties": { "report_id": '${id}' } }' \
+		${WEAVIATE_URI}/v1/objects | jq -c -M -r '.objects[] | del(.properties.image)' | \
+	jq -r .id | while read wid; do \
+		echo "Deleting $$wid ..." && \
+		curl -X DELETE ${WEAVIATE_URI}/v1/objects/Bike/$$wid; \
+	done

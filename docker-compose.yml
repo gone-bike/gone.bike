@@ -123,6 +123,20 @@ services:
 
 
 
+  celery:
+    image: mher/flower
+    container_name: gone.bike.celery
+    restart: "unless-stopped"
+    command: celery flower --port=5555 --purge_offline_workers=${CELERY_PURGE_OFFLINE_WORKERS:-0}
+    environment:
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL:-redis://redis:6379/0}
+    ports:
+      - "${CELERY_LISTEN:-127.0.0.1:5555}:5555"
+    logging:
+     options:
+        max-size: ${DOCKER_LOG_MAX_SIZE:-10m}
+        max-file: ${DOCKER_LOG_MAX_FILE:-3}
+
   worker:
     build: ./docker/worker
     restart: always

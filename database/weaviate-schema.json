@@ -1,0 +1,58 @@
+{
+    "class": "Bike",
+    "vectorizer": "img2vec-neural",
+    "vectorIndexType": "hnsw",
+    "moduleConfig": {
+        "img2vec-neural": {
+            "imageFields": [
+                "image"
+            ]
+        }
+    },
+    "properties": [
+        {
+            "name": "image",
+            "dataType": ["blob"]
+        },
+        {
+            "name": "report_id",
+            "dataType": ["int"]
+        },
+        {
+            "name": "is_electric",
+            "dataType": ["boolean"]
+        },
+        {
+            "name": "theft_date",
+            "dataType": ["date"]
+        },
+        {
+            "name": "location",
+            "dataType": ["geoCoordinates"]
+        },
+        {
+            "name": "bike_brand",
+            "dataType": ["text"]
+        },
+        {
+            "name": "bike_model",
+            "dataType": ["text"]
+        },
+        {
+            "name": "colors",
+            "dataType": ["text[]"]
+        },
+        {
+            "name": "bike_details",
+            "dataType": ["text[]"]
+        },
+        {
+            "name": "serial_number",
+            "dataType": ["text"]
+        },
+        {
+            "name": "bike_type",
+            "dataType": ["text"]
+        }
+    ]
+}

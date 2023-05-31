@@ -1,4 +1,5 @@
-import requests, json, dotmap, os, re, weaviate, base64
+import requests, json, dotmap, os, re, weaviate, base64, copy, psycopg2
+from urllib.parse import urlparse
 
 from mailer import send_email
 
@@ -6,6 +7,61 @@ from mailer import send_email
 # From "Hello {{ var }}" to "Hello {var}"
 def placeholders_to_py(str):
     return re.sub(r'\{\{\s*([a-zA-Z0-9_]+)\s*\}\}', r'{\1}', str)
+
+def fetch_unlinked_files():
+    dburi = urlparse(os.environ["WORKER_DB_URI"])
+    dbconn = psycopg2.connect(host=dburi.hostname,
+                        user=dburi.username,
+                        dbname=dburi.path[1:],
+                        port=dburi.port)
+
+    dbconn.set_session(autocommit=True)
+    cur = dbconn.cursor()
+
+    cur.execute("""
+            SELECT DF.id
+            FROM directus_files AS DF
+            LEFT JOIN report_files AS RF ON (DF.id = RF.directus_files_id)
+            WHERE DF.folder = (SELECT id FROM directus_folders WHERE name = 'bike')
+            AND RF.id IS NULL
+            UNION ALL
+            SELECT DF.id
+            FROM directus_files AS DF
+            LEFT JOIN report AS R ON (DF.id = R.main_photo)
+            WHERE DF.folder = (SELECT id FROM directus_folders WHERE name = 'main_bike_photo')
+            AND R.id IS NULL;
+        """,
+            [ ])
+    data = cur.fetchall()
+    dbconn.close()
+    return data
+
+
+# Gets report id data from directus
+def fetch_item(id):
+    fields = ','.join([
+        'id',
+        'status',
+        'bike_brand_model.bike_brand.name',
+        'bike_brand_model.name',
+        'location',
+        'theft_date',
+        'colors',
+        'serial_number',
+        'bike_type',
+        'main_photo',
+        'photos.directus_files_id',
+        'is_electric',
+        'bike_details'
+
+    ])
+    url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/report/{id}?fields={fields}&access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
+
+    data = requests.get(url)
+
+    if data.status_code == 200:
+        return data.json().get('data')
+
 
 # Give its id, downloads a file from Directus and returns it as base64_string
 def fetch_picture(id):
@@ -44,36 +100,97 @@ def send_activation_email(language, recipient, activation_code ):
     return x
 
 
+def deindex_directus_report_item_from_weaviate(id):
+    print(f"Deindexing {id}...")
+    client = weaviate.Client(os.environ['WORKER_WEAVIATE_URI'])
+    query_result = client.query\
+        .get("Bike", ["report_id"])\
+        .with_where({
+            "path": ["report_id"],
+            "operator": "Equal",
+            "valueInt": id
+        })\
+        .with_additional("id")\
+        .with_limit(50)\
+        .do()
 
+    for e in query_result.get('data',{}).get('Get',{}).get('Bike',[]):
+        entry_id = e.get('_additional',{}).get('id')
+        try:
+            remove_weaviate_entry_by_id(entry_id)
+        except Exception as e:
+            print(e)
+            pass
+
+    return True
+
+
+# As name suggests, removes a single entry from weaviate, given its id
+def remove_weaviate_entry_by_id(entry_id):
+    print(f"Removing {entry_id} from weaviate...")
+    client = weaviate.Client(os.environ['WORKER_WEAVIATE_URI'])
+    return client.data_object.delete(
+        uuid=entry_id,
+        class_name='Bike'
+    )
 
 def index_directus_report_item_to_weaviate(payload):
     client = weaviate.Client(os.environ['WORKER_WEAVIATE_URI'])
     client.batch.configure(
         batch_size=None
     )
+    if payload.get('location') == None:
+        payload['location'] = {}
+
+    metadata = {
+        'report_id': payload['id'],
+        'bike_brand': payload.get('bike_brand_model',{}).get('bike_brand',{}).get('name'),
+        'bike_model': payload.get('bike_brand_model',{}).get('name'),
+        "location": {
+            "latitude": payload.get('location',{}).get('coordinates', [0,0])[1],
+            "longitude": payload.get('location',{}).get('coordinates', [0,0])[0],
+        },
+        'theft_date': f"{payload.get('theft_date')}T00:00:00.0Z",
+        'colors': payload.get('colors'),
+        'serial_number': payload.get('serial_number'),
+        'bike_type': payload.get('bike_type'),
+        'is_electric': payload.get('is_electric'),
+        'bike_details': payload.get('bike_details')
+    }
+    print(metadata)
+
     with client.batch as batch:
         if 'main_photo' in payload and payload['main_photo'] is not None:
             b64 = fetch_picture(payload['main_photo'])
+
+            data_object = copy.copy(metadata)
+            data_object['image'] = b64.decode("ascii")
+
             batch.add_data_object(
                 class_name="Bike",
-                data_object={
-                    'report_id': None, # int(key), -- @TODO
-                    'image': b64.decode("ascii")
-                },
+                data_object=data_object,
                 uuid=payload['main_photo'],
             )
-            pass
-        if 'photos' in payload and 'create' in payload['photos'] and len(payload['photos']['create']) > 0:
-            for e in payload['photos']['create']:
-                phid = e['directus_files_id']['id']
+
+        if 'photos' in payload and len(payload['photos']) > 0:
+            for e in payload['photos']:
+                phid = e['directus_files_id']
                 b64 = fetch_picture(phid)
+
+                data_object = copy.copy(metadata)
+                data_object['image'] = b64.decode("ascii")
+
                 batch.add_data_object(
                     class_name="Bike",
-                    data_object={
-                        'report_id': None, # int(key), -- @TODO
-                        'image': b64.decode("ascii")
-                    },
+                    data_object=data_object,
                     uuid=phid,
                 )
 
-        return batch.create_objects()
+        result = batch.create_objects()
+
+        # More manageable result
+        for idx, e in enumerate(result):
+            result[idx]['properties']['image'] = None
+            result[idx]['vector'] = None
+
+        return result
