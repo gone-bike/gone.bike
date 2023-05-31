@@ -38,6 +38,7 @@ try {
     .withFields('report_id bike_brand bike_model theft_date filename_download _additional {certainty id}')
     .withNearImage({ image: b64in })
     .withLimit(30)
+    .withOffset(0)
 
 
   let operands = []
@@ -60,23 +61,11 @@ try {
       operands: operands
     })
   }
-/*
-
-  query
-    .withWhere({
-      operator: 'Equal',
-      path: ['bike_model'],
-      valueText: 'Caliber',
-    })
-*/
 
   const resImage = await query.do();
 
-    //  console.log(resImage)
-  // Write result to filesystem
   result = resImage.data.Get.Bike;
 
-  // console.log(result)
 } catch (err) {
   throw err;
 }
@@ -95,10 +84,13 @@ try {
         <!--
         <img class="object-cover	h-64 w-full" src={`/photos/${e._additional.id}/${e.filename_download}`} alt={t("components.listing_card.bike_brand_model_placeholder")}>
         -->
-        <img class="object-cover	h-64 w-full" src={`/photos/weaviate/${e._additional.id}`} alt={t("components.listing_card.bike_brand_model_placeholder", {
-                  bike_brand_name: e.bike_brand,
-                  bike_model_name: e.bike_model
-                  } )}>
+        <img
+          class="object-cover	h-64 w-full" src={`/photos/weaviate/${e._additional.id}`}
+          alt={t("components.listing_card.bike_brand_model_placeholder", {
+            bike_brand_name: e.bike_brand,
+            bike_model_name: e.bike_model
+          } )}
+        >
 
         <div class="p-5 flex justify-between flex-col">
           <div class="h-32">

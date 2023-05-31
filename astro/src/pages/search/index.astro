@@ -1,38 +1,37 @@
 ---
-import type { APIRoute } from 'astro';
-import type { APIContext } from 'astro';
-import { v4 as uuidv4 } from 'uuid';
+/**
+ * This file handles search with image by applying the
+ * PRG pattern - https://en.wikipedia.org/wiki/Post/Redirect/Get
+ *
+ * - Receives a POST with the submited image
+ * - Generates a search session by saving the image as b64 in redis with a UUID
+ * - Redirects to `/search/<UUID>` where the `search/[sid].astro` handler will reload
+ *   the image buffer and use it to query Weaviate
+ */
 
 import sharp from 'sharp'
 import config from '@utils/config'
 import search from '@utils/search'
-import { Redis } from 'ioredis';
-
-
-let request = Astro.request;
 
 try {
-  const formData = await request.formData();
+  const formData = await Astro.request.formData();
 
   let file = formData.get('file');
   let buf = await file.arrayBuffer();
 
+  // @TODO - Understand how to optimize the uploaded image
+  //         in order to find balance between size and accuracy
   let upload = await sharp(buf)
     .resize(config.IMG_MAX_W, config.IMG_MAX_H, {
       fit: sharp.fit.inside,
       withoutEnlargement: true
     })
-    .toFormat('jpeg', { "quality": 100 })
+    .toFormat('jpeg', { "quality": config.IMG_QUALITY })
     .toBuffer({resolveWithObject: true})
-
-
-  // upload['name'] = file.name;
-  // console.log(upload.data)
 
   let b64in = Buffer.from(upload.data).toString('base64')
 
   let id = await search.create(b64in)
-  // console.log(id)
 
   return Astro.redirect(`/search/${id}`, 302)
 
@@ -40,4 +39,3 @@ try {
   throw e
 }
 ---
-x

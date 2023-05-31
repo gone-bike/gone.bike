@@ -1,50 +1,36 @@
-
-let db = new URL(process.env.DB_URI || import.meta.env.DB_URI || 'postgresql://127.0.0.1:5432/postgres')
-let weaviate = new URL(process.env.WEAVIATE_URI || import.meta.env.WEAVIATE_URI ||  'http://127.0.0.1:8080')
-let celery_redis = new URL(process.env.CELERY_REDIS_URI || import.meta.env.CELERY_REDIS_URI || 'redis://celery:@127.0.0.1:6379/0')
-let search_redis = new URL(process.env.SEARCH_REDIS_URI || import.meta.env.SEARCH_REDIS_URI || 'redis://search:@127.0.0.1:6379/0')
-
 /**
- * Helper class to retrive config from env var or local file
+ * Helper class to retrive config from env var (when running with docker) or local file (when running in dev)
+ *
+ * File is getting verbose. @TODO - find a smarter way to handle it
  */
 
+let getv = function(name: string, def: any) {
+    return process.env[name] || import.meta.env[name] || def;
+}
+
 const config = {
-    MAX_PHOTOS_UPLOAD: process.env.INTERNAL_URI || import.meta.env.INTERNAL_URI || 4,
-    INTERNAL_URI: process.env.INTERNAL_URI || import.meta.env.INTERNAL_URI || 'http://localhost:3000',
-    CLOUDFLARE_CAPTCHA_KEY: process.env.CLOUDFLARE_CAPTCHA_KEY || import.meta.env.CLOUDFLARE_CAPTCHA_KEY || '3x00000000000000000000FF',
-    CLOUDFLARE_CAPTCHA_SECRET: process.env.CLOUDFLARE_CAPTCHA_SECRET || import.meta.env.CLOUDFLARE_CAPTCHA_SECRET || '2x0000000000000000000000000000000AA',
 
-    GMAP_API_KEY: process.env.GMAP_API_KEY || import.meta.env.GMAP_API_KEY || '',
-
-    DEV_DATA_MODE: process.env.DEV_DATA_MODE || import.meta.env.DEV_DATA_MODE || 0,
-
-    IMG_MAX_H: process.env.IMG_MAX_H || import.meta.env.IMG_MAX_H || 2048,
-    IMG_MAX_W: process.env.IMG_MAX_W || import.meta.env.IMG_MAX_W || 2048,
-
-
-    WEAVIATE_URI: weaviate,
-
-    CELERY_REDIS_URI: celery_redis,
-    SEARCH_REDIS_URI: search_redis,
-
-    REDIS_URI: process.env.REDIS_URI || import.meta.env.REDIS_URI || 'redis://127.0.0.1:6379/0',
-
-    REPORT_OBJECT_CACHE_TTL: parseInt(process.env.REDIS_URI || import.meta.env.REDIS_URI) || 1,
-
-    DIRECTUS_URI: process.env.DIRECTUS_URI || import.meta.env.DIRECTUS_URI,
-    DIRECTUS_TOKEN: process.env.DIRECTUS_TOKEN || import.meta.env.DIRECTUS_TOKEN,
-
-    DB: {
-        host: db.hostname,
-        port: db.port,
-        user: db.username,
-        password: db.password,
-        database: db.pathname.slice(1)
-    },
-
+    CELERY_REDIS_URI: new URL(getv('CELERY_REDIS_URI', 'redis://celery:@127.0.0.1:6379/0')),
+    CLOUDFLARE_CAPTCHA_KEY: getv('CLOUDFLARE_CAPTCHA_KEY', '3x00000000000000000000FF'),
+    CLOUDFLARE_CAPTCHA_SECRET: getv('CLOUDFLARE_CAPTCHA_SECRET', '2x0000000000000000000000000000000AA'),
+    DEV_DATA_MODE: getv('DEV_DATA_MODE', 0),
+    DIRECTUS_TOKEN: getv('DIRECTUS_TOKEN', 'dev'),
+    DIRECTUS_URI: getv('DIRECTUS_URI', 'http://localhost:8055'),
+    GMAP_API_KEY: getv('GMAP_API_KEY', ''),
+    IMG_MAX_H: getv('IMG_MAX_H', 2048),
+    IMG_MAX_W: getv('IMG_MAX_W', 2048),
+    IMG_QUALITY: getv('IMG_QUALITY', 90),
+    INTERNAL_URI: getv('INTERNAL_URI', 'http://localhost:3000'),
+    MAX_PHOTOS_UPLOAD: getv('MAX_PHOTOS_UPLOAD', 4),
+    POSTGRES_URI: new URL(getv('DB_URI', 'postgresql://127.0.0.1:5432/postgres')),
+    REDIS_URI: getv('REDIS_URI', 'redis://127.0.0.1:6379/0'),
+    REPORT_OBJECT_CACHE_TTL: parseInt(getv('REDIS_URI', 1)),
+    SEARCH_REDIS_URI: new URL(getv('SEARCH_REDIS_URI', 'redis://search:@127.0.0.1:6379/0')),
+    WEAVIATE_URI: new URL(getv('WEAVIATE_URI',  'http://127.0.0.1:8080')),
 
     /**
      * Runs a 404 page. Shortcut to return a not-found page by fetching internal 404 page and return it
+     * This is a hackish way to return custom 404 page on server-side conditions
      *
      * @returns Response
      */

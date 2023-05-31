@@ -1,8 +1,8 @@
 ---
 /**
- * This wrapper allows urls to be written in the form of:
+ * This wrapper allows fetching and showing images stored in Weaviate
  *
- * `/photos/<uuid>/name.ext`
+ * `/photos/weaviate/<uuid>`
  */
 
 import config from "@utils/config";
@@ -20,16 +20,13 @@ try {
     // .withConsistencyLevel('ONE')  // default QUORUM
     .do()
 
+    // Not the cleanest way, but the one-liner way
     return await fetch(`data:image/jpeg;base64,${img.properties.image}`);
 
   console.log()
-  // Write result to filesystem
-  // result = resImage.data.Get.Bike;
 
 } catch (e) {
   throw e
-// console.log(e)
-//   return await config.http404();
 }
 
 
