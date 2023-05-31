@@ -1,0 +1,23 @@
+---
+import config from "@utils/config";
+import weaviate from '@utils/weaviate';
+import search from '@utils/search'
+
+
+try {
+
+  let b64in = await search.load(Astro.params.sid)
+  return await fetch(`data:image/jpeg;base64,${b64in}`);
+
+  console.log()
+  // Write result to filesystem
+  // result = resImage.data.Get.Bike;
+
+} catch (e) {
+  throw e
+// console.log(e)
+//   return await config.http404();
+}
+
+
+---

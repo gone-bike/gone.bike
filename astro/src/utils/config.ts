@@ -2,6 +2,7 @@
 let db = new URL(process.env.DB_URI || import.meta.env.DB_URI || 'postgresql://127.0.0.1:5432/postgres')
 let weaviate = new URL(process.env.WEAVIATE_URI || import.meta.env.WEAVIATE_URI ||  'http://127.0.0.1:8080')
 let celery_redis = new URL(process.env.CELERY_REDIS_URI || import.meta.env.CELERY_REDIS_URI || 'redis://celery:@127.0.0.1:6379/0')
+let search_redis = new URL(process.env.SEARCH_REDIS_URI || import.meta.env.SEARCH_REDIS_URI || 'redis://search:@127.0.0.1:6379/0')
 
 /**
  * Helper class to retrive config from env var or local file
@@ -24,6 +25,7 @@ const config = {
     WEAVIATE_URI: weaviate,
 
     CELERY_REDIS_URI: celery_redis,
+    SEARCH_REDIS_URI: search_redis,
 
     REDIS_URI: process.env.REDIS_URI || import.meta.env.REDIS_URI || 'redis://127.0.0.1:6379/0',
 
