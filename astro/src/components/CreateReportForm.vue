@@ -119,7 +119,7 @@ watchEffect(() => {
 })
 
 let date = new Date()
-let todayDate = `${date.getFullYear()}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}`: day }`
+let todayDate = `${date.getFullYear()}-${date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth()}-${date.getDate() < 10 ? `0${date.getDate()}`: date.getDate() }`
 
 let errors = reactive({
     location: false,
