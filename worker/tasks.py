@@ -26,9 +26,9 @@ geocode = RateLimiter(geolocator.geocode, min_delay_seconds=10, error_wait_secon
 
 app = Celery('tasks')
 app.config_from_object({
-    'task_default_queue': 'test',
-    'task_default_exchange': 'test',
-    'task_default_routing_key': 'test',
+    'task_default_queue': 'test2',
+    'task_default_exchange': 'test2',
+    'task_default_routing_key': 'test2',
     'worker_prefetch_multiplier': os.environ["WORKER_PREFETCH_MULTIPLIER"],
     'broker_transport_options': {
         'visibility_timeout': 30, # BROKER_TRANSPORT_OPTTION_VISIBILITY_TIMEOUT
@@ -70,6 +70,7 @@ def report_update(self, *args, **kwargs):
         # When an update occurs, it could be happening that an entry gets different associated photos
         for e in utils.fetch_unlinked_files():
             try:
+                utils.remove_directus_file_by_id(e[0])
                 utils.remove_weaviate_entry_by_id(e[0])
             except Exception as e:
                 print(e)
@@ -171,6 +172,7 @@ def report_submit(self, *args, **kwargs):
         "approximate_value_currency": kwargs.get("approximate_value_currency"),
         "colors": colors,
         "is_electric": bool(kwargs.get("is_electric")) if kwargs.get('is_electric') else None,
+        "theft_status": kwargs.get('theft_status', 'stolen'),
         "theft_date": kwargs.get("theft_date"),
         "theft_timeframe": kwargs.get("theft_timeframe"),
         "theft_location_type": kwargs.get("theft_location_type"),
@@ -184,6 +186,7 @@ def report_submit(self, *args, **kwargs):
         "description": kwargs.get("description"),
         "email": kwargs.get("email"),
         "ref_url": kwargs.get("ref_url"),
+        "tags": kwargs.get('tags')
     }
 
     print("Entry...")
@@ -231,6 +234,7 @@ def report_submit(self, *args, **kwargs):
                 "data": {
                     "folder": "fa2b1d0e-2e58-4897-af16-eab29f26117d" if e == 'main_photo' else "21f79529-85a1-4797-b4a1-7ddefdef654f",
                     "tags": [ photo_url ],
+                    "description": photo_url,
                     "title": photo_name
                 }
             })

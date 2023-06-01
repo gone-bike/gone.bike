@@ -1113,7 +1113,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: null
+      sort: 11
       special:
         - uuid
       translations: null
@@ -1518,7 +1518,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 9
+      sort: 10
       special: null
       translations: null
       validation: null
@@ -1556,7 +1556,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: null
+      sort: 10
       special: null
       translations: null
       validation: null
@@ -1677,7 +1677,7 @@ fields:
         template: '{{locale_code}}'
       readonly: false
       required: false
-      sort: 10
+      sort: 11
       special:
         - m2o
       translations: null
@@ -1724,7 +1724,7 @@ fields:
         geometryType: Point
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -1762,7 +1762,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -1800,7 +1800,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special:
         - cast-json
       translations: null
@@ -1849,7 +1849,7 @@ fields:
             value: post
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -1899,7 +1899,7 @@ fields:
             value: folding
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -2125,6 +2125,47 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: report
+    field: tags
+    type: json
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: tags
+      group: null
+      hidden: false
+      interface: tags
+      note: null
+      options:
+        capitalization: lowercase
+        whitespace: '-'
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: tags
+      table: report
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
     field: theft
     type: alias
     meta:
@@ -2166,7 +2207,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 1
+      sort: 2
       special: null
       translations: null
       validation: null
@@ -2224,7 +2265,7 @@ fields:
             value: train
       readonly: false
       required: false
-      sort: 3
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -2235,6 +2276,65 @@ fields:
       table: report
       data_type: character varying
       default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: theft_status
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: Stolen
+            value: stolen
+            foreground: '#FFFFFF'
+            background: '#E35169'
+          - text: Found
+            value: found
+            foreground: '#18222F'
+            background: '#FFC23B'
+          - text: Given back
+            value: given-back
+            foreground: '#FFFFFF'
+            background: var(--warning)
+        showAsDot: true
+      field: theft_status
+      group: theft
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Stolen
+            value: stolen
+          - text: Found
+            value: found
+          - text: Given back
+            value: given-back
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: theft_status
+      table: report
+      data_type: character varying
+      default_value: stolen
       max_length: 255
       numeric_precision: null
       numeric_scale: null
@@ -2271,7 +2371,7 @@ fields:
             value: night
       readonly: false
       required: false
-      sort: 2
+      sort: 3
       special: null
       translations: null
       validation: null

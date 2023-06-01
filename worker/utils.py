@@ -149,6 +149,15 @@ def remove_weaviate_entry_by_id(entry_id):
         class_name='Bike'
     )
 
+def remove_directus_file_by_id(entry_id):
+    print(f"Removing {entry_id} from directus...")
+    url = f'{os.environ["WORKER_DIRECTUS_URI"]}/files/{entry_id}?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
+    data = requests.delete(url)
+    print(data.status_code)
+    return data.status_code
+
+
+
 def index_directus_report_item_to_weaviate(payload):
     client = weaviate.Client(os.environ['WORKER_WEAVIATE_URI'])
     client.batch.configure(

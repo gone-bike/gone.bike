@@ -16,6 +16,7 @@ const config = {
     DEV_DATA_MODE: getv('DEV_DATA_MODE', 0),
     DIRECTUS_TOKEN: getv('DIRECTUS_TOKEN', 'dev'),
     DIRECTUS_URI: getv('DIRECTUS_URI', 'http://localhost:8055'),
+    GB_SUBMIT_KEY: getv('GB_SUBMIT_KEY', 'dev'),
     GMAP_API_KEY: getv('GMAP_API_KEY', ''),
     IMG_MAX_H: getv('IMG_MAX_H', 2048),
     IMG_MAX_W: getv('IMG_MAX_W', 2048),
