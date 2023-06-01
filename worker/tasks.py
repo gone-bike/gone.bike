@@ -264,15 +264,14 @@ def report_submit(self, *args, **kwargs):
 
     # @TODO - some error control
     print(data.status_code)
+    if data.status_code == 200:
+        data = data.json()
+        print(data)
+        if kwargs.get('email'):
+            send = utils.send_activation_email(kwargs.get('language'), kwargs.get('email'), data['data']['id'] data['data']['activation_code'])
+            print(send)
 
-    data = data.json()
-    print(data)
-
-    if kwargs.get('email'):
-        send = utils.send_activation_email(kwargs.get('language'), kwargs.get('email'), data['data']['activation_code'])
-        print(send)
-
-    return 'ok'
+        return 'ok'
 
 
 

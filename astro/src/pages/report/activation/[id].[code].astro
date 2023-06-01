@@ -4,23 +4,17 @@ import Report from '@models/report';
 import i18next, { t } from 'i18next';
 import config from '@utils/config';
 
-
-const args = {
-    code: Astro.url.searchParams.get("code"),
-    id: Astro.url.searchParams.get("id") || 0
-}
-
-if (!args.id || ! args.code) {
+if (!Astro.params.id || ! Astro.params.code) {
     return await config.http404();
 }
 
-let report = await Report(args.id);
+let report = await Report(Astro.params.id);
 
 if (! report || ! report?.activation_code ) {
     return await config.http404();
 }
 
-if ( report?.activation_code != args.code ) {
+if ( report?.activation_code != Astro.params.code ) {
     return await config.http404();
 }
 

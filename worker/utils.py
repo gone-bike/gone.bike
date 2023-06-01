@@ -88,7 +88,7 @@ def fetch_rembg_picture(id):
 
 
 # Guess what? Sends an activation email
-def send_activation_email(language, recipient, activation_code ):
+def send_activation_email(language, recipient, id, activation_code ):
      # @TODO temporary strings
     locale_file = f'/locales/{language}/translation.json'
 
@@ -100,7 +100,7 @@ def send_activation_email(language, recipient, activation_code ):
         i18n = dotmap.DotMap(json_load)
 
 
-    activation_url = os.environ['WORKER_MAIN_PUBLIC_ACTIVATION_URL_PATTERN'].format(code=activation_code)
+    activation_url = os.environ['WORKER_MAIN_PUBLIC_ACTIVATION_URL_PATTERN'].format(code=activation_code,id=id)
     x = send_email(
         recipient,
         os.environ["WORKER_MAIL_FROM"],
