@@ -44,7 +44,7 @@
         },
         {
             "name": "bike_details",
-            "dataType": ["text[]"]
+            "dataType": ["text"]
         },
         {
             "name": "serial_number",
