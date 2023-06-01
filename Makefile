@@ -23,7 +23,7 @@ sync-s3: ## target=path/to/folder ## Downloads all remote images, creates a tgz 
 	cd .. && rm -f gone.bike.images.latest.tgz && \
 	ln -s gone.bike.images.`date +"%Y-%m-%d"`.tgz gone.bike.images.latest.tgz
 
-dump-db: ## target=path/to/folder ## Dumps db, nullifying local references to users
+dump-db: ## target=path/to/folder ## Dumps db, nullifying local references to users and personal info about submission (email, ip)
 	docker-compose up -d postgresql
 	docker-compose exec postgresql pg_dump -U postgres \
 	 -t language -t bike_brand -t bike_brand_model -t report -t report_files -t i18n -t i18n_translation \
@@ -36,7 +36,7 @@ dump-db: ## target=path/to/folder ## Dumps db, nullifying local references to us
 	rm -f gone.bike.db-pre-dump.`date +"%Y%m%d"`.sql.gz;
 
 	docker-compose exec postgresql psql -U postgres -d dump -c "UPDATE directus_files SET storage = 'local', modified_by = NULL, uploaded_by = NULL;"
-	docker-compose exec postgresql psql -U postgres -d dump -c "UPDATE report SET user_created = NULL, user_updated = NULL, email = NULL;"
+	docker-compose exec postgresql psql -U postgres -d dump -c "UPDATE report SET submit_by = null, user_created = NULL, user_updated = NULL, email = NULL;"
 	docker-compose exec postgresql psql -U postgres -d dump -c "UPDATE i18n_translation SET user_updated = NULL;"
 	docker-compose exec postgresql psql -U postgres -d dump -c "DELETE FROM directus_users;"
 	docker-compose exec postgresql psql -U postgres -d dump -c "DELETE FROM directus_roles;"
@@ -59,9 +59,7 @@ delete-old-tmp: ## ## Shortcut to remove files in temporary upload folder
 	find astro/public/tmp/ -mmin +459 -type f -print | grep -v 'tmp/\.gitignore$$' | xargs -r -L 1 rm -fv
 
 
-
-
-weaviate-list-report-files: ## id=x
+weaviate-list-report-files: ## id=x ## Lists all weaviate entries associated to a specific report id
 	curl -s \
 		-X POST \
 		-H "Content-Type: application/json" \

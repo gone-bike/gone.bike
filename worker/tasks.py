@@ -26,9 +26,9 @@ geocode = RateLimiter(geolocator.geocode, min_delay_seconds=10, error_wait_secon
 
 app = Celery('tasks')
 app.config_from_object({
-    'task_default_queue': 'test2',
-    'task_default_exchange': 'test2',
-    'task_default_routing_key': 'test2',
+    # 'task_default_queue': 'test',
+    # 'task_default_exchange': 'test',
+    # 'task_default_routing_key': 'test',
     'worker_prefetch_multiplier': os.environ["WORKER_PREFETCH_MULTIPLIER"],
     'broker_transport_options': {
         'visibility_timeout': 30, # BROKER_TRANSPORT_OPTTION_VISIBILITY_TIMEOUT
@@ -172,6 +172,7 @@ def report_submit(self, *args, **kwargs):
         "approximate_value_currency": kwargs.get("approximate_value_currency"),
         "colors": colors,
         "is_electric": bool(kwargs.get("is_electric")) if kwargs.get('is_electric') else None,
+        "serial_number" : kwargs.get("serial_number"),
         "theft_status": kwargs.get('theft_status', 'stolen'),
         "theft_date": kwargs.get("theft_date"),
         "theft_timeframe": kwargs.get("theft_timeframe"),

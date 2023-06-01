@@ -163,8 +163,11 @@ def index_directus_report_item_to_weaviate(payload):
     client.batch.configure(
         batch_size=None
     )
-    if payload.get('location') == None:
-        payload['location'] = {}
+
+    # Data cleanup for better getters
+    for e in ['location','bike_brand','bike_model','main_photo']:
+        if payload.get(e) == None or payload.get(e) == "":
+            payload[e] = {}
 
     metadata = {
         'report_id': payload['id'],
@@ -185,26 +188,28 @@ def index_directus_report_item_to_weaviate(payload):
 
     with client.batch as batch:
         if 'main_photo' in payload and payload['main_photo'] is not None:
-            b64 = fetch_picture(payload['main_photo']['id'])
+            main_photo_id = payload.get('main_photo',{}).get('id')
+            if main_photo_id:
+                b64 = fetch_picture(main_photo_id)
 
-            data_object = copy.copy(metadata)
-            data_object['image'] = b64.decode("ascii")
-            data_object['filename_download'] = payload['main_photo']['filename_download']
-            batch.add_data_object(
-                class_name="Bike",
-                data_object=data_object,
-                uuid=payload['main_photo']['id'],
-            )
+                data_object = copy.copy(metadata)
+                data_object['image'] = b64.decode("ascii")
+                data_object['filename_download'] = payload['main_photo']['filename_download']
+                batch.add_data_object(
+                    class_name="Bike",
+                    data_object=data_object,
+                    uuid=main_photo_id,
+                )
 
-            b64 = fetch_rembg_picture(payload['main_photo']['id'])
+                b64 = fetch_rembg_picture(payload['main_photo']['id'])
 
-            data_object = copy.copy(metadata)
-            data_object['image'] = b64.decode("ascii")
-            data_object['filename_download'] = payload['main_photo']['filename_download']
-            batch.add_data_object(
-                class_name="Bike",
-                data_object=data_object,
-            )
+                data_object = copy.copy(metadata)
+                data_object['image'] = b64.decode("ascii")
+                data_object['filename_download'] = payload['main_photo']['filename_download']
+                batch.add_data_object(
+                    class_name="Bike",
+                    data_object=data_object,
+                )
 
 
         if 'photos' in payload and len(payload['photos']) > 0:
