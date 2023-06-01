@@ -167,7 +167,7 @@ onMounted(() => {
            page = 1
         }
         currentPage.value = page
-        window.scrollTo({ top: 0, behavior: "smooth" })
+        window.scrollTo(0, 0)
         let prevPage = stack.value[stack.value.length - 1]
         stack.value = [...stack.value, page]
         if (prevPage === 2 && page === 3) {
