@@ -118,6 +118,9 @@ watchEffect(() => {
     }
 })
 
+let date = new Date()
+let todayDate = `${date.getFullYear()}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}`: day }`
+
 let errors = reactive({
     location: false,
 })
@@ -312,7 +315,7 @@ let currentPage = ref(1)
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 2">
             <div class="flex flex-col w-full">
                 <label for="theft_date" class="mb-2 text-lg">{{ t("theft_date") }}</label>
-                <input type="date" v-model="theftDateUnformated" class="w-full" />
+                <input type="date" v-model="theftDateUnformated" class="w-full" :max="todayDate" />
                 <span class="mt-2 text-sm font-normal text-gray-400 italic ">{{
                     i18next(`forms.report.questions.theft_date.subtitle`) }}</span>
 
