@@ -127,7 +127,7 @@ def report_submit(self, *args, **kwargs):
     # if "bike_model_id" in kwargs and kwargs.get('bike_model_id') != "":
     #     bike_model = int(kwargs.get('bike_model_id'))
 
-    if "bike_model" in kwargs:
+    if "bike_model" in kwargs and kwargs.get('bike_model') != "" and kwargs.get('bike_model') != None:
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand_model?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
 
         bike_model_slug = slugify(kwargs['bike_model'])
