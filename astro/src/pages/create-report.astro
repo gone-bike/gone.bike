@@ -3,7 +3,7 @@ import i18next, { t } from "i18next";
 import config from "@utils/config";
 import BaseLayout from "@layouts/Base.astro";
 import CreateReportForm from "@components/CreateReportForm.vue";
-
+import 'configurable-date-input-polyfill';
 
 let photoTranslation = t(`forms.report.questions.photos.title`, { n: config.MAX_PHOTOS_UPLOAD });
 
