@@ -1554,7 +1554,7 @@ fields:
       interface: null
       note: null
       options: null
-      readonly: false
+      readonly: true
       required: false
       sort: 10
       special: null
@@ -2117,6 +2117,46 @@ fields:
       numeric_precision: null
       numeric_scale: null
       is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: submit_by
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: formatted-value
+      display_options:
+        font: monospace
+      field: submit_by
+      group: null
+      hidden: false
+      interface: input
+      note: For security reasons, storing the IP of submitter
+      options:
+        font: monospace
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: submit_by
+      table: report
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
       is_unique: false
       is_primary_key: false
       is_generated: false
