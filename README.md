@@ -87,9 +87,13 @@ gone.bike.directus  | [12:35:20.483] INFO: Done
 gone.bike.directus  | [12:35:23.050] INFO: Server started at http://0.0.0.0:8055
 ```
 
+Reflect `DIRECTUS_TOKEN` in database (for website to access it):
+```
+export $(cat astro/.env | grep DIRECTUS_TOKEN | tr -d '"') && \
+ docker-compose exec postgresql psql -U postgres -c "UPDATE directus_users SET token = '$DIRECTUS_TOKEN'"
+```
 
-
-Copy database schema inside directus container: and apply it:
+Copy database schema inside directus container and apply it:
 
 ```
 docker-compose cp database/directus-schema.yml directus:/directus/ && \
