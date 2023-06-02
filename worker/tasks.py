@@ -161,13 +161,19 @@ def report_submit(self, *args, **kwargs):
         colors = []
 
 
+    approximate_value = 0
+    try:
+        approximate_value = int(kwargs.get("approximate_value", 0)))
+    except Exception as e:
+        pass
+
 
     entry = {
         "bike_brand_model": bike_model,
 
         "bike_details": kwargs.get("bike_details"),
 
-        "approximate_value": kwargs.get("approximate_value"),
+        "approximate_value": approximate_value,
         "approximate_value_currency": kwargs.get("approximate_value_currency"),
         "colors": colors,
         "is_electric": bool(kwargs.get("is_electric")) if kwargs.get('is_electric') else None,
