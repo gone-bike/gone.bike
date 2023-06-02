@@ -186,7 +186,8 @@ def report_submit(self, *args, **kwargs):
         "description": kwargs.get("description"),
         "email": kwargs.get("email"),
         "ref_url": kwargs.get("ref_url"),
-        "tags": kwargs.get('tags')
+        "tags": kwargs.get('tags'),
+        "submit_by": kwargs.get('submit_by')
     }
 
     print("Entry...")
