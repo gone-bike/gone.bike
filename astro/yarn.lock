@@ -1390,11 +1390,6 @@ cache-manager@^5.1.7:
     lodash.clonedeep "^4.5.0"
     lru-cache "~9.1.1"
 
-calendar-data-generate@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/calendar-data-generate/-/calendar-data-generate-1.0.3.tgz"
-  integrity sha512-B5Gzp1Z+KASQX+LdUNb5fjFvv2ONhLet4vGV6wJbvw0fFSPPW/vbundamN6vJ6RZEghiR8n09vsKLMX+f5sFpQ==
-
 call-bind@^1.0.0:
   version "1.0.2"
   resolved "https://registry.npmjs.org/call-bind/-/call-bind-1.0.2.tgz"
@@ -1593,6 +1588,11 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
+
+configurable-date-input-polyfill@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/configurable-date-input-polyfill/-/configurable-date-input-polyfill-4.0.0.tgz"
+  integrity sha512-rGubAhgx8n0Iw5RXkrFO+NJ7Su4B5bCZkaMOCJltV59bFQ3DM7eNf6+lYou/keztXPFMqxzIwpEC0OmqbX9wRA==
 
 content-disposition@0.5.4:
   version "0.5.4"
@@ -5339,19 +5339,12 @@ vscode-uri@^3.0.3, vscode-uri@^3.0.7:
   resolved "https://registry.npmjs.org/vscode-uri/-/vscode-uri-3.0.7.tgz"
   integrity sha512-eOpPHogvorZRobNqJGhapa0JdwaxpjVvyBp0QIUMRMSf8ZAlqOdEquKuRmw9Qwu0qXtJIWqFtMkmvJjUZmMjVA==
 
-vue-datepicker-ui@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/vue-datepicker-ui/-/vue-datepicker-ui-3.1.1.tgz"
-  integrity sha512-vUQcNMrv7X9FF9GIY2xcnp1mXNLkZ7VvmZ0B3C377ztl5Rnhr6rTNv1G6/2LuM/tHHLFieMNvNBVt87E9DhsUA==
-  dependencies:
-    calendar-data-generate "^1.0.3"
-
 vue-demi@>=0.14.0:
   version "0.14.5"
   resolved "https://registry.npmjs.org/vue-demi/-/vue-demi-0.14.5.tgz"
   integrity sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==
 
-vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", vue@^3.2.0, vue@^3.2.1, vue@^3.2.25, vue@^3.2.30, vue@^3.2.47, vue@3.3.4:
+vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", vue@^3.2.0, vue@^3.2.25, vue@^3.2.30, vue@^3.2.47, vue@3.3.4:
   version "3.3.4"
   resolved "https://registry.npmjs.org/vue/-/vue-3.3.4.tgz"
   integrity sha512-VTyEYn3yvIeY1Py0WaYGZsXnz3y5UnGi62GjVEqvEGPl6nxbOrCXbVOTQWBEJUqAyTUk2uJ5JLVnYJ6ZzGbrSw==
