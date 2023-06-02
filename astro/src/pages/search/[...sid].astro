@@ -21,25 +21,26 @@ import search from '@utils/search'
 let request = Astro.request;
 let result = []
 let sid = Astro.params.sid
-
+// console.log(sid)
 try {
-  let b64in = await search.load(sid)
-
-  if ( ! b64in ) {
-    return Astro.redirect('/',302);
-  }
-  await search.extend(sid)
-
 
 
 
   const query = weaviate.graphql.get()
-    .withClassName('Bike')
-    .withFields('report_id bike_brand bike_model theft_date filename_download _additional {certainty id}')
-    .withNearImage({ image: b64in })
-    .withLimit(30)
-    .withOffset(0)
+  .withClassName('Bike')
+  .withFields('report_id bike_brand bike_model theft_date filename_download _additional {certainty id}')
+  .withLimit(30)
+  .withOffset(0)
 
+  if (sid) {
+    let b64in = await search.load(sid)
+    if ( ! b64in ) {
+      return Astro.redirect('/',302);
+    }
+    await search.extend(sid)
+    query
+      .withNearImage({ image: b64in })
+  }
 
   let operands = []
 
@@ -74,9 +75,10 @@ try {
 ---
 <BaseLayout title="Search" lang={i18next.language} description="">
   <div class="container mx-auto">
-    <h1>You searched for</h1>
-    <img src={`/photos/search/${sid}`} class="object-contain h-48 w-96"/>
-
+    { sid && (
+      <h1>You searched for</h1>
+      <img src={`/photos/search/${sid}`} class="object-contain h-48 w-96"/>
+    )}
     <div class="py-10 px-5 flex flex-wrap gap-6 justify-center">
     { result.map( (e) =>  (
 
