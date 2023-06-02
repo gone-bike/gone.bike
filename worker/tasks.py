@@ -131,16 +131,15 @@ def report_submit(self, *args, **kwargs):
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand_model?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
 
         bike_model_slug = slugify(kwargs['bike_model'])
-
-        bike_model = requests.get(f'{url}&filter[key][_eq]={ bike_model_slug }')
-        if bike_model.status_code != 200:
-            return {"status": "fail", "output": bike_model.content  }
-        bike_model = bike_model.json()
-        if len(bike_model["data"]) == 0:
-            bike_model = requests.post(url, json={ "bike_brand": bike_brand, "key": bike_model_slug, "name": kwargs["bike_model"] }).json()
-            bike_model = bike_model["data"]["id"]
-        else:
-            bike_model = bike_model["data"][0]["id"]
+        if bike_model_slug != "":
+            bike_model = requests.get(f'{url}&filter[key][_eq]={ bike_model_slug }')
+            if bike_model.status_code == 200:
+                bike_model = bike_model.json()
+                if len(bike_model["data"]) == 1:
+                    bike_model = bike_model["data"][0]["id"]
+                else:
+                    bike_model = requests.post(url, json={ "bike_brand": bike_brand, "key": bike_model_slug, "name": kwargs["bike_model"] }).json()
+                    bike_model = bike_model["data"]["id"]
 
 
     language= None
