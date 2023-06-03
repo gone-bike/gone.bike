@@ -15,12 +15,12 @@ in order to provide a fast, efficient and effective way to identify suspicious b
 
 ### Motivations
 Whether you're a seasoned cyclist, a daily traveler, or an aspiring rider, you should know this feeling about bikes: they are not just things,
-they are object, yes, but we create a relationship with them. They carry us, they share sweat and tears with us and they are loyal companions that contribute to make the world a better place, reducing both noise and pollution, improving our health and mood.
+they are objects, yes, but we create a relationship with them. They carry us, they share sweat and tears with us and they are loyal companions that contribute to make the world a better place, reducing both noise and pollution, improving our health and mood.
 
 Having your bike stolen is not just a monetary blow, but a personal hit to a "member" of your life, almost a friend.
 The feeling of powerlessness afterwards, knowing how little you can do to recover it, thinking that your wheeled buddy is somewhere out there is frustrating.
 
-Supported by technology, the frustation can be funneled into a good activity, beign a vigilant watched, on the lookout to fight thieves back.
+Supported by technology, the frustation can be funneled into a good activity, beign a vigilant watcher, on the lookout to fight thieves back.
 
 
 
