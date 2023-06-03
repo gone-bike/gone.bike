@@ -8,6 +8,14 @@ Create a global database of stolen bikes that can easily be accessed and searche
 in order to provide a fast, efficient and effective way to identify suspicious bikes
 (from second hand markets, online ads, etc), using image search features and dynamic filters for a quick match.
 
+## Features
+- Receive direct reports via a detailed form (done)
+- Collect and index reports from various public, local websites (WIP)
+- Image search (WIP)
+- Filtering search (WIP)
+- Threaded discussions (TODO)
+- Theft Heatmap (ROADMAP)
+
 ### Use cases
 - You want to buy a second hand bike (flea market, online): you can search the db to check if the bike has been reported.
 - You spot a suspicious bike and you match it in the datbase: you can report it

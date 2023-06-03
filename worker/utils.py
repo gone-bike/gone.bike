@@ -179,6 +179,7 @@ def index_directus_report_item_to_weaviate(payload):
         },
         'theft_date': f"{payload.get('theft_date')}T00:00:00.0Z",
         'colors': payload.get('colors'),
+        'tags': payload.get('tags'),
         'serial_number': payload.get('serial_number'),
         'bike_type': payload.get('bike_type'),
         'is_electric': payload.get('is_electric'),

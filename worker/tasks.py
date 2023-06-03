@@ -109,7 +109,7 @@ def report_submit(self, *args, **kwargs):
     if "bike_brand_id" in kwargs and kwargs.get('bike_brand_id') != "":
         bike_brand = int(kwargs.get('bike_brand_id'))
 
-    elif "bike_brand" in kwargs and kwargs.get('bike_brand') != "":
+    elif "bike_brand" in kwargs and kwargs.get('bike_brand',"").strip() != "":
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
         bike_brand_slug = slugify(kwargs['bike_brand'])
         bike_brand = requests.get(f'{url}&filter[key][_eq]={ bike_brand_slug }')
@@ -127,7 +127,7 @@ def report_submit(self, *args, **kwargs):
     # if "bike_model_id" in kwargs and kwargs.get('bike_model_id') != "":
     #     bike_model = int(kwargs.get('bike_model_id'))
 
-    if "bike_model" in kwargs and kwargs.get('bike_model') != "" and kwargs.get('bike_model') != None:
+    if "bike_model" in kwargs and kwargs.get('bike_model','').strip() != "" and kwargs.get('bike_model') != None:
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand_model?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
 
         bike_model_slug = slugify(kwargs['bike_model'])
@@ -212,6 +212,7 @@ def report_submit(self, *args, **kwargs):
             entry['location_details']['_input'] = kwargs.get('location_address_raw')
             entry['location'] = { "coordinates": [ location.longitude, location.latitude ], "type": "Point"}
         except Exception as e:
+            print(e)
             entry['location_details'] = {
                 "_input": kwargs.get('location_address_raw')
             }
