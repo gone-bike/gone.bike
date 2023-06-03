@@ -163,12 +163,13 @@ def report_submit(self, *args, **kwargs):
 
     approximate_value = 0
     try:
-        approximate_value = int(kwargs.get("approximate_value", 0)))
+        approximate_value = int(kwargs.get("approximate_value", 0))
     except Exception as e:
         pass
 
 
     entry = {
+        "bike_brand": bike_brand,
         "bike_brand_model": bike_model,
 
         "bike_details": kwargs.get("bike_details"),
@@ -264,7 +265,6 @@ def report_submit(self, *args, **kwargs):
 
     print(json.dumps(entry))
 
-
     url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/report?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
     data = requests.post(url, json=entry)
 
@@ -272,7 +272,8 @@ def report_submit(self, *args, **kwargs):
     print(data.status_code)
     if data.status_code == 200:
         data = data.json()
-        print(data)
+        # print(data)
+        print(f"http://localhost:8055/admin/content/report/{data['data']['id']}")
         if kwargs.get('email'):
             send = utils.send_activation_email(kwargs.get('language'), kwargs.get('email'), data['data']['id'], data['data']['activation_code'])
             print(send)

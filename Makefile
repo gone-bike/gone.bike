@@ -71,3 +71,13 @@ delete-weaviate-report-files: ## id=x ## Deletes all indexed entries from Weavia
 		echo "Deleting $$wid ..." && \
 		curl -X DELETE ${WEAVIATE_URI}/v1/objects/Bike/$$wid; \
 	done
+
+
+directus-schema-dump: ## ## Generates a Directus schema in YML format
+	docker-compose exec directus rm -f gb-schema.yml && \
+	docker-compose exec directus npx directus schema snapshot gb-schema.yml && \
+	docker-compose exec directus cat gb-schema.yml
+
+directus-schema-apply: ## ## Applies local schema to directus (inverse operation of dump)
+	docker-compose cp database/directus-schema.yml directus:/directus/ && \
+	docker-compose exec directus npx directus schema apply directus-schema.yml
