@@ -4,7 +4,6 @@ import mdx from '@astrojs/mdx';
 import { loadEnv } from "vite";
 import astroI18next from "astro-i18next";
 
-// https://astro.build/config
 import vue from "@astrojs/vue";
 
 // https://astro.build/config
@@ -15,9 +14,13 @@ import node from "@astrojs/node";
 
 // https://astro.build/config
 
-const { PUBLIC_PORT } = loadEnv(import.meta.env.PUBLIC_PORT, process.cwd(), "");
+const {
+  PUBLIC_PORT
+} = loadEnv(import.meta.env.PUBLIC_PORT, process.cwd(), "");
 
 //SentryInit();
+
+// https://astro.build/config
 export default defineConfig({
   integrations: [astroI18next(), vue(), tailwind(), mdx()],
   site: 'https://gone.bike',
@@ -26,6 +29,6 @@ export default defineConfig({
     mode: "middleware"
   }),
   server: {
-    port: parseInt(PUBLIC_PORT) || 3000,
+    port: parseInt(PUBLIC_PORT) || 3000
   }
 });
