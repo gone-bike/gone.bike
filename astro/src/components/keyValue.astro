@@ -1,0 +1,97 @@
+---
+export interface Props {
+	key: string;
+	value: string;
+	backColor:string;
+	
+}
+
+const { key, value,backColor} = Astro.props;
+const insideStyle = {
+        backgroundColor: backColor,
+        opacity: 0.8,
+    };
+---
+<li class="link-card" style={insideStyle}>
+	<div class="w p-3 bg-white items-center rounded-lg dark:bg-gray-800 dark:border-gray-700" style={insideStyle}>
+		<div class="inside">
+			<a>
+				<h5 style={{ fontWeight: 'bold' }} class="mb-1 text-lg text-center tracking-tight text-gray-900 dark:text-white" style={insideStyle}>{key}</h5>
+			</a>
+			<p class="font-normal text-center text-m text-gray-700 dark:text-gray-400" style={insideStyle}>{value}</p>
+		</div>
+	</div>
+</li>
+<style>
+
+    .inside {
+        width: 100%;
+        text-decoration: none;
+        line-height: 1.4;
+        padding: 1rem 1.3rem;
+        border-radius: 0.35rem;
+        color: #111;
+    }
+
+    .link-card {
+        list-style: none; /* Add this line to remove the dot */
+        width: 100%;
+        text-decoration: none;
+        line-height: 1.4;
+        padding: 0;
+        border-radius: 0.35rem;
+        color: #111;
+    }
+
+    .link-card > a {
+        width: 100%;
+        text-decoration: none;
+        line-height: 1.4;
+        padding: 1rem 1.3rem;
+        border-radius: 0.35rem;
+        color: #111;
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 1.25rem;
+    }
+
+    p {
+        margin-top: 0.5rem;
+        color: #444;
+    }
+	@media only screen and (max-width: 600px) {
+		.inside {
+			font-size: 0.9rem;
+			padding: 0.8rem 1rem;
+		}
+
+		.link-card > a {
+			padding: 0.8rem 1rem;
+		}
+	}
+
+	@media only screen and (min-width: 601px) and (max-width: 1024px) {
+		.inside {
+			font-size: 1rem;
+			padding: 1rem 1.3rem;
+		}
+
+		.link-card > a {
+			padding: 1rem 1.3rem;
+		}
+	}
+
+	@media only screen and (min-width: 1025px) {
+		.inside {
+			font-size: 1.1rem;
+			padding: 1rem 1.3rem;
+		}
+
+		.link-card > a {
+			padding: 1rem 1.3rem;
+		}
+	}
+  </style>
+    

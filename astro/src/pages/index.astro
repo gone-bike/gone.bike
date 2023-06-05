@@ -1,4 +1,9 @@
 ---
+import Search from '../components/Search.astro';
+import Card from '../components/keyValue.astro';
+import Bike from '../components/Card.astro';
+
+
 import i18next from 'i18next'
 import { t, changeLanguage } from "i18next";
 import { localizePath } from "astro-i18next";
@@ -13,35 +18,48 @@ changeLanguage("en");
 ---
 
 <BaseLayout title={t("homepage.title")} lang={i18next.language} description="">
-  <style>
-    .hero {
-      background: linear-gradient(
-        90deg,
-        rgba(82, 241, 232, 0.24) 0%,
-        rgba(176, 253, 79, 0.24) 25%,
-        rgba(82, 241, 232, 0.24) 50%,
-        rgba(162, 251, 49, 0.24) 100%
-      );
-    }
-  </style>
-  <div class="w-full">
-    <div class="hero w-full h-[50vh] flex flex-col items-center justify-center">
-      <div class="pre-cta text-lg font-bold">
-        {t("homepage.hero.pre_cta")}
-      </div>
-      <h1 class="cta text-6xl font-extrabold">{t("homepage.hero.title")}</h1>
+    
+  <br>
+  <div class="font-bold text-2xl text-center">
 
-      <div class="flex items-center justify-center h-screen">
+     <span>Unleash the Power of Image Search: Track, Recover, Ride again </span>
+
+  </div>
+  <br>
+      <div class="flex items-center justify-center gap-4">
         <SearchForm />
+        <a  href={localizePath("/create-report")}><button class="bg-blue-700 rounded py-2 px-4 text-white">Upload your bike image</button></a>
       </div>
+      
+      <br>
+        <!-- Statistics -->
+        <div class="flex justify-center gap-4 ">
+			<Card  key="320,000" value="Bikes stolen in Italy per year" backColor="#E5EDFF"/>
+			<Card key="1,420,000" value="Total Bikes stolen" backColor="#aec8ff"/>
+			<Card key="&euro;5,6M" value="Total Worth" backColor="#D5F5F6"/>
+		</div>
 
-      <a
-        class="list-button text-white bg-[#2DA771] rounded py-2 px-4 tracking-wider uppercase font-bold text-lg my-8"
-        href={localizePath("/create-report")}>{t("homepage.hero.cta_add_listing")}</a
-      >
+    <br>
+		<div class="font-bold text-2xl text-center">
 
-      <p class="p-4">This is a temporary homepage for the project.</p>
-    </div>
+			<span>Search your bike by filter </span>
+
+	   </div>
+	   <br>
+	   <Search/>
+	   <br>
+
+	   <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-center">
+		<Bike />
+		<Bike />
+		<Bike />
+		<Bike />
+	  </div>
+		<br>
+
+    
+     
+      
       <!--
           localizePath("/report/[id]").replace('[id]','224')
           <div
@@ -66,7 +84,9 @@ changeLanguage("en");
     <div class="listing"></div>
     <div class="blog"></div>
      -->
-  </div>
+  
 
 
 </BaseLayout>
+
+<script src="../../node_modules/flowbite/dist/flowbite.js"></script>
