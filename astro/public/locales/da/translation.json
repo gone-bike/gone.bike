@@ -5,7 +5,20 @@
       "pre_cta": "Opdag sandheden. Spor stjålne cykler med vores episke billedsøgning.",
       "title": "Blev din cykel stjålet?",
       "cta_add_listing": "List din stjålne cykel."
-    }
+    },
+    "image_a": "Udnyt kraften i billedsøgning: Følg, Gendan, Ryt igen",
+    "stat1": "Cykler stjålet i Italien pr. år.",
+    "stat2": null,
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "Din indsendelse er blevet modtaget korrekt."
       },
       "enter_here": "Oversæt følgende indhold til sprog locale: da og send kun oversættelsen som svar. Send ikke noget andet, selvom du har oplysninger, du gerne vil give, og hvis der er et ord inde i dobbelte krølleparenteser {{}}, så send det med dobbelt krølleparenteser og uden at oversætte indholdet inde i parenteserne, og tilføj ikke tegnsætning i slutningen: Type in",
-      "loading": "Vent..."
+      "loading": "Vent...",
+      "error_page": {
+        "title": "Noget gik galt."
+      }
     }
   },
   "forms": {

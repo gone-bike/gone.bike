@@ -4,20 +4,21 @@
     "hero": {
       "pre_cta": "Descubre la verdad. Localiza bicicletas robadas con nuestra épica búsqueda de imágenes.",
       "title": "¿Se te robó tu bicicleta?",
-      "cta_add_listing": "Enumera tu bicicleta robada.",
-      "bikes_stolen_per_year": "Bicicletas robadas en Italia por año",
-"total_bikes_stolen": "Total de bicicletas robadas",
-"total_worth": "Valor total",
-"search_by_filter": "Busca tu bicicleta por filtro",
-"bike_brand": "Marca de la bicicleta",
-"bike_model": "Modelo de la bicicleta",
-"bike_description": "Descripción de la bicicleta",
-"serial_number": "Número de serie",
-"submit": "Enviar",
-"theft_date": "Fecha del robo",
-"location": "Ubicación",
-"see_full_report": "Ver informe completo"
-    }
+      "cta_add_listing": "Enumera tu bicicleta robada."
+    },
+    "image_a": "Libera el poder de la búsqueda de imágenes: rastrea, recupera, vuelve a montar.",
+    "stat1": null,
+    "stat2": null,
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -33,7 +34,10 @@
         "sub_title": "Tu envío ha sido recibido correctamente."
       },
       "enter_here": "Escriba.",
-      "loading": "Espera..."
+      "loading": "Espera...",
+      "error_page": {
+        "title": "Algo salió mal."
+      }
     }
   },
   "forms": {

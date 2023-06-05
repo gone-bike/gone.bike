@@ -5,7 +5,20 @@
       "pre_cta": "Scopri la verità. Rintraccia le biciclette rubate con la nostra epica ricerca di immagini.",
       "title": "La tua bicicletta è stata rubata?",
       "cta_add_listing": "Elenca la tua bicicletta rubata."
-    }
+    },
+    "image_a": "Sblocca il potere della ricerca immagini: traccia, recupera, cavalca di nuovo.",
+    "stat1": "Biciclette rubate in Italia ogni anno.",
+    "stat2": "Total Bici rubate",
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "La tua proposta è stata ricevuta correttamente."
       },
       "enter_here": "Inserisci",
-      "loading": "Aspetta..."
+      "loading": "Aspetta...",
+      "error_page": {
+        "title": "Qualcosa è andato storto."
+      }
     }
   },
   "forms": {

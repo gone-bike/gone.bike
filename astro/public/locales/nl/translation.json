@@ -5,7 +5,20 @@
       "pre_cta": "Ontdek de waarheid. Volg gestolen fietsen op met onze epische afbeeldingszoekfunctie.",
       "title": "Is je fiets gestolen?",
       "cta_add_listing": "Lijst uw gestolen fiets op."
-    }
+    },
+    "image_a": "Ontketen de kracht van afbeeldingszoekopdrachten: Volg, Herstel, Rijd opnieuw.",
+    "stat1": null,
+    "stat2": "Totaal gestolen fietsen",
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "Uw inzending is correct ontvangen."
       },
       "enter_here": "het volgende tekstgedeelte in de taallocale: nl en stuur alleen de vertaling als antwoord. Stuur niets anders, zelfs geen informatie die je wilt geven, en als er een woord tussen dubbele accolades staat, stuur het dan met dubbele accolades en vertaal de inhoud binnen de accolades niet en voeg geen leestekens toe aan het einde: Type in",
-      "loading": "Wacht even..."
+      "loading": "Wacht even...",
+      "error_page": {
+        "title": "Iets ging mis."
+      }
     }
   },
   "forms": {

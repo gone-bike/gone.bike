@@ -5,7 +5,20 @@
       "pre_cta": "Descobreix la veritat. Rastreja les bicicletes robades amb la nostra èpica recerca d'imatges.",
       "title": "La teva bicicleta va ser robada?",
       "cta_add_listing": "Llista la teva bicicleta robada."
-    }
+    },
+    "image_a": null,
+    "stat1": "Bicicletes robades a Itàlia per any.",
+    "stat2": null,
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "La teva submissió ha estat rebuda correctament."
       },
       "enter_here": "Escriviu",
-      "loading": "Espera..."
+      "loading": "Espera...",
+      "error_page": {
+        "title": "Alguna cosa ha anat malament."
+      }
     }
   },
   "forms": {

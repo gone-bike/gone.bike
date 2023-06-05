@@ -5,7 +5,20 @@
       "pre_cta": "असलीता खोजें। हमारी धांसू छवि खोज के साथ चोरी हुई बाइक का पता लगाएं।",
       "title": "क्या आपकी बाइक चोरी हो गई?",
       "cta_add_listing": "अपनी चोरी हुई साइकिल की सूची बनाएं।"
-    }
+    },
+    "image_a": "छवि खोज की शक्ति का उपयोग करें: ट्रैक, रिकवर, फिर से राइड करें।",
+    "stat1": "वाहन चोरी एक्सिडेंट में इटली में हर साल होती है।",
+    "stat2": "चोरी हुए कुल बाइक्स",
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "आपकी जमा पूर्णतः प्राप्त हुई है।"
       },
       "enter_here": "हिन्दी.",
-      "loading": "रुको..."
+      "loading": "रुको...",
+      "error_page": {
+        "title": "कुछ गलत हो गया।"
+      }
     }
   },
   "forms": {
