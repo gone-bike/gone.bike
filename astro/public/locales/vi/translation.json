@@ -5,7 +5,20 @@
       "pre_cta": "Khám phá sự thật. Tìm kiếm các chiếc xe bị đánh cắp với công cụ tìm kiếm ấn tượng của chúng tôi.",
       "title": "Bạn có bị mất xe đạp không?",
       "cta_add_listing": "Danh sách xe đạp của bạn đã bị mất."
-    }
+    },
+    "image_a": "Khai thác Sức mạnh của Tìm kiếm Hình ảnh: Theo dõi, Khôi phục, Lái lại",
+    "stat1": null,
+    "stat2": "Tổng số xe đạp bị đánh cắp",
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "Đã nhận được đăng ký của bạn đúng tại chỗ."
       },
       "enter_here": "vi\nNhập vào",
-      "loading": "Đợi chút..."
+      "loading": "Đợi chút...",
+      "error_page": {
+        "title": "Đã xảy ra lỗi"
+      }
     }
   },
   "forms": {

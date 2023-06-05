@@ -5,7 +5,20 @@
       "pre_cta": "Відкрийте правду. Відстежте викрадені велосипеди за допомогою нашого епічного пошуку зображень.",
       "title": "Чи вкрали у вас велосипед?",
       "cta_add_listing": "Список вашого викраденого велосипеда."
-    }
+    },
+    "image_a": null,
+    "stat1": null,
+    "stat2": "Всього викрадено велосипедів",
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "Ваше подання було успішно отримане."
       },
       "enter_here": "Введіть.",
-      "loading": "Чекайте..."
+      "loading": "Чекайте...",
+      "error_page": {
+        "title": "Щось пішло не так."
+      }
     }
   },
   "forms": {

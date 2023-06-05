@@ -5,7 +5,20 @@
       "pre_cta": "Discover the truth. Track down stolen bikes with our epic image search.",
       "title": "Did your bike get stolen?",
       "cta_add_listing": "List your stolen bike"
-    }
+    },
+    "image_a": "Unleash the Power of Image Search: Track, Recover, Ride again",
+    "stat1": "Bikes stolen in Italy per year",
+    "stat2": "Total Bikes stolen",
+    "stat3": "Total Worth",
+    "search_filter": "Search your bike by filter",
+    "brand": "Bike Brand",
+    "model": "Bike Model",
+    "description": "Bike Description",
+    "serial": "Serial Number",
+    "submit": "Submit",
+    "theft_date": "Theft date",
+    "location": "Location",
+    "full_report": "See full report"
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "Your submission has been received correctly"
       },
       "enter_here": "Type in",
-      "loading": "Wait..."
+      "loading": "Wait...",
+      "error_page": {
+        "title": "Something went wrong"
+      }
     }
   },
   "forms": {

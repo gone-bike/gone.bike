@@ -5,7 +5,20 @@
       "pre_cta": "Découvrez la vérité. Poursuivez les vélos volés avec notre recherche d'images épique.",
       "title": "Est-ce que votre vélo a été volé?",
       "cta_add_listing": "Listez votre vélo volé."
-    }
+    },
+    "image_a": "Libérez la puissance de la recherche d'image : Suivez, récupérez, roulez à nouveau.",
+    "stat1": null,
+    "stat2": "Total de vélos volés.",
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "Votre soumission a été reçue correctement."
       },
       "enter_here": "le texte ici.",
-      "loading": "Attendre..."
+      "loading": "Attendre...",
+      "error_page": {
+        "title": "Quelque chose s'est mal passé."
+      }
     }
   },
   "forms": {

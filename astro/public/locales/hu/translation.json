@@ -5,7 +5,20 @@
       "pre_cta": "Fedezze fel az igazságot. Kövesse nyomon az ellopott kerékpárokat epikus képkeresőnkkel.",
       "title": "Ellopták a biciklidet?",
       "cta_add_listing": "Lista az ellopott biciklidről"
-    }
+    },
+    "image_a": null,
+    "stat1": "Évente Olaszországban ellopnak kerékpárokat.",
+    "stat2": "Teljesen elloptak a biciklik.",
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "Az ön beküldése sikeresen megérkezett."
       },
       "enter_here": "Magyar (Hungarian) Translation: Írja be.",
-      "loading": "Várj..."
+      "loading": "Várj...",
+      "error_page": {
+        "title": "Valami hiba történt."
+      }
     }
   },
   "forms": {

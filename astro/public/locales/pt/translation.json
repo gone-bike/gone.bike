@@ -5,7 +5,20 @@
       "pre_cta": "Descubra a verdade. Rastreie bicicletas roubadas com nossa épica busca por imagens.",
       "title": "Sua bicicleta foi roubada?",
       "cta_add_listing": "Liste sua bicicleta roubada."
-    }
+    },
+    "image_a": "Desbloqueie o poder da busca por imagens: Acompanhe, Recupere, Ande novamente.",
+    "stat1": "Bicicletas roubadas na Itália por ano.",
+    "stat2": "Total de bicicletas roubadas.",
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "Sua submissão foi recebida corretamente."
       },
       "enter_here": "the following content:\n\n\"Welcome to our website! Our products are high quality and affordably priced. {{Stay tuned for upcoming promotions and discounts}}. Thank you for visiting!\"\n\nBem-vindo ao nosso site! Nossos produtos são de alta qualidade e com preço acessível. {{Fique ligado para próximas promoções e descontos}}. Obrigado pela visita!",
-      "loading": "Espera..."
+      "loading": "Espera...",
+      "error_page": {
+        "title": "Algo deu errado."
+      }
     }
   },
   "forms": {

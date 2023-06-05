@@ -5,7 +5,20 @@
       "pre_cta": "Descubre la verdad. Localiza bicicletas robadas con nuestra épica búsqueda de imágenes.",
       "title": "¿Se te robó tu bicicleta?",
       "cta_add_listing": "Enumera tu bicicleta robada."
-    }
+    },
+    "image_a": "Libera el poder de la búsqueda de imágenes: rastrea, recupera, vuelve a montar.",
+    "stat1": null,
+    "stat2": null,
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "Tu envío ha sido recibido correctamente."
       },
       "enter_here": "Escriba.",
-      "loading": "Espera..."
+      "loading": "Espera...",
+      "error_page": {
+        "title": "Algo salió mal."
+      }
     }
   },
   "forms": {

@@ -5,7 +5,20 @@
       "pre_cta": "Odkryj prawdę. Śledź skradzione rowery za pomocą naszego epickiego wyszukiwania obrazów.",
       "title": "Czy twoj rower został skradziony?",
       "cta_add_listing": "Wymień swój skradziony rower."
-    }
+    },
+    "image_a": "Odblokuj potęgę wyszukiwania obrazów: Śledź, odzyskaj, jeździj ponownie.",
+    "stat1": "Rowerów kradzionych rocznie we Włoszech",
+    "stat2": "Liczba skradzionych rowerów.",
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "Twoje zgłoszenie zostało poprawnie odebrane."
       },
       "enter_here": "Wpisz",
-      "loading": "Czekać..."
+      "loading": "Czekać...",
+      "error_page": {
+        "title": "Coś poszło nie tak."
+      }
     }
   },
   "forms": {

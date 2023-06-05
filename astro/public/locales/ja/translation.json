@@ -5,7 +5,20 @@
       "pre_cta": "真実を発見してください。私たちのエピックな画像検索で盗まれた自転車を追跡してください。",
       "title": "あなたの自転車は盗まれましたか？",
       "cta_add_listing": "あなたの盗まれた自転車をリストにしてください。"
-    }
+    },
+    "image_a": null,
+    "stat1": null,
+    "stat2": null,
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "あなたの提出は正しく受け取られました。"
       },
       "enter_here": "日本語に翻訳してください。",
-      "loading": "待ってください..."
+      "loading": "待ってください...",
+      "error_page": {
+        "title": "何かがうまくいきませんでした。"
+      }
     }
   },
   "forms": {

@@ -5,7 +5,20 @@
       "pre_cta": "Ανακαλύψτε την αλήθεια. Εντοπίστε τα κλεμμένα ποδήλατα με την επική αναζήτηση εικόνων μας.",
       "title": "Το ποδήλατό σου κλάπηκε;",
       "cta_add_listing": "Καταγράψτε το κλεμμένο ποδήλατό σας."
-    }
+    },
+    "image_a": null,
+    "stat1": null,
+    "stat2": "Συνολικά κλαπηκαν ποδήλατα",
+    "stat3": null,
+    "search_filter": null,
+    "brand": null,
+    "model": null,
+    "description": null,
+    "serial": null,
+    "submit": null,
+    "theft_date": null,
+    "location": null,
+    "full_report": null
   },
   "pages": {
     "report_form": {
@@ -21,7 +34,10 @@
         "sub_title": "Η υποβολή σας έχει ληφθεί σωστά."
       },
       "enter_here": "Πληκτρολογήστε",
-      "loading": "Περιμένετε..."
+      "loading": "Περιμένετε...",
+      "error_page": {
+        "title": "Κάτι πήγε στραβά."
+      }
     }
   },
   "forms": {
