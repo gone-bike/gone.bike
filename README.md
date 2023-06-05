@@ -3,6 +3,35 @@ OpenSource, OpenData stolen bikes database, search engine and reporting tool.
 
 Data is publicly accessible at [gone.bike/exports/](https://gone.bike/exports/)
 
+## Project Goals
+Create a global database of stolen bikes that can easily be accessed and searched,
+in order to provide a fast, efficient and effective way to identify suspicious bikes
+(from second hand markets, online ads, etc), using image search features and dynamic filters for a quick match.
+
+## Features
+- Receive direct reports via a detailed form (done)
+- Collect and index reports from various public, local websites (WIP)
+- Image search (WIP)
+- Filtering search (WIP)
+- Threaded discussions (TODO)
+- Theft Heatmap (ROADMAP)
+
+### Use cases
+- You want to buy a second hand bike (flea market, online): you can search the db to check if the bike has been reported.
+- You spot a suspicious bike and you match it in the datbase: you can report it
+- Police force find stolen bikes and they can use the db to identify the owner
+
+### Motivations
+Whether you're a seasoned cyclist, a daily traveler, or an aspiring rider, you should know this feeling about bikes: they are not just things,
+they are objects, yes, but we create a relationship with them. They carry us, they share sweat and tears with us and they are loyal companions that contribute to make the world a better place, reducing both noise and pollution, improving our health and mood.
+
+Having your bike stolen is not just a monetary blow, but a personal hit to a "member" of your life, almost a friend.
+The feeling of powerlessness afterwards, knowing how little you can do to recover it, thinking that your wheeled buddy is somewhere out there is frustrating.
+
+Supported by technology, the frustation can be funneled into a good activity, beign a vigilant watcher, on the lookout to fight thieves back.
+
+
+
 ## Tech Stack
 - [Astro](https://astro.build) / [VueJS](https://vuejs.org/) (Frontend)
 - [Celery](https://docs.celeryq.dev/) (Backend)
@@ -87,9 +116,13 @@ gone.bike.directus  | [12:35:20.483] INFO: Done
 gone.bike.directus  | [12:35:23.050] INFO: Server started at http://0.0.0.0:8055
 ```
 
+Reflect `DIRECTUS_TOKEN` in database (for website to access it):
+```
+export $(cat astro/.env | grep DIRECTUS_TOKEN | tr -d '"') && \
+ docker-compose exec postgresql psql -U postgres -c "UPDATE directus_users SET token = '$DIRECTUS_TOKEN'"
+```
 
-
-Copy database schema inside directus container: and apply it:
+Copy database schema inside directus container and apply it:
 
 ```
 docker-compose cp database/directus-schema.yml directus:/directus/ && \
@@ -108,8 +141,6 @@ password: dev
 
 You should now be able to see a empty but schemed database.
 
-
-
 ---
 
 ### Database import
@@ -127,3 +158,7 @@ Images
 wget https://gone.bike/exports/gone.bike.images.latest.tgz  && \
 tar zxvf gone.bike.images.latest.tgz --directory .data/directus/
 ```
+
+
+### Image search setup
+@TODO

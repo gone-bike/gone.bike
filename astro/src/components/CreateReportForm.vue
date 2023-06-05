@@ -4,10 +4,6 @@ import { onMounted, reactive, ref, toRaw, watch, watchEffect } from "vue"
 
 import axios from "axios";
 
-// @ts-ignore
-import DatePicker from 'vue-datepicker-ui';
-import 'vue-datepicker-ui/lib/vuedatepickerui.css';
-
 import EmailIcon from "@components/icons/Email.vue"
 
 import AutoComplete from "./AutoComplete.vue"
@@ -122,6 +118,9 @@ watchEffect(() => {
     }
 })
 
+let date = new Date()
+let todayDate = `${date.getFullYear()}-${date.getMonth() < 9 ? `0${date.getMonth() + 1}` : date.getMonth()+1}-${date.getDate() < 10 ? `0${date.getDate()}`: date.getDate() }`
+
 let errors = reactive({
     location: false,
 })
@@ -167,7 +166,7 @@ onMounted(() => {
            page = 1
         }
         currentPage.value = page
-        window.scrollTo({ top: 0, behavior: "smooth" })
+        window.scrollTo(0, 0)
         let prevPage = stack.value[stack.value.length - 1]
         stack.value = [...stack.value, page]
         if (prevPage === 2 && page === 3) {
@@ -316,10 +315,7 @@ let currentPage = ref(1)
         <div class="flex flex-col gap-12 w-full" v-show="currentPage === 2">
             <div class="flex flex-col w-full">
                 <label for="theft_date" class="mb-2 text-lg">{{ t("theft_date") }}</label>
-                <DatePicker :disabled-start-date="{
-                    to: new Date('01.01.2010'),
-                    from: Date.now()
-                }" :lang="props.lang" v-model="theftDateUnformated" class="w-full" />
+                <input type="date" v-model="theftDateUnformated" class="w-full" :max="todayDate" />
                 <span class="mt-2 text-sm font-normal text-gray-400 italic ">{{
                     i18next(`forms.report.questions.theft_date.subtitle`) }}</span>
 
@@ -440,10 +436,6 @@ let currentPage = ref(1)
     </div>
 </template>
 <style lang="postcss">
-:root {
-    --v-calendar-datepicker-icon-color: #9333EA !important;
-}
-
 .report-placeholder {
     @apply placeholder-gray-400
 }

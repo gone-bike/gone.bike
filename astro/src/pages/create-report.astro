@@ -3,8 +3,6 @@ import i18next, { t } from "i18next";
 import config from "@utils/config";
 import BaseLayout from "@layouts/Base.astro";
 import CreateReportForm from "@components/CreateReportForm.vue";
-
-
 let photoTranslation = t(`forms.report.questions.photos.title`, { n: config.MAX_PHOTOS_UPLOAD });
 
 let fff = { data: [] };
@@ -34,7 +32,9 @@ try {
         <p class="mt-2">{t("pages.report_form.subtitle")}</p>
       </div>
       <div class="w-full h-[1px] bg-gray-200"></div>
-
+      <script>
+        import 'configurable-date-input-polyfill';
+      </script>
       <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
       <script define:vars={{ sitekey: config.CLOUDFLARE_CAPTCHA_KEY }}>
       window.onloadTurnstileCallback = function () {

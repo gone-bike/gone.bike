@@ -2,6 +2,7 @@
 import i18next from 'i18next'
 import { t, changeLanguage } from "i18next";
 import { localizePath } from "astro-i18next";
+import SearchForm from "@components/SearchForm.astro";
 
 import BaseLayout from "@layouts/Base.astro";
 
@@ -29,6 +30,10 @@ changeLanguage("en");
         {t("homepage.hero.pre_cta")}
       </div>
       <h1 class="cta text-6xl font-extrabold">{t("homepage.hero.title")}</h1>
+
+      <div class="flex items-center justify-center h-screen">
+        <SearchForm />
+      </div>
 
       <a
         class="list-button text-white bg-[#2DA771] rounded py-2 px-4 tracking-wider uppercase font-bold text-lg my-8"

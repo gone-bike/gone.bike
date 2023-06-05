@@ -1154,7 +1154,7 @@ fields:
         font: monospace
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -1199,7 +1199,7 @@ fields:
         font: monospace
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -1247,6 +1247,47 @@ fields:
       validation_message: null
       width: full
   - collection: report
+    field: bike_brand
+    type: integer
+    meta:
+      collection: report
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{key}}'
+      field: bike_brand
+      group: bike
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{key}}'
+      readonly: false
+      required: false
+      sort: 1
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: bike_brand
+      table: report
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: bike_brand
+      foreign_key_column: id
+  - collection: report
     field: bike_brand_model
     type: integer
     meta:
@@ -1264,7 +1305,7 @@ fields:
         template: '{{bike_brand.key}} / {{name}}'
       readonly: false
       required: false
-      sort: 1
+      sort: 2
       special:
         - m2o
       translations: null
@@ -1303,7 +1344,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -1359,7 +1400,7 @@ fields:
             value: cargo
       readonly: false
       required: false
-      sort: 2
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -1399,7 +1440,7 @@ fields:
         whitespace: '-'
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special:
         - cast-json
       translations: null
@@ -1554,7 +1595,7 @@ fields:
       interface: null
       note: null
       options: null
-      readonly: false
+      readonly: true
       required: false
       sort: 10
       special: null
@@ -1635,7 +1676,7 @@ fields:
         label: 'Yes'
       readonly: false
       required: false
-      sort: 3
+      sort: 4
       special:
         - cast-boolean
       translations: null
@@ -1938,7 +1979,7 @@ fields:
         folder: fa2b1d0e-2e58-4897-af16-eab29f26117d
       readonly: false
       required: false
-      sort: 9
+      sort: 10
       special:
         - file
       translations: null
@@ -1978,7 +2019,7 @@ fields:
         folder: 21f79529-85a1-4797-b4a1-7ddefdef654f
       readonly: false
       required: false
-      sort: 10
+      sort: 11
       special:
         - files
       translations: null
@@ -2043,7 +2084,7 @@ fields:
         font: monospace
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -2125,6 +2166,46 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: report
+    field: submit_by
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: formatted-value
+      display_options:
+        font: monospace
+      field: submit_by
+      group: null
+      hidden: false
+      interface: input
+      note: For security reasons, storing the IP of submitter
+      options:
+        font: monospace
+      readonly: true
+      required: false
+      sort: 13
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: submit_by
+      table: report
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
     field: tags
     type: json
     meta:
@@ -2142,7 +2223,7 @@ fields:
         whitespace: '-'
       readonly: false
       required: false
-      sort: null
+      sort: 12
       special:
         - cast-json
       translations: null
@@ -2672,6 +2753,27 @@ relations:
       constraint_name: i18n_translation_user_updated_foreign
       on_update: NO ACTION
       on_delete: NO ACTION
+  - collection: report
+    field: bike_brand
+    related_collection: bike_brand
+    meta:
+      junction_field: null
+      many_collection: report
+      many_field: bike_brand
+      one_allowed_collections: null
+      one_collection: bike_brand
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: report
+      column: bike_brand
+      foreign_key_table: bike_brand
+      foreign_key_column: id
+      constraint_name: report_bike_brand_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
   - collection: report
     field: bike_brand_model
     related_collection: bike_brand_model

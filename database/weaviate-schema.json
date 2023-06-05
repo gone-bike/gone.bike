@@ -43,6 +43,10 @@
             "dataType": ["text[]"]
         },
         {
+            "name": "tags",
+            "dataType": ["text[]"]
+        },
+        {
             "name": "bike_details",
             "dataType": ["text"]
         },

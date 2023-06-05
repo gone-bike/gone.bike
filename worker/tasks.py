@@ -109,7 +109,7 @@ def report_submit(self, *args, **kwargs):
     if "bike_brand_id" in kwargs and kwargs.get('bike_brand_id') != "":
         bike_brand = int(kwargs.get('bike_brand_id'))
 
-    elif "bike_brand" in kwargs and kwargs.get('bike_brand') != "":
+    elif "bike_brand" in kwargs and kwargs.get('bike_brand',"").strip() != "":
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
         bike_brand_slug = slugify(kwargs['bike_brand'])
         bike_brand = requests.get(f'{url}&filter[key][_eq]={ bike_brand_slug }')
@@ -127,20 +127,19 @@ def report_submit(self, *args, **kwargs):
     # if "bike_model_id" in kwargs and kwargs.get('bike_model_id') != "":
     #     bike_model = int(kwargs.get('bike_model_id'))
 
-    if "bike_model" in kwargs:
+    if "bike_model" in kwargs and kwargs.get('bike_model','').strip() != "" and kwargs.get('bike_model') != None:
         url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/bike_brand_model?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
 
         bike_model_slug = slugify(kwargs['bike_model'])
-
-        bike_model = requests.get(f'{url}&filter[key][_eq]={ bike_model_slug }')
-        if bike_model.status_code != 200:
-            return {"status": "fail", "output": bike_model.content  }
-        bike_model = bike_model.json()
-        if len(bike_model["data"]) == 0:
-            bike_model = requests.post(url, json={ "bike_brand": bike_brand, "key": bike_model_slug, "name": kwargs["bike_model"] }).json()
-            bike_model = bike_model["data"]["id"]
-        else:
-            bike_model = bike_model["data"][0]["id"]
+        if bike_model_slug != "":
+            bike_model = requests.get(f'{url}&filter[key][_eq]={ bike_model_slug }')
+            if bike_model.status_code == 200:
+                bike_model = bike_model.json()
+                if len(bike_model["data"]) == 1:
+                    bike_model = bike_model["data"][0]["id"]
+                else:
+                    bike_model = requests.post(url, json={ "bike_brand": bike_brand, "key": bike_model_slug, "name": kwargs["bike_model"] }).json()
+                    bike_model = bike_model["data"]["id"]
 
 
     language= None
@@ -162,13 +161,20 @@ def report_submit(self, *args, **kwargs):
         colors = []
 
 
+    approximate_value = 0
+    try:
+        approximate_value = int(kwargs.get("approximate_value", 0))
+    except Exception as e:
+        pass
+
 
     entry = {
+        "bike_brand": bike_brand,
         "bike_brand_model": bike_model,
 
         "bike_details": kwargs.get("bike_details"),
 
-        "approximate_value": kwargs.get("approximate_value"),
+        "approximate_value": approximate_value,
         "approximate_value_currency": kwargs.get("approximate_value_currency"),
         "colors": colors,
         "is_electric": bool(kwargs.get("is_electric")) if kwargs.get('is_electric') else None,
@@ -187,7 +193,8 @@ def report_submit(self, *args, **kwargs):
         "description": kwargs.get("description"),
         "email": kwargs.get("email"),
         "ref_url": kwargs.get("ref_url"),
-        "tags": kwargs.get('tags')
+        "tags": kwargs.get('tags'),
+        "submit_by": kwargs.get('submit_by')
     }
 
     print("Entry...")
@@ -205,6 +212,7 @@ def report_submit(self, *args, **kwargs):
             entry['location_details']['_input'] = kwargs.get('location_address_raw')
             entry['location'] = { "coordinates": [ location.longitude, location.latitude ], "type": "Point"}
         except Exception as e:
+            print(e)
             entry['location_details'] = {
                 "_input": kwargs.get('location_address_raw')
             }
@@ -258,7 +266,6 @@ def report_submit(self, *args, **kwargs):
 
     print(json.dumps(entry))
 
-
     url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/report?access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
     data = requests.post(url, json=entry)
 
@@ -266,7 +273,8 @@ def report_submit(self, *args, **kwargs):
     print(data.status_code)
     if data.status_code == 200:
         data = data.json()
-        print(data)
+        # print(data)
+        print(f"http://localhost:8055/admin/content/report/{data['data']['id']}")
         if kwargs.get('email'):
             send = utils.send_activation_email(kwargs.get('language'), kwargs.get('email'), data['data']['id'], data['data']['activation_code'])
             print(send)

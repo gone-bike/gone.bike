@@ -2,10 +2,12 @@ import { v4 as uuidv4 } from 'uuid'
 import celery from '@utils/celery'
 import config from '@utils/config'
 
-export async function post({params, request}) {
+export async function post({params, request, clientAddress}) {
 
   let id = uuidv4(), ts = new Date().getTime();
   let data = await request.json();
+
+  data['submit_by'] = request.headers.get('cf-connecting-ip') || clientAddress;
 
   // Bypass catptcha when special header is used (for authorized automated imports)
   if (! ( request.headers.get('X-GB-Submit-Key') == config.GB_SUBMIT_KEY)) {
