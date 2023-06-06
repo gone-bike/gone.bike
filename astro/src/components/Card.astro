@@ -1,5 +1,5 @@
 ---
-import Carousal from './Carousel.astro';
+import Carousel from './Carousel.astro';
 // export interface Props {
 // 	title: string;
 // 	body: string;
@@ -9,70 +9,27 @@ import Carousal from './Carousel.astro';
 // const { href, title, body } = Astro.props;
 ---
 
-<li class="link-card" style="align-items: center; display: flex; flex-direction: column; ; gap: 1rem;">
+<li class="link-card list-none flex p-1 bg-white gap-1 items-center flex flex-col">
 	
-  <Carousal/>
+  <Carousel/>
   <div>
-	<span style="padding: 0.8rem 1rem; font-size: 1rem;">
+	<span class="text-gray-700 font-inter font-normal" style="padding: 0.8rem 1rem; font-size: 1rem;">
 		Theft Date
 	</span>
-	<span style="padding: 0.8rem 1rem; font-size: 1rem;">
+	<span  class="text-gray-700 font-inter font-normal" style="padding: 0.8rem 1rem; font-size: 1rem;">
 		28/05/2022
 	</span>
   </div>
   <div>
-	<span style="padding: 0.8rem 1rem; font-size: 1rem;">
+	<span  class="text-gray-700 font-inter font-normal"style="padding: 0.8rem 1rem; font-size: 1rem;">
 		Location
 	</span>
-	<span style="padding: 0.8rem 1rem; font-size: 1rem;">
+	<span class="text-gray-700 font-inter font-normal" style="padding: 0.8rem 1rem; font-size: 1rem;">
 		Milano, Italy
 	</span>
 
   </div>
   <div>
-  	<a  href=""><button class="bg-blue-700 rounded py-2 px-4 text-white">See full report</button></a>
+  	<a  class="w-full no-underline leading-5 rounded-md text-gray-700 bg-white" href=""><button class="bg-blue-700 rounded py-2 px-4 text-white">See full report</button></a>
   </div>
 </li>
-  <style>
-	.link-card {
-	  list-style: none;
-	  display: flex;
-	  padding: 0.25rem;
-	  background-color: white;
-	  background-image: none;
-	  background-size: 400%;
-	  background-position: 100%;
-	 
-	}
-  
-	.link-card > a {
-	  width: 100%;
-	  text-decoration: none;
-	  line-height: 1.4;
-	  border-radius: 0.35rem;
-	  color: #111;
-	  background-color: white;
-	  opacity: 0.8;
-	}
-  
-	h2 {
-	  margin: 0;
-	  font-size: 1.25rem;
-	 
-	}
-  
-	span {
-		color: #1F2A37;
-		font-family: 'Inter';
-font-style: normal;
-	}
-  
-	.link-card:is(:hover, :focus-within) {
-	  background-position: 0;
-	  background-image: var(--accent-gradient);
-	}
-  
-	.link-card:is(:hover, :focus-within) h2 {
-	  color: rgb(var(--accent));
-	}
-  </style>
