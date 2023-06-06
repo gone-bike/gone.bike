@@ -4,7 +4,7 @@ import { HeadHrefLangs } from "astro-i18next/components";
 import { SEO } from "astro-seo";
 import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
-
+import flowbite from "flowbite";
 export interface Props {
   lang: string;
   title: string;
@@ -29,6 +29,7 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 
     <!-- <meta name="generator" content={Astro.generator} /> -->
 
