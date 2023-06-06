@@ -1,20 +1,21 @@
 ---
 import Carousel from './Carousel.astro';
-// export interface Props {
-// 	title: string;
-// 	body: string;
-// 	href: string;
-// }
+import i18next from "i18next";
+import { t, changeLanguage } from "i18next";
+export interface Props {
+	lang:string;
+}
 
-// const { href, title, body } = Astro.props;
+const { lang} = Astro.props;
+changeLanguage(lang);
+
 ---
-
 <li class="link-card list-none flex p-1 bg-white gap-1 items-center flex flex-col">
 	
   <Carousel/>
   <div>
 	<span class="text-gray-700 font-inter font-normal" style="padding: 0.8rem 1rem; font-size: 1rem;">
-		Theft Date
+		 {t("homepage.theft_date")}
 	</span>
 	<span  class="text-gray-700 font-inter font-normal" style="padding: 0.8rem 1rem; font-size: 1rem;">
 		28/05/2022
@@ -22,7 +23,7 @@ import Carousel from './Carousel.astro';
   </div>
   <div>
 	<span  class="text-gray-700 font-inter font-normal"style="padding: 0.8rem 1rem; font-size: 1rem;">
-		Location
+	  {t("homepage.location")}
 	</span>
 	<span class="text-gray-700 font-inter font-normal" style="padding: 0.8rem 1rem; font-size: 1rem;">
 		Milano, Italy

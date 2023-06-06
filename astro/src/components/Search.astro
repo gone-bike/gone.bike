@@ -1,11 +1,19 @@
+---
+import i18next from "i18next";
+import { t, changeLanguage } from "i18next";
 
+export interface Props{
+    lang : string;
+}
 
-
+ const {lang} = Astro.props;
+changeLanguage(lang);
+---
 <form>
     <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
          
-            <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bike Brand </label>
+            <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {t("homepage.brand")}</label>
             <select id="brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <option selected>Select</option>
             <option value="US">BMX</option>
@@ -17,7 +25,7 @@
         </div>
         <div>
          
-            <label for="model" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bike Model </label>
+            <label for="model" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {t("homepage.model")} </label>
             <select id="model" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <option selected>Select</option>
             <option value="US">1001</option>
@@ -29,11 +37,11 @@
         </div>
        
         <div>
-            <label for="Serial Number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Serial Number</label>
+            <label for="Serial Number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {t("homepage.serial")}</label>
             <input type="text" id="Serial Number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Flowbite" required>
         </div>  
         <div class="mb-6">
-            <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bike Description</label>
+            <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {t("homepage.description")}</label>
             <input type="text" id="large-input" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         </div>
        
