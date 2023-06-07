@@ -179,6 +179,10 @@ def index_directus_report_item_to_weaviate(payload):
     except:
         bike_model = None
 
+    theft_date = None
+    if payload.get('theft_date') and payload.get('theft_date') != "":
+        theft_date = f"{payload.get('theft_date')}T00:00:00.0Z"
+
     metadata = {
         'report_id': payload['id'],
         'bike_brand': bike_brand,
@@ -187,7 +191,7 @@ def index_directus_report_item_to_weaviate(payload):
             "latitude": payload.get('location',{}).get('coordinates', [0,0])[1],
             "longitude": payload.get('location',{}).get('coordinates', [0,0])[0],
         },
-        'theft_date': f"{payload.get('theft_date')}T00:00:00.0Z",
+        'theft_date': theft_date,
         'colors': payload.get('colors'),
         'tags': payload.get('tags'),
         'serial_number': payload.get('serial_number'),
