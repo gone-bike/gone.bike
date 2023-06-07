@@ -1,47 +1,62 @@
 ---
-import i18next from 'i18next'
+import i18next from "i18next";
 import { t, changeLanguage } from "i18next";
 import { localizePath } from "astro-i18next";
 import SearchForm from "@components/SearchForm.astro";
-
 import BaseLayout from "@layouts/Base.astro";
+import Search from '@components/Search.astro';
+import Card from '@components/statisticsCard.astro';
+import Bike from '@components/Card.astro';
 
 changeLanguage("en");
-
-// changeLanguage(Astro.url.searchParams.get("locale") || "en");
-// console.log(i18next.language)
 ---
 
+
+
 <BaseLayout title={t("homepage.title")} lang={i18next.language} description="">
-  <style>
-    .hero {
-      background: linear-gradient(
-        90deg,
-        rgba(82, 241, 232, 0.24) 0%,
-        rgba(176, 253, 79, 0.24) 25%,
-        rgba(82, 241, 232, 0.24) 50%,
-        rgba(162, 251, 49, 0.24) 100%
-      );
-    }
-  </style>
-  <div class="w-full">
-    <div class="hero w-full h-[50vh] flex flex-col items-center justify-center">
-      <div class="pre-cta text-lg font-bold">
-        {t("homepage.hero.pre_cta")}
-      </div>
-      <h1 class="cta text-6xl font-extrabold">{t("homepage.hero.title")}</h1>
+    
+  <br>
+  <div class="font-bold text-2xl text-center">
 
-      <div class="flex items-center justify-center h-screen">
+     <span>{t("homepage.image_a")}</span>
+
+  </div>
+ 
+  <br>
+      <div class="flex items-center justify-center gap-4">
         <SearchForm />
+        <a  href={localizePath("/create-report")}><button class="bg-blue-700 rounded py-2 px-4 text-white">{t("homepage.hero.cta_add_listing")}</button></a>
       </div>
+      
+      <br>
+        <!-- Statistics -->
+        <div class="flex justify-center gap-4 ">
+			<Card  key="320,000" value={t("homepage.stat1")} backColor="#E5EDFF"/>
+			<Card key="1,420,000" value={t("homepage.stat2")}backColor="#aec8ff"/>
+			<Card key="&euro;5,6M" value={t("homepage.stat3")} backColor="#D5F5F6"/>
+		</div>
 
-      <a
-        class="list-button text-white bg-[#2DA771] rounded py-2 px-4 tracking-wider uppercase font-bold text-lg my-8"
-        href={localizePath("/create-report")}>{t("homepage.hero.cta_add_listing")}</a
-      >
+    <br>
+		<div class="font-bold text-2xl text-center">
 
-      <p class="p-4">This is a temporary homepage for the project.</p>
-    </div>
+			<span>{t("homepage.search_filter")} </span>
+
+	   </div>
+	   <br>
+	   <Search lang="en"/>
+	   <br>
+
+	   <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-center">
+      <Bike lang="en" />
+      <Bike lang="en" />
+      <Bike lang="en" />
+      <Bike lang="en" />
+	  </div>
+		<br>
+
+    
+     
+      
       <!--
           localizePath("/report/[id]").replace('[id]','224')
           <div
@@ -66,7 +81,9 @@ changeLanguage("en");
     <div class="listing"></div>
     <div class="blog"></div>
      -->
-  </div>
+  
 
 
 </BaseLayout>
+
+

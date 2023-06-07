@@ -3,21 +3,83 @@ import { localizePath } from "astro-i18next";
 import { LanguageSelector } from "astro-i18next/components";
 
 ---
-<div class="container mx-auto flex justify-between items-center py-10 px-4">
-    <div class="container-1 flex items-center gap-5">
-      <div class="hamburger-menu"></div>
-      <div class="logo text-xl font-extrabold">
-        <a href={localizePath("/")}>Gone.Bike</a>
-      </div>
-      <div class="actual-navbar flex gap-3">
-        <div>Home</div>
-        <div>Blog</div>
-        <div>About Project</div>
+
+  
+<nav class="bg-white border-gray-200 dark:bg-gray-900" style="background-color: #1F2A37;">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+
+      <a class="text-2xl text-white text-center flex-none order-0 flex-grow-0 sm:mr-20 sm:flex sm:items-center" href={localizePath("/")}>Gone.Bike</a>
+      
+    <div class="hidden sm:flex sm:items-center">
+      <a href="#" class="text-lg text-white text-center flex-none order-0 flex-grow-0 sm:mr-20 sm:flex sm:items-center">
+        Home
+      </a>
+      <a  href="#" class="text-lg text-white text-center flex-none order-0 flex-grow-0 sm:mr-20 sm:flex sm:items-center">
+        About this project
+      </a>
+    </div>
+    <div class=" hidden sm:block">
+      <button class=" rounded-md flex items-center space-x-2 px-4 py-2 text-white">
+        <a href="https://github.com/gone-bike/gone.bike">
+        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="github-icon w-6 h-6">
+          <path d="M8 0.5C3.86 0.5 0.5 3.86 0.5 8C0.5 11.87 3.63 15.19 7.5 15.85C7.86 15.91 8.14 15.64 8.14 15.29C8.14 14.93 8.13 14.3 8.13 13.51C5.97 13.89 5.54 12.69 5.54 12.69C5.18 11.76 4.57 11.45 4.57 11.45C3.73 10.83 4.76 10.85 4.76 10.85C5.87 10.95 6.28 11.81 6.28 11.81C6.98 13.15 8.11 12.79 8.52 12.49C8.62 11.85 8.84 11.44 9.07 11.24C6.58 10.94 4.99 9.79 4.57 7.55C4.47 7.08 4.1 5.97 4.84 4.5C4.84 4.5 5.61 4.29 8.14 5.69C8.97 5.47 9.84 5.36 10.71 5.36C11.58 5.36 12.45 5.47 13.28 5.69C15.81 4.29 16.58 4.5 16.58 4.5C17.32 5.97 16.95 7.08 16.85 7.55C16.43 9.79 14.84 10.94 12.35 11.24C12.75 11.64 13.14 12.47 13.14 13.51C13.14 14.31 13.13 14.93 13.13 15.29C13.13 15.64 13.41 15.91 13.77 15.85C17.64 15.19 20.87 11.87 20.87 8C20.87 3.86 17.51 0.5 13.37 0.5H8Z"/>
+        </svg>
+        <span >GitHub</span>
+        </a>
+        
+      </button>
+    </div>
+    <div class="sm:hidden">
+      <div class="dropdown">
+        <button class="dropbtn">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-icon w-6 h-6">
+            <path d="M4 6H20" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 12H20" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 18H20" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="dropdown-content">
+          <a class="block p-2 text-decoration-none pr-40" href="#">Home</a>
+          <a  class="block p-2 text-decoration-none pr-40"href="#">About this project</a>
+        </div>
       </div>
     </div>
-    <div class="container-2 flex items-center gap-5">
+    <div >
       <!-- <div class="favorites">❤️</div>
       <div class="user">👤</div> -->
       <LanguageSelector showFlag={true} class="border-gray-300" />
     </div>
   </div>
+</nav>
+
+<style>
+/* Style the dropdown items */
+/* Show the dropdown button and content on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  min-width: 160px;
+}
+
+/* Style the dropdown button and content */
+.dropbtn {
+  background-color: transparent;
+  border: none;
+}
+
+.menu-icon {
+  stroke: #FFFFFF;
+  stroke-width: 4;
+  stroke-linecap: square;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+
+
+</style>
