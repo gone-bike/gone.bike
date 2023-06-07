@@ -174,10 +174,15 @@ def index_directus_report_item_to_weaviate(payload):
     except:
         bike_brand = None
 
+    try:
+        bike_model = payload.get('bike_brand_model',{}).get('name')
+    except:
+        bike_model = None
+
     metadata = {
         'report_id': payload['id'],
         'bike_brand': bike_brand,
-        'bike_model': payload.get('bike_brand_model',{}).get('name'),
+        'bike_model': bike_model,
         "location": {
             "latitude": payload.get('location',{}).get('coordinates', [0,0])[1],
             "longitude": payload.get('location',{}).get('coordinates', [0,0])[0],
