@@ -1,0 +1,24 @@
+---
+import Breadcrumb from "@components/detail/Breadcrumb.astro";
+
+import Gallery from "@components/detail/Galery.astro";
+import Description from "@components/detail/Description.astro";
+import ReportHeader from "@components/detail/ReportHeader.astro";
+import InformationTable from "@components/detail/InformationTable.astro";
+
+---
+
+
+<div class="m-4">
+    <Breadcrumb />
+    <ReportHeader />
+    <div class="flex gap-10" >
+        <div class="w-1/2 ">
+            <Gallery />
+        </div>
+        <div class="w-1/2 ">
+            <InformationTable />
+        </div>
+    </div>
+    <Description />
+</div>

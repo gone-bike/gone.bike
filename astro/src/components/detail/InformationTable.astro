@@ -1,0 +1,28 @@
+---
+import OtherDetail from "@components/detail/OtherDetail.astro";
+import Info from "@components/detail/Info.astro";
+
+---
+
+<div class="bg-white rounded-lg dark:bg-gray-900 m-4">
+    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <p class="text-gray-500 dark:text-gray-400">Bike Status: &nbsp;&nbsp;<button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Red</button>
+            </p>
+            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                <p class="text-gray-500 dark:text-gray-400">Last update June 3, 2022 11:14</p>
+            </ul>
+        </div>
+    </div>
+</div>
+<p class="pb-5 text-4xl text-gray-900 dark:text-white font-bold">Forme</p>
+<p class="pb-7 text-4xl text-gray-900 dark:text-white">Lookflow 2</p>
+<p class="text-gray-500 dark:text-gray-400">Date of theft &nbsp; &nbsp; <a href="#" class="text-gray-900 dark:text-white decoration-indigo-500">July 17, 2020 Morning</a></p>
+<hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+<Info />
+<hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+<OtherDetail />
+<div class="flex gap-5">
+    <button type="button" class="w-1/2 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">Default</button>
+    <button type="button" class="w-1/2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Default</button>
+</div>
