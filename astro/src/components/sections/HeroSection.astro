@@ -1,0 +1,22 @@
+---
+import { t, changeLanguage } from "i18next";
+import { localizePath } from "astro-i18next";
+import SearchForm from "@components/SearchForm.astro";
+---
+
+<section>
+  <div class="wrapper">
+    <div class="font-bold text-2xl text-center">
+      <span>{t("homepage.image_a")}</span>
+    </div>
+
+    <div class="flex items-center justify-center gap-4">
+      <SearchForm />
+      <a href={localizePath("/create-report")}
+        ><button class="bg-blue-700 rounded py-2 px-4 text-white"
+          >{t("homepage.hero.cta_add_listing")}</button
+        ></a
+      >
+    </div>
+  </div>
+</section>

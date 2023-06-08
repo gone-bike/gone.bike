@@ -4,60 +4,43 @@ import { t, changeLanguage } from "i18next";
 import { localizePath } from "astro-i18next";
 import SearchForm from "@components/SearchForm.astro";
 import BaseLayout from "@layouts/Base.astro";
-import Search from '@components/Search.astro';
-import Card from '@components/statisticsCard.astro';
-import Bike from '@components/Card.astro';
+import Search from "@components/Search.astro";
+import Card from "@components/statisticsCard.astro";
+import Bike from "@components/Card.astro";
+import HeroSection from "@components/sections/HeroSection.astro";
 
 changeLanguage("en");
 ---
 
-
-
 <BaseLayout title={t("homepage.title")} lang={i18next.language} description="">
-    
-  <br>
-  <div class="font-bold text-2xl text-center">
+  <HeroSection />
 
-     <span>{t("homepage.image_a")}</span>
-
+  <!-- Statistics -->
+  <div class="flex justify-center gap-4">
+    <Card key="320,000" value={t("homepage.stat1")} backColor="#E5EDFF" />
+    <Card key="1,420,000" value={t("homepage.stat2")} backColor="#aec8ff" />
+    <Card key="€5,6M" value={t("homepage.stat3")} backColor="#D5F5F6" />
   </div>
- 
-  <br>
-      <div class="flex items-center justify-center gap-4">
-        <SearchForm />
-        <a  href={localizePath("/create-report")}><button class="bg-blue-700 rounded py-2 px-4 text-white">{t("homepage.hero.cta_add_listing")}</button></a>
-      </div>
-      
-      <br>
-        <!-- Statistics -->
-        <div class="flex justify-center gap-4 ">
-			<Card  key="320,000" value={t("homepage.stat1")} backColor="#E5EDFF"/>
-			<Card key="1,420,000" value={t("homepage.stat2")}backColor="#aec8ff"/>
-			<Card key="&euro;5,6M" value={t("homepage.stat3")} backColor="#D5F5F6"/>
-		</div>
 
-    <br>
-		<div class="font-bold text-2xl text-center">
+  <br />
+  <div class="font-bold text-2xl text-center">
+    <span>{t("homepage.search_filter")}</span>
+  </div>
+  <br />
+  <Search lang="en" />
+  <br />
 
-			<span>{t("homepage.search_filter")} </span>
+  <div
+    class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-center"
+  >
+    <Bike lang="en" />
+    <Bike lang="en" />
+    <Bike lang="en" />
+    <Bike lang="en" />
+  </div>
+  <br />
 
-	   </div>
-	   <br>
-	   <Search lang="en"/>
-	   <br>
-
-	   <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-center">
-      <Bike lang="en" />
-      <Bike lang="en" />
-      <Bike lang="en" />
-      <Bike lang="en" />
-	  </div>
-		<br>
-
-    
-     
-      
-      <!--
+  <!--
           localizePath("/report/[id]").replace('[id]','224')
           <div
             class="input mt-10 mb-6 bg-white border-dashed border-gray-500 rounded border py-2 px-4"
@@ -81,9 +64,4 @@ changeLanguage("en");
     <div class="listing"></div>
     <div class="blog"></div>
      -->
-  
-
-
 </BaseLayout>
-
-
