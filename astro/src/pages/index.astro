@@ -5,9 +5,10 @@ import { localizePath } from "astro-i18next";
 import SearchForm from "@components/SearchForm.astro";
 import BaseLayout from "@layouts/Base.astro";
 import Search from "@components/Search.astro";
-import Card from "@components/statisticsCard.astro";
+import Card from "@components/cards/StatsCard.astro";
 import Bike from "@components/Card.astro";
 import HeroSection from "@components/sections/HeroSection.astro";
+import StatsSection from "@components/sections/StatsSection.astro";
 
 changeLanguage("en");
 ---
@@ -16,13 +17,8 @@ changeLanguage("en");
   <HeroSection />
 
   <!-- Statistics -->
-  <div class="flex justify-center gap-4">
-    <Card key="320,000" value={t("homepage.stat1")} backColor="#E5EDFF" />
-    <Card key="1,420,000" value={t("homepage.stat2")} backColor="#aec8ff" />
-    <Card key="€5,6M" value={t("homepage.stat3")} backColor="#D5F5F6" />
-  </div>
+  <StatsSection />
 
-  <br />
   <div class="font-bold text-2xl text-center">
     <span>{t("homepage.search_filter")}</span>
   </div>

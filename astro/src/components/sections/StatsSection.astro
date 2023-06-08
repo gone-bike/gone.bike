@@ -1,0 +1,26 @@
+---
+import { t } from "i18next";
+
+import StatsCard from "@components/cards/StatsCard.astro";
+import BaseContainer from "@components/base/BaseContainer.astro";
+---
+
+<section class="pb-6">
+  <BaseContainer>
+    <div class="pb-8 border-b border-gray-200 md:pb-10">
+      <ul class="flex flex-col gap-6 md:flex-row">
+        <StatsCard
+          number="320,000"
+          text={t("homepage.stat1")}
+          backColor="indigo"
+        />
+        <StatsCard
+          number="1,420,000"
+          text={t("homepage.stat2")}
+          backColor="blue"
+        />
+        <StatsCard number="€5,6M" text={t("homepage.stat3")} backColor="teal" />
+      </ul>
+    </div>
+  </BaseContainer>
+</section>
