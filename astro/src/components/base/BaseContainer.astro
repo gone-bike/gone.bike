@@ -1,0 +1,11 @@
+---
+export interface BaseContainerProps {
+  class?: string;
+}
+
+const { class: classes } = Astro.props as BaseContainerProps;
+---
+
+<div class:list={["max-w-screen-xl mx-auto px-4 lg:px-6", classes]}>
+  <slot />
+</div>
