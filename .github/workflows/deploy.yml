@@ -12,7 +12,7 @@ jobs:
       - name: Deploy
         uses: garygrossgarten/github-action-ssh@release
         with:
-          command: git pull && make update
+          command: git reset --hard HEAD -- && git pull && make update
           host: ${{ secrets.HOST }}
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USER }}

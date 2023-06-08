@@ -16,10 +16,15 @@ update: ## ## Updates codebase & rebuild. Used in production deploy pipeline
 	docker-compose up -d worker
 
 
+dump: dump-db zip-images
+	echo done
+
 sync-s3: ## target=path/to/folder ## Downloads all remote images, creates a tgz archive, with a symlink to `latest`
 	$$(cat .env | grep AWS_ |xargs -L 1 echo export) && \
-	aws s3 sync s3://${AWS_S3_BUCKET} ${target}
-	cd ${target} && tar cfz ../gone.bike.images.`date +"%Y-%m-%d"`.tgz . && \
+	aws s3 sync s3://${AWS_S3_BUCKET} $(or ${target}, .data/web/images/)
+
+zip-images:
+	cd $(or ${target}, .data/web/images/) && tar cfz ../gone.bike.images.`date +"%Y-%m-%d"`.tgz . && \
 	cd .. && rm -f gone.bike.images.latest.tgz && \
 	ln -s gone.bike.images.`date +"%Y-%m-%d"`.tgz gone.bike.images.latest.tgz
 
@@ -46,8 +51,8 @@ dump-db: ## target=path/to/folder ## Dumps db, nullifying local references to us
 	 -t language -t bike_brand -t bike_brand_model -t report -t report_files -t i18n -t i18n_translation \
 	 -t directus_files -t directus_folders | gzip -c > gone.bike.db-dump.`date +"%Y%m%d"`.sql.gz
 
-	mv -v gone.bike.db-dump.`date +"%Y%m%d"`.sql.gz ${target} && \
-	cd ${target} && rm -f gone.bike.db-dump.latest.sql.gz && \
+	mv -v gone.bike.db-dump.`date +"%Y%m%d"`.sql.gz $(or ${target}, .data/web/) && \
+	cd $(or ${target}, .data/web/) && rm -f gone.bike.db-dump.latest.sql.gz && \
 	ln -s gone.bike.db-dump.`date +"%Y%m%d"`.sql.gz gone.bike.db-dump.latest.sql.gz
 
 	docker-compose exec postgresql psql -U postgres -c "DROP DATABASE dump;" || true
@@ -71,6 +76,11 @@ delete-weaviate-report-files: ## id=x ## Deletes all indexed entries from Weavia
 		echo "Deleting $$wid ..." && \
 		curl -X DELETE ${WEAVIATE_URI}/v1/objects/Bike/$$wid; \
 	done
+
+count-weaviate-objects:
+	echo '{ "query": "{ Aggregate { Bike { meta { count } } } }" }' |\
+		tr -d "\n" | curl -s -X POST -H 'Content-Type: application/json' -d @- http://localhost:8080/v1/graphql |\
+		jq .data.Aggregate.Bike[0].meta.count
 
 
 directus-schema-dump: ## ## Generates a Directus schema in YML format
