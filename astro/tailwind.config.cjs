@@ -54,10 +54,6 @@ module.exports = {
         "2lg": "10px",
         "1.5xl": "14px",
       },
-
-      padding: {
-        "6.5px": "6.5px",
-      },
     },
   },
 };
