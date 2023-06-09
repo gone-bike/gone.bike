@@ -1,0 +1,24 @@
+---
+import { t } from "i18next";
+import SearchBikes from "@components/bikes/SearchBikes.astro";
+import BaseContainer from "@components/base/BaseContainer.astro";
+---
+
+<section class="mt-10 pt-6 md:pt-8">
+  <BaseContainer>
+    <p
+      class="text-center text-gray-500 bg-gray-100 rounded-1.5xl px-4 py-2 w-max mx-auto"
+    >
+      Don't have a photo of your stolen bike?
+      <!-- {t("homepage.search_paragraph")} -->
+    </p>
+
+    <h2
+      class="mt-3 text-2xl leading-relaxed font-bold text-center text-customgray-900 md:text-3xl"
+    >
+      {t("homepage.search_filter")}
+    </h2>
+
+    <SearchBikes lang="en" />
+  </BaseContainer>
+</section>
