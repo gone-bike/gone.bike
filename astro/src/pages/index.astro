@@ -7,6 +7,7 @@ import StatsSection from "@components/sections/StatsSection.astro";
 import Bike from "@components/Card.astro";
 import HeroSection from "@components/sections/HeroSection.astro";
 import BikesSection from "@components/sections/BikesSection.astro";
+import BasePagination from "@components/base/BasePagination.astro";
 
 changeLanguage("en");
 ---
@@ -28,6 +29,12 @@ changeLanguage("en");
     <Bike lang="en" />
   </div>
   <br />
+
+  <BasePagination
+    class="flex justify-center my-4"
+    activePage={12}
+    totalPages={100}
+  />
 
   <!--
           localizePath("/report/[id]").replace('[id]','224')
