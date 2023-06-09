@@ -13,11 +13,11 @@ const {
 ---
 
 <nav class:list={["", {}, classes]} aria-label="search pagination">
-  <ul class="inline-flex items-center -space-x-px">
+  <ul class="inline-flex items-center -space-x-px text-sm">
     <li>
       <a
         href="#"
-        class="block px-3 py-1.5 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 h-full"
+        class="block px-3 py-2 text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700"
       >
         <span class="sr-only">Previous</span>
         <svg
@@ -36,14 +36,14 @@ const {
     <li>
       <a
         href="#"
-        class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+        class="block px-3 py-2 text-sm text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
         >1</a
       >
     </li>
     <li>
       <a
         href="#"
-        class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+        class="block px-3 py-2 text-sm text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 active"
         >2</a
       >
     </li>
@@ -51,28 +51,28 @@ const {
       <a
         href="#"
         aria-current="page"
-        class="z-10 px-3 py-2 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700"
+        class="z-10 block px-3 py-2 text-sm text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
         >3</a
       >
     </li>
     <li>
       <a
         href="#"
-        class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-        >4</a
+        class="block px-3 py-2 text-sm text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+        >...</a
       >
     </li>
     <li>
       <a
         href="#"
-        class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-        >5</a
+        class="block px-3 py-2 text-sm text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+        >{totalPages}</a
       >
     </li>
     <li>
       <a
         href="#"
-        class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"
+        class="block px-3 py-2 text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"
       >
         <span class="sr-only">Next</span>
         <svg
@@ -90,3 +90,9 @@ const {
     </li>
   </ul>
 </nav>
+
+<style>
+  .active {
+    @apply text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700;
+  }
+</style>
