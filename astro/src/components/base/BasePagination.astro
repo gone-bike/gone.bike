@@ -10,84 +10,129 @@ const {
   activePage = 1,
   class: classes,
 } = Astro.props as BasePaginationProps;
+
+function generatePageLinks(): Array<Record<string, string | number>> {
+  const links = [];
+  const ellipsisBack = { label: "...", href: "#" };
+  const ellipsisForward = { label: "...", href: "#" };
+
+  if (totalPages <= 7) {
+    for (let i = 1; i <= totalPages; i++) {
+      links.push({ label: i, href: "#" });
+    }
+
+    return links;
+  }
+  let start, end;
+
+  if (activePage <= 4) {
+    start = 1;
+    end = 4;
+
+    for (let i = start; i <= end; i++) {
+      links.push({ label: i, href: "#" });
+    }
+    links.push(ellipsisForward);
+
+    return links;
+  }
+
+  if (activePage > totalPages - 4) {
+    start = totalPages - 3;
+    end = totalPages;
+
+    links.push(ellipsisBack);
+    for (let i = start; i <= end; i++) {
+      links.push({ label: i, href: "#" });
+    }
+
+    return links;
+  }
+
+  start = activePage - 2;
+  end = activePage + 2;
+
+  links.push({ label: 1, href: "#" });
+  links.push(ellipsisBack);
+  for (let i = start; i <= end; i++) {
+    links.push({ label: i, href: "#" });
+  }
+  links.push(ellipsisForward);
+  links.push({ label: totalPages, href: "#" });
+
+  return links;
+}
 ---
 
 <nav class:list={["", {}, classes]} aria-label="search pagination">
-  <ul class="inline-flex items-center -space-x-px text-sm">
-    <li>
-      <a
-        href="#"
-        class="block px-3 py-2 text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700"
-      >
-        <span class="sr-only">Previous</span>
-        <svg
-          aria-hidden="true"
-          class="w-5 h-5"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-          ><path
-            fill-rule="evenodd"
-            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-            clip-rule="evenodd"></path></svg
-        >
-      </a>
-    </li>
-    <li>
-      <a
-        href="#"
-        class="block px-3 py-2 text-sm text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-        >1</a
-      >
-    </li>
-    <li>
-      <a
-        href="#"
-        class="block px-3 py-2 text-sm text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 active"
-        >2</a
-      >
-    </li>
-    <li>
-      <a
-        href="#"
-        aria-current="page"
-        class="z-10 block px-3 py-2 text-sm text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-        >3</a
-      >
-    </li>
-    <li>
-      <a
-        href="#"
-        class="block px-3 py-2 text-sm text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-        >...</a
-      >
-    </li>
-    <li>
-      <a
-        href="#"
-        class="block px-3 py-2 text-sm text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-        >{totalPages}</a
-      >
-    </li>
-    <li>
-      <a
-        href="#"
-        class="block px-3 py-2 text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"
-      >
-        <span class="sr-only">Next</span>
-        <svg
-          aria-hidden="true"
-          class="w-5 h-5"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-          ><path
-            fill-rule="evenodd"
-            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-            clip-rule="evenodd"></path></svg
-        >
-      </a>
-    </li>
+  <ul class="inline-flex items-center -space-x-px text-sm flex-wrap">
+    {
+      activePage !== 1 && (
+        <li>
+          <a
+            href="#"
+            class="block px-3 py-2 text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700"
+          >
+            <span class="sr-only">Previous</span>
+            <svg
+              aria-hidden="true"
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </li>
+      )
+    }
+    {
+      generatePageLinks().map((link) => (
+        <li>
+          <a
+            href={link.href as string}
+            class:list={[
+              "block px-3 py-2 text-sm text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700",
+              {
+                active: link.label === activePage,
+              },
+            ]}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+    {
+      activePage !== totalPages && (
+        <li>
+          <a
+            href="#"
+            class="block px-3 py-2 text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"
+          >
+            <span class="sr-only">Next</span>
+            <svg
+              aria-hidden="true"
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </li>
+      )
+    }
   </ul>
 </nav>
 
