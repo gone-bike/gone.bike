@@ -2,10 +2,8 @@
 import i18next from "i18next";
 import { t, changeLanguage } from "i18next";
 import { localizePath } from "astro-i18next";
-import SearchForm from "@components/SearchForm.astro";
 import BaseLayout from "@layouts/Base.astro";
-import Search from "@components/bikes/SearchBikes.astro";
-import Card from "@components/statisticsCard.astro";
+import StatsSection from "@components/sections/StatsSection.astro";
 import Bike from "@components/Card.astro";
 import HeroSection from "@components/sections/HeroSection.astro";
 import BikesSection from "@components/sections/BikesSection.astro";
@@ -17,13 +15,7 @@ changeLanguage("en");
   <HeroSection />
 
   <!-- Statistics -->
-  <div class="flex justify-center gap-4">
-    <Card key="320,000" value={t("homepage.stat1")} backColor="#E5EDFF" />
-    <Card key="1,420,000" value={t("homepage.stat2")} backColor="#aec8ff" />
-    <Card key="€5,6M" value={t("homepage.stat3")} backColor="#D5F5F6" />
-  </div>
-
-  <br />
+  <StatsSection />
 
   <BikesSection />
 

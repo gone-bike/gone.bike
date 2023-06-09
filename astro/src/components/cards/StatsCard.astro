@@ -1,0 +1,48 @@
+---
+export type StatsCardBg = "indigo" | "blue" | "teal";
+
+export interface StatsCardProps {
+  number: string;
+  text: string;
+  backColor: StatsCardBg;
+}
+
+const { number, text, backColor } = Astro.props as StatsCardProps;
+---
+
+<li
+  class:list={[
+    "list-none w-full rounded-lg px-2 py-4",
+    {
+      "bg-indigo-100": backColor === "indigo",
+      "bg-blue-100": backColor === "blue",
+      "bg-teal-100": backColor === "teal",
+    },
+  ]}
+>
+  <p
+    class:list={[
+      "text-3xl font-bold mb-1 text-center",
+      {
+        "text-indigo-500": backColor === "indigo",
+        "text-blue-500": backColor === "blue",
+        "text-teal-500": backColor === "teal",
+      },
+    ]}
+  >
+    {number}
+  </p>
+
+  <h3
+    class:list={[
+      "font-normal text-center",
+      {
+        "text-indigo-700": backColor === "indigo",
+        "text-blue-700": backColor === "blue",
+        "text-teal-700": backColor === "teal",
+      },
+    ]}
+  >
+    {text}
+  </h3>
+</li>
