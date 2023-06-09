@@ -2,6 +2,7 @@
 import { t } from "i18next";
 import { localizePath } from "astro-i18next";
 import BaseContainer from "@components/base/BaseContainer.astro";
+import SearchForm from "@components/SearchForm.astro";
 ---
 
 <section class="pt-9 pb-14 md:pt-6 xl:pt-10">
@@ -39,7 +40,7 @@ import BaseContainer from "@components/base/BaseContainer.astro";
     <div
       class="mt-8 flex flex-col items-center justify-center gap-4 md:flex-row"
     >
-      <a
+      <!-- <a
         class="w-full flex items-center justify-center gap-3 rounded-lg py-4 px-4 border border-customgray-900 md:w-max md:px-6"
         href={localizePath("/create-report")}
       >
@@ -60,7 +61,8 @@ import BaseContainer from "@components/base/BaseContainer.astro";
         <span class="font-medium text-customgray-800 md:block md:w-max"
           >Create Report</span
         >
-      </a>
+      </a> -->
+      <SearchForm />
       <a
         class="w-full flex items-center justify-center gap-3 bg-primary-600 rounded-lg py-4 px-4 border border-transparent md:w-max md:px-6"
         href={localizePath("/create-report")}
