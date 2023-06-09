@@ -2,13 +2,11 @@
 import i18next from "i18next";
 import { t, changeLanguage } from "i18next";
 import { localizePath } from "astro-i18next";
-import SearchForm from "@components/SearchForm.astro";
 import BaseLayout from "@layouts/Base.astro";
-import Search from "@components/Search.astro";
-import Card from "@components/cards/StatsCard.astro";
+import StatsSection from "@components/sections/StatsSection.astro";
 import Bike from "@components/Card.astro";
 import HeroSection from "@components/sections/HeroSection.astro";
-import StatsSection from "@components/sections/StatsSection.astro";
+import BikesSection from "@components/sections/BikesSection.astro";
 
 changeLanguage("en");
 ---
@@ -19,12 +17,7 @@ changeLanguage("en");
   <!-- Statistics -->
   <StatsSection />
 
-  <div class="font-bold text-2xl text-center">
-    <span>{t("homepage.search_filter")}</span>
-  </div>
-  <br />
-  <Search lang="en" />
-  <br />
+  <BikesSection />
 
   <div
     class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-center"
