@@ -4,7 +4,7 @@ import { t, changeLanguage } from "i18next";
 import { localizePath } from "astro-i18next";
 import BaseLayout from "@layouts/Base.astro";
 import StatsSection from "@components/sections/StatsSection.astro";
-import Bike from "@components/Card.astro";
+import BikesCard from "@components/cards/BikesCard.astro";
 import HeroSection from "@components/sections/HeroSection.astro";
 import BikesSection from "@components/sections/BikesSection.astro";
 
@@ -18,16 +18,6 @@ changeLanguage("en");
   <StatsSection />
 
   <BikesSection />
-
-  <div
-    class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-center"
-  >
-    <Bike lang="en" />
-    <Bike lang="en" />
-    <Bike lang="en" />
-    <Bike lang="en" />
-  </div>
-  <br />
 
   <!--
           localizePath("/report/[id]").replace('[id]','224')

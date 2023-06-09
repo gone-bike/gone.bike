@@ -1,0 +1,59 @@
+---
+import Carousel from "../Carousel.astro";
+import { t, changeLanguage } from "i18next";
+
+export interface BikesCardProps {
+  lang: string;
+  matchScore: number;
+  brand: string;
+  model: string;
+  date: string;
+  location: string;
+}
+
+const { lang, matchScore, brand, model, date, location } =
+  Astro.props as BikesCardProps;
+changeLanguage(lang);
+---
+
+<li class="link-card list-none p-4 pb-6 rounded-lg bg-white shadow-md">
+  <div>
+    <Carousel />
+  </div>
+  <div class="mt-6">
+    <span class="block text-center text-gray-800 text-sm"
+      >Match Score: {matchScore}%</span
+    >
+    <div class="w-full bg-gray-200 rounded-full h-1.5">
+      <div
+        class="bg-gradient-to-r from-red-gradient-clr to-teal-gradient-clr h-full rounded-full"
+        style={{ width: `${matchScore}%` }}
+      >
+      </div>
+    </div>
+  </div>
+  <div class="pb-2.5 border-b borde-gray-200">
+    <h3 class="text-xl font-bold mt-2.5">{brand}</h3>
+    <h4 class="text-gray-500 mt-1">{model}</h4>
+  </div>
+  <div class="mt-2.5 flex items-center justify-between">
+    <span class="text-sm text-gray-800 font-medium">
+      {t("homepage.theft_date")}
+    </span>
+    <span class="text-sm text-gray-500"> {date}</span>
+  </div>
+  <div class="mt-2.5 flex items-center justify-between">
+    <span class="text-sm text-gray-800 font-medium">
+      {t("homepage.location")}
+    </span>
+    <span class="text-sm text-gray-500"> {location}</span>
+  </div>
+  <div class="mt-6">
+    <a
+      class="block w-full text-center leading-5 rounded-md bg-primary-600 py-2 px-4 text-white text-sm"
+      href=""
+    >
+      View Report
+    </a>
+  </div>
+</li>
