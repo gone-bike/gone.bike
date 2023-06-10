@@ -3,18 +3,25 @@ import Carousel from "@components/carousel/Carousel.astro";
 import type { CarouselItemProps } from "@components/carousel/CarouselItem.astro";
 import { t, changeLanguage } from "i18next";
 
+import {
+  dateDiffInDays,
+  dateTimeFormatter,
+  relativeDateTimeFormatter,
+} from "@utils/formatters";
+
 export interface BikesCardProps {
   lang: string;
   matchScore: number;
   brand: string;
   model: string;
-  date: string;
+  dateStr: string;
   location: string;
   imgs: CarouselItemProps[];
 }
 
-const { lang, matchScore, brand, model, date, location, imgs } =
+const { lang, matchScore, brand, model, dateStr, location, imgs } =
   Astro.props as BikesCardProps;
+
 changeLanguage(lang);
 
 const imgArr = [
@@ -31,6 +38,23 @@ const imgArr = [
     alt: "...",
   },
 ];
+
+const date = new Date(dateStr);
+// console.log("date: ", date);
+// console.log("date: ", typeof date);
+
+const diffInDays = dateDiffInDays({ startDate: date });
+
+const formattedDate = dateTimeFormatter({
+  date,
+  locale: lang,
+});
+
+const formattedRelativeDate = relativeDateTimeFormatter({
+  date,
+  locale: lang,
+  numberOfUnits: diffInDays,
+});
 ---
 
 <li class="link-card list-none p-4 pb-6 rounded-lg bg-white shadow-md">
@@ -57,7 +81,9 @@ const imgArr = [
     <span class="text-sm text-gray-800 font-medium">
       {t("homepage.theft_date")}
     </span>
-    <span class="text-sm text-gray-500"> {date}</span>
+    <span class="text-sm text-gray-500">
+      {formattedDate} ({formattedRelativeDate})
+    </span>
   </div>
   <div class="mt-2.5 flex items-center justify-between">
     <span class="text-sm text-gray-800 font-medium">

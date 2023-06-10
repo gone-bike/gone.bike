@@ -66,8 +66,8 @@ const { items } = Astro.props as CarouselProps;
           <button
             id="carousel-indicator-1"
             type="button"
-            class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-500"
-            aria-current={i === 0 ? true : false}
+            class="w-3 h-3 rounded-full "
+            aria-current={i === 0 ? "true" : "false"}
             aria-label={`Slide ${i + 1}`}
             data-carousel-slide-to={i}
           />
@@ -128,5 +128,9 @@ const { items } = Astro.props as CarouselProps;
 <style>
   .indicators [aria-current="true"] {
     @apply bg-primary-600;
+  }
+
+  .indicators [aria-current="false"] {
+    @apply bg-gray-300 hover:bg-gray-500;
   }
 </style>
