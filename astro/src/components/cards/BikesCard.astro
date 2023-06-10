@@ -1,5 +1,6 @@
 ---
-import Carousel from "../Carousel.astro";
+import Carousel from "@components/carousel/Carousel.astro";
+import type { CarouselItemProps } from "@components/carousel/CarouselItem.astro";
 import { t, changeLanguage } from "i18next";
 
 export interface BikesCardProps {
@@ -9,16 +10,32 @@ export interface BikesCardProps {
   model: string;
   date: string;
   location: string;
+  imgs: CarouselItemProps[];
 }
 
-const { lang, matchScore, brand, model, date, location } =
+const { lang, matchScore, brand, model, date, location, imgs } =
   Astro.props as BikesCardProps;
 changeLanguage(lang);
+
+const imgArr = [
+  {
+    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
+    alt: "...",
+  },
+  {
+    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
+    alt: "...",
+  },
+  {
+    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
+    alt: "...",
+  },
+];
 ---
 
 <li class="link-card list-none p-4 pb-6 rounded-lg bg-white shadow-md">
   <div>
-    <Carousel />
+    <Carousel items={imgArr} />
   </div>
   <div class="mt-6">
     <span class="block text-center text-gray-800 text-sm"

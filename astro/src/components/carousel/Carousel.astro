@@ -1,32 +1,28 @@
+---
+import CarouselItem from "./CarouselItem.astro";
+
+import type { CarouselItemProps } from "./CarouselItem.astro";
+
+export interface CarouselProps {
+  items: CarouselItemProps[];
+}
+
+const { items } = Astro.props as CarouselProps;
+---
+
 <div id="controls-carousel" class="relative w-full pb-7" data-carousel="static">
   <!-- Carousel wrapper -->
   <div class="flex items-center w-full h-full">
     <div class="card w-full">
       <div class="relative overflow-hidden rounded-lg h-48 aspect-video w-full">
-        <!-- Item 1 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img
-            src="/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg"
-            class="absolute block w-full h-full object-cover"
-            alt="..."
-          />
-        </div>
-        <!-- Item 2 -->
-        <div class="hidden h-full duration-700 ease-in-out" data-carousel-item>
-          <img
-            src="/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg"
-            class="absolute block w-full h-full object-cover"
-            alt="..."
-          />
-        </div>
-        <!-- Item 3 -->
-        <div class="hidden h-full duration-700 ease-in-out" data-carousel-item>
-          <img
-            src="/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg"
-            class="absolute block w-full h-full object-cover"
-            alt="..."
-          />
-        </div>
+        {
+          items.map(() => (
+            <CarouselItem
+              imgPath="/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg"
+              alt="..."
+            />
+          ))
+        }
       </div>
     </div>
   </div>
@@ -65,7 +61,19 @@
 
     <!-- Slider indicators -->
     <div class="indicators inline-flex items-center gap-x-2">
-      <button
+      {
+        items.map((item, i) => (
+          <button
+            id="carousel-indicator-1"
+            type="button"
+            class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-500"
+            aria-current={i === 0 ? true : false}
+            aria-label={`Slide ${i + 1}`}
+            data-carousel-slide-to={i}
+          />
+        ))
+      }
+      <!-- <button
         id="carousel-indicator-1"
         type="button"
         class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-500"
@@ -85,7 +93,7 @@
         class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-500"
         aria-current="false"
         aria-label="Slide 3"
-        data-carousel-slide-to="2"></button>
+        data-carousel-slide-to="2"></button> -->
     </div>
 
     <!-- Slider controls -->
