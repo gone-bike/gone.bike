@@ -64,7 +64,10 @@ function generatePageLinks(): Array<Record<string, string | number>> {
 }
 ---
 
-<nav class:list={["", {}, classes]} aria-label="search pagination">
+<nav
+  class:list={["flex justify-center", {}, classes]}
+  aria-label="search pagination"
+>
   <ul class="inline-flex items-center -space-x-px text-sm flex-wrap">
     {
       activePage !== 1 && (

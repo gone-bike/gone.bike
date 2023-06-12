@@ -3,12 +3,28 @@ import { t } from "i18next";
 import SearchBikes from "@components/bikes/SearchBikes.astro";
 import BaseContainer from "@components/base/BaseContainer.astro";
 import BikesCard from "@components/cards/BikesCard.astro";
+import BasePagination from "@components/base/BasePagination.astro";
+
+const imgArr = [
+  {
+    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
+    alt: "...1",
+  },
+  {
+    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
+    alt: "...2",
+  },
+  {
+    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
+    alt: "...3",
+  },
+];
 ---
 
-<section class="mt-10 pt-6 md:pt-8">
+<section class="mt-10 pt-6 md:pt-8 pb-8 md:pb-10">
   <BaseContainer>
     <p
-      class="text-center text-gray-500 bg-gray-100 rounded-1.5xl px-4 py-2 w-max mx-auto"
+      class="text-center text-gray-500 bg-gray-100 rounded-1.5xl px-4 py-2 sm:w-max mx-auto"
     >
       Don't have a photo of your stolen bike?
       <!-- {t("homepage.search_paragraph")} -->
@@ -23,7 +39,7 @@ import BikesCard from "@components/cards/BikesCard.astro";
     <SearchBikes lang="en" />
 
     <div
-      class="mt-4 md:mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      class="my-4 md:my-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
     >
       {
         Array.from(Array(10).keys()).map(() => (
@@ -34,9 +50,12 @@ import BikesCard from "@components/cards/BikesCard.astro";
             model="Hooklow 2"
             location="Milano, Italy"
             lang="en"
+            imgs={imgArr}
           />
         ))
       }
     </div>
+
+    <BasePagination />
   </BaseContainer>
 </section>
