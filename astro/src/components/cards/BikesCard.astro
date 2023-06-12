@@ -1,6 +1,6 @@
 ---
-import Carousel from "@components/carousel/Carousel.astro";
-import type { CarouselItemProps } from "@components/carousel/CarouselItem.astro";
+import CarouselVue from "@components/carousel/Carousel.vue";
+import type { CarouselItemProps } from "@components/carousel/carousel";
 import { t, changeLanguage } from "i18next";
 
 import {
@@ -24,24 +24,7 @@ const { lang, matchScore, brand, model, dateStr, location, imgs } =
 
 changeLanguage(lang);
 
-const imgArr = [
-  {
-    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
-    alt: "...",
-  },
-  {
-    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
-    alt: "...",
-  },
-  {
-    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
-    alt: "...",
-  },
-];
-
 const date = new Date(dateStr);
-// console.log("date: ", date);
-// console.log("date: ", typeof date);
 
 const diffInDays = dateDiffInDays({ startDate: date });
 
@@ -57,10 +40,11 @@ const formattedRelativeDate = relativeDateTimeFormatter({
 });
 ---
 
-<li class="link-card list-none p-4 pb-6 rounded-lg bg-white shadow-md">
-  <div>
-    <Carousel items={imgArr} />
-  </div>
+<li
+  class="link-card list-none p-4 pb-6 rounded-lg bg-white shadow-md overflow-hidden"
+>
+  <CarouselVue client:only items={imgs} />
+
   <div class="mt-6">
     <span class="block text-center text-gray-800 text-sm"
       >Match Score: {matchScore}%</span
