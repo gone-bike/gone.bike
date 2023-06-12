@@ -1,0 +1,16 @@
+---
+export interface CarouselItemProps {
+  imgPath: string;
+  alt: string;
+}
+
+const { imgPath, alt } = Astro.props as CarouselItemProps;
+---
+
+<div class="hidden h-full duration-700 ease-in-out" data-carousel-item>
+  <img
+    src={imgPath}
+    class="absolute block w-full h-full object-cover"
+    alt={alt}
+  />
+</div>

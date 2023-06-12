@@ -36,6 +36,9 @@ module.exports = {
           600: "#1c64f2",
           700: "#1a56DB",
         },
+
+        "red-gradient-clr": "#F98080",
+        "teal-gradient-clr": "#84E1BC",
       },
 
       width: {

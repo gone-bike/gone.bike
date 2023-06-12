@@ -2,6 +2,7 @@
 import { t } from "i18next";
 import SearchBikes from "@components/bikes/SearchBikes.astro";
 import BaseContainer from "@components/base/BaseContainer.astro";
+import BikesCard from "@components/cards/BikesCard.astro";
 ---
 
 <section class="mt-10 pt-6 md:pt-8">
@@ -20,5 +21,22 @@ import BaseContainer from "@components/base/BaseContainer.astro";
     </h2>
 
     <SearchBikes lang="en" />
+
+    <div
+      class="mt-4 md:mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+    >
+      {
+        Array.from(Array(10).keys()).map(() => (
+          <BikesCard
+            dateStr="2022-05-28"
+            matchScore={75}
+            brand="Forme"
+            model="Hooklow 2"
+            location="Milano, Italy"
+            lang="en"
+          />
+        ))
+      }
+    </div>
   </BaseContainer>
 </section>
