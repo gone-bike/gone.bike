@@ -1,9 +1,12 @@
+---
+import { t } from "i18next";
+import BaseContainer from "@components/base/BaseContainer.astro";
+---
 
-<nav class="bg-white border-gray-200 dark:bg-gray-900" style="background-color: #1F2A37;">
-  <div class="max-w-screen-xl flex flex-wrap items-center mx-auto p-4">
-   
-    <p class="h-6 font-medium text-gray-100 text-xs leading-6 text-center flex-none order-1 flex-grow-0 mx-auto sm:items-center">&copy; 2023 GoneBike. All rights reserved.</p>
-  
-  </div>
-</nav>
-
+<footer class="bg-customgray-800 py-4">
+  <BaseContainer>
+    <p class="text-center text-customgray-500">
+      &copy; 2023 GoneBike. {t("footer.rights")}
+    </p>
+  </BaseContainer>
+</footer>
