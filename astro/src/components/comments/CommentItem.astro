@@ -1,0 +1,37 @@
+---
+export interface CommentItem {
+  avatarUrl: string;
+  avatarAlt: string;
+  dateCreated: string;
+  dateEdited?: string;
+  comment: string;
+}
+
+export interface CommentItemWithReplies extends CommentItem {
+  replies?: CommentItem[] | [];
+}
+
+export interface CommentItemProps {
+  class?: string;
+  data: CommentItemWithReplies;
+}
+
+const {
+  class: classes,
+  data: {
+    avatarAlt,
+    avatarUrl,
+    comment,
+    dateCreated,
+    dateEdited,
+    replies = [],
+  },
+} = Astro.props as CommentItemProps;
+---
+
+<li class:list={["", {}, classes]}>
+  <header class="">
+    <img class="w-10 h-10 rounded-full" src={avatarUrl} alt={avatarAlt} />
+    <span></span>
+  </header>
+</li>

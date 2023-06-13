@@ -1,0 +1,21 @@
+---
+import i18next, { t } from "i18next";
+
+import BaseContainer from "@components/base/BaseContainer.astro";
+
+import AddComment from "@components/comments/AddComment.astro";
+import CommentsList from "@components/comments/CommentsList.astro";
+---
+
+<section class="py-4">
+  <BaseContainer>
+    <h2 class="text-2xl font-bold">
+      {t("details.comments.title")}
+      <span>(20)</span>
+    </h2>
+
+    <AddComment class="mt-6" />
+
+    <CommentsList class="mt-6" />
+  </BaseContainer>
+</section>
