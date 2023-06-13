@@ -1,32 +1,55 @@
 ---
-import { Debug } from 'astro/components';
+import { Debug } from "astro/components";
 
 import i18next, { t } from "i18next";
 
 import BaseLayout from "@layouts/Base.astro";
-import config from "@utils/config";
+import BaseContainer from "@components/base/BaseContainer.astro";
+import BaseBreadcrumbs from "@components/base/BaseBreadcrumbs.astro";
+// import config from "@utils/config";
 
-import Report from "@models/report";
+// import Report from "@models/report";
 
+// if ( isNaN(Astro.params.id)) {
+//     return await config.http404();
+// }
 
-if ( isNaN(Astro.params.id)) {
-    return await config.http404();
-}
+// let report = await Report(Astro.params.id);
 
-let report = await Report(Astro.params.id);
-
-if (! report ) {
-    return await config.http404();
-}
+// if (! report ) {
+//     return await config.http404();
+// }
 
 // console.log(report)
 
+const higherPages = [
+  {
+    url: "#",
+    text: "Reports",
+  },
+];
 ---
-<BaseLayout title={t('test.x')} description="test">
-    <div class="container mx-auto">
-        <h1>{report?.bike_brand_model?.bike_brand.name } / {report?.bike_brand_model?.name }</h1>
-        <img src=`/photos/${report.main_photo.id}/${report.main_photo.filename_download}`>
-    </div>
 
-    <!-- <Debug data={data}/> -->
+<BaseLayout title={t("test.x")} description="test" lang={i18next.language}>
+  <main>
+    <BaseContainer>
+      <BaseBreadcrumbs
+        class="my-2.5 xl:my-8"
+        higherPages={higherPages}
+        currentPage={"Forme Hooklow 2 - June 3, 2023"}
+      />
+    </BaseContainer>
+  </main>
+  <!-- <div class="container mx-auto">
+    <h1>
+      {report?.bike_brand_model?.bike_brand.name} / {
+        report?.bike_brand_model?.name
+      }
+    </h1>
+    <img
+      src=`/photos/${report.main_photo.id}/${report.main_photo.filename_download}`
+    />
+  </div> -->
+
+  <!-- <Debug data={data}/> -->
 </BaseLayout>
