@@ -9,7 +9,7 @@ import {
   relativeDateTimeFormatter,
 } from "@utils/formatters";
 
-export interface BikesCardProps {
+export interface BikesCardData {
   lang: string;
   matchScore: number;
   brand: string;
@@ -19,8 +19,20 @@ export interface BikesCardProps {
   imgs: CarouselItemProps[];
 }
 
-const { lang, matchScore, brand, model, dateStr, location, imgs } =
-  Astro.props as BikesCardProps;
+export interface BikesCardProps extends BikesCardData {
+  showMatch?: boolean;
+}
+
+const {
+  lang,
+  matchScore,
+  brand,
+  model,
+  dateStr,
+  location,
+  imgs,
+  showMatch = false,
+} = Astro.props as BikesCardProps;
 
 changeLanguage(lang);
 
@@ -45,18 +57,21 @@ const formattedRelativeDate = relativeDateTimeFormatter({
 >
   <CarouselVue client:only items={imgs} />
 
-  <div class="mt-6">
-    <span class="block text-center text-gray-800 text-sm"
-      >Match Score: {matchScore}%</span
-    >
-    <div class="w-full bg-gray-200 rounded-full h-1.5">
-      <div
-        class="bg-gradient-to-r from-red-gradient-clr to-teal-gradient-clr h-full rounded-full"
-        style={{ width: `${matchScore}%` }}
-      >
+  {
+    showMatch && (
+      <div class="mt-6">
+        <span class="block text-center text-gray-800 text-sm">
+          Match Score: {matchScore}%
+        </span>
+        <div class="w-full bg-gray-200 rounded-full h-1.5">
+          <div
+            class="bg-gradient-to-r from-red-gradient-clr to-teal-gradient-clr h-full rounded-full"
+            style={{ width: `${matchScore}%` }}
+          />
+        </div>
       </div>
-    </div>
-  </div>
+    )
+  }
   <div class="pb-2.5 border-b borde-gray-200">
     <h3 class="text-xl font-bold mt-2.5">{brand}</h3>
     <h4 class="text-gray-500 mt-1">{model}</h4>
