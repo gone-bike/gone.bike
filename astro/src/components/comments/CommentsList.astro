@@ -1,35 +1,18 @@
 ---
-import CommentItem, {
-  type CommentItemWithReplies,
-} from "@components/comments/CommentItem.astro";
+import CommentThread from "@components/comments/CommentThread.astro";
+import type { CommentItemWithReplies } from "@components/comments/CommentItem.astro";
 
 export interface CommentsListProps {
   class?: string;
+  comments: CommentItemWithReplies[];
 }
 
-const { class: classes } = Astro.props as CommentsListProps;
-
-const comments: CommentItemWithReplies[] = [
-  {
-    avatarUrl: "12",
-    avatarAlt: "Micheal Gough avatar",
-    dateCreated: "22-10-18",
-    comment: `Very straight-to-point article. Really worth time reading. Thank you!
-‍But tools are just the instruments for the UX designers. The knowledge of the design tools are as important as the creation of the design strategy.`,
-    dateEdited: "22-10-18:",
-    replies: [
-      {
-        avatarUrl: "12",
-        avatarAlt: "Helene Engels avatar",
-        dateCreated: "22-10-18:",
-        comment: `Thank you, Glad you liked it :D`,
-        dateEdited: "22-10-18:",
-      },
-    ],
-  },
-];
+const { class: classes, comments } = Astro.props as CommentsListProps;
 ---
 
-<ul class:list={["", {}, classes]}>
-  {comments.map((comment) => <CommentItem data={comment} />)}
+<ul class:list={["space-y-4", {}, classes]}>
+  {
+    comments?.length > 0 &&
+      comments.map((comment) => <CommentThread data={comment} />)
+  }
 </ul>
