@@ -49,7 +49,26 @@ export interface DetailsSectionProps {
 
 const {
   class: classes,
-  data: { user_created, date_created, date_updated },
+  data: {
+    user_created,
+    date_created,
+    date_updated,
+    main_photo,
+    bike_brand,
+    bike_brand_model,
+    theft_date,
+    theft_timeframe,
+    bike_type,
+    colors,
+    serial_number,
+    is_electric,
+    approximate_value,
+    approximate_value_currency,
+    theft_location_type,
+    lock_anchor,
+    lock_type,
+    description,
+  },
 } = Astro.props as DetailsSectionProps;
 
 type StringOrNullOrUndefined = string | null | undefined;
@@ -85,6 +104,23 @@ if (date_updated && getIsValidDate(date_updated)) {
     },
   });
 }
+
+let theftDateFormatted = null as StringOrNullOrUndefined;
+
+if (theft_date && getIsValidDate(theft_date)) {
+  theftDateFormatted = dateTimeFormatter({
+    date: theft_date,
+    locale: i18next.language,
+    options: {
+      month: "long",
+      day: "2-digit",
+      year: "numeric",
+    },
+  });
+}
+
+const colorsStr =
+  colors && colors.map((clr) => clr[0].toUpperCase() + clr.slice(1)).join(", ");
 ---
 
 <section class:list={["", {}, classes]}>
@@ -106,7 +142,7 @@ if (date_updated && getIsValidDate(date_updated)) {
     <div class="inline-flex items-center gap-4">
       <!-- facebook share -->
       <button
-        class="hidden text-gray-800 md:inline-flex md:items-center md:gap-x-3 border border-gray-800 rounded-lg py-2.5 px-5"
+        class="hidden text-gray-800 lg:inline-flex lg:items-center lg:gap-x-3 border border-gray-800 rounded-lg py-2.5 px-5"
       >
         <svg
           width="21"
@@ -135,7 +171,7 @@ if (date_updated && getIsValidDate(date_updated)) {
       </button>
       <!-- twitter share -->
       <button
-        class="hidden text-gray-800 md:inline-flex md:items-center md:gap-x-3 border border-gray-800 rounded-lg py-2.5 px-5"
+        class="hidden text-gray-800 lg:inline-flex lg:items-center lg:gap-x-3 border border-gray-800 rounded-lg py-2.5 px-5"
       >
         <svg
           width="20"
@@ -172,5 +208,240 @@ if (date_updated && getIsValidDate(date_updated)) {
       </button>
     </div>
   </div>
-  <div class="my-4 px-4"></div>
+  <div class="space-y-8">
+    <!-- left-col -->
+    <div class="my-4 px-4">
+      {
+        main_photo && (
+          <div class="main-photo">
+            <img
+              class="w-full h-full object-contain max-h-108"
+              src={main_photo}
+              alt=""
+            />
+          </div>
+        )
+      }
+
+      <!-- grid gap-x-4 grid-cols-3 justify-start -->
+      <div class="mt-4 photos grid gap-x-4 grid-cols-3 justify-start">
+        <div>
+          <img
+            class="w-full h-full object-cover"
+            src="/static/img/bike-image-1.jpg"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            class="w-full h-full object-cover"
+            src="/static/img/bike-image-2.jpg"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            class="w-full h-full object-cover"
+            src="/static/img/bike-image-3.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <!-- right-col -->
+    <div>
+      <div class="flex items-center justify-between gap-4 flex-wrap">
+        <div class="inline-flex items-center gap-4">
+          <span class="text-gray-800 font-medium"
+            >{(t("details.bike_status"), "Bike Status")}:</span
+          >
+
+          <div
+            class="inline-flex items-center bg-red-100 rounded-full px-2.5 py-1 text-red-800 gap-2"
+          >
+            <span class="dot block w-3 h-3 rounded-full bg-red-500"></span>
+            <span class="">Stolen</span>
+          </div>
+        </div>
+
+        <p class="text-right text-gray-500 italic">
+          {t("details.last_update", "last update")}
+          <span class="block w-max">{dateUpdatedFormatted}</span>
+        </p>
+      </div>
+
+      <h1 class="mt-4 text-4xl font-bold text-customgray-800">{bike_brand}</h1>
+      <h2 class="text-4xl font-normal">{bike_brand_model}</h2>
+
+      <div class="flex items-center justify-between text-gray-800 my-5">
+        <span class="text-gray-500"
+          >{t("report.data.date_theft", "Date of Theft")}</span
+        >
+
+        <p class="space-x-3">
+          {theftDateFormatted && <span>{theftDateFormatted}</span>}
+          {
+            theft_timeframe && (
+              <span>
+                {t(
+                  `report.data.theft_timeframe.${theft_timeframe}`,
+                  theft_timeframe
+                )}
+              </span>
+            )
+          }
+        </p>
+      </div>
+
+      <div
+        class="py-5 border-y border-gray-200 grid grid-cols-2 gap-4 md:grid-cols-4"
+      >
+        {
+          bike_type && (
+            <div>
+              <p class="font-bold text-gray-800">
+                {t("report.data.bike_type", "Bike Type")}
+              </p>
+              <p class="text-gray-600 mt-3">{bike_type}</p>
+            </div>
+          )
+        }
+        {
+          colors && colors.length > 0 && (
+            <div>
+              <p class="font-bold text-gray-800">
+                {t("report.data.bike_colors", "Bike Main Colors")}
+              </p>
+              <p class="text-gray-600 mt-3">{colorsStr}</p>
+            </div>
+          )
+        }
+        {
+          serial_number && (
+            <div>
+              <p class="font-bold text-gray-800">
+                {t("report.data.bike_type", "Serial Number")}
+              </p>
+              <p class="text-gray-600 mt-3">{serial_number}</p>
+            </div>
+          )
+        }
+
+        <div>
+          <p class="font-bold text-gray-800">
+            {t("report.data.is_electric", "Electric Bike")}
+          </p>
+          <p class="text-gray-600 mt-3">
+            {
+              t(
+                `report.data.is_electic.${is_electric}`,
+                is_electric ? "Electric Bike" : "Non Electic Bike"
+              )
+            }
+          </p>
+        </div>
+      </div>
+
+      <!-- other details -->
+      <div class="mt-5">
+        <p class="text-gray-800 capitalize font-semibold">
+          {t(`report.data.other_details`)}
+        </p>
+
+        <div class="mt-3 relative overflow-x-auto sm:rounded-lg">
+          <table class="w-full text-sm text-left text-gray-500">
+            <tbody class="text-gray-900">
+              <tr class="bg-white border-b">
+                <th scope="row" class="p-4 font-medium whitespace-nowrap">
+                  {t("report.data.approximate_value", "Approximate Value")}
+                </th>
+                <td class="p-4 font-semibold">
+                  {approximate_value_currency ?? ""}
+                  {approximate_value ?? ""}
+                </td>
+              </tr>
+              <tr class="border-b bg-gray-50">
+                <th scope="row" class="p-4 font-medium whitespace-nowrap">
+                  {t("report.data.theft_location_type", "Last Location")}
+                </th>
+                <td class="p-4 font-semibold capitalize">
+                  {theft_location_type ?? ""}</td
+                >
+              </tr>
+              <tr class="bg-white border-b">
+                <th scope="row" class="p-4 font-medium whitespace-nowrap">
+                  {t("report.data.lock_type", "Lock Type")}
+                </th>
+                <td class="p-4 font-semibold">
+                  {lock_type ?? ""}
+                </td>
+              </tr>
+              <tr class="border-b bg-gray-50">
+                <th scope="row" class="p-4 font-medium whitespace-nowrap">
+                  {t("report.data.lock_anchor", "Anchor Point")}
+                </th>
+                <td class="p-4 font-semibold"> {lock_anchor ?? ""}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- actions -->
+      <div class="mt-5 flex flex-col gap-3 md:grid md:grid-cols-2 md:gap-12">
+        <button
+          class="flex items-center justify-center gap-x-2 border border-primary-700 rounded-lg p-3 text-primary-700"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <mask
+              id="mask0_29_13675"
+              style="mask-type:alpha"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="20"
+              height="20"
+            >
+              <rect width="20" height="20" fill="#D9D9D9"></rect>
+            </mask>
+            <g mask="url(#mask0_29_13675)">
+              <path
+                class="fill-primary-700"
+                d="M10 17.5C8.95833 17.5 7.98264 17.3021 7.07292 16.9062C6.16319 16.5104 5.37153 15.9757 4.69792 15.3021C4.02431 14.6285 3.48958 13.8368 3.09375 12.9271C2.69792 12.0174 2.5 11.0417 2.5 10C2.5 8.95833 2.69792 7.98264 3.09375 7.07292C3.48958 6.16319 4.02431 5.37153 4.69792 4.69792C5.37153 4.02431 6.16319 3.48958 7.07292 3.09375C7.98264 2.69792 8.95833 2.5 10 2.5C11.1389 2.5 12.2188 2.74306 13.2396 3.22917C14.2604 3.71528 15.125 4.40278 15.8333 5.29167V3.33333H17.5V8.33333H12.5V6.66667H14.7917C14.2222 5.88889 13.5208 5.27778 12.6875 4.83333C11.8542 4.38889 10.9583 4.16667 10 4.16667C8.375 4.16667 6.99653 4.73264 5.86458 5.86458C4.73264 6.99653 4.16667 8.375 4.16667 10C4.16667 11.625 4.73264 13.0035 5.86458 14.1354C6.99653 15.2674 8.375 15.8333 10 15.8333C11.4583 15.8333 12.7326 15.3611 13.8229 14.4167C14.9132 13.4722 15.5556 12.2778 15.75 10.8333H17.4583C17.25 12.7361 16.434 14.3229 15.0104 15.5938C13.5868 16.8646 11.9167 17.5 10 17.5Z"
+              ></path>
+            </g>
+          </svg>
+          <span>{t("report.update_bike_status", "Update Bike Status")}</span>
+        </button>
+        <button
+          class="flex items-center justify-center gap-x-2 border border-transparent bg-primary-700 rounded-lg p-3 text-white"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              class="fill-white"
+              d="M2.00299 5.884L9.99999 9.882L17.997 5.884C17.9674 5.37444 17.7441 4.89549 17.3728 4.54523C17.0015 4.19497 16.5104 3.99991 16 4H3.99999C3.48958 3.99991 2.99844 4.19497 2.62717 4.54523C2.2559 4.89549 2.03259 5.37444 2.00299 5.884Z"
+            ></path>
+            <path
+              class="fill-white"
+              d="M18 8.11792L10 12.1179L2 8.11792V13.9999C2 14.5304 2.21071 15.0391 2.58579 15.4141C2.96086 15.7892 3.46957 15.9999 4 15.9999H16C16.5304 15.9999 17.0391 15.7892 17.4142 15.4141C17.7893 15.0391 18 14.5304 18 13.9999V8.11792Z"
+            ></path>
+          </svg>
+
+          <span>{t("report.contact_author", "Contact the Author")}</span>
+        </button>
+      </div>
+    </div>
+  </div>
 </section>
