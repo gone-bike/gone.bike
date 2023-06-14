@@ -1,0 +1,41 @@
+---
+import BikesCard, {
+  type BikesCardProps,
+} from "@components/cards/BikesCard.astro";
+
+export interface BikesListProps {
+  items: BikesCardProps[];
+  showMatch?: boolean;
+  class?: string;
+}
+
+const {
+  items = [],
+  showMatch = false,
+  class: classes,
+} = Astro.props as BikesListProps;
+---
+
+<ul
+  class:list={[
+    "my-4 md:my-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+    {},
+    classes,
+  ]}
+>
+  {
+    items?.length > 0 &&
+      items.map((item) => (
+        <BikesCard
+          dateStr={item.dateStr}
+          showMatch={showMatch}
+          matchScore={item.matchScore}
+          brand={item.brand}
+          model={item.model}
+          location={item.location}
+          lang={item.lang}
+          imgs={item.imgs}
+        />
+      ))
+  }
+</ul>
