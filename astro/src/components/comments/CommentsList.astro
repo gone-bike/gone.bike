@@ -1,0 +1,18 @@
+---
+import CommentThread from "@components/comments/CommentThread.astro";
+import type { CommentItemWithReplies } from "@components/comments/CommentItem.astro";
+
+export interface CommentsListProps {
+  class?: string;
+  comments: CommentItemWithReplies[];
+}
+
+const { class: classes, comments } = Astro.props as CommentsListProps;
+---
+
+<ul class:list={["space-y-4", {}, classes]}>
+  {
+    comments?.length > 0 &&
+      comments.map((comment) => <CommentThread data={comment} />)
+  }
+</ul>

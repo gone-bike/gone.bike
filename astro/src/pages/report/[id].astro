@@ -4,8 +4,10 @@ import { Debug } from "astro/components";
 import i18next, { t } from "i18next";
 
 import BaseLayout from "@layouts/Base.astro";
+import CommentsSection from "@components/sections/details/CommentsSection.astro";
 import BaseContainer from "@components/base/BaseContainer.astro";
 import BaseBreadcrumbs from "@components/base/BaseBreadcrumbs.astro";
+
 // import config from "@utils/config";
 
 // import Report from "@models/report";
@@ -21,13 +23,13 @@ import BaseBreadcrumbs from "@components/base/BaseBreadcrumbs.astro";
 // }
 
 // console.log(report)
-
+    
 const higherPages = [
   {
     url: "#",
     text: "Reports",
   },
-];
+];    
 ---
 
 <BaseLayout title={t("test.x")} description="test" lang={i18next.language}>
@@ -38,6 +40,7 @@ const higherPages = [
         higherPages={higherPages}
         currentPage={"Forme Hooklow 2 - June 3, 2023"}
       />
+       <CommentsSection />
     </BaseContainer>
   </main>
   <!-- <div class="container mx-auto">
@@ -50,6 +53,5 @@ const higherPages = [
       src=`/photos/${report.main_photo.id}/${report.main_photo.filename_download}`
     />
   </div> -->
-
   <!-- <Debug data={data}/> -->
 </BaseLayout>

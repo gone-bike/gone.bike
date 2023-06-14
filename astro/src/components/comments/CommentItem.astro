@@ -1,0 +1,128 @@
+---
+import i18next from "i18next";
+import { dateTimeFormatter } from "@utils/formatters";
+export interface CommentItem {
+  avatarUrl: string;
+  avatarAlt: string;
+  author: string;
+  dateCreated: string;
+  dateEdited?: string;
+  comment: string;
+}
+
+export interface CommentItemWithReplies extends CommentItem {
+  replies?: CommentItem[] | [];
+}
+
+export interface CommentItemProps {
+  class?: string;
+  data: CommentItem;
+}
+
+const {
+  class: classes,
+  data: { avatarAlt, avatarUrl, author, comment, dateCreated, dateEdited = "" },
+} = Astro.props as CommentItemProps;
+
+const realDateCreated = new Date(dateCreated);
+const realDateEdited = new Date(dateEdited);
+
+const formattedDateCreated = dateTimeFormatter({
+  date: realDateCreated,
+  locale: i18next.language,
+  options: {
+    day: "2-digit",
+    month: "short",
+    year: "2-digit",
+  },
+});
+
+let formattedDateEdited: string | undefined = undefined;
+
+function isValidDate(d: Date) {
+  return d instanceof Date && !isNaN(d);
+}
+
+if (isValidDate(realDateEdited)) {
+  formattedDateEdited = dateTimeFormatter({
+    date: realDateEdited,
+    locale: i18next.language,
+    options: {
+      day: "2-digit",
+      month: "short",
+      year: undefined,
+    },
+  });
+}
+---
+
+<div class:list={["p-6 bg-gray-50 rounded-lg", {}, classes]}>
+  <!-- comment header -->
+  <header class="flex items-center justify-between">
+    <!-- left part -->
+    <div class="inline-flex items-center">
+      <img class="w-6 h-6 rounded-full" src={avatarUrl} alt={avatarAlt} />
+      <span class="block ml-3 text-sm font-semibold text-customgray-900"
+        >{author}</span
+      >
+      <span class="block ml-3 text-gray-600">{formattedDateCreated}</span>
+      {
+        formattedDateEdited && formattedDateEdited?.length > 0 && (
+          <span class="block ml-3 text-gray-600">{formattedDateEdited}</span>
+        )
+      }
+    </div>
+    <!-- right part -->
+    <div>
+      <button class="w-5 h-5">
+        <svg
+          width="16"
+          height="4"
+          viewBox="0 0 16 4"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2.7559 2.58934C2.91218 2.43306 2.99998 2.22109 2.99998 2.00008C2.99998 1.77907 2.91218 1.56711 2.7559 1.41083C2.59962 1.25455 2.38766 1.16675 2.16665 1.16675C1.94563 1.16675 1.73367 1.25455 1.57739 1.41083C1.42111 1.56711 1.33331 1.77907 1.33331 2.00008C1.33331 2.22109 1.42111 2.43306 1.57739 2.58934C1.73367 2.74562 1.94563 2.83341 2.16665 2.83341C2.38766 2.83341 2.59962 2.74562 2.7559 2.58934Z"
+            fill="#6B7280"></path>
+          <path
+            d="M8.58923 2.58934C8.74552 2.43306 8.83331 2.22109 8.83331 2.00008C8.83331 1.77907 8.74552 1.56711 8.58923 1.41083C8.43295 1.25455 8.22099 1.16675 7.99998 1.16675C7.77897 1.16675 7.567 1.25455 7.41072 1.41083C7.25444 1.56711 7.16665 1.77907 7.16665 2.00008C7.16665 2.22109 7.25444 2.43306 7.41072 2.58934C7.567 2.74562 7.77897 2.83341 7.99998 2.83341C8.22099 2.83341 8.43295 2.74562 8.58923 2.58934Z"
+            fill="#6B7280"></path>
+          <path
+            d="M14.4226 2.58934C14.5788 2.43306 14.6666 2.22109 14.6666 2.00008C14.6666 1.77907 14.5788 1.56711 14.4226 1.41083C14.2663 1.25455 14.0543 1.16675 13.8333 1.16675C13.6123 1.16675 13.4003 1.25455 13.2441 1.41083C13.0878 1.56711 13 1.77907 13 2.00008C13 2.22109 13.0878 2.43306 13.2441 2.58934C13.4003 2.74562 13.6123 2.83341 13.8333 2.83341C14.0543 2.83341 14.2663 2.74562 14.4226 2.58934Z"
+            fill="#6B7280"></path>
+          <path
+            d="M2.16665 2.00008H2.17498M7.99998 2.00008H8.00831M13.8333 2.00008H13.8416M2.99998 2.00008C2.99998 2.22109 2.91218 2.43306 2.7559 2.58934C2.59962 2.74562 2.38766 2.83341 2.16665 2.83341C1.94563 2.83341 1.73367 2.74562 1.57739 2.58934C1.42111 2.43306 1.33331 2.22109 1.33331 2.00008C1.33331 1.77907 1.42111 1.56711 1.57739 1.41083C1.73367 1.25455 1.94563 1.16675 2.16665 1.16675C2.38766 1.16675 2.59962 1.25455 2.7559 1.41083C2.91218 1.56711 2.99998 1.77907 2.99998 2.00008ZM8.83331 2.00008C8.83331 2.22109 8.74552 2.43306 8.58923 2.58934C8.43295 2.74562 8.22099 2.83341 7.99998 2.83341C7.77897 2.83341 7.567 2.74562 7.41072 2.58934C7.25444 2.43306 7.16665 2.22109 7.16665 2.00008C7.16665 1.77907 7.25444 1.56711 7.41072 1.41083C7.567 1.25455 7.77897 1.16675 7.99998 1.16675C8.22099 1.16675 8.43295 1.25455 8.58923 1.41083C8.74552 1.56711 8.83331 1.77907 8.83331 2.00008ZM14.6666 2.00008C14.6666 2.22109 14.5788 2.43306 14.4226 2.58934C14.2663 2.74562 14.0543 2.83341 13.8333 2.83341C13.6123 2.83341 13.4003 2.74562 13.2441 2.58934C13.0878 2.43306 13 2.22109 13 2.00008C13 1.77907 13.0878 1.56711 13.2441 1.41083C13.4003 1.25455 13.6123 1.16675 13.8333 1.16675C14.0543 1.16675 14.2663 1.25455 14.4226 1.41083C14.5788 1.56711 14.6666 1.77907 14.6666 2.00008Z"
+            stroke="#9CA3AF"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+  <!-- comment body -->
+  <div class="mt-3">
+    <p class="text-gray-500">{comment}</p>
+  </div>
+  <!-- comment footer -->
+  <footer class="mt-3">
+    <button class="inline-flex items-center gap-x-1.5">
+      <svg
+        width="16"
+        height="15"
+        viewBox="0 0 16 15"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5 7.5H5.0075M8 7.5H8.0075M11 7.5H11.0075M14.75 7.5C14.75 10.8135 11.7275 13.5 8 13.5C6.89648 13.5038 5.80609 13.2606 4.80875 12.7883L1.25 13.5L2.29625 10.71C1.634 9.7815 1.25 8.6805 1.25 7.5C1.25 4.1865 4.2725 1.5 8 1.5C11.7275 1.5 14.75 4.1865 14.75 7.5Z"
+          stroke="#6B7280"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+      <span>Reply</span>
+    </button>
+  </footer>
+</div>

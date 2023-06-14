@@ -1,0 +1,77 @@
+---
+import i18next, { t } from "i18next";
+
+import BaseContainer from "@components/base/BaseContainer.astro";
+
+import AddComment from "@components/comments/AddComment.astro";
+import CommentsList from "@components/comments/CommentsList.astro";
+import type { CommentItemWithReplies } from "@components/comments/CommentItem.astro";
+
+type Comments = CommentItemWithReplies[];
+
+const comments: Comments = [
+  {
+    avatarUrl: "/static/img/comments/avatar-1.jpg",
+    avatarAlt: "Micheal Gough avatar",
+    author: "Micheal Gough",
+    dateCreated: "2022-10-18",
+    comment: `Very straight-to-point article. Really worth time reading. Thank you!
+‍But tools are just the instruments for the UX designers. The knowledge of the design tools are as important as the creation of the design strategy.`,
+    dateEdited: "2022-10-18",
+    replies: [
+      {
+        avatarUrl: "/static/img/comments/avatar-2.jpg",
+        avatarAlt: "Helene Engels avatar",
+        author: "Helene Engels",
+        dateCreated: "2022-10-18",
+        comment: `Thank you, Glad you liked it :D`,
+      },
+      {
+        avatarUrl: "/static/img/comments/avatar-2.jpg",
+        avatarAlt: "Helene Engels avatar",
+        author: "Helene Engels",
+        dateCreated: "2022-10-18",
+        comment: `Thank you, Glad you liked it :D`,
+      },
+      {
+        avatarUrl: "/static/img/comments/avatar-2.jpg",
+        avatarAlt: "Helene Engels avatar",
+        author: "Helene Engels",
+        dateCreated: "2022-10-18",
+        comment: `Thank you, Glad you liked it :D`,
+      },
+    ],
+  },
+  {
+    avatarUrl: "/static/img/comments/avatar-3.jpg",
+    avatarAlt: "Bonnie Green avatar",
+    author: "Bonnie Green",
+    dateCreated: "2022-10-18",
+    comment: `Very straight-to-point article. Really worth time reading. Thank you!
+‍But tools are just the instruments for the UX designers. The knowledge of the design tools are as important as the creation of the design strategy.`,
+    dateEdited: "2022-10-18",
+  },
+];
+
+const getNumberComments = (coms: Comments) => {
+  return coms.reduce((acc, com) => {
+    const lengthReplies = com?.replies?.length;
+    return lengthReplies ? acc + lengthReplies + 1 : acc + 1;
+  }, 0);
+};
+
+const totalComments = getNumberComments(comments);
+---
+
+<section class="py-4">
+  <BaseContainer>
+    <h2 class="text-2xl font-bold">
+      {t("details.comments.title")}
+      <span>({totalComments})</span>
+    </h2>
+
+    <AddComment class="mt-6" />
+
+    <CommentsList class="mt-6" comments={comments} />
+  </BaseContainer>
+</section>
