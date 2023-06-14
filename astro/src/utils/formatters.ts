@@ -76,3 +76,7 @@ export function dateDiffInDays({
 
   return Math.floor((utcStart - utcEnd) / _MS_PER_DAY);
 }
+
+export function getIsValidDate(d: Date) {
+  return d instanceof Date && !isNaN(d as any);
+}
