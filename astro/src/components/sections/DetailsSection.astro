@@ -1,8 +1,10 @@
 ---
+import GoogleMap from "@components/GoogleMap.vue";
+import config from "@utils/config";
 import { dateTimeFormatter, getIsValidDate } from "@utils/formatters";
 import i18next, { t } from "i18next";
 
-export interface DetailsData {
+/* export interface DetailsData {
   id: number;
   status: string;
   user_created?: string;
@@ -40,11 +42,66 @@ export interface DetailsData {
   submit_by?: string;
   // bike_brand?: number;
   bike_brand?: string;
+} */
+export interface ReportDetails {
+  id: any;
+  user_created?: string;
+  date_created?: Date;
+  user_updated?: string;
+  date_updated?: Date;
+  status: string;
+  bike_details?: string;
+  description: string;
+  location: { type: "Point"; coordinates: [number, number] };
+  location_address?: string;
+  theft_date: Date;
+  theft_timeframe: string;
+  theft_location_type: string;
+  colors: string[];
+  serial_number: string;
+  approximate_value: number;
+  approximate_value_currency: string;
+
+  lock_type: string;
+  lock_anchor: string;
+
+  activation_code: string | null;
+
+  is_electric?: boolean;
+
+  photos: {
+    directus_files_id: {
+      id: any;
+      filename_download: string;
+      type: string;
+      width: number;
+      height: number;
+    };
+  }[];
+  bike_brand_model: {
+    name: string;
+    bike_brand: {
+      id: any;
+      key: string;
+      name: string;
+    };
+  };
+  bike_type?: string;
+  language: {
+    locale_code: string;
+  };
+  main_photo: {
+    id: any;
+    filename_download: string;
+    type: string;
+    width: number;
+    height: number;
+  };
 }
 
 export interface DetailsSectionProps {
   class?: string;
-  data: DetailsData;
+  data: ReportDetails;
 }
 
 const {
@@ -54,7 +111,6 @@ const {
     date_created,
     date_updated,
     main_photo,
-    bike_brand,
     bike_brand_model,
     theft_date,
     theft_timeframe,
@@ -68,6 +124,10 @@ const {
     lock_anchor,
     lock_type,
     description,
+    location_address,
+    location,
+    photos,
+    bike_details,
   },
 } = Astro.props as DetailsSectionProps;
 
@@ -123,7 +183,7 @@ const colorsStr =
   colors && colors.map((clr) => clr[0].toUpperCase() + clr.slice(1)).join(", ");
 ---
 
-<section class:list={["", {}, classes]}>
+<section class:list={["mb-4", {}, classes]}>
   <!-- upper part -->
   <div
     class="flex items-center justify-between gap-4 py-4 border-t border-b border-gray-200"
@@ -208,15 +268,18 @@ const colorsStr =
       </button>
     </div>
   </div>
-  <div class="space-y-8">
+  <!-- main part -->
+  <div class="my-4 space-y-8 xl:flex xl:items-center xl:space-y-0 xl:gap-24">
     <!-- left-col -->
-    <div class="my-4 px-4">
+    <div class="my-4 px-4 lg:px-0 lg:my-0">
       {
-        main_photo && (
+        main_photo?.id && (
           <div class="main-photo">
             <img
-              class="w-full h-full object-contain max-h-108"
-              src={main_photo}
+              class="w-full h-full object-contain max-h-108 xl:max-h-full"
+              src={main_photo.filename_download}
+              width={main_photo.width}
+              height={main_photo.height}
               alt=""
             />
           </div>
@@ -224,34 +287,29 @@ const colorsStr =
       }
 
       <!-- grid gap-x-4 grid-cols-3 justify-start -->
-      <div class="mt-4 photos grid gap-x-4 grid-cols-3 justify-start">
-        <div>
-          <img
-            class="w-full h-full object-cover"
-            src="/static/img/bike-image-1.jpg"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            class="w-full h-full object-cover"
-            src="/static/img/bike-image-2.jpg"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            class="w-full h-full object-cover"
-            src="/static/img/bike-image-3.jpg"
-            alt=""
-          />
+      <div class="carousel mt-4 w-full overflow-hidden">
+        <div class="carousel-inner flex overflow-x-auto pb-2">
+          {
+            photos.length > 0 &&
+              photos.map((photo) => (
+                <div class="flex-grow-0 flex-shrink-0 basis-auto pr-4">
+                  <img
+                    class="w-24 h-full sm:w-40 md:w-full  object-cover rounded-lg"
+                    src={photo.directus_files_id.filename_download}
+                    width={photo.directus_files_id.width}
+                    height={photo.directus_files_id.height}
+                    alt=""
+                  />
+                </div>
+              ))
+          }
         </div>
       </div>
     </div>
     <!-- right-col -->
     <div>
-      <div class="flex items-center justify-between gap-4 flex-wrap">
-        <div class="inline-flex items-center gap-4">
+      <div class="flex items-center justify-between gap-4">
+        <div class="inline-flex items-center gap-4 flex-shrink-0">
           <span class="text-gray-800 font-medium"
             >{(t("details.bike_status"), "Bike Status")}:</span
           >
@@ -264,14 +322,16 @@ const colorsStr =
           </div>
         </div>
 
-        <p class="text-right text-gray-500 italic">
+        <p class="text-right text-gray-500 italic flex-shrink">
           {t("details.last_update", "last update")}
-          <span class="block w-max">{dateUpdatedFormatted}</span>
+          <span class="block">{dateUpdatedFormatted}</span>
         </p>
       </div>
 
-      <h1 class="mt-4 text-4xl font-bold text-customgray-800">{bike_brand}</h1>
-      <h2 class="text-4xl font-normal">{bike_brand_model}</h2>
+      <h1 class="mt-4 text-4xl font-bold text-customgray-800">
+        {bike_brand_model.bike_brand.name}
+      </h1>
+      <h2 class="text-4xl font-normal">{bike_brand_model.name}</h2>
 
       <div class="flex items-center justify-between text-gray-800 my-5">
         <span class="text-gray-500"
@@ -344,9 +404,9 @@ const colorsStr =
 
       <!-- other details -->
       <div class="mt-5">
-        <p class="text-gray-800 capitalize font-semibold">
-          {t(`report.data.other_details`)}
-        </p>
+        <h3 class="text-gray-800 capitalize font-semibold">
+          {t(`report.data.other_details`, "Other Details")}
+        </h3>
 
         <div class="mt-3 relative overflow-x-auto sm:rounded-lg">
           <table class="w-full text-sm text-left text-gray-500">
@@ -444,4 +504,54 @@ const colorsStr =
       </div>
     </div>
   </div>
+
+  <!-- text block + map -->
+  <div class="py-4 grid gap-6">
+    {
+      bike_details && (
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800">
+            {t("report.bike_details", "Bike Description")}
+          </h3>
+          <p class="mt-2 text-gray-500">{bike_details}</p>
+        </div>
+      )
+    }
+    {
+      description && (
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800">
+            {t("report.circumstances", "Circumstances")}
+          </h3>
+          <p class="mt-2 text-gray-500">{description}</p>
+        </div>
+      )
+    }
+    {
+      location_address && (
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800">
+            {t("report.location", "Precise Location")}
+          </h3>
+          <p class="mt-2 text-gray-500">{location_address}</p>
+        </div>
+      )
+    }
+
+    <a
+      class="inline-block w-fit font-bold underline underline-offset-4 hover:text-primary-600 focus:text-primary-600"
+      href=`https://www.google.com/maps?q=${location.coordinates[0]},${location.coordinates[1]}`
+      >Go to Google Maps</a
+    >
+  </div>
 </section>
+
+<style>
+  .carousel-inner {
+    scroll-snap-type: x mandatory;
+  }
+
+  .carousel-inner > * {
+    scroll-snap-align: start;
+  }
+</style>

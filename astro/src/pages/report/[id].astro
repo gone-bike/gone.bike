@@ -7,7 +7,8 @@ import BaseLayout from "@layouts/Base.astro";
 import BaseContainer from "@components/base/BaseContainer.astro";
 import BaseBreadcrumbs from "@components/base/BaseBreadcrumbs.astro";
 import DetailsSection, {
-  DetailsData,
+  // DetailsData,
+  ReportDetails,
 } from "@components/sections/DetailsSection.astro";
 // import config from "@utils/config";
 
@@ -41,12 +42,13 @@ const detailsData = {
   date_updated: new Date("2023-06-03T11:14:00"),
   location: {
     type: "Point",
-    coordinates: [7.7571072, 110.3767532],
+    coordinates: [-7.7604326, 110.3767532],
   },
-  bike_brand_model: "Forme",
   theft_date: new Date("2023-06-03T08:14:00"),
-  description:
+  bike_details:
     "The sleek and stylish bike, with its vibrant red frame and aerodynamic design, boasts cutting-edge features such as a lightweight carbon fiber frame, Shimano Di2 electronic shifting, hydraulic disc brakes, and a high-performance suspension system, making it the perfect choice for both urban commutes and thrilling off-road adventures, while its comfortable saddle and ergonomic handlebars ensure a smooth and enjoyable ride every time.",
+  description:
+    "While I had securely locked their bike to a designated bike rack, I returned after a brief errand to find the lock cut and their bike missing. No witnesses were present at the time of the theft. The incident occurred in evening, raising concerns about the audacity of the thief. Surveillance footage from nearby establishments is currently being reviewed to aid in the investigation.",
   colors: ["Black", "Red"],
   serial_number: "W7521246",
   bike_type: "Mountain Bike",
@@ -55,22 +57,80 @@ const detailsData = {
   theft_location_type: "street",
   lock_type: "Folding Lock",
   lock_anchor: "To other bike",
-  language: "en",
+  /* language: "en",
   main_photo: "/static/img/main-photo.png",
-  is_electric: false,
+  is_electric: false, */
   theft_timeframe: "Evening",
-  bike_details: "some details",
+
   location_address:
-    "69VH+5P4, Manggung, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia",
-  location_details: {},
-  // ref_url: '',
+    "Manggung, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia",
+  /*  location_details: {},
+  ref_url: '',
   email: "test@gmail.com",
-  // activation_code,
+  activation_code,
   theft_status: "stolen",
-  // tags:
+  tags:
   submit_by: "Raka",
-  bike_brand: "Hooklow 2",
-} satisfies DetailsData;
+  bike_brand: "Hooklow 2", */
+  activation_code: "some-code",
+  bike_brand_model: {
+    name: "Hooklow 2",
+    bike_brand: {
+      id: "1",
+      key: "1",
+      name: "Forme",
+    },
+  },
+  main_photo: {
+    filename_download: "/static/img/main-photo.png",
+    id: "main-photo",
+    type: "image/png",
+    width: 569,
+    height: 511,
+  },
+  photos: [
+    {
+      directus_files_id: {
+        id: 2,
+        filename_download: "/static/img/bike-image-1.jpg",
+        type: "image/jpeg",
+        width: 177,
+        height: 128,
+      },
+    },
+    {
+      directus_files_id: {
+        id: 3,
+        filename_download: "/static/img/bike-image-2.jpg",
+        type: "image/jpeg",
+        width: 177,
+        height: 128,
+      },
+    },
+    {
+      directus_files_id: {
+        id: 4,
+        filename_download: "/static/img/bike-image-3.jpg",
+        type: "image/jpeg",
+        width: 177,
+        height: 128,
+      },
+    },
+    {
+      directus_files_id: {
+        id: 5,
+        filename_download: "/static/img/bike-image-1.jpg",
+        type: "image/jpeg",
+        width: 177,
+        height: 128,
+      },
+    },
+  ],
+  // is_electric:
+  language: {
+    locale_code: i18next.language,
+  },
+} satisfies ReportDetails;
 ---
 
 <BaseLayout title={t("test.x")} description="test" lang={i18next.language}>
