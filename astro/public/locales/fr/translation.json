@@ -191,9 +191,7 @@
   },
   "mailer": {
     "report_activation": {
-      "subject": "Activer votre rapport."
-    },
-    "report_actiovation": {
+      "subject": "Activer votre rapport.",
       "body": {
         "txt": null,
         "html": null

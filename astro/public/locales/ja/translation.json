@@ -191,9 +191,7 @@
   },
   "mailer": {
     "report_activation": {
-      "subject": "レポートを有効にする"
-    },
-    "report_actiovation": {
+      "subject": "レポートを有効にする",
       "body": {
         "txt": null,
         "html": null

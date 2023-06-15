@@ -105,8 +105,8 @@ def send_activation_email(language, recipient, id, activation_code ):
         recipient,
         os.environ["WORKER_MAIL_FROM"],
         placeholders_to_py(i18n.mailer.report_activation.subject),
-        placeholders_to_py(i18n.mailer.report_actiovation.body.txt).format(activation_url=activation_url),
-        placeholders_to_py(i18n.mailer.report_actiovation.body.html).format(activation_url=activation_url),
+        placeholders_to_py(i18n.mailer.report_activation.body.txt).format(activation_url=activation_url),
+        placeholders_to_py(i18n.mailer.report_activation.body.html).format(activation_url=activation_url),
         relay=os.environ["WORKER_MAIL_RELAY"],
         dkim_private_key_path=os.environ["WORKER_MAIL_DKIM_PEM_PATH"],
         dkim_selector=os.environ["WORKER_MAIL_DKIM_SELECTOR"]

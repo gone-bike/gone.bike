@@ -191,9 +191,7 @@
   },
   "mailer": {
     "report_activation": {
-      "subject": "Ενεργοποίηση αναφοράς σας."
-    },
-    "report_actiovation": {
+      "subject": "Ενεργοποίηση αναφοράς σας.",
       "body": {
         "txt": null,
         "html": null

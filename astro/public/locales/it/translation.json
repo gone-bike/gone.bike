@@ -191,12 +191,10 @@
   },
   "mailer": {
     "report_activation": {
-      "subject": "Abilita il tuo rapporto."
-    },
-    "report_actiovation": {
+      "subject": "Attiva la tua segnalazione",
       "body": {
-        "txt": null,
-        "html": null
+        "txt": "Il link per attivare la segnalazione: {{ activation_url }}\n\nIl link sarà valido per 24h.\n\nLa segnalazione sarà pubblicata dopo l'attivazione.\n",
+        "html": "<p>Il link per attivare la segnalazione: <a href=\"{{ activation_url }}\">{{ activation_url }}</a></p>\n\n<p>Il link sarà valido per 24h.</p>\n\n<p>La segnalazione sarà pubblicata dopo l'attivazione.</p>"
       }
     }
   }

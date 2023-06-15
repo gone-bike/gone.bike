@@ -191,9 +191,7 @@
   },
   "mailer": {
     "report_activation": {
-      "subject": "Активирайте Вашето докладване."
-    },
-    "report_actiovation": {
+      "subject": "Активирайте Вашето докладване.",
       "body": {
         "txt": null,
         "html": null
