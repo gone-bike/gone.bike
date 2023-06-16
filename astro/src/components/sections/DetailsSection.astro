@@ -1,8 +1,8 @@
 ---
-import GoogleMap from "@components/GoogleMap.vue";
-import config from "@utils/config";
 import { dateTimeFormatter, getIsValidDate } from "@utils/formatters";
 import i18next, { t } from "i18next";
+
+import "venobox/dist/venobox.min.css";
 
 /* export interface DetailsData {
   id: number;
@@ -199,7 +199,7 @@ const colorsStr =
       <p>{dateUpdatedFormatted ?? "-"}</p>
     </div>
     <!-- share upper part -->
-    <div class="inline-flex items-center gap-4">
+    <div class="flex-shrink-0 inline-flex items-center gap-4">
       <!-- facebook share -->
       <button
         class="hidden text-gray-800 lg:inline-flex lg:items-center lg:gap-x-3 border border-gray-800 rounded-lg py-2.5 px-5"
@@ -274,7 +274,11 @@ const colorsStr =
     <div class="my-4 px-4 lg:px-0 lg:my-0">
       {
         main_photo?.id && (
-          <div class="main-photo">
+          <a
+            class="venobox main-photo"
+            data-gall="gallery01"
+            href={main_photo.filename_download}
+          >
             <img
               class="w-full h-full object-contain max-h-108 xl:max-h-full"
               src={main_photo.filename_download}
@@ -282,7 +286,7 @@ const colorsStr =
               height={main_photo.height}
               alt=""
             />
-          </div>
+          </a>
         )
       }
 
@@ -292,22 +296,26 @@ const colorsStr =
           {
             photos.length > 0 &&
               photos.map((photo) => (
-                <div class="flex-grow-0 flex-shrink-0 basis-auto pr-4">
+                <a
+                  class="venobox carousel__photo flex-grow-0 flex-shrink-0 basis-auto pr-4"
+                  data-gall="gallery01"
+                  href={photo.directus_files_id.filename_download}
+                >
                   <img
-                    class="w-24 h-full sm:w-40 md:w-full  object-cover rounded-lg"
+                    class="w-24 h-full sm:w-40 md:w-56 object-cover rounded-lg"
                     src={photo.directus_files_id.filename_download}
                     width={photo.directus_files_id.width}
                     height={photo.directus_files_id.height}
                     alt=""
                   />
-                </div>
+                </a>
               ))
           }
         </div>
       </div>
     </div>
     <!-- right-col -->
-    <div>
+    <div class="xl:flex-shrink-0">
       <div class="flex items-center justify-between gap-4">
         <div class="inline-flex items-center gap-4 flex-shrink-0">
           <span class="text-gray-800 font-medium"
@@ -546,9 +554,24 @@ const colorsStr =
   </div>
 </section>
 
+<script>
+  import VenoBox from "venobox";
+
+  new VenoBox({
+    // selector: '.my-image-links',
+    numeration: true,
+    infinigall: true,
+    spinner: "wander",
+    spinColor: "#1c64f2",
+    share: true,
+    shareStyle: "pill",
+  });
+</script>
+
 <style>
   .carousel-inner {
     scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
   }
 
   .carousel-inner > * {
