@@ -10,6 +10,8 @@ import DetailsSection, {
   // DetailsData,
   ReportDetails,
 } from "@components/sections/DetailsSection.astro";
+import BikesCard from "@components/cards/BikesCard.astro";
+import BikesList from "@components/bikes/BikesList.astro";
 // import config from "@utils/config";
 
 // import Report from "@models/report";
@@ -133,6 +135,60 @@ const detailsData = {
     locale_code: i18next.language,
   },
 } satisfies ReportDetails;
+
+const imgArr = [
+  {
+    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
+    alt: "...1",
+  },
+  {
+    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
+    alt: "...2",
+  },
+  {
+    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
+    alt: "...3",
+  },
+];
+
+const otherBikesList = [
+  {
+    dateStr: "2022-05-28",
+    matchScore: 75,
+    brand: "Forme",
+    model: "Hooklow 2",
+    location: "Milano, Italy",
+    lang: "en",
+    imgs: imgArr,
+  },
+  {
+    dateStr: "2022-05-28",
+    matchScore: 75,
+    brand: "Forme",
+    model: "Hooklow 2",
+    location: "Milano, Italy",
+    lang: "en",
+    imgs: imgArr,
+  },
+  {
+    dateStr: "2022-05-28",
+    matchScore: 75,
+    brand: "Forme",
+    model: "Hooklow 2",
+    location: "Milano, Italy",
+    lang: "en",
+    imgs: imgArr,
+  },
+  {
+    dateStr: "2022-05-28",
+    matchScore: 75,
+    brand: "Forme",
+    model: "Hooklow 2",
+    location: "Milano, Italy",
+    lang: "en",
+    imgs: imgArr,
+  },
+];
 ---
 
 <BaseLayout title={t("test.x")} description="test" lang={i18next.language}>
@@ -144,6 +200,12 @@ const detailsData = {
         currentPage={"Forme Hooklow 2 - June 3, 2023"}
       />
       <DetailsSection data={detailsData} />
+
+      <section class="py-4 md:py-8">
+        <h2 class="text-2xl font-bold md:text-3xl">Other reports</h2>
+
+        <BikesList items={otherBikesList} />
+      </section>
     </BaseContainer>
   </main>
   <!-- <div class="container mx-auto">
