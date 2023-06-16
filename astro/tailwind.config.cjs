@@ -27,6 +27,7 @@ module.exports = {
 
         customgray: {
           200: "#e5e7eb",
+          300: "#d9d9d9",
           500: "#9CA3AF",
           600: "#6b7280",
           800: "#1f2a37",
@@ -52,6 +53,10 @@ module.exports = {
         156: "624px",
         244: "978px",
         284: "1136px",
+      },
+
+      maxHeight: {
+        108: "432px",
       },
 
       borderRadius: {

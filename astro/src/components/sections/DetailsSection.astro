@@ -1,0 +1,557 @@
+---
+import GoogleMap from "@components/GoogleMap.vue";
+import config from "@utils/config";
+import { dateTimeFormatter, getIsValidDate } from "@utils/formatters";
+import i18next, { t } from "i18next";
+
+/* export interface DetailsData {
+  id: number;
+  status: string;
+  user_created?: string;
+  date_created?: Date;
+  user_updated?: string;
+  date_updated?: Date;
+  location?: { type: "Point"; coordinates: [number, number] };
+  // bike_brand_model?: number;
+  bike_brand_model?: string;
+  theft_date?: Date;
+  description?: string;
+  // colors?: object;
+  colors?: string[];
+  serial_number?: string;
+  bike_type?: string;
+  approximate_value?: number;
+  approximate_value_currency?: string;
+  theft_location_type?: string;
+  lock_type?: string;
+  lock_anchor?: string;
+  // language?: number;
+  language?: string;
+  main_photo?: string;
+  is_electric?: boolean;
+  theft_timeframe?: string;
+  bike_details?: string;
+  location_address?: string;
+  location_details?: object;
+  ref_url?: string;
+  email?: string;
+  activation_code?: string;
+  theft_status: string;
+  // tags?: object;
+  tags?: string[];
+  submit_by?: string;
+  // bike_brand?: number;
+  bike_brand?: string;
+} */
+export interface ReportDetails {
+  id: any;
+  user_created?: string;
+  date_created?: Date;
+  user_updated?: string;
+  date_updated?: Date;
+  status: string;
+  bike_details?: string;
+  description: string;
+  location: { type: "Point"; coordinates: [number, number] };
+  location_address?: string;
+  theft_date: Date;
+  theft_timeframe: string;
+  theft_location_type: string;
+  colors: string[];
+  serial_number: string;
+  approximate_value: number;
+  approximate_value_currency: string;
+
+  lock_type: string;
+  lock_anchor: string;
+
+  activation_code: string | null;
+
+  is_electric?: boolean;
+
+  photos: {
+    directus_files_id: {
+      id: any;
+      filename_download: string;
+      type: string;
+      width: number;
+      height: number;
+    };
+  }[];
+  bike_brand_model: {
+    name: string;
+    bike_brand: {
+      id: any;
+      key: string;
+      name: string;
+    };
+  };
+  bike_type?: string;
+  language: {
+    locale_code: string;
+  };
+  main_photo: {
+    id: any;
+    filename_download: string;
+    type: string;
+    width: number;
+    height: number;
+  };
+}
+
+export interface DetailsSectionProps {
+  class?: string;
+  data: ReportDetails;
+}
+
+const {
+  class: classes,
+  data: {
+    user_created,
+    date_created,
+    date_updated,
+    main_photo,
+    bike_brand_model,
+    theft_date,
+    theft_timeframe,
+    bike_type,
+    colors,
+    serial_number,
+    is_electric,
+    approximate_value,
+    approximate_value_currency,
+    theft_location_type,
+    lock_anchor,
+    lock_type,
+    description,
+    location_address,
+    location,
+    photos,
+    bike_details,
+  },
+} = Astro.props as DetailsSectionProps;
+
+type StringOrNullOrUndefined = string | null | undefined;
+
+let dateCreatedFormatted = null as StringOrNullOrUndefined;
+
+if (date_created && getIsValidDate(date_created)) {
+  dateCreatedFormatted = dateTimeFormatter({
+    date: date_created,
+    locale: i18next.language,
+    options: {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    },
+  });
+}
+
+let dateUpdatedFormatted = null as StringOrNullOrUndefined;
+
+if (date_updated && getIsValidDate(date_updated)) {
+  dateUpdatedFormatted = dateTimeFormatter({
+    date: date_updated,
+    locale: i18next.language,
+    options: {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    },
+  });
+}
+
+let theftDateFormatted = null as StringOrNullOrUndefined;
+
+if (theft_date && getIsValidDate(theft_date)) {
+  theftDateFormatted = dateTimeFormatter({
+    date: theft_date,
+    locale: i18next.language,
+    options: {
+      month: "long",
+      day: "2-digit",
+      year: "numeric",
+    },
+  });
+}
+
+const colorsStr =
+  colors && colors.map((clr) => clr[0].toUpperCase() + clr.slice(1)).join(", ");
+---
+
+<section class:list={["mb-4", {}, classes]}>
+  <!-- upper part -->
+  <div
+    class="flex items-center justify-between gap-4 py-4 border-t border-b border-gray-200"
+  >
+    <!-- username upper part -->
+    <div class="md:inline-flex md:items-center md:gap-4 text-gray-500">
+      <p>
+        Reported by
+        <span class="text-gray-800 font-bold">{user_created ?? "-"}</span>
+      </p>
+      <span class="dot hidden w-2 h-2 rounded-full bg-customgray-300 md:block"
+      ></span>
+      <p>{dateUpdatedFormatted ?? "-"}</p>
+    </div>
+    <!-- share upper part -->
+    <div class="inline-flex items-center gap-4">
+      <!-- facebook share -->
+      <button
+        class="hidden text-gray-800 lg:inline-flex lg:items-center lg:gap-x-3 border border-gray-800 rounded-lg py-2.5 px-5"
+      >
+        <svg
+          width="21"
+          height="21"
+          viewBox="0 0 21 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_350_3475)">
+            <path
+              d="M20.5 10.5C20.5 4.97715 16.0229 0.5 10.5 0.5C4.97715 0.5 0.5 4.97715 0.5 10.5C0.5 15.4912 4.15684 19.6283 8.9375 20.3785V13.3906H6.39844V10.5H8.9375V8.29688C8.9375 5.79063 10.4305 4.40625 12.7146 4.40625C13.8084 4.40625 14.9531 4.60156 14.9531 4.60156V7.0625H13.6922C12.45 7.0625 12.0625 7.8334 12.0625 8.625V10.5H14.8359L14.3926 13.3906H12.0625V20.3785C16.8432 19.6283 20.5 15.4912 20.5 10.5Z"
+              fill="#1F2A37"></path>
+          </g>
+          <defs>
+            <clipPath id="clip0_350_3475">
+              <rect
+                width="20"
+                height="20"
+                fill="white"
+                transform="translate(0.5 0.5)"></rect>
+            </clipPath>
+          </defs>
+        </svg>
+
+        <span class="text-sm font-medium text-customgray-800">Share</span>
+      </button>
+      <!-- twitter share -->
+      <button
+        class="hidden text-gray-800 lg:inline-flex lg:items-center lg:gap-x-3 border border-gray-800 rounded-lg py-2.5 px-5"
+      >
+        <svg
+          width="20"
+          height="21"
+          viewBox="0 0 20 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.2896 18.6256C13.8368 18.6256 17.9648 12.3728 17.9648 6.95035C17.9648 6.77275 17.9648 6.59595 17.9528 6.41995C18.7559 5.83908 19.4491 5.11986 20 4.29595C19.2512 4.62795 18.4567 4.84558 17.6432 4.94155C18.4998 4.42879 19.141 3.6222 19.4472 2.67195C18.6417 3.14996 17.7605 3.48681 16.8416 3.66795C16.2229 3.0101 15.4047 2.57449 14.5135 2.42852C13.6223 2.28256 12.7078 2.43438 11.9116 2.8605C11.1154 3.28661 10.4819 3.96326 10.109 4.78574C9.73605 5.60822 9.64462 6.53067 9.8488 7.41035C8.21741 7.32852 6.62146 6.90455 5.16455 6.16596C3.70763 5.42737 2.4223 4.39067 1.392 3.12315C0.867274 4.02648 0.70656 5.09584 0.942583 6.1135C1.17861 7.13117 1.79362 8.02061 2.6624 8.60075C2.00936 8.58162 1.37054 8.40545 0.8 8.08715V8.13915C0.800259 9.08653 1.12821 10.0046 1.72823 10.7378C2.32824 11.4709 3.16338 11.974 4.092 12.1616C3.4879 12.3263 2.85406 12.3504 2.2392 12.232C2.50151 13.0472 3.01202 13.7602 3.69937 14.2711C4.38671 14.782 5.21652 15.0654 6.0728 15.0816C5.22203 15.7503 4.24776 16.2447 3.20573 16.5366C2.16369 16.8284 1.07435 16.9119 0 16.7824C1.87653 17.9865 4.05994 18.6253 6.2896 18.6224"
+            fill="#1F2A37"></path>
+        </svg>
+
+        <span class="text-sm font-medium text-customgray-800">Tweet</span>
+      </button>
+      <button
+        class="text-gray-800 inline-flex items-center gap-x-3 border border-gray-800 rounded-lg py-2.5 px-5"
+      >
+        <svg
+          width="20"
+          height="21"
+          viewBox="0 0 20 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M12.586 5.08604C12.7705 4.89502 12.9912 4.74266 13.2352 4.63784C13.4792 4.53302 13.7417 4.47785 14.0072 4.47554C14.2728 4.47323 14.5361 4.52384 14.7819 4.6244C15.0277 4.72496 15.251 4.87347 15.4388 5.06125C15.6266 5.24904 15.7751 5.47234 15.8757 5.71813C15.9762 5.96393 16.0268 6.22729 16.0245 6.49284C16.0222 6.7584 15.967 7.02084 15.8622 7.26485C15.7574 7.50886 15.605 7.72955 15.414 7.91404L12.414 10.914C12.039 11.289 11.5303 11.4996 11 11.4996C10.4697 11.4996 9.96108 11.289 9.58602 10.914C9.39742 10.7319 9.14482 10.6311 8.88262 10.6334C8.62042 10.6356 8.36961 10.7408 8.1842 10.9262C7.99879 11.1116 7.89362 11.3624 7.89135 11.6246C7.88907 11.8868 7.98986 12.1394 8.17202 12.328C8.92213 13.0779 9.93936 13.4992 11 13.4992C12.0607 13.4992 13.0779 13.0779 13.828 12.328L16.828 9.32804C17.5567 8.57363 17.9598 7.56322 17.9507 6.51444C17.9416 5.46565 17.5209 4.4624 16.7793 3.72077C16.0377 2.97914 15.0344 2.55846 13.9856 2.54935C12.9368 2.54023 11.9264 2.94341 11.172 3.67204L9.67202 5.17204C9.57651 5.26429 9.50033 5.37463 9.44792 5.49664C9.39551 5.61864 9.36792 5.74986 9.36677 5.88264C9.36562 6.01542 9.39092 6.1471 9.4412 6.27C9.49148 6.39289 9.56573 6.50454 9.65962 6.59844C9.75352 6.69233 9.86517 6.76658 9.98806 6.81686C10.111 6.86714 10.2426 6.89245 10.3754 6.89129C10.5082 6.89014 10.6394 6.86255 10.7614 6.81014C10.8834 6.75773 10.9938 6.68155 11.086 6.58604L12.586 5.08604ZM7.58602 10.086C7.96107 9.7111 8.46969 9.50047 9.00002 9.50047C9.53035 9.50047 10.039 9.7111 10.414 10.086C10.5063 10.1816 10.6166 10.2577 10.7386 10.3101C10.8606 10.3626 10.9918 10.3901 11.1246 10.3913C11.2574 10.3924 11.3891 10.3671 11.512 10.3169C11.6349 10.2666 11.7465 10.1923 11.8404 10.0984C11.9343 10.0045 12.0086 9.89289 12.0588 9.77C12.1091 9.6471 12.1344 9.51542 12.1333 9.38264C12.1321 9.24986 12.1045 9.11864 12.0521 8.99664C11.9997 8.87463 11.9235 8.76429 11.828 8.67204C11.0779 7.92216 10.0607 7.5009 9.00002 7.5009C7.93936 7.5009 6.92213 7.92216 6.17202 8.67204L3.17202 11.672C2.78998 12.041 2.48525 12.4824 2.27561 12.9704C2.06598 13.4584 1.95563 13.9833 1.95102 14.5144C1.9464 15.0456 2.04761 15.5723 2.24873 16.0639C2.44986 16.5554 2.74687 17.0021 3.12244 17.3776C3.49801 17.7532 3.94462 18.0502 4.4362 18.2513C4.92779 18.4525 5.45451 18.5537 5.98562 18.549C6.51674 18.5444 7.04162 18.4341 7.52964 18.2244C8.01765 18.0148 8.45903 17.7101 8.82802 17.328L10.328 15.828C10.4235 15.7358 10.4997 15.6255 10.5521 15.5034C10.6045 15.3814 10.6321 15.2502 10.6333 15.1174C10.6344 14.9847 10.6091 14.853 10.5588 14.7301C10.5086 14.6072 10.4343 14.4955 10.3404 14.4016C10.2465 14.3078 10.1349 14.2335 10.012 14.1832C9.88908 14.1329 9.7574 14.1076 9.62462 14.1088C9.49184 14.1099 9.36062 14.1375 9.23862 14.1899C9.11661 14.2423 9.00627 14.3185 8.91402 14.414L7.41402 15.914C7.22953 16.1051 7.00884 16.2574 6.76483 16.3622C6.52082 16.4671 6.25838 16.5222 5.99282 16.5245C5.72726 16.5269 5.4639 16.4762 5.21811 16.3757C4.97232 16.2751 4.74902 16.1266 4.56123 15.9388C4.37344 15.751 4.22494 15.5277 4.12438 15.2819C4.02381 15.0362 3.97321 14.7728 3.97552 14.5072C3.97783 14.2417 4.033 13.9792 4.13782 13.7352C4.24264 13.4912 4.395 13.2705 4.58602 13.086L7.58602 10.086Z"
+            fill="#1F2A37"></path>
+        </svg>
+
+        <span class="text-sm font-medium text-customgray-800">Share Link</span>
+      </button>
+    </div>
+  </div>
+  <!-- main part -->
+  <div class="my-4 space-y-8 xl:flex xl:items-center xl:space-y-0 xl:gap-24">
+    <!-- left-col -->
+    <div class="my-4 px-4 lg:px-0 lg:my-0">
+      {
+        main_photo?.id && (
+          <div class="main-photo">
+            <img
+              class="w-full h-full object-contain max-h-108 xl:max-h-full"
+              src={main_photo.filename_download}
+              width={main_photo.width}
+              height={main_photo.height}
+              alt=""
+            />
+          </div>
+        )
+      }
+
+      <!-- grid gap-x-4 grid-cols-3 justify-start -->
+      <div class="carousel mt-4 w-full overflow-hidden">
+        <div class="carousel-inner flex overflow-x-auto pb-2">
+          {
+            photos.length > 0 &&
+              photos.map((photo) => (
+                <div class="flex-grow-0 flex-shrink-0 basis-auto pr-4">
+                  <img
+                    class="w-24 h-full sm:w-40 md:w-full  object-cover rounded-lg"
+                    src={photo.directus_files_id.filename_download}
+                    width={photo.directus_files_id.width}
+                    height={photo.directus_files_id.height}
+                    alt=""
+                  />
+                </div>
+              ))
+          }
+        </div>
+      </div>
+    </div>
+    <!-- right-col -->
+    <div>
+      <div class="flex items-center justify-between gap-4">
+        <div class="inline-flex items-center gap-4 flex-shrink-0">
+          <span class="text-gray-800 font-medium"
+            >{(t("details.bike_status"), "Bike Status")}:</span
+          >
+
+          <div
+            class="inline-flex items-center bg-red-100 rounded-full px-2.5 py-1 text-red-800 gap-2"
+          >
+            <span class="dot block w-3 h-3 rounded-full bg-red-500"></span>
+            <span class="">Stolen</span>
+          </div>
+        </div>
+
+        <p class="text-right text-gray-500 italic flex-shrink">
+          {t("details.last_update", "last update")}
+          <span class="block">{dateUpdatedFormatted}</span>
+        </p>
+      </div>
+
+      <h1 class="mt-4 text-4xl font-bold text-customgray-800">
+        {bike_brand_model.bike_brand.name}
+      </h1>
+      <h2 class="text-4xl font-normal">{bike_brand_model.name}</h2>
+
+      <div class="flex items-center justify-between text-gray-800 my-5">
+        <span class="text-gray-500"
+          >{t("report.data.date_theft", "Date of Theft")}</span
+        >
+
+        <p class="space-x-3">
+          {theftDateFormatted && <span>{theftDateFormatted}</span>}
+          {
+            theft_timeframe && (
+              <span>
+                {t(
+                  `report.data.theft_timeframe.${theft_timeframe}`,
+                  theft_timeframe
+                )}
+              </span>
+            )
+          }
+        </p>
+      </div>
+
+      <div
+        class="py-5 border-y border-gray-200 grid grid-cols-2 gap-4 md:grid-cols-4"
+      >
+        {
+          bike_type && (
+            <div>
+              <p class="font-bold text-gray-800">
+                {t("report.data.bike_type", "Bike Type")}
+              </p>
+              <p class="text-gray-600 mt-3">{bike_type}</p>
+            </div>
+          )
+        }
+        {
+          colors && colors.length > 0 && (
+            <div>
+              <p class="font-bold text-gray-800">
+                {t("report.data.bike_colors", "Bike Main Colors")}
+              </p>
+              <p class="text-gray-600 mt-3">{colorsStr}</p>
+            </div>
+          )
+        }
+        {
+          serial_number && (
+            <div>
+              <p class="font-bold text-gray-800">
+                {t("report.data.bike_type", "Serial Number")}
+              </p>
+              <p class="text-gray-600 mt-3">{serial_number}</p>
+            </div>
+          )
+        }
+
+        <div>
+          <p class="font-bold text-gray-800">
+            {t("report.data.is_electric", "Electric Bike")}
+          </p>
+          <p class="text-gray-600 mt-3">
+            {
+              t(
+                `report.data.is_electic.${is_electric}`,
+                is_electric ? "Electric Bike" : "Non Electic Bike"
+              )
+            }
+          </p>
+        </div>
+      </div>
+
+      <!-- other details -->
+      <div class="mt-5">
+        <h3 class="text-gray-800 capitalize font-semibold">
+          {t(`report.data.other_details`, "Other Details")}
+        </h3>
+
+        <div class="mt-3 relative overflow-x-auto sm:rounded-lg">
+          <table class="w-full text-sm text-left text-gray-500">
+            <tbody class="text-gray-900">
+              <tr class="bg-white border-b">
+                <th scope="row" class="p-4 font-medium whitespace-nowrap">
+                  {t("report.data.approximate_value", "Approximate Value")}
+                </th>
+                <td class="p-4 font-semibold">
+                  {approximate_value_currency ?? ""}
+                  {approximate_value ?? ""}
+                </td>
+              </tr>
+              <tr class="border-b bg-gray-50">
+                <th scope="row" class="p-4 font-medium whitespace-nowrap">
+                  {t("report.data.theft_location_type", "Last Location")}
+                </th>
+                <td class="p-4 font-semibold capitalize">
+                  {theft_location_type ?? ""}</td
+                >
+              </tr>
+              <tr class="bg-white border-b">
+                <th scope="row" class="p-4 font-medium whitespace-nowrap">
+                  {t("report.data.lock_type", "Lock Type")}
+                </th>
+                <td class="p-4 font-semibold">
+                  {lock_type ?? ""}
+                </td>
+              </tr>
+              <tr class="border-b bg-gray-50">
+                <th scope="row" class="p-4 font-medium whitespace-nowrap">
+                  {t("report.data.lock_anchor", "Anchor Point")}
+                </th>
+                <td class="p-4 font-semibold"> {lock_anchor ?? ""}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- actions -->
+      <div class="mt-5 flex flex-col gap-3 md:grid md:grid-cols-2 md:gap-12">
+        <button
+          class="flex items-center justify-center gap-x-2 border border-primary-700 rounded-lg p-3 text-primary-700"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <mask
+              id="mask0_29_13675"
+              style="mask-type:alpha"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="20"
+              height="20"
+            >
+              <rect width="20" height="20" fill="#D9D9D9"></rect>
+            </mask>
+            <g mask="url(#mask0_29_13675)">
+              <path
+                class="fill-primary-700"
+                d="M10 17.5C8.95833 17.5 7.98264 17.3021 7.07292 16.9062C6.16319 16.5104 5.37153 15.9757 4.69792 15.3021C4.02431 14.6285 3.48958 13.8368 3.09375 12.9271C2.69792 12.0174 2.5 11.0417 2.5 10C2.5 8.95833 2.69792 7.98264 3.09375 7.07292C3.48958 6.16319 4.02431 5.37153 4.69792 4.69792C5.37153 4.02431 6.16319 3.48958 7.07292 3.09375C7.98264 2.69792 8.95833 2.5 10 2.5C11.1389 2.5 12.2188 2.74306 13.2396 3.22917C14.2604 3.71528 15.125 4.40278 15.8333 5.29167V3.33333H17.5V8.33333H12.5V6.66667H14.7917C14.2222 5.88889 13.5208 5.27778 12.6875 4.83333C11.8542 4.38889 10.9583 4.16667 10 4.16667C8.375 4.16667 6.99653 4.73264 5.86458 5.86458C4.73264 6.99653 4.16667 8.375 4.16667 10C4.16667 11.625 4.73264 13.0035 5.86458 14.1354C6.99653 15.2674 8.375 15.8333 10 15.8333C11.4583 15.8333 12.7326 15.3611 13.8229 14.4167C14.9132 13.4722 15.5556 12.2778 15.75 10.8333H17.4583C17.25 12.7361 16.434 14.3229 15.0104 15.5938C13.5868 16.8646 11.9167 17.5 10 17.5Z"
+              ></path>
+            </g>
+          </svg>
+          <span>{t("report.update_bike_status", "Update Bike Status")}</span>
+        </button>
+        <button
+          class="flex items-center justify-center gap-x-2 border border-transparent bg-primary-700 rounded-lg p-3 text-white"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              class="fill-white"
+              d="M2.00299 5.884L9.99999 9.882L17.997 5.884C17.9674 5.37444 17.7441 4.89549 17.3728 4.54523C17.0015 4.19497 16.5104 3.99991 16 4H3.99999C3.48958 3.99991 2.99844 4.19497 2.62717 4.54523C2.2559 4.89549 2.03259 5.37444 2.00299 5.884Z"
+            ></path>
+            <path
+              class="fill-white"
+              d="M18 8.11792L10 12.1179L2 8.11792V13.9999C2 14.5304 2.21071 15.0391 2.58579 15.4141C2.96086 15.7892 3.46957 15.9999 4 15.9999H16C16.5304 15.9999 17.0391 15.7892 17.4142 15.4141C17.7893 15.0391 18 14.5304 18 13.9999V8.11792Z"
+            ></path>
+          </svg>
+
+          <span>{t("report.contact_author", "Contact the Author")}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- text block + map -->
+  <div class="py-4 grid gap-6">
+    {
+      bike_details && (
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800">
+            {t("report.bike_details", "Bike Description")}
+          </h3>
+          <p class="mt-2 text-gray-500">{bike_details}</p>
+        </div>
+      )
+    }
+    {
+      description && (
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800">
+            {t("report.circumstances", "Circumstances")}
+          </h3>
+          <p class="mt-2 text-gray-500">{description}</p>
+        </div>
+      )
+    }
+    {
+      location_address && (
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800">
+            {t("report.location", "Precise Location")}
+          </h3>
+          <p class="mt-2 text-gray-500">{location_address}</p>
+        </div>
+      )
+    }
+
+    <a
+      class="inline-block w-fit font-bold underline underline-offset-4 hover:text-primary-600 focus:text-primary-600"
+      href=`https://www.google.com/maps?q=${location.coordinates[0]},${location.coordinates[1]}`
+      >Go to Google Maps</a
+    >
+  </div>
+</section>
+
+<style>
+  .carousel-inner {
+    scroll-snap-type: x mandatory;
+  }
+
+  .carousel-inner > * {
+    scroll-snap-align: start;
+  }
+</style>
