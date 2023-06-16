@@ -402,14 +402,13 @@ const colorsStr =
       )
     }
 
-    <!-- grid gap-x-4 grid-cols-3 justify-start -->
-    <div class="carousel mt-4 w-full overflow-hidden">
-      <div class="carousel-inner flex grid-flow-col">
+    <div class="mt-4 w-full overflow-hidden">
+      <div class="flex gap-4">
         {
           photos.length > 0 &&
             photos.map((photo) => (
               <a
-                class="venobox carousel__photo   basis-full pr-4"
+                class="venobox basis-full"
                 data-gall="gallery01"
                 href={photo.directus_files_id.filename_download}
               >
@@ -682,14 +681,3 @@ const colorsStr =
 
 <!-- share -->
 <script></script>
-
-<style>
-  .carousel-inner {
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-  }
-
-  .carousel-inner > * {
-    scroll-snap-align: start;
-  }
-</style>
