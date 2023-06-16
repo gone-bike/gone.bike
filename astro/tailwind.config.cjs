@@ -41,6 +41,13 @@ module.exports = {
 
         "red-gradient-clr": "#F98080",
         "teal-gradient-clr": "#84E1BC",
+
+        mail: "#f2a60c",
+        whatsapp: "#25d366",
+        pinterest: "#E60023",
+        twitter: "#1DA1F2",
+        facebook: "#4267B2",
+        telegram: "#0088cc",
       },
 
       width: {
