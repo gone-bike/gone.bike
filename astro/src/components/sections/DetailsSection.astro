@@ -404,17 +404,17 @@ const colorsStr =
 
     <!-- grid gap-x-4 grid-cols-3 justify-start -->
     <div class="carousel mt-4 w-full overflow-hidden">
-      <div class="carousel-inner flex overflow-x-auto pb-2">
+      <div class="carousel-inner flex grid-flow-col">
         {
           photos.length > 0 &&
             photos.map((photo) => (
               <a
-                class="venobox carousel__photo flex-grow-0 flex-shrink-0 basis-auto pr-4"
+                class="venobox carousel__photo   basis-full pr-4"
                 data-gall="gallery01"
                 href={photo.directus_files_id.filename_download}
               >
                 <img
-                  class="w-24 h-full sm:w-40 md:w-56 object-cover rounded-lg"
+                  class="w-full h-full  object-cover rounded-lg"
                   src={photo.directus_files_id.filename_download}
                   width={photo.directus_files_id.width}
                   height={photo.directus_files_id.height}
