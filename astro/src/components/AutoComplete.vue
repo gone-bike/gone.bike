@@ -118,20 +118,20 @@ function searchEnter(result?: string) {
 <template>
     <div class="relative w-full h-full">
         <div class="flex flex-col relative w-full">
-            <label :id="`dropdown-label-${props.title}`" :for="props.title" class='mb-2 text-lg w-full'>{{
+            <label :id="`dropdown-label-${props.title}`" :for="props.title" class='mb-2 text-lg w-full font-medium'>{{
                 t(`forms.report.questions.${props.title}.title`)
             }}</label>
             <div :id="`dropdown-${props.title}`" class="w-full">
                 <input @focus="firstClick = true" :id="`dropdown-label-${props.title}`"
-                    :placeholder="(t(`forms.report.questions.${props.title}.placeholder`) as string)" class="z-10 w-full report-placeholder"
+                    :placeholder="(t(`forms.report.questions.${props.title}.placeholder`) as string)" class="z-10 w-full report-placeholder block py-3 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm sm:text-base focus-within:ring-primary-600"
                     @keydown.enter="function () { searchEnter() }" @keydown.arrow-down="searchKeyDown"
                     @keydown.arrow-up="searchKeyUp" @focusin="isOpen = true" :value="searchQuery" type="search" autocomplete="off"
                     @input="handleChange">
                 <div
-                    :class="['border-gray-400 mt-1 border top-26 z-50 absolute w-full h-fit max-h-64 overflow-y-scroll bg-white', { 'hidden': !isOpen }]">
+                    :class="['border-gray-400 mt-1 border top-26 z-50 absolute w-full h-fit max-h-64 overflow-y-scroll bg-white rounded-lg', { 'hidden': !isOpen }]">
                     <div v-for="(result, idx) in queryResults" id="here"
-                        :class="['p-2 border-b-2 hover:bg-blue-200 flex gap-2 items-center cursor-pointer border-gray-300', { 'bg-blue-200': idx === focusElIdx, 'font-semibold': result === searchQuery }]"
-                        :key="result" @click="searchEnter(result)">
+                        :class="['p-2 border-b-2 text-gray-600  flex gap-2 items-center cursor-pointer border-gray-300 hover:bg-gray-200 hover:text-gray-900 focus:bg-gray-200 focus:text-gray-900', { '!bg-gray-200 !text-gray-900': idx === focusElIdx, 'font-semibold': result === searchQuery }]"
+                        :key="result" @click="searchEnter(result)" tabindex="0">
                         {{ result }}
                     </div>
                 </div>
@@ -143,7 +143,7 @@ function searchEnter(result?: string) {
     </div>
 </template>
 <style>
-[type='text'],
+/* [type='text'],
 [type='email'],
 [type='url'],
 [type='password'],
@@ -172,5 +172,5 @@ select {
     font-size: 1rem;
     line-height: 1.5rem;
     --tw-shadow: 0 0 #0000;
-}
+} */
 </style>
