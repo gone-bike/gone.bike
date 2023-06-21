@@ -30,7 +30,6 @@ const props = defineProps<{
   validEmailError: string;
   someThingWentWrongError: string;
   mapsApiKey: string;
-  lang: string;
 }>();
 
 let errorText = props.errorText;
@@ -165,20 +164,26 @@ async function onSubmit(formData: typeof formValue) {
 }
 
 let canChange = ref<boolean>(false);
+
 onMounted(() => {
   canChange.value = true;
   window.location.hash = "";
+
   window.onhashchange = function () {
     let page = 0;
+
     if (window.location.hash) {
       page = +window.location.hash.slice(6);
     } else {
       page = 1;
     }
+
     currentPage.value = page;
     window.scrollTo(0, 0);
+
     let prevPage = stack.value[stack.value.length - 1];
     stack.value = [...stack.value, page];
+
     if (prevPage === 2 && page === 3) {
       if (formValue.location_address) {
         errors.location = false;
@@ -232,8 +237,10 @@ function openAlert() {
 
 function showAlert(param: { title: string; subtitle: string }) {
   openAlert();
+
   alertTitle.value = param.title;
   alertSubtitle.value = param.subtitle;
+
   setInterval(() => {
     alertIsOpen.value = false;
   }, 10000);
@@ -244,18 +251,6 @@ function closeAlert() {
 }
 
 let currentPage = ref(1);
-
-/* onMounted(() => {
-  const [pageNumberFromHash] = window.location.hash.split("page-");
-  console.log("pageNumberFromHash: ", pageNumberFromHash);
-
-  if (pageNumberFromHash) {
-    currentPage.value = +pageNumberFromHash;
-  }
-  //   console.log("pageNumberFromHash: ", pageNumberFromHash);
-
-  // currentPage.value
-}); */
 </script>
 <template>
   <div>
@@ -335,11 +330,11 @@ let currentPage = ref(1);
             value="true"
             v-model="formValue.is_electric"
             aria-labelledby="is_electric"
-            class="h-4 w-4"
+            class="h-5 w-5"
             name="is_electric"
             id="is_electric_1"
           />
-          <label for="is_electric_1" class="text-sm ml-2">{{
+          <label for="is_electric_1" class="ml-2 mb-1">{{
             i18next("forms.report.questions.is_electric.choices.yes")
           }}</label>
         </div>
@@ -349,11 +344,11 @@ let currentPage = ref(1);
             value="false"
             v-model="formValue.is_electric"
             aria-labelledby="is_electric"
-            class="h-4 w-4"
+            class="h-5 w-5"
             name="is_electric"
             id="is_electric_2"
           />
-          <label for="is_electric_2" class="text-sm ml-2">{{
+          <label for="is_electric_2" class="ml-2 mb-1">{{
             i18next("forms.report.questions.is_electric.choices.no")
           }}</label>
         </div>
@@ -372,7 +367,7 @@ let currentPage = ref(1);
         <textarea
           name="bike_details"
           id="bike_details"
-          class="report-placeholder"
+          class="w-full h-44 block py-3 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm sm:text-base focus-within:ring-primary-600 focus:ring-primary-600;"
           v-model="formValue.bike_details"
           :placeholder="(i18next(`forms.report.questions.bike_details.placeholder`) as string)"
         >
@@ -400,7 +395,7 @@ let currentPage = ref(1);
         <input
           type="date"
           v-model="theftDateUnformated"
-          class="w-full"
+          class="w-full block py-3 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm sm:text-base focus-within:ring-primary-600 focus:ring-primary-600;"
           :max="todayDate"
         />
         <span class="mt-2 text-sm font-normal text-gray-400 italic">{{
@@ -555,7 +550,7 @@ let currentPage = ref(1);
         }}</label>
         <textarea
           name="description"
-          class="report-placeholder"
+          class="w-full h-44 block py-3 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm sm:text-base focus-within:ring-primary-600 focus:ring-primary-600;"
           :placeholder="(i18next(`forms.report.questions.description.placeholder`) as string)"
           id="description"
           v-model="formValue.description"
@@ -612,19 +607,19 @@ let currentPage = ref(1);
           d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
         />
       </svg>
-      <h1 class="text-3xl mb-4 font-semibold text-gray-500 mt-3 text-center">
+      <p class="text-3xl mb-4 font-semibold text-gray-500 mt-3 text-center">
         {{ i18next("pages.report_form.loading") }}
-      </h1>
+      </p>
     </div>
     <div
       class="flex flex-col w-full h-full justify-center"
       v-show="currentPage === 7"
     >
       <EmailIcon class="h-40 text-3xl text-primary-600" />
-      <p class="text-3xl mb-4 font-semibold text-center">
+      <p class="text-3xl mb-4 font-bold text-center">
         {{ i18next("pages.report_form.thank.title") }}
       </p>
-      <p class="text-xl mb-4 font-semibold text-center">
+      <p class="text-xl mb-4 font-medium text-center">
         {{ i18next("pages.report_form.thank.sub_title") }}
       </p>
     </div>
@@ -646,55 +641,9 @@ let currentPage = ref(1);
           d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
         />
       </svg>
-      <h1 class="text-3xl mt-3 text-red-700 mb-4 font-semibold text-center">
+      <p class="text-3xl mt-3 text-red-700 mb-4 font-semibold text-center">
         {{ i18next("pages.report_form.error_page.title") }}
-      </h1>
+      </p>
     </div>
   </div>
 </template>
-
-<style scoped>
-:deep(
-    [type="text"],
-    [type="email"],
-    [type="url"],
-    [type="number"],
-    [type="password"],
-    [type="date"],
-    [type="datetime-local"],
-    [type="month"],
-    [type="search"],
-    [type="tel"],
-    [type="time"],
-    [type="week"],
-    [multiple],
-    .custom-input
-  ) {
-  @apply w-full block py-3 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm sm:text-base focus-within:ring-primary-600;
-}
-
-:deep(select, textarea, input:not([type="checkbox"]):not([type="radio"])),
-select,
-textarea,
-input:not([type="checkbox"]):not([type="radio"]) {
-  @apply w-full block py-3 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm sm:text-base focus-within:ring-primary-600;
-}
-
-:deep(input[type="radio"]),
-input[type="radio"] {
-  @apply w-5 h-5 text-primary-600 bg-gray-200  focus:ring-primary-700 focus:ring-2 checked:bg-primary-700;
-}
-
-:deep(textarea),
-textarea {
-  @apply h-44;
-}
-
-label {
-  @apply text-lg w-full font-medium;
-}
-
-input:not([type="checkbox"]):not([type="radio"]) ~ label {
-  @apply mb-2 !text-base;
-}
-</style>

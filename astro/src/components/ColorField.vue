@@ -52,7 +52,7 @@ function remove(tag: string) {
     }}</label>
     <input
       type="text"
-      class="report-placeholder"
+      class="w-full block py-3 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm sm:text-base focus-within:ring-primary-600 focus:ring-primary-600"
       @keydown.enter="handleAdd"
       @blur="handleAdd"
       autocomplete="off"

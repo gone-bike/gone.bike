@@ -43,6 +43,7 @@ const isOther = ref(false);
     }}</label>
     <select
       :placeholder="props.modelValue"
+      class="w-full block py-3 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm sm:text-base focus-within:ring-primary-600 focus:ring-primary-600"
       :class="{ 'bg-gray-200': isOther }"
       :value="props.modelValue"
       @input="handleChange"
@@ -66,9 +67,7 @@ const isOther = ref(false);
         :placeholder='(t("pages.report_form.enter_here") as string)'
         :class="[
           'w-52',
-          !isOther
-            ? 'border-gray-500 report-placeholder bg-gray-100 pointer-events-none'
-            : '',
+          !isOther ? 'border-gray-500  bg-gray-100 pointer-events-none' : '',
         ]"
         :value="isOther ? props.modelValue : ''"
         @input="handleOtherField"

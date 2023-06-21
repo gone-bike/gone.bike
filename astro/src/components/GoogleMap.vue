@@ -231,7 +231,7 @@ onMounted(async () => {
         :placeholder="(t('forms.report.questions.location.placeholder') as string)"
         id="place-search"
         type="text"
-        class="my-4 w-full"
+        class="my-4 w-full block py-3 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm sm:text-base focus-within:ring-primary-600 focus:ring-primary-600;"
         ref="placeRef"
       />
       <button

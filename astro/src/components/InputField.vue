@@ -22,7 +22,7 @@ function handleChange(e: any) {
     }}</label>
     <input
       :name="props.title"
-      class=""
+      class="w-full block py-3 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm sm:text-base focus:ring-primary-600"
       :placeholder="t(`forms.report.questions.${props.title}.placeholder`) as string"
       :id="props.title"
       :type="props.type ?? 'text'"
@@ -45,11 +45,3 @@ function handleChange(e: any) {
     >
   </div>
 </template>
-
-<style>
-input,
-input[type="number"],
-input[type="email"] {
-  @apply w-full block py-3 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm sm:text-base focus-within:ring-primary-600;
-}
-</style>

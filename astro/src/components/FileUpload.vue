@@ -43,20 +43,28 @@ const progressWidth = ref();
 const progressBarName = ref("");
 
 const progressBarIsOpen = ref(false);
+
 function deleteFile() {
   uploadSignal.value.abort();
   uploadSignal.value = new AbortController();
+
   emit("update:isUploading", false);
+
   progressBarIsOpen.value = false;
   uploadData.value = undefined;
   cancelError.value = true;
+
   emit("update:modelValue", "");
 }
+
 let uploadSignal = ref(new AbortController());
+
 async function handleMainFileUpload() {
   isError.value = false;
   cancelError.value = false;
+
   let file = fileUploadEl.value?.files?.item(0) as File;
+
   if (file.type.slice(0, 5) !== "image") {
     props.showAlert({
       title: props.errorText,
@@ -64,11 +72,15 @@ async function handleMainFileUpload() {
     });
     return;
   }
+
   const formData = new FormData();
   formData.append("file", file);
+
   progressBarName.value = file.name;
+
   try {
     emit("update:isUploading", true);
+
     let resp = await axios.post("/api/input/upload", formData, {
       onUploadProgress({ total, loaded }) {
         if (total) {
@@ -76,13 +88,16 @@ async function handleMainFileUpload() {
             progressBarIsOpen.value = true;
           }
           let progress = Math.floor((loaded * 100) / total) + "%";
+          console.log("progress: ", progress);
           progressWidth.value = progress;
         }
       },
       signal: uploadSignal.value.signal,
     });
+
     emit("update:isUploading", false);
     emit("upload");
+
     if (resp.data.upload) {
       uploadData.value = resp.data;
       emit("update:modelValue", {
@@ -101,36 +116,39 @@ async function handleMainFileUpload() {
     });
   }
 }
+
+/* const fileUploadText = ref(
+  i18next("forms.report.questions.file_upload.cta_text")
+); */
 </script>
 <template>
   <div class="mb-4">
-    <KeepAlive>
-      <label
-        v-if="!progressBarIsOpen"
-        class="w-full flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase text-primary-600 border border-blue cursor-pointer hover:bg-primary-700 hover:text-white"
+    <label
+      v-show="!progressBarIsOpen"
+      class="w-full flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase text-primary-600 border border-blue cursor-pointer hover:bg-primary-700 hover:text-white"
+    >
+      <svg
+        class="w-8 h-8"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
       >
-        <svg
-          class="w-8 h-8"
-          fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-        >
-          <path
-            d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"
-          />
-        </svg>
-        <span class="mt-2 text-base font-bold leading-normal">{{
-          i18next("forms.report.questions.file_upload.cta_text")
-        }}</span>
-        <input
-          spellcheck="false"
-          type="file"
-          class="hidden"
-          ref="fileUploadEl"
-          @input="handleMainFileUpload"
+        <path
+          d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"
         />
-      </label>
-    </KeepAlive>
+      </svg>
+      <span class="mt-2 text-base font-bold leading-normal">{{
+        i18next("forms.report.questions.file_upload.cta_text")
+      }}</span>
+      <input
+        spellcheck="false"
+        type="file"
+        class="hidden"
+        ref="fileUploadEl"
+        @input="handleMainFileUpload"
+      />
+    </label>
+
     <p
       v-show="isError"
       class="text-sm flex justify-between my-3 bg-red-200 text-red-600 p-2 rounded-lg"
@@ -159,22 +177,21 @@ async function handleMainFileUpload() {
       </div>
       <div
         v-if="progressBarIsOpen"
-        class="w-full mt-3 relative px-1 h-10 flex justify-between items-center gap-4 border rounded bg-blue-300 transition-all duration-300"
+        class="w-full mt-3 relative pr-2 pl-4 h-10 flex justify-between items-center gap-4 border rounded bg-blue-300 transition-all duration-300"
       >
         <div
-          class="h-7 text-white flex items-center bg-primary-600 rounded-md"
+          class="absolute left-3 right-0 z-[1] w-10/12 h-7 text-white flex items-center bg-primary-600 rounded-md transform origin-left scale-x-0 transition duration-1000"
           :style="{
-            width: progressWidth,
+            transform: `scaleX(${progressWidth})`,
           }"
-        >
-          <p class="text-sm m-2 ml-5 absolute">
-            {{ progressBarName }}
-          </p>
-        </div>
+        ></div>
+        <p class="text-sm flex-shrink z-10 text-white">
+          {{ progressBarName }}
+        </p>
 
         <button
           @click="deleteFile"
-          class="bg-red-300 text-red-700 p-1 rounded-lg hover:bg-red-400"
+          class="flex-shrink-0 bg-red-300 text-red-700 p-1 rounded-lg hover:bg-red-400"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
