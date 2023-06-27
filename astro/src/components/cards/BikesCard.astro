@@ -10,6 +10,7 @@ import {
   dateTimeFormatter,
   relativeDateTimeFormatter
 } from "@utils/formatters";
+import { initialPathImg } from "@utils/directus";
 
 export interface BikesCardData extends Report.ReportShort {
   lang: string;
@@ -61,18 +62,19 @@ photos.length > 0 &&
       height: photo.directus_files_id.height
     });
   });
-
-const initialPathImg = `${config.DIRECTUS_URI}/assets`;
 ---
 
 <li
-  class="link-card list-none p-4 pb-6 rounded-lg bg-white shadow-md overflow-hidden"
+  class="link-card list-none p-4 pb-6 rounded-lg bg-white shadow-md overflow-hidden flex flex-col justify-between"
 >
+  <!-- <div class="h-56"> -->
   <div class="h-56">
     <CarouselVue client:only items={imgs} initialPathImg={initialPathImg} />
   </div>
-
-  <div class="flex flex-col h-[calc(100%-224px)]">
+  <!-- h-[calc(100%-224px)] -->
+  <div
+    class="flex flex-col flex-grow flex-shrink-0 self-stretch justify-between"
+  >
     {
       showMatch && (
         <div class="mt-6">
@@ -95,20 +97,25 @@ const initialPathImg = `${config.DIRECTUS_URI}/assets`;
       <h4 class="text-gray-500 mt-1">{bike_brand_model.name}</h4>
     </div>
 
-    <div class="mt-2.5 flex items-center justify-between">
-      <span class="text-sm text-gray-800 font-medium">
+    <div class="mt-2.5 flex items-center justify-between gap-5">
+      <span class="basis-3/12 text-sm text-gray-800 font-medium">
         {t("homepage.theft_date")}
       </span>
-      <span class="text-sm text-gray-500">
+      <span class="basis-9/12 text-sm text-gray-500 text-right">
         {formattedDate} ({formattedRelativeDate})
       </span>
     </div>
-    <div class="mt-2.5 flex items-center justify-between gap-5">
-      <span class="basis-2/12 text-sm text-gray-800 font-medium">
+    <div
+      class="mt-2.5 flex flex-grow flex-shrink-0 items-center justify-between gap-5"
+    >
+      <span class="basis-3/12 text-sm text-gray-800 font-medium">
         {t("homepage.location")}
       </span>
-      <span class="basis-10/12 text-sm text-gray-500"> {location_address}</span>
+      <span class="basis-9/12 text-sm text-gray-500 text-right">
+        {location_address}</span
+      >
     </div>
+    <!-- mt-6 -->
     <div class="mt-6 flex h-full items-end">
       <a
         class="block w-full text-center leading-5 rounded-md bg-primary-600 py-2 px-4 text-white text-sm"

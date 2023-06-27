@@ -21,17 +21,17 @@ export declare namespace Report {
   }
 
   export interface ReportDetails {
-    id: any;
+    id: number;
     user_created?: string;
-    date_created?: Date;
+    date_created?: string;
     user_updated?: string;
-    date_updated?: Date;
+    date_updated?: string;
     status: string;
     bike_details?: string;
     description: string;
     location: { type: "Point"; coordinates: [number, number] };
     location_address?: string;
-    theft_date: Date;
+    theft_date: string;
     theft_timeframe: string;
     theft_location_type: string;
     colors: string[];

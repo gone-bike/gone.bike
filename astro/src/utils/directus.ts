@@ -1,7 +1,7 @@
 import { Directus } from "@directus/sdk";
 import config from "@utils/config";
 
-type Report = {
+export type Report = {
   enable: Function;
   id: any;
   status: string;
@@ -59,11 +59,16 @@ type GoneBike = {
  */
 const directus = new Directus<GoneBike>(config.DIRECTUS_URI, {
   auth: {
-    staticToken: config.DIRECTUS_TOKEN,
+    staticToken: config.DIRECTUS_TOKEN
   },
   transport: {
-    timeout: 2000,
-  },
+    timeout: 2000
+  }
 });
+
+/**
+ * Initial path to images
+ */
+export const initialPathImg = `${config.DIRECTUS_URI}/assets`;
 
 export default directus;

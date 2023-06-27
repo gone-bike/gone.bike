@@ -5,7 +5,7 @@ export default async function (queryOptions = {}) {
   try {
     let query = await directus.items("report").readByQuery({
       /* filter: {
-        status: "published",
+        status: "published"
       }, */
       fields: [
         "id",
@@ -26,12 +26,12 @@ export default async function (queryOptions = {}) {
         "photos.*.id",
         "photos.*.type",
         "photos.*.width",
-        "photos.*.height",
+        "photos.*.height"
       ],
 
       limit: 10,
       meta: ["total_count", "filter_count"],
-      ...queryOptions,
+      ...queryOptions
     });
 
     const data = query && query.data && query.data.length > 0 ? query.data : [];

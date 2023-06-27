@@ -1,69 +1,31 @@
 ---
 import type { Report } from "@app-types/report";
+import type { ReportDetailsDirectus } from "@pages/report/[id].astro";
+import { initialPathImg } from "@utils/directus";
 import { dateTimeFormatter, getIsValidDate } from "@utils/formatters";
 import i18next, { t } from "i18next";
 
 import "venobox/dist/venobox.min.css";
 
-/* export interface DetailsData {
-  id: number;
-  status: string;
-  user_created?: string;
-  date_created?: Date;
-  user_updated?: string;
-  date_updated?: Date;
-  location?: { type: "Point"; coordinates: [number, number] };
-  // bike_brand_model?: number;
-  bike_brand_model?: string;
-  theft_date?: Date;
-  description?: string;
-  // colors?: object;
-  colors?: string[];
-  serial_number?: string;
-  bike_type?: string;
-  approximate_value?: number;
-  approximate_value_currency?: string;
-  theft_location_type?: string;
-  lock_type?: string;
-  lock_anchor?: string;
-  // language?: number;
-  language?: string;
-  main_photo?: string;
-  is_electric?: boolean;
-  theft_timeframe?: string;
-  bike_details?: string;
-  location_address?: string;
-  location_details?: object;
-  ref_url?: string;
-  email?: string;
-  activation_code?: string;
-  theft_status: string;
-  // tags?: object;
-  tags?: string[];
-  submit_by?: string;
-  // bike_brand?: number;
-  bike_brand?: string;
-} */
-
 export interface DetailsSectionProps {
   class?: string;
-  data: Report.ReportDetails;
+  data: ReportDetailsDirectus;
 }
 
 const {
   class: classes,
   data: {
-    user_created,
-    date_created,
-    date_updated,
+    user_created = null,
+    date_created = null,
+    date_updated = null,
     main_photo,
     bike_brand_model,
     theft_date,
     theft_timeframe,
-    bike_type,
+    bike_type = null,
     colors,
     serial_number,
-    is_electric,
+    is_electric = false,
     approximate_value,
     approximate_value_currency,
     theft_location_type,
@@ -81,9 +43,9 @@ type StringOrNullOrUndefined = string | null | undefined;
 
 let dateCreatedFormatted = null as StringOrNullOrUndefined;
 
-if (date_created && getIsValidDate(date_created)) {
+if (date_created && getIsValidDate(new Date(date_created))) {
   dateCreatedFormatted = dateTimeFormatter({
-    date: date_created,
+    date: new Date(date_created),
     locale: i18next.language,
     options: {
       month: "long",
@@ -97,9 +59,9 @@ if (date_created && getIsValidDate(date_created)) {
 
 let dateUpdatedFormatted = null as StringOrNullOrUndefined;
 
-if (date_updated && getIsValidDate(date_updated)) {
+if (date_updated && getIsValidDate(new Date(date_updated))) {
   dateUpdatedFormatted = dateTimeFormatter({
-    date: date_updated,
+    date: new Date(date_updated),
     locale: i18next.language,
     options: {
       month: "long",
@@ -113,9 +75,9 @@ if (date_updated && getIsValidDate(date_updated)) {
 
 let theftDateFormatted = null as StringOrNullOrUndefined;
 
-if (theft_date && getIsValidDate(theft_date)) {
+if (theft_date && getIsValidDate(new Date(theft_date))) {
   theftDateFormatted = dateTimeFormatter({
-    date: theft_date,
+    date: new Date(theft_date),
     locale: i18next.language,
     options: {
       month: "long",
@@ -126,7 +88,16 @@ if (theft_date && getIsValidDate(theft_date)) {
 }
 
 const colorsStr =
-  colors && colors.map((clr) => clr[0].toUpperCase() + clr.slice(1)).join(", ");
+  colors &&
+  colors.length > 0 &&
+  colors
+    .map((clr) => (clr.length > 0 ? clr[0].toUpperCase() + clr.slice(1) : ""))
+    .join(", ");
+
+const mainPhotoUrl = `${initialPathImg}/${main_photo.id}/${main_photo.filename_download}`;
+
+const getPhotoUrl = (photo) =>
+  `${initialPathImg}/${photo.directus_files_id.id}/${photo.directus_files_id.filename_download}`;
 ---
 
 <section class:list={["mb-4", {}, classes]}>
@@ -138,11 +109,12 @@ const colorsStr =
     <div class="md:inline-flex md:items-center md:gap-4 text-gray-500">
       <p>
         Reported by
-        <span class="text-gray-800 font-bold">{user_created ?? "-"}</span>
+        <span class="text-gray-800 font-bold">{user_created ?? "username"}</span
+        >
       </p>
       <span class="dot hidden w-2 h-2 rounded-full bg-customgray-300 md:block"
       ></span>
-      <p>{dateUpdatedFormatted ?? "-"}</p>
+      <p>{dateUpdatedFormatted ?? theftDateFormatted}</p>
     </div>
     <!-- share upper part -->
     <div class="flex-shrink-0 inline-flex items-center gap-4">
@@ -327,19 +299,17 @@ const colorsStr =
   </div>
 </section>
 <!-- main part -->
-<div class="my-4 space-y-8 xl:flex xl:items-center xl:space-y-0 xl:gap-24">
+<div
+  class="my-4 space-y-8 xl:grid xl:grid-flow-col xl:space-y-0 xl:gap-24 xl:grid-cols-2"
+>
   <!-- left-col -->
-  <div class="my-4 px-4 lg:px-0 lg:my-0">
+  <div class="my-4 px-4 lg:px-0 lg:my-0 xl:basis-full">
     {
       main_photo?.id && (
-        <a
-          class="venobox main-photo"
-          data-gall="gallery01"
-          href={main_photo.filename_download}
-        >
+        <a class="venobox main-photo" data-gall="gallery01" href={mainPhotoUrl}>
           <img
             class="w-full h-full object-contain max-h-108 xl:max-h-full"
-            src={main_photo.filename_download}
+            src={mainPhotoUrl}
             width={main_photo.width}
             height={main_photo.height}
             alt=""
@@ -349,18 +319,18 @@ const colorsStr =
     }
 
     <div class="mt-4 w-full overflow-hidden">
-      <div class="flex gap-4">
+      <div class="grid grid-flow-col grid-cols-4 gap-4">
         {
           photos.length > 0 &&
             photos.map((photo) => (
               <a
                 class="venobox basis-full"
                 data-gall="gallery01"
-                href={photo.directus_files_id.filename_download}
+                href={getPhotoUrl(photo)}
               >
                 <img
-                  class="w-full h-full  object-cover rounded-lg"
-                  src={photo.directus_files_id.filename_download}
+                  class="w-full h-full  object-cover rounded-lg aspect-[4/3]"
+                  src={getPhotoUrl(photo)}
                   width={photo.directus_files_id.width}
                   height={photo.directus_files_id.height}
                   alt=""
@@ -372,7 +342,7 @@ const colorsStr =
     </div>
   </div>
   <!-- right-col -->
-  <div class="xl:flex-shrink-0">
+  <div class="xl:flex-shrink-0 xl:flex-grow xl:basis-full">
     <div class="flex items-center justify-between gap-4">
       <div class="inline-flex items-center gap-4 flex-shrink-0">
         <span class="text-gray-800 font-medium"
@@ -389,7 +359,7 @@ const colorsStr =
 
       <p class="text-right text-gray-500 italic flex-shrink">
         {t("details.last_update", "last update")}
-        <span class="block">{dateUpdatedFormatted}</span>
+        <span class="block">{dateUpdatedFormatted ?? theftDateFormatted}</span>
       </p>
     </div>
 
@@ -431,16 +401,14 @@ const colorsStr =
           </div>
         )
       }
-      {
-        colors && colors.length > 0 && (
-          <div>
-            <p class="font-bold text-gray-800">
-              {t("report.data.bike_colors", "Bike Main Colors")}
-            </p>
-            <p class="text-gray-600 mt-3">{colorsStr}</p>
-          </div>
-        )
-      }
+
+      <div>
+        <p class="font-bold text-gray-800">
+          {t("report.data.bike_colors", "Bike Main Colors")}
+        </p>
+        <p class="text-gray-600 mt-3">{colorsStr || "-"}</p>
+      </div>
+
       {
         serial_number && (
           <div>
@@ -482,7 +450,7 @@ const colorsStr =
               </th>
               <td class="p-4 font-semibold">
                 {approximate_value_currency ?? ""}
-                {approximate_value ?? ""}
+                {approximate_value || "-"}
               </td>
             </tr>
             <tr class="border-b bg-gray-50">
@@ -490,7 +458,7 @@ const colorsStr =
                 {t("report.data.theft_location_type", "Last Location")}
               </th>
               <td class="p-4 font-semibold capitalize">
-                {theft_location_type ?? ""}</td
+                {theft_location_type || "-"}</td
               >
             </tr>
             <tr class="bg-white border-b">
@@ -498,14 +466,14 @@ const colorsStr =
                 {t("report.data.lock_type", "Lock Type")}
               </th>
               <td class="p-4 font-semibold">
-                {lock_type ?? ""}
+                {lock_type || "-"}
               </td>
             </tr>
             <tr class="border-b bg-gray-50">
               <th scope="row" class="p-4 font-medium whitespace-nowrap">
                 {t("report.data.lock_anchor", "Anchor Point")}
               </th>
-              <td class="p-4 font-semibold"> {lock_anchor ?? ""}</td>
+              <td class="p-4 font-semibold"> {lock_anchor || ""}</td>
             </tr>
           </tbody>
         </table>

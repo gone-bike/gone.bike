@@ -47,7 +47,7 @@ function renderBullet() {
     <SwiperSlide v-for="item in props.items" :key="item.id">
       <img
         :src="`${props.initialPathImg}/${item.id}/${item.filename_download}`"
-        class="block w-full h-full max-h-48 object-cover rounded-lg"
+        class="block w-full h-full max-h-48 object-cover rounded-lg aspect-[4/3]"
         alt=""
         :width="item.width"
         :height="item.height"
@@ -108,6 +108,10 @@ function renderBullet() {
 </template>
 
 <style scoped>
+.swiper-wrapper {
+  @apply !max-h-48 h-full;
+}
+
 button.btn-navigation[disabled=""] {
   @apply !bg-gray-400;
 }

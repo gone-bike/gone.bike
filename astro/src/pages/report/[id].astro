@@ -3,28 +3,46 @@ import { Debug } from "astro/components";
 
 import i18next, { t } from "i18next";
 
+import { dateTimeFormatter, getIsValidDate } from "@utils/formatters";
+
 import BaseLayout from "@layouts/Base.astro";
 import BaseContainer from "@components/base/BaseContainer.astro";
 import BaseBreadcrumbs from "@components/base/BaseBreadcrumbs.astro";
 import DetailsSection from "@components/sections/DetailsSection.astro";
 import BikesCard from "@components/cards/BikesCard.astro";
 import BikesList from "@components/bikes/BikesList.astro";
-import type { Report } from "@app-types/report";
-// import config from "@utils/config";
 
-// import Report from "@models/report";
+import type { Report } from "@utils/directus";
 
-// if ( isNaN(Astro.params.id)) {
-//     return await config.http404();
-// }
+import config from "@utils/config";
+import SingleReport from "@models/report";
+import listing from "@models/listing";
 
-// let report = await Report(Astro.params.id);
+const { id } = Astro.params;
 
-// if (! report ) {
-//     return await config.http404();
-// }
+if (!id && isNaN(id)) {
+  return await config.http404();
+}
 
-// console.log(report)
+// const report = await SingleReport(+id);
+
+const [report, otherReports] = await Promise.all([
+  SingleReport(+id),
+  listing({
+    filter: {
+      id: {
+        _neq: id
+      }
+    },
+    limit: 4
+  })
+]);
+
+if (!report) {
+  return await config.http404();
+}
+
+export type ReportDetailsDirectus = typeof report;
 
 const higherPages = [
   {
@@ -33,177 +51,56 @@ const higherPages = [
   }
 ];
 
-const detailsData = {
-  id: 1,
-  status: "stolen",
-  user_created: "Raka",
-  date_created: new Date("2023-06-03T11:14:00"),
-  user_updated: "Raka",
-  date_updated: new Date("2023-06-03T11:14:00"),
-  location: {
-    type: "Point",
-    coordinates: [-7.7604326, 110.3767532]
-  },
-  theft_date: new Date("2023-06-03T08:14:00"),
-  bike_details:
-    "The sleek and stylish bike, with its vibrant red frame and aerodynamic design, boasts cutting-edge features such as a lightweight carbon fiber frame, Shimano Di2 electronic shifting, hydraulic disc brakes, and a high-performance suspension system, making it the perfect choice for both urban commutes and thrilling off-road adventures, while its comfortable saddle and ergonomic handlebars ensure a smooth and enjoyable ride every time.",
-  description:
-    "While I had securely locked their bike to a designated bike rack, I returned after a brief errand to find the lock cut and their bike missing. No witnesses were present at the time of the theft. The incident occurred in evening, raising concerns about the audacity of the thief. Surveillance footage from nearby establishments is currently being reviewed to aid in the investigation.",
-  colors: ["Black", "Red"],
-  serial_number: "W7521246",
-  bike_type: "Mountain Bike",
-  approximate_value: 450,
-  approximate_value_currency: "USD",
-  theft_location_type: "street",
-  lock_type: "Folding Lock",
-  lock_anchor: "To other bike",
-  /* language: "en",
-  main_photo: "/static/img/main-photo.png",
-  is_electric: false, */
-  theft_timeframe: "Evening",
+type StringOrNullOrUndefined = string | null | undefined;
 
-  location_address:
-    "Manggung, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia",
-  /*  location_details: {},
-  ref_url: '',
-  email: "test@gmail.com",
-  activation_code,
-  theft_status: "stolen",
-  tags:
-  submit_by: "Raka",
-  bike_brand: "Hooklow 2", */
-  activation_code: "some-code",
-  bike_brand_model: {
-    name: "Hooklow 2",
-    bike_brand: {
-      id: "1",
-      key: "1",
-      name: "Forme"
+let dateTheftHeaderFormatted = null as StringOrNullOrUndefined;
+
+const reportTheftDate = new Date(report.theft_date);
+
+const isValidDate = getIsValidDate(reportTheftDate);
+// console.log("isValidDate: ", isValidDate);
+
+if (report.theft_date && isValidDate) {
+  dateTheftHeaderFormatted = dateTimeFormatter({
+    date: reportTheftDate,
+    locale: i18next.language,
+    options: {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: undefined,
+      minute: undefined
     }
-  },
-  main_photo: {
-    filename_download: "/static/img/main-photo.png",
-    id: "main-photo",
-    type: "image/png",
-    width: 569,
-    height: 511
-  },
-  photos: [
-    {
-      directus_files_id: {
-        id: 2,
-        // filename_download: "/static/img/bike-image-1.jpg",
-        filename_download: "/static/img/main-photo.png",
-        type: "image/jpeg",
-        width: 177,
-        height: 128
-      }
-    },
-    {
-      directus_files_id: {
-        id: 3,
-        filename_download: "/static/img/bike-image-2.jpg",
-        type: "image/jpeg",
-        width: 177,
-        height: 128
-      }
-    },
-    {
-      directus_files_id: {
-        id: 4,
-        filename_download: "/static/img/bike-image-3.jpg",
-        type: "image/jpeg",
-        width: 177,
-        height: 128
-      }
-    },
-    {
-      directus_files_id: {
-        id: 5,
-        // filename_download: "/static/img/bike-image-1.jpg",
-        filename_download: "/static/img/main-photo.png",
-        type: "image/jpeg",
-        width: 177,
-        height: 128
-      }
-    }
-  ],
-  // is_electric:
-  language: {
-    locale_code: i18next.language
-  }
-} satisfies Report.ReportDetails;
+  });
+}
 
-const imgArr = [
-  {
-    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
-    alt: "...1"
-  },
-  {
-    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
-    alt: "...2"
-  },
-  {
-    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
-    alt: "...3"
-  }
-];
-
-const otherBikesList = [
-  {
-    dateStr: "2022-05-28",
-    matchScore: 75,
-    brand: "Forme",
-    model: "Hooklow 2",
-    location: "Milano, Italy",
-    lang: "en",
-    imgs: imgArr
-  },
-  {
-    dateStr: "2022-05-28",
-    matchScore: 75,
-    brand: "Forme",
-    model: "Hooklow 2",
-    location: "Milano, Italy",
-    lang: "en",
-    imgs: imgArr
-  },
-  {
-    dateStr: "2022-05-28",
-    matchScore: 75,
-    brand: "Forme",
-    model: "Hooklow 2",
-    location: "Milano, Italy",
-    lang: "en",
-    imgs: imgArr
-  },
-  {
-    dateStr: "2022-05-28",
-    matchScore: 75,
-    brand: "Forme",
-    model: "Hooklow 2",
-    location: "Milano, Italy",
-    lang: "en",
-    imgs: imgArr
-  }
-];
+const currentPageName = `
+${report.bike_brand_model.bike_brand.name} ${report.bike_brand_model.name} - ${dateTheftHeaderFormatted} 
+`;
 ---
 
 <BaseLayout title={t("test.x")} description="test" lang={i18next.language}>
   <main>
     <BaseContainer>
+      <!-- <Debug data={report} /> -->
+      <!-- <Debug data={report.colors} /> -->
+
       <BaseBreadcrumbs
         class="my-2.5 xl:my-8"
         higherPages={higherPages}
-        currentPage={"Forme Hooklow 2 - June 3, 2023"}
+        currentPage={currentPageName}
       />
-      <DetailsSection data={detailsData} />
+      <DetailsSection data={report} />
 
-      <section class="py-4 md:py-8">
-        <h2 class="text-2xl font-bold md:text-3xl">Other reports</h2>
+      {
+        otherReports.length > 0 && (
+          <section class="py-4 md:py-8">
+            <h2 class="text-2xl font-bold md:text-3xl">Other reports</h2>
 
-        <BikesList items={otherBikesList} />
-      </section>
+            <BikesList items={otherReports} />
+          </section>
+        )
+      }
     </BaseContainer>
   </main>
   <!-- <div class="container mx-auto">
@@ -217,5 +114,5 @@ const otherBikesList = [
     />
   </div> -->
 
-  <!-- <Debug data={data}/> -->
+  <!-- <Debug data={reportTheftDate} /> -->
 </BaseLayout>

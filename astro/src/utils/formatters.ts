@@ -9,17 +9,15 @@ export function dateTimeFormatter({
   locale,
   options = {}
 }: DateTimeFormatter) {
-  console.log("date: ", date);
   if (!date || !locale) return;
 
-  /* const defaultOptions: Intl.DateTimeFormatOptions = {
+  const defaultOptions: Intl.DateTimeFormatOptions = {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
     hour: "2-digit",
     minute: "2-digit"
-  }; */
-  const defaultOptions = {};
+  };
 
   const newOptions = { ...defaultOptions, ...options };
 

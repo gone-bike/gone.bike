@@ -1,18 +1,20 @@
 import config from "@utils/config.js";
 import directus from "@utils/directus.js";
 
-export default async function(id: bigint) {
+export default async function (id: number) {
   try {
-    let query = await directus.items('report').readByQuery({
-      "filter": {
-        "id": {
-          "_eq": id
+    let query = await directus.items("report").readByQuery({
+      filter: {
+        id: {
+          _eq: id
         }
       },
-      "fields": [
+      fields: [
         "id",
         "status",
         "description",
+        "is_electric",
+        "location_address",
         "location",
         "theft_date",
         "theft_timeframe",
@@ -37,26 +39,24 @@ export default async function(id: bigint) {
         "main_photo.type",
         "main_photo.width",
         "main_photo.height",
-        "activation_code"
+        "activation_code",
+        "getPhotos"
       ]
     });
-    let data = query && query.data && query.data.length == 1 ? query.data[0] : false
+    let data =
+      query && query.data && query.data.length == 1 ? query.data[0] : false;
     if (data) {
-
-      data.enable = async function() {
-        let update = await directus.items('report').updateOne(this.id, {
-            activation_code: null,
-            status: "published"
+      data.enable = async function () {
+        let update = await directus.items("report").updateOne(this.id, {
+          activation_code: null,
+          status: "published"
         });
-        console.log(update)
-      }
+        console.log(update);
+      };
     }
 
     return !!data ? data : false;
-
   } catch (e) {
-    throw e
+    throw e;
   }
-
-
 }
