@@ -6,12 +6,10 @@ import i18next, { t } from "i18next";
 import BaseLayout from "@layouts/Base.astro";
 import BaseContainer from "@components/base/BaseContainer.astro";
 import BaseBreadcrumbs from "@components/base/BaseBreadcrumbs.astro";
-import DetailsSection, {
-  // DetailsData,
-  ReportDetails,
-} from "@components/sections/DetailsSection.astro";
+import DetailsSection from "@components/sections/DetailsSection.astro";
 import BikesCard from "@components/cards/BikesCard.astro";
 import BikesList from "@components/bikes/BikesList.astro";
+import type { Report } from "@app-types/report";
 // import config from "@utils/config";
 
 // import Report from "@models/report";
@@ -31,8 +29,8 @@ import BikesList from "@components/bikes/BikesList.astro";
 const higherPages = [
   {
     url: "#",
-    text: "Reports",
-  },
+    text: "Reports"
+  }
 ];
 
 const detailsData = {
@@ -44,7 +42,7 @@ const detailsData = {
   date_updated: new Date("2023-06-03T11:14:00"),
   location: {
     type: "Point",
-    coordinates: [-7.7604326, 110.3767532],
+    coordinates: [-7.7604326, 110.3767532]
   },
   theft_date: new Date("2023-06-03T08:14:00"),
   bike_details:
@@ -80,15 +78,15 @@ const detailsData = {
     bike_brand: {
       id: "1",
       key: "1",
-      name: "Forme",
-    },
+      name: "Forme"
+    }
   },
   main_photo: {
     filename_download: "/static/img/main-photo.png",
     id: "main-photo",
     type: "image/png",
     width: 569,
-    height: 511,
+    height: 511
   },
   photos: [
     {
@@ -98,8 +96,8 @@ const detailsData = {
         filename_download: "/static/img/main-photo.png",
         type: "image/jpeg",
         width: 177,
-        height: 128,
-      },
+        height: 128
+      }
     },
     {
       directus_files_id: {
@@ -107,8 +105,8 @@ const detailsData = {
         filename_download: "/static/img/bike-image-2.jpg",
         type: "image/jpeg",
         width: 177,
-        height: 128,
-      },
+        height: 128
+      }
     },
     {
       directus_files_id: {
@@ -116,8 +114,8 @@ const detailsData = {
         filename_download: "/static/img/bike-image-3.jpg",
         type: "image/jpeg",
         width: 177,
-        height: 128,
-      },
+        height: 128
+      }
     },
     {
       directus_files_id: {
@@ -126,29 +124,29 @@ const detailsData = {
         filename_download: "/static/img/main-photo.png",
         type: "image/jpeg",
         width: 177,
-        height: 128,
-      },
-    },
+        height: 128
+      }
+    }
   ],
   // is_electric:
   language: {
-    locale_code: i18next.language,
-  },
-} satisfies ReportDetails;
+    locale_code: i18next.language
+  }
+} satisfies Report.ReportDetails;
 
 const imgArr = [
   {
     imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
-    alt: "...1",
+    alt: "...1"
   },
   {
     imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
-    alt: "...2",
+    alt: "...2"
   },
   {
     imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
-    alt: "...3",
-  },
+    alt: "...3"
+  }
 ];
 
 const otherBikesList = [
@@ -159,7 +157,7 @@ const otherBikesList = [
     model: "Hooklow 2",
     location: "Milano, Italy",
     lang: "en",
-    imgs: imgArr,
+    imgs: imgArr
   },
   {
     dateStr: "2022-05-28",
@@ -168,7 +166,7 @@ const otherBikesList = [
     model: "Hooklow 2",
     location: "Milano, Italy",
     lang: "en",
-    imgs: imgArr,
+    imgs: imgArr
   },
   {
     dateStr: "2022-05-28",
@@ -177,7 +175,7 @@ const otherBikesList = [
     model: "Hooklow 2",
     location: "Milano, Italy",
     lang: "en",
-    imgs: imgArr,
+    imgs: imgArr
   },
   {
     dateStr: "2022-05-28",
@@ -186,8 +184,8 @@ const otherBikesList = [
     model: "Hooklow 2",
     location: "Milano, Italy",
     lang: "en",
-    imgs: imgArr,
-  },
+    imgs: imgArr
+  }
 ];
 ---
 

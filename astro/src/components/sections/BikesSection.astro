@@ -1,99 +1,24 @@
 ---
-import { t } from "i18next";
+import { t, changeLanguage } from "i18next";
 import SearchBikes from "@components/bikes/SearchBikes.astro";
 import BaseContainer from "@components/base/BaseContainer.astro";
 import BasePagination from "@components/base/BasePagination.astro";
 import BikesList from "@components/bikes/BikesList.astro";
 
-const imgArr = [
-  {
-    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
-    alt: "...1",
-  },
-  {
-    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
-    alt: "...2",
-  },
-  {
-    imgPath: "/4b8d515f-ed58-4b3f-8c47-c9b57aa98a66.jpeg",
-    alt: "...3",
-  },
-];
+import config from "@utils/config";
+import directus from "@utils/directus.js";
+import listing from "@models/listing";
 
-const bikesList = [
-  {
-    dateStr: "2022-05-28",
-    matchScore: 75,
-    brand: "Forme",
-    model: "Hooklow 2",
-    location: "Milano, Italy",
-    lang: "en",
-    imgs: imgArr,
-  },
-  {
-    dateStr: "2022-05-28",
-    matchScore: 75,
-    brand: "Forme",
-    model: "Hooklow 2",
-    location: "Milano, Italy",
-    lang: "en",
-    imgs: imgArr,
-  },
-  {
-    dateStr: "2022-05-28",
-    matchScore: 75,
-    brand: "Forme",
-    model: "Hooklow 2",
-    location: "Milano, Italy",
-    lang: "en",
-    imgs: imgArr,
-  },
-  {
-    dateStr: "2022-05-28",
-    matchScore: 75,
-    brand: "Forme",
-    model: "Hooklow 2",
-    location: "Milano, Italy",
-    lang: "en",
-    imgs: imgArr,
-  },
-  {
-    dateStr: "2022-05-28",
-    matchScore: 75,
-    brand: "Forme",
-    model: "Hooklow 2",
-    location: "Milano, Italy",
-    lang: "en",
-    imgs: imgArr,
-  },
-  {
-    dateStr: "2022-05-28",
-    matchScore: 75,
-    brand: "Forme",
-    model: "Hooklow 2",
-    location: "Milano, Italy",
-    lang: "en",
-    imgs: imgArr,
-  },
-  {
-    dateStr: "2022-05-28",
-    matchScore: 75,
-    brand: "Forme",
-    model: "Hooklow 2",
-    location: "Milano, Italy",
-    lang: "en",
-    imgs: imgArr,
-  },
-  {
-    dateStr: "2022-05-28",
-    matchScore: 75,
-    brand: "Forme",
-    model: "Hooklow 2",
-    location: "Milano, Italy",
-    lang: "en",
-    imgs: imgArr,
-  },
-];
+const PAGE_SIZE = 8;
+const args = {
+  locale: Astro.url.searchParams.get("locale") || "en",
+  page: Math.max(1, parseInt(Astro?.url?.searchParams?.get("page")) || 1),
+  // page: 1,
+};
+
+await changeLanguage(args.locale);
+
+const list = await listing();
 ---
 
 <section class="mt-10 pt-6 md:pt-8 pb-8 md:pb-10">
@@ -113,7 +38,7 @@ const bikesList = [
 
     <SearchBikes lang="en" />
 
-    <BikesList items={bikesList} />
+    <BikesList items={list} />
 
     <BasePagination />
   </BaseContainer>

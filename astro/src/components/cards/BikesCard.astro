@@ -1,22 +1,19 @@
 ---
+import type { Report } from "@app-types/report";
+
 import CarouselVue from "@components/carousel/Carousel.vue";
-import type { CarouselItemProps } from "@components/carousel/carousel";
-import { t, changeLanguage } from "i18next";
+import i18next, { t, changeLanguage } from "i18next";
+import config from "@utils/config";
 
 import {
   dateDiffInDays,
   dateTimeFormatter,
-  relativeDateTimeFormatter,
+  relativeDateTimeFormatter
 } from "@utils/formatters";
 
-export interface BikesCardData {
+export interface BikesCardData extends Report.ReportShort {
   lang: string;
-  matchScore: number;
-  brand: string;
-  model: string;
-  dateStr: string;
-  location: string;
-  imgs: CarouselItemProps[];
+  matchScore?: number;
 }
 
 export interface BikesCardProps extends BikesCardData {
@@ -24,78 +21,101 @@ export interface BikesCardProps extends BikesCardData {
 }
 
 const {
-  lang,
+  id,
+  theft_date,
+  bike_brand_model,
+  location_address,
+  main_photo,
+  photos,
   matchScore,
-  brand,
-  model,
-  dateStr,
-  location,
-  imgs,
-  showMatch = false,
+
+  showMatch = false
 } = Astro.props as BikesCardProps;
 
-changeLanguage(lang);
+changeLanguage(i18next.language);
 
-const date = new Date(dateStr);
+const date = new Date(theft_date);
 
 const diffInDays = dateDiffInDays({ startDate: date });
 
 const formattedDate = dateTimeFormatter({
   date,
-  locale: lang,
+  locale: i18next.language
 });
 
 const formattedRelativeDate = relativeDateTimeFormatter({
   date,
-  locale: lang,
-  numberOfUnits: diffInDays,
+  locale: i18next.language,
+  numberOfUnits: diffInDays
 });
+
+const imgs = [main_photo];
+
+photos.length > 0 &&
+  photos.forEach((photo) => {
+    imgs.push({
+      id: photo.directus_files_id.id,
+      filename_download: photo.directus_files_id.filename_download,
+      type: photo.directus_files_id.type,
+      width: photo.directus_files_id.width,
+      height: photo.directus_files_id.height
+    });
+  });
+
+const initialPathImg = `${config.DIRECTUS_URI}/assets`;
 ---
 
 <li
   class="link-card list-none p-4 pb-6 rounded-lg bg-white shadow-md overflow-hidden"
 >
-  <CarouselVue client:only items={imgs} />
+  <div class="h-56">
+    <CarouselVue client:only items={imgs} initialPathImg={initialPathImg} />
+  </div>
 
-  {
-    showMatch && (
-      <div class="mt-6">
-        <span class="block text-center text-gray-800 text-sm">
-          Match Score: {matchScore}%
-        </span>
-        <div class="w-full bg-gray-200 rounded-full h-1.5">
-          <div
-            class="bg-gradient-to-r from-red-gradient-clr to-teal-gradient-clr h-full rounded-full"
-            style={{ width: `${matchScore}%` }}
-          />
+  <div class="flex flex-col h-[calc(100%-224px)]">
+    {
+      showMatch && (
+        <div class="mt-6">
+          <span class="block text-center text-gray-800 text-sm">
+            Match Score: {matchScore}%
+          </span>
+          <div class="w-full bg-gray-200 rounded-full h-1.5">
+            <div
+              class="bg-gradient-to-r from-red-gradient-clr to-teal-gradient-clr h-full rounded-full"
+              style={{ width: `${matchScore}%` }}
+            />
+          </div>
         </div>
-      </div>
-    )
-  }
-  <div class="pb-2.5 border-b borde-gray-200">
-    <h3 class="text-xl font-bold mt-2.5">{brand}</h3>
-    <h4 class="text-gray-500 mt-1">{model}</h4>
-  </div>
-  <div class="mt-2.5 flex items-center justify-between">
-    <span class="text-sm text-gray-800 font-medium">
-      {t("homepage.theft_date")}
-    </span>
-    <span class="text-sm text-gray-500">
-      {formattedDate} ({formattedRelativeDate})
-    </span>
-  </div>
-  <div class="mt-2.5 flex items-center justify-between">
-    <span class="text-sm text-gray-800 font-medium">
-      {t("homepage.location")}
-    </span>
-    <span class="text-sm text-gray-500"> {location}</span>
-  </div>
-  <div class="mt-6">
-    <a
-      class="block w-full text-center leading-5 rounded-md bg-primary-600 py-2 px-4 text-white text-sm"
-      href=""
-    >
-      View Report
-    </a>
+      )
+    }
+    <div class="pb-2.5 border-b borde-gray-200">
+      <h3 class="text-xl font-bold mt-2.5">
+        {bike_brand_model.bike_brand.name}
+      </h3>
+      <h4 class="text-gray-500 mt-1">{bike_brand_model.name}</h4>
+    </div>
+
+    <div class="mt-2.5 flex items-center justify-between">
+      <span class="text-sm text-gray-800 font-medium">
+        {t("homepage.theft_date")}
+      </span>
+      <span class="text-sm text-gray-500">
+        {formattedDate} ({formattedRelativeDate})
+      </span>
+    </div>
+    <div class="mt-2.5 flex items-center justify-between gap-5">
+      <span class="basis-2/12 text-sm text-gray-800 font-medium">
+        {t("homepage.location")}
+      </span>
+      <span class="basis-10/12 text-sm text-gray-500"> {location_address}</span>
+    </div>
+    <div class="mt-6 flex h-full items-end">
+      <a
+        class="block w-full text-center leading-5 rounded-md bg-primary-600 py-2 px-4 text-white text-sm"
+        href={`/report/${id}`}
+      >
+        View Report
+      </a>
+    </div>
   </div>
 </li>

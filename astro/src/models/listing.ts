@@ -1,22 +1,19 @@
 import config from "@utils/config.js";
 import directus from "@utils/directus.js";
 
-export default async function() {
+export default async function (queryOptions = {}) {
   try {
-    let query = await directus.items('report').readByQuery({
-      "limit": 10,
-      "meta": [ "total_count", "filter_count" ],
-      "filter": {
-        "status": "published"
-      },
-      "fields": [
+    let query = await directus.items("report").readByQuery({
+      /* filter: {
+        status: "published",
+      }, */
+      fields: [
         "id",
-        "status",
-        "location",
+
         "theft_date",
-        "colors",
-        "approximate_value",
-        "approximate_value_currency",
+
+        "location_address",
+
         "bike_brand_model.name",
         "bike_brand_model.bike_brand.name",
         "bike_brand_model.bike_brand.key",
@@ -24,16 +21,23 @@ export default async function() {
         "main_photo.filename_download",
         "main_photo.type",
         "main_photo.width",
-        "main_photo.height"
-      ]
-    });
-    // console.log(query)
-    let data = query && query.data ? query.data : []
-    return (!data || data.length == 0) ? false : data;
+        "main_photo.height",
+        "photos.*.filename_download",
+        "photos.*.id",
+        "photos.*.type",
+        "photos.*.width",
+        "photos.*.height",
+      ],
 
+      limit: 10,
+      meta: ["total_count", "filter_count"],
+      ...queryOptions,
+    });
+
+    const data = query && query.data && query.data.length > 0 ? query.data : [];
+    return data;
   } catch (e: any) {
     // console.log(e);
     throw e;
   }
-
 }

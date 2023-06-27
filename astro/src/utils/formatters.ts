@@ -7,15 +7,19 @@ export interface DateTimeFormatter {
 export function dateTimeFormatter({
   date,
   locale,
-  options = {},
+  options = {}
 }: DateTimeFormatter) {
+  console.log("date: ", date);
   if (!date || !locale) return;
 
-  const defaultOptions: Intl.DateTimeFormatOptions = {
+  /* const defaultOptions: Intl.DateTimeFormatOptions = {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
-  };
+    hour: "2-digit",
+    minute: "2-digit"
+  }; */
+  const defaultOptions = {};
 
   const newOptions = { ...defaultOptions, ...options };
 
@@ -35,12 +39,12 @@ export function relativeDateTimeFormatter({
   locale,
   options = {},
   numberOfUnits,
-  unit = "days",
+  unit = "days"
 }: RelativeDateTimeFormatter) {
   if (!date || !locale) return;
 
   const defaultOptions: Intl.RelativeTimeFormatOptions = {
-    numeric: "auto",
+    numeric: "auto"
   };
 
   const newOptions = { ...defaultOptions, ...options };
@@ -58,7 +62,7 @@ export interface DateDiffInDays {
 
 export function dateDiffInDays({
   startDate,
-  endDate = new Date(Date.now()),
+  endDate = new Date(Date.now())
 }: DateDiffInDays) {
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
