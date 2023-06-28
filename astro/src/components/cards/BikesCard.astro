@@ -69,7 +69,12 @@ photos.length > 0 &&
 >
   <!-- <div class="h-56"> -->
   <div class="h-56">
-    <CarouselVue client:only items={imgs} initialPathImg={initialPathImg} />
+    <CarouselVue
+      client:only
+      items={imgs}
+      initialPathImg={initialPathImg}
+      id={id}
+    />
   </div>
   <!-- h-[calc(100%-224px)] -->
   <div

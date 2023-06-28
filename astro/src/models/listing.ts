@@ -4,9 +4,9 @@ import directus from "@utils/directus.js";
 export default async function (queryOptions = {}) {
   try {
     let query = await directus.items("report").readByQuery({
-      /* filter: {
+      filter: {
         status: "published"
-      }, */
+      },
       fields: [
         "id",
 
@@ -29,7 +29,6 @@ export default async function (queryOptions = {}) {
         "photos.*.height"
       ],
 
-      limit: 10,
       meta: ["total_count", "filter_count"],
       ...queryOptions
     });

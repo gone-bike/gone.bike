@@ -6,6 +6,7 @@ import { Keyboard, Navigation, Pagination } from "swiper";
 const props = defineProps<{
   items: Directus.DirectusFilesId[];
   initialPathImg: string;
+  id: number;
 }>();
 
 // Import Swiper Vue.js components
@@ -45,14 +46,16 @@ function renderBullet() {
     :loop="false"
   >
     <SwiperSlide v-for="item in props.items" :key="item.id">
-      <img
-        :src="`${props.initialPathImg}/${item.id}/${item.filename_download}`"
-        class="block w-full h-full max-h-48 object-cover rounded-lg aspect-[4/3]"
-        alt=""
-        :width="item.width"
-        :height="item.height"
-        loading="lazy"
-      />
+      <a :href="`/report/${id}`">
+        <img
+          :src="`/photos/${item.id}/${item.filename_download}`"
+          class="block w-full h-full max-h-48 object-cover rounded-lg aspect-[4/3]"
+          alt=""
+          :width="item.width"
+          :height="item.height"
+          loading="lazy"
+        />
+      </a>
     </SwiperSlide>
 
     <div class="mt-2.5 flex items-center justify-between">

@@ -8,17 +8,19 @@ import BikesList from "@components/bikes/BikesList.astro";
 import config from "@utils/config";
 import directus from "@utils/directus.js";
 import listing from "@models/listing";
+import { Debug } from "astro/components";
 
-const PAGE_SIZE = 8;
 const args = {
   locale: Astro.url.searchParams.get("locale") || "en",
-  page: Math.max(1, parseInt(Astro?.url?.searchParams?.get("page")) || 1),
+  page: Math.max(1, parseInt(Astro?.url?.searchParams?.get("page")) || 1)
   // page: 1,
 };
 
 await changeLanguage(args.locale);
 
-const list = await listing();
+const list = await listing({
+  limit: config.PAGE_SIZE
+});
 ---
 
 <section class="mt-10 pt-6 md:pt-8 pb-8 md:pb-10">

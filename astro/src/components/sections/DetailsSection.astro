@@ -94,10 +94,10 @@ const colorsStr =
     .map((clr) => (clr.length > 0 ? clr[0].toUpperCase() + clr.slice(1) : ""))
     .join(", ");
 
-const mainPhotoUrl = `${initialPathImg}/${main_photo.id}/${main_photo.filename_download}`;
+const mainPhotoUrl = `/photos/${main_photo.id}/${main_photo.filename_download}`;
 
 const getPhotoUrl = (photo) =>
-  `${initialPathImg}/${photo.directus_files_id.id}/${photo.directus_files_id.filename_download}`;
+  `/photos/${photo.directus_files_id.id}/${photo.directus_files_id.filename_download}`;
 ---
 
 <section class:list={["mb-4", {}, classes]}>
