@@ -6,34 +6,16 @@
     "strictNullChecks": true,
     "baseUrl": "src",
     "paths": {
-      "@types/*": [
-        "types/"
-      ],
-      "@models/*": [
-        "models/*"
-      ],
-      "@utils/*": [
-        "utils/*"
-      ],
-      "@components/*": [
-        "components/*"
-      ],
-      "@modules/*": [
-        "modules/*"
-      ],
-      "@layouts/*": [
-        "layouts/*"
-      ],
-      "@assets/*": [
-        "assets/*"
-      ],
-      "@pages/*": [
-        "pages/*"
-      ],
-      "@styles/*": [
-        "styles/*"
-      ]
+      "@app-types/*": ["app-types/*"],
+      "@types/*": ["types/"],
+      "@models/*": ["models/*"],
+      "@utils/*": ["utils/*"],
+      "@components/*": ["components/*"],
+      "@modules/*": ["modules/*"],
+      "@layouts/*": ["layouts/*"],
+      "@assets/*": ["assets/*"],
+      "@pages/*": ["pages/*"],
+      "@styles/*": ["styles/*"]
     }
-
   }
 }

@@ -25,17 +25,6 @@ const {
 >
   {
     items?.length > 0 &&
-      items.map((item) => (
-        <BikesCard
-          dateStr={item.dateStr}
-          showMatch={showMatch}
-          matchScore={item.matchScore}
-          brand={item.brand}
-          model={item.model}
-          location={item.location}
-          lang={item.lang}
-          imgs={item.imgs}
-        />
-      ))
+      items.map((item) => <BikesCard showMatch={showMatch} {...item} />)
   }
 </ul>

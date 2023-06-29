@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import type { CarouselItemProps } from "./carousel";
+import type { Directus } from "@components/types/directus";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/vue";
+import { Keyboard, Navigation, Pagination } from "swiper";
 
 const props = defineProps<{
-  items: CarouselItemProps[];
+  items: Directus.DirectusFilesId[];
+  initialPathImg: string;
+  id: number;
 }>();
 
 // Import Swiper Vue.js components
-import { Swiper, SwiperSlide, useSwiper } from "swiper/vue";
 
 // import Swiper core and required modules
-import { Keyboard, Navigation, Pagination } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
@@ -27,28 +29,33 @@ function renderBullet() {
 
 <template>
   <Swiper
+    :lazy="true"
     :slides-per-view="1"
     :space-between="20"
     :modules="modules"
-    :lazy="true"
     :pagination="{
       el: '.pagination',
       clickable: true,
-      renderBullet: renderBullet,
+      renderBullet: renderBullet
     }"
     :navigation="{
       prevEl: '.button-prev',
-      nextEl: '.button-next',
+      nextEl: '.button-next'
     }"
     :keyboard="true"
+    :loop="false"
   >
-    <SwiperSlide v-for="(item, id) in props.items" :key="item.alt + id">
-      <img
-        :src="item.imgPath"
-        class="block w-full h-full max-h-48 object-cover rounded-lg"
-        :alt="item.alt"
-        loading="lazy"
-      />
+    <SwiperSlide v-for="item in props.items" :key="item.id">
+      <a :href="`/report/${id}`">
+        <img
+          :src="`/photos/${item.id}/${item.filename_download}`"
+          class="block w-full h-full max-h-48 object-cover rounded-lg aspect-[4/3]"
+          alt=""
+          :width="item.width"
+          :height="item.height"
+          loading="lazy"
+        />
+      </a>
     </SwiperSlide>
 
     <div class="mt-2.5 flex items-center justify-between">
@@ -104,7 +111,12 @@ function renderBullet() {
 </template>
 
 <style scoped>
+.swiper-wrapper {
+  @apply !max-h-48 h-full;
+}
+
 button.btn-navigation[disabled=""] {
   @apply !bg-gray-400;
 }
 </style>
+types/directus
