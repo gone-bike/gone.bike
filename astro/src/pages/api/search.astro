@@ -9,14 +9,14 @@
  *   the image buffer and use it to query Weaviate
  */
 
-import sharp from 'sharp'
-import config from '@utils/config'
-import search from '@utils/search'
+import sharp from "sharp";
+import config from "@utils/config";
+import search from "@utils/search";
 
 try {
   const formData = await Astro.request.formData();
 
-  let file = formData.get('file');
+  let file = formData.get("file");
   let buf = await file.arrayBuffer();
 
   // @TODO - Understand how to optimize the uploaded image
@@ -26,16 +26,15 @@ try {
       fit: sharp.fit.inside,
       withoutEnlargement: true
     })
-    .toFormat('jpeg', { "quality": config.IMG_QUALITY })
-    .toBuffer({resolveWithObject: true})
+    .toFormat("jpeg", { quality: config.IMG_QUALITY })
+    .toBuffer({ resolveWithObject: true });
 
-  let b64in = Buffer.from(upload.data).toString('base64')
+  let b64in = Buffer.from(upload.data).toString("base64");
 
-  let id = await search.create(b64in)
+  let id = await search.create(b64in);
 
-  return Astro.redirect(`/search/${id}`, 302)
-
+  return Astro.redirect(`/search/${id}`, 302);
 } catch (e) {
-  throw e
+  throw e;
 }
 ---

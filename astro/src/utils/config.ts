@@ -38,6 +38,7 @@ const config = {
     getv("SEARCH_REDIS_URI", "redis://search:@127.0.0.1:6379/0")
   ),
   WEAVIATE_URI: new URL(getv("WEAVIATE_URI", "http://127.0.0.1:8080")),
+  TMP_FOLDER_IMAGE: getv("TMP_FOLDER_IMAGE", ""),
 
   /**
    * Runs a 404 page. Shortcut to return a not-found page by fetching internal 404 page and return it
