@@ -60,6 +60,8 @@ def fetch_item(id):
     url = f'{os.environ["WORKER_DIRECTUS_URI"]}/items/report/{id}?fields={fields}&access_token={os.environ["WORKER_DIRECTUS_TOKEN"]}'
 
     data = requests.get(url)
+    # print(url)
+    # print(data.json())
 
     if data.status_code == 200:
         return data.json().get('data')
@@ -159,6 +161,7 @@ def remove_directus_file_by_id(entry_id):
 
 
 def index_directus_report_item_to_weaviate(payload):
+    # print(payload)
     client = weaviate.Client(os.environ['WORKER_WEAVIATE_URI'])
     client.batch.configure(
         batch_size=None
@@ -228,6 +231,7 @@ def index_directus_report_item_to_weaviate(payload):
 
 
         if 'photos' in payload and len(payload['photos']) > 0:
+            # print(payload['photos'])
             for e in payload['photos']:
                 phid = e['directus_files_id']['id']
                 b64 = fetch_picture(phid)

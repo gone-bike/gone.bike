@@ -11,19 +11,31 @@ import config from "@utils/config";
 import weaviate from "@utils/weaviate";
 import search from "@utils/search";
 
+import type { SearchOnImage } from "@app-types/search";
+
 import i18next from "i18next";
 import { t, changeLanguage } from "i18next";
 import { localizePath } from "astro-i18next";
 
+import listing from "@models/listing";
+import BikesList from "@components/bikes/BikesList.astro";
+
 import "venobox/dist/venobox.min.css";
+import SearchBikes from "@components/bikes/SearchBikes.astro";
+import type { QueryMany } from "@directus/sdk";
+import directus, { getFiltersForSearch } from "@utils/directus";
+import type { Report } from "@utils/directus";
+import { Debug } from "astro/components";
+import BikesSearchList from "@components/bikes/BikesSearchList.astro";
+import BaseBreadcrumbs from "@components/base/BaseBreadcrumbs.astro";
 
 changeLanguage("en");
 
 let request = Astro.request;
-let result = [];
+let result: SearchOnImage.SearchWeaviteItem[] | [] = [];
 let sid = Astro.params.sid;
 // console.log(sid)
-/* try {
+try {
   const query = weaviate.graphql
     .get()
     .withClassName("Bike")
@@ -68,10 +80,35 @@ let sid = Astro.params.sid;
   result = resImage.data.Get.Bike;
 } catch (err) {
   throw err;
-} */
+}
+
+/**
+ * !remove then weavite ready
+ */
+
+/* const filters = getFiltersForSearch(Astro.url);
+
+const filterCriteria = {
+  status: "published",
+  ...filters
+};
+
+const list = await listing({
+  limit: config.PAGE_SIZE,
+  filter: filterCriteria
+} as QueryMany<Report>);
+
+const listWithMatchScore = list.map((item) => {
+  return {
+    ...item,
+    matchScore: Math.random()
+  };
+}); */
 ---
 
 <BaseLayout title="Search" lang={i18next.language} description="">
+  <!-- <Debug data={result} /> -->
+  <BaseBreadcrumbs class="my-2.5 xl:my-8" currentPage={"Search on image"} />
   <BaseContainer>
     <!-- <div class="container mx-auto"> -->
     {
@@ -82,8 +119,8 @@ let sid = Astro.params.sid;
             You searched for
           </h1>
           <a
-            class="venobox"
-            data-gall="gallery01"
+            class="venobox flex justify-center w-max mx-auto"
+            data-gall="gallery02"
             href={`/photos/search/${sid}`}
           >
             <img
@@ -95,7 +132,11 @@ let sid = Astro.params.sid;
       )
     }
 
-    <div class="py-10 px-5 flex flex-wrap gap-6 justify-center">
+    <SearchBikes type={"search"} />
+
+    <BikesSearchList items={result} />
+    <!-- <BikesList items={listWithMatchScore} showMatch={true} /> -->
+    <!-- <div class="py-10 px-5 flex flex-wrap gap-6 justify-center">
       {
         result.length > 0 &&
           result.map((e) => (
@@ -149,11 +190,12 @@ let sid = Astro.params.sid;
             </div>
           ))
       }
-    </div>
+    </div> -->
   </BaseContainer>
 </BaseLayout>
 
 <script>
+  // @ts-ignore
   import VenoBox from "venobox";
 
   new VenoBox({

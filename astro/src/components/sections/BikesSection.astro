@@ -6,9 +6,10 @@ import BasePagination from "@components/base/BasePagination.astro";
 import BikesList from "@components/bikes/BikesList.astro";
 
 import config from "@utils/config";
-import directus from "@utils/directus.js";
+import directus, { Report, getFiltersForSearch } from "@utils/directus.js";
 import listing from "@models/listing";
 import { Debug } from "astro/components";
+import type { QueryMany } from "@directus/sdk";
 
 const args = {
   locale: Astro.url.searchParams.get("locale") || "en",
@@ -18,12 +19,22 @@ const args = {
 
 await changeLanguage(args.locale);
 
+const filters = getFiltersForSearch(Astro.url);
+
+const filterCriteria = {
+  status: "published",
+  ...filters
+};
+
 const list = await listing({
-  limit: config.PAGE_SIZE
-});
+  limit: config.PAGE_SIZE,
+  filter: filterCriteria
+} as QueryMany<Report>);
+// console.log("list: ", list);
 ---
 
-<section class="mt-10 pt-6 md:pt-8 pb-8 md:pb-10">
+<section id="reports" class="mt-10 pt-6 md:pt-8 pb-8 md:pb-10">
+  <!-- <Debug data={filters} /> -->
   <BaseContainer>
     <p
       class="text-center text-gray-500 bg-gray-100 rounded-1.5xl px-4 py-2 sm:w-max mx-auto"

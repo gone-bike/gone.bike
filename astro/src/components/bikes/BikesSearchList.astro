@@ -1,19 +1,13 @@
 ---
-import BikesCard, {
-  type BikesCardProps
-} from "@components/cards/BikesCard.astro";
+import type { BikesSearchCardProps } from "@components/cards/BikesSearchCard.astro";
+import BikesSearchCard from "@components/cards/BikesSearchCard.astro";
 
-export interface BikesListProps {
-  items: BikesCardProps[];
-  showMatch?: boolean;
+export interface BikesSearchListProps {
+  items: BikesSearchCardProps[];
   class?: string;
 }
 
-const {
-  items = [],
-  showMatch = false,
-  class: classes
-} = Astro.props as BikesListProps;
+const { items = [], class: classes } = Astro.props as BikesSearchListProps;
 ---
 
 {
@@ -26,7 +20,7 @@ const {
       ]}
     >
       {items.map((item) => (
-        <BikesCard showMatch={showMatch} {...item} />
+        <BikesSearchCard {...item} />
       ))}
     </ul>
   ) : (

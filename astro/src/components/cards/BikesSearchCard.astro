@@ -1,41 +1,34 @@
 ---
-import type { Report } from "@app-types/report";
+import type { SearchOnImage } from "@app-types/search";
 
-import CarouselVue from "@components/carousel/Carousel.vue";
 import i18next, { t, changeLanguage } from "i18next";
 import { localizePath } from "astro-i18next";
-import config from "@utils/config";
 
 import {
   dateDiffInDays,
   dateTimeFormatter,
   relativeDateTimeFormatter
 } from "@utils/formatters";
-import { initialPathImg } from "@utils/directus";
+import { Debug } from "astro/components";
 
-export interface BikesCardData extends Report.ReportShort {
+export interface BikesSearchCardData extends SearchOnImage.SearchWeaviteItem {
   lang: string;
-  matchScore?: number;
 }
 
-export interface BikesCardProps extends BikesCardData {
-  showMatch?: boolean;
+export interface BikesSearchCardProps extends BikesSearchCardData {
   class?: string;
 }
 
 const {
-  id,
-  theft_date,
-  bike_brand_model,
-  location_address,
-  main_photo,
-  photos,
-  matchScore,
-
-  showMatch = false,
-
-  class: classes
-} = Astro.props as BikesCardProps;
+  class: classes,
+  _additional: { certainty, id },
+  bike_brand,
+  bike_model,
+  filename_download,
+  lang,
+  report_id,
+  theft_date
+} = Astro.props as BikesSearchCardProps;
 
 changeLanguage(i18next.language);
 
@@ -54,20 +47,9 @@ const formattedRelativeDate = relativeDateTimeFormatter({
   numberOfUnits: diffInDays
 });
 
-const imgs = [main_photo];
+const formattedMatchScore = certainty ? (certainty * 100).toFixed(0) : null;
 
-photos.length > 0 &&
-  photos.forEach((photo) => {
-    imgs.push({
-      id: photo.directus_files_id.id,
-      filename_download: photo.directus_files_id.filename_download,
-      type: photo.directus_files_id.type,
-      width: photo.directus_files_id.width,
-      height: photo.directus_files_id.height
-    });
-  });
-
-const formattedMatchScore = matchScore ? (matchScore * 100).toFixed(0) : null;
+const imgSrc = `/photos/${id}/${filename_download}`;
 ---
 
 <li
@@ -77,21 +59,22 @@ const formattedMatchScore = matchScore ? (matchScore * 100).toFixed(0) : null;
     classes
   ]}
 >
-  <!-- <div class="h-56"> -->
   <div class="h-56">
-    <CarouselVue
-      client:only
-      items={imgs}
-      initialPathImg={initialPathImg}
-      id={id}
-    />
+    <a href={localizePath("/report/[id]").replace("[id]", report_id)}>
+      <img
+        class="block w-full h-full max-h-48 object-cover rounded-lg aspect-[4/3]"
+        src={imgSrc}
+        alt={t("components.listing_card.bike_brand_model_placeholder")}
+        loading="lazy"
+      />
+    </a>
   </div>
-  <!-- h-[calc(100%-224px)] -->
+
   <div
     class="flex flex-col flex-grow flex-shrink-0 self-stretch justify-between"
   >
     {
-      showMatch && (
+      certainty && (
         <div class="mt-6">
           <span class="block text-center text-gray-800 text-sm font-medium">
             Match Score: <b>{formattedMatchScore}%</b>
@@ -107,9 +90,9 @@ const formattedMatchScore = matchScore ? (matchScore * 100).toFixed(0) : null;
     }
     <div class="pb-2.5 border-b borde-gray-200">
       <h3 class="text-xl font-bold mt-2.5">
-        {bike_brand_model.bike_brand.name}
+        {bike_brand}
       </h3>
-      <h4 class="text-gray-500 mt-1">{bike_brand_model.name}</h4>
+      <h4 class="text-gray-500 mt-1">{bike_model}</h4>
     </div>
 
     <div class="mt-2.5 flex items-center justify-between gap-5">
@@ -120,21 +103,12 @@ const formattedMatchScore = matchScore ? (matchScore * 100).toFixed(0) : null;
         {formattedDate} ({formattedRelativeDate})
       </span>
     </div>
-    <div
-      class="mt-2.5 flex flex-grow flex-shrink-0 items-center justify-between gap-5"
-    >
-      <span class="basis-3/12 text-sm text-gray-800 font-medium">
-        {t("homepage.location")}
-      </span>
-      <span class="basis-9/12 text-sm text-gray-500 text-right">
-        {location_address}</span
-      >
-    </div>
+
     <!-- mt-6 -->
     <div class="mt-6 flex h-full items-end">
       <a
         class="block w-full text-center leading-5 rounded-md bg-primary-600 py-2 px-4 text-white text-sm"
-        href={localizePath("/report/[id]").replace("[id]", id)}
+        href={localizePath("/report/[id]").replace("[id]", report_id)}
       >
         <!-- href={`/report/${id}`} -->
         View Report

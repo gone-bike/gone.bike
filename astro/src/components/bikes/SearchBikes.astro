@@ -1,15 +1,63 @@
 ---
 import { t, changeLanguage } from "i18next";
+import bikeModelListing from "@models/bike_model";
+import type { BikeModel } from "@app-types/bike_model";
+
+import SearchBikesVue from "@components/bikes/SearchBikes.vue";
+import { Debug } from "astro/components";
+import type { SearchOnImage } from "@app-types/search";
 
 export interface SearchBikesProps {
   lang: string;
+  type: SearchOnImage.SearchBikesType;
 }
 
-const { lang } = Astro.props as SearchBikesProps;
+const { lang, type = "listing" } = Astro.props as SearchBikesProps;
 changeLanguage(lang);
+
+const translations = {
+  brand: t("homepage.brand"),
+  model: t("homepage.model"),
+  serial: t("homepage.serial"),
+  description: t("homepage.description")
+};
+
+const bikeBrandModelListing: BikeModel.BikeBrandModelItem[] =
+  await bikeModelListing({
+    showBrand: true
+  });
+
+const reducedBrandsAndModels = bikeBrandModelListing
+  .map((item) => ({
+    model: item.name,
+    brand: item.bike_brand.name
+  }))
+  .reduce((acc: BikeModel.ReducedBrandsAndModels[], item) => {
+    const brand = item.brand;
+    const existingBrand = acc.find((entry) => entry?.brand === brand);
+
+    if (existingBrand) {
+      existingBrand?.models.push(item.model);
+    } else {
+      acc.push({
+        brand: brand,
+        models: [item.model]
+      });
+    }
+
+    return acc;
+  }, []);
 ---
 
-<form class="mt-8">
+<!-- <Debug data={reducedBrandsAndModels} /> -->
+<SearchBikesVue
+  client:idle
+  t={translations}
+  brandsAndModels={reducedBrandsAndModels}
+  url={Astro.url}
+  type={type}
+/>
+<!-- <form class="mt-8" id="search-form">
   <div class="grid gap-4 md:grid-cols-12 md:gap-x-8">
     <div class="md:col-span-6 xl:col-span-3">
       <span class="block mb-2 text-sm font-medium text-customgray-900">
@@ -26,7 +74,7 @@ changeLanguage(lang);
           name=""
           id="brand"
         >
-          <option selected> {t("homepage.brand")}</option>
+          <option selected disabled> {t("homepage.brand")}</option>
           <option value="BMX">BMX</option>
           <option value="BMX">BMX</option>
           <option value="BMX">BMX</option>
@@ -36,7 +84,7 @@ changeLanguage(lang);
           id="model"
           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-r-lg border-l-gray-100 border-l-2 block w-full py-3 px-4 sm:text-base"
         >
-          <option selected>{t("homepage.model")}</option>
+          <option selected disabled>{t("homepage.model")}</option>
           <option value="1001">1001</option>
           <option value="2002">2002</option>
           <option value="3003">3003</option>
@@ -55,7 +103,6 @@ changeLanguage(lang);
       <div
         class="border border-gray-300 text-gray-900 text-sm rounded-lg w-full pl-3 flex items-center gap-2 focus-within:ring-2 focus-within:ring-primary-600"
       >
-        <!-- tags -->
         <span
           class="tag inline-flex items-center justify-center space-x-2 px-1.5 py-1 bg-gray-100 rounded"
         >
@@ -94,7 +141,7 @@ changeLanguage(lang);
         type="text"
         id="description"
         class="block w-full py-3 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm sm:text-base focus-within:ring-primary-600"
-        placeholder={t("homepage.search.placeholder")}
+        placeholder={t("homepage.description")}
       />
     </div>
 
@@ -103,6 +150,7 @@ changeLanguage(lang);
     >
       <button
         type="submit"
+        id="search-form-submit"
         class="w-full flex items-center justify-center gap-x-2 text-white bg-primary-600 border border-transparent rounded-lg p-3 text-center"
       >
         <svg
@@ -123,4 +171,4 @@ changeLanguage(lang);
       </button>
     </div>
   </div>
-</form>
+</form> -->

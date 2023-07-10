@@ -1,5 +1,5 @@
 <template>
-  <form id="form" method="POST" ref="formEl">
+  <form class="w-full md:w-max" id="form" method="POST" ref="formEl">
     <label
       for="file"
       class="cursor-pointer flex items-center justify-center border-2 border-mygray-200 shadow-xl rounded-lg p-3 bg-white"
