@@ -1,6 +1,7 @@
 ---
 import type { BikesSearchCardProps } from "@components/cards/BikesSearchCard.astro";
 import BikesSearchCard from "@components/cards/BikesSearchCard.astro";
+import NoBikesFound from "@components/bikes/NoBikesFound.astro";
 
 export interface BikesSearchListProps {
   items: BikesSearchCardProps[];
@@ -24,10 +25,6 @@ const { items = [], class: classes } = Astro.props as BikesSearchListProps;
       ))}
     </ul>
   ) : (
-    <>
-      <p class="text-center my-4 md:my-10">
-        Nothing was found on given query 😢
-      </p>
-    </>
+    <NoBikesFound />
   )
 }
