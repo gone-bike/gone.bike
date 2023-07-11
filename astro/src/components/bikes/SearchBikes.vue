@@ -114,11 +114,13 @@ function handleSubmit(event: Event) {
 <template>
   <form class="mt-8" id="search-form" @submit.prevent="" ref="formEl">
     <div class="grid gap-4 md:grid-cols-12 md:gap-x-8">
-      <div class="md:col-span-6 xl:col-span-3">
-        <!-- :class="{
+      <div
+        class="md:col-span-6"
+        :class="{
           'xl:col-span-3': type === 'listing',
-          'xl:col-span-6': type === 'search'
-        }" -->
+          'xl:col-span-4': type === 'search'
+        }"
+      >
         <span class="block mb-2 text-sm font-medium text-customgray-900">
           <label for="brand" class=""> {{ t.brand }}</label>
           &
