@@ -1,3 +1,5 @@
+import config from "@utils/config";
+
 export interface DateTimeFormatter {
   locale: string;
   date: Date;
@@ -36,8 +38,7 @@ export function relativeDateTimeFormatter({
   date,
   locale,
   options = {},
-  numberOfUnits,
-  unit = "days"
+  numberOfUnits: diffInDays
 }: RelativeDateTimeFormatter) {
   if (!date || !locale) return;
 
@@ -45,11 +46,29 @@ export function relativeDateTimeFormatter({
     numeric: "auto"
   };
 
+  let appliedUnit: Intl.RelativeTimeFormatUnit = "day";
+
+  const absolueDiffInDays = Math.abs(diffInDays);
+
+  let finalUnitsValue = absolueDiffInDays;
+
+  if (absolueDiffInDays >= config.RELATIVE_TIME_YEAR_IN_DAYS) {
+    appliedUnit = "year";
+
+    finalUnitsValue = Math.round(absolueDiffInDays / config.DAYS_IN_YEAR);
+  } else if (absolueDiffInDays >= config.RELATIVE_TIME_MONTH_IN_DAYS) {
+    appliedUnit = "month";
+    finalUnitsValue = Math.round(absolueDiffInDays / config.DAYS_IN_MONTH);
+  } else if (absolueDiffInDays >= config.RELATIVE_TIME_WEEK_IN_DAYS) {
+    appliedUnit = "week";
+    finalUnitsValue = Math.round(absolueDiffInDays / config.DAYS_IN_WEEK);
+  }
+
   const newOptions = { ...defaultOptions, ...options };
 
   return new Intl.RelativeTimeFormat(locale, newOptions).format(
-    numberOfUnits,
-    unit
+    -finalUnitsValue,
+    appliedUnit
   );
 }
 

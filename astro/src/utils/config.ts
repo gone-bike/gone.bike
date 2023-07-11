@@ -40,6 +40,14 @@ const config = {
   WEAVIATE_URI: new URL(getv("WEAVIATE_URI", "http://127.0.0.1:8080")),
   TMP_FOLDER_IMAGE: getv("TMP_FOLDER_IMAGE", ""),
 
+  RELATIVE_TIME_WEEK_IN_DAYS: getv("RELATIVE_TIME_WEEK_IN_DAYS", 7),
+  RELATIVE_TIME_MONTH_IN_DAYS: getv("RELATIVE_TIME_WEEK_IN_DAYS", 30),
+  RELATIVE_TIME_YEAR_IN_DAYS: getv("RELATIVE_TIME_WEEK_IN_DAYS", 365),
+
+  DAYS_IN_YEAR: getv("DAYS_IN_YEAR", 365),
+  DAYS_IN_MONTH: getv("DAYS_IN_YEAR", 30),
+  DAYS_IN_WEEK: getv("DAYS_IN_YEAR", 7),
+
   /**
    * Runs a 404 page. Shortcut to return a not-found page by fetching internal 404 page and return it
    * This is a hackish way to return custom 404 page on server-side conditions
