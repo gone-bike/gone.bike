@@ -27,7 +27,7 @@ if (!id && isNaN(id)) {
 // const report = await SingleReport(+id);
 
 const [report, otherReports] = await Promise.all([
-  SingleReport(+id),
+  SingleReport(+id!),
   listing({
     filter: {
       id: {
@@ -75,7 +75,7 @@ if (report.theft_date && isValidDate) {
 }
 
 const currentPageName = `
-${report.bike_brand_model.bike_brand.name} ${report.bike_brand_model.name} - ${dateTheftHeaderFormatted} 
+${report.bike_brand_model?.bike_brand?.name} ${report.bike_brand_model?.name} - ${dateTheftHeaderFormatted} 
 `;
 ---
 

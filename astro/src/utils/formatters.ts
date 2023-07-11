@@ -1,3 +1,5 @@
+import config from "@utils/config";
+
 export interface DateTimeFormatter {
   locale: string;
   date: Date;
@@ -36,8 +38,7 @@ export function relativeDateTimeFormatter({
   date,
   locale,
   options = {},
-  numberOfUnits,
-  unit = "days"
+  numberOfUnits: diffInDays
 }: RelativeDateTimeFormatter) {
   if (!date || !locale) return;
 
@@ -45,11 +46,29 @@ export function relativeDateTimeFormatter({
     numeric: "auto"
   };
 
+  let appliedUnit: Intl.RelativeTimeFormatUnit = "day";
+
+  const absolueDiffInDays = Math.abs(diffInDays);
+
+  let finalUnitsValue = absolueDiffInDays;
+
+  if (absolueDiffInDays >= config.RELATIVE_TIME_YEAR_IN_DAYS) {
+    appliedUnit = "year";
+
+    finalUnitsValue = Math.round(absolueDiffInDays / config.DAYS_IN_YEAR);
+  } else if (absolueDiffInDays >= config.RELATIVE_TIME_MONTH_IN_DAYS) {
+    appliedUnit = "month";
+    finalUnitsValue = Math.round(absolueDiffInDays / config.DAYS_IN_MONTH);
+  } else if (absolueDiffInDays >= config.RELATIVE_TIME_WEEK_IN_DAYS) {
+    appliedUnit = "week";
+    finalUnitsValue = Math.round(absolueDiffInDays / config.DAYS_IN_WEEK);
+  }
+
   const newOptions = { ...defaultOptions, ...options };
 
   return new Intl.RelativeTimeFormat(locale, newOptions).format(
-    numberOfUnits,
-    unit
+    -finalUnitsValue,
+    appliedUnit
   );
 }
 
@@ -82,3 +101,21 @@ export function dateDiffInDays({
 export function getIsValidDate(d: Date) {
   return d instanceof Date && !isNaN(d as any);
 }
+
+const testDates = [
+  new Date("1995-12-17T03:24:00"),
+  new Date("2018-03-05T03:24:00"),
+  new Date("2023-02-01T03:24:00"),
+  new Date("2023-06-25T03:24:00"),
+  new Date("2023-07-07T03:24:00")
+];
+
+const results = testDates.map((d) =>
+  relativeDateTimeFormatter({
+    date: d,
+    locale: "en",
+    numberOfUnits: dateDiffInDays({ startDate: d })
+  })
+);
+
+console.table(results);
