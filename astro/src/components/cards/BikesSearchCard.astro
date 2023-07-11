@@ -104,14 +104,12 @@ const imgSrc = `/photos/${id}/${filename_download}`;
       </span>
     </div>
 
-    <!-- mt-6 -->
     <div class="mt-6 flex h-full items-end">
       <a
         class="block w-full text-center leading-5 rounded-md bg-primary-600 py-2 px-4 text-white text-sm"
         href={localizePath("/report/[id]").replace("[id]", report_id)}
       >
-        <!-- href={`/report/${id}`} -->
-        View Report
+        {t("homepage.view_report", "View Report")}
       </a>
     </div>
   </div>

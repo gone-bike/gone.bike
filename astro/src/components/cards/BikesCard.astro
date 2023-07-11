@@ -77,7 +77,6 @@ const formattedMatchScore = matchScore ? (matchScore * 100).toFixed(0) : null;
     classes
   ]}
 >
-  <!-- <div class="h-56"> -->
   <div class="h-56">
     <CarouselVue
       client:only
@@ -86,7 +85,7 @@ const formattedMatchScore = matchScore ? (matchScore * 100).toFixed(0) : null;
       id={id}
     />
   </div>
-  <!-- h-[calc(100%-224px)] -->
+
   <div
     class="flex flex-col flex-grow flex-shrink-0 self-stretch justify-between"
   >
@@ -130,14 +129,13 @@ const formattedMatchScore = matchScore ? (matchScore * 100).toFixed(0) : null;
         {location_address}</span
       >
     </div>
-    <!-- mt-6 -->
+
     <div class="mt-6 flex h-full items-end">
       <a
         class="block w-full text-center leading-5 rounded-md bg-primary-600 py-2 px-4 text-white text-sm"
         href={localizePath("/report/[id]").replace("[id]", id)}
       >
-        <!-- href={`/report/${id}`} -->
-        View Report
+        {t("homepage.view_report", "View Report")}
       </a>
     </div>
   </div>

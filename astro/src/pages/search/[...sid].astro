@@ -2,12 +2,6 @@
 import BaseLayout from "@layouts/Base.astro";
 import BaseContainer from "@components/base/BaseContainer.astro";
 
-import ListingEntry from "@components/listing/entry.astro";
-
-import type { APIRoute } from "astro";
-import type { APIContext } from "astro";
-
-import config from "@utils/config";
 import weaviate from "@utils/weaviate";
 import search from "@utils/search";
 
@@ -17,13 +11,8 @@ import i18next from "i18next";
 import { t, changeLanguage } from "i18next";
 import { localizePath } from "astro-i18next";
 
-import listing from "@models/listing";
-import BikesList from "@components/bikes/BikesList.astro";
-
 import "venobox/dist/venobox.min.css";
 import SearchBikes from "@components/bikes/SearchBikes.astro";
-import directus, { getFiltersForSearch } from "@utils/directus";
-import type { Report } from "@utils/directus";
 import { Debug } from "astro/components";
 import BikesSearchList from "@components/bikes/BikesSearchList.astro";
 import BaseBreadcrumbs from "@components/base/BaseBreadcrumbs.astro";

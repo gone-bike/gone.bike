@@ -2,6 +2,7 @@
 import BikesCard, {
   type BikesCardProps
 } from "@components/cards/BikesCard.astro";
+import NoBikesFound from "@components/bikes/NoBikesFound.astro";
 
 export interface BikesListProps {
   items: BikesCardProps[];
@@ -30,10 +31,6 @@ const {
       ))}
     </ul>
   ) : (
-    <>
-      <p class="text-center my-4 md:my-10">
-        Nothing was found on given query 😢
-      </p>
-    </>
+    <NoBikesFound />
   )
 }
