@@ -101,21 +101,3 @@ export function dateDiffInDays({
 export function getIsValidDate(d: Date) {
   return d instanceof Date && !isNaN(d as any);
 }
-
-const testDates = [
-  new Date("1995-12-17T03:24:00"),
-  new Date("2018-03-05T03:24:00"),
-  new Date("2023-02-01T03:24:00"),
-  new Date("2023-06-25T03:24:00"),
-  new Date("2023-07-07T03:24:00")
-];
-
-const results = testDates.map((d) =>
-  relativeDateTimeFormatter({
-    date: d,
-    locale: "en",
-    numberOfUnits: dateDiffInDays({ startDate: d })
-  })
-);
-
-console.table(results);
