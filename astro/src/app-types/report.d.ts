@@ -18,6 +18,8 @@ export declare namespace Report {
         id: number;
       };
     }[];
+    description: string;
+    serial_number: string;
   }
 
   export interface ReportDetails {

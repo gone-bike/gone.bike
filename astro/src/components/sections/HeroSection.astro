@@ -2,7 +2,7 @@
 import { t } from "i18next";
 import { localizePath } from "astro-i18next";
 import BaseContainer from "@components/base/BaseContainer.astro";
-import SearchForm from "@components/SearchForm.astro";
+import SearchForm from "@components/search/SearchForm.vue";
 ---
 
 <section class="pt-9 pb-14 md:pt-6 xl:pt-10">
@@ -40,29 +40,7 @@ import SearchForm from "@components/SearchForm.astro";
     <div
       class="mt-8 flex flex-col items-center justify-center gap-4 md:flex-row"
     >
-      <!-- <a
-        class="w-full flex items-center justify-center gap-3 rounded-lg py-4 px-4 border border-customgray-900 md:w-max md:px-6"
-        href={localizePath("/create-report")}
-      >
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M14.8837 6.53033L14.8837 6.53041C15.1181 6.76474 15.2499 7.08256 15.25 7.414C15.25 7.41405 15.25 7.41411 15.25 7.41416V16C15.25 16.3315 15.1183 16.6495 14.8839 16.8839C14.6495 17.1183 14.3315 17.25 14 17.25H6C5.66848 17.25 5.35054 17.1183 5.11612 16.8839C4.8817 16.6495 4.75 16.3315 4.75 16V4C4.75 3.66848 4.8817 3.35054 5.11612 3.11612C5.35054 2.8817 5.66848 2.75 6 2.75H10.5858C10.5859 2.75 10.5859 2.75 10.586 2.75C10.9174 2.75011 11.2353 2.88185 11.4696 3.11625L11.4697 3.11633L14.8837 6.53033ZM8.25 10.7753C8.24584 10.771 8.24165 10.7668 8.23744 10.7626C7.90925 10.4344 7.46413 10.25 7 10.25C6.53587 10.25 6.09075 10.4344 5.76256 10.7626C5.43437 11.0908 5.25 11.5359 5.25 12V15C5.25 15.4641 5.43437 15.9092 5.76256 16.2374C6.09075 16.5656 6.53587 16.75 7 16.75C7.46413 16.75 7.90925 16.5656 8.23744 16.2374C8.33918 16.1357 8.42711 16.0227 8.5 15.9014C8.57289 16.0227 8.66082 16.1357 8.76256 16.2374C9.09075 16.5656 9.53587 16.75 10 16.75C10.4641 16.75 10.9092 16.5656 11.2374 16.2374C11.3392 16.1357 11.4271 16.0227 11.5 15.9014C11.5729 16.0227 11.6608 16.1357 11.7626 16.2374C12.0908 16.5656 12.5359 16.75 13 16.75C13.4641 16.75 13.9092 16.5656 14.2374 16.2374C14.5656 15.9092 14.75 15.4641 14.75 15V8C14.75 7.53587 14.5656 7.09075 14.2374 6.76256C13.9092 6.43438 13.4641 6.25 13 6.25C12.5359 6.25 12.0908 6.43438 11.7626 6.76256C11.4344 7.09075 11.25 7.53587 11.25 8V8.77526C11.2458 8.77101 11.2416 8.76677 11.2374 8.76256C10.9092 8.43438 10.4641 8.25 10 8.25C9.53587 8.25 9.09075 8.43438 8.76256 8.76256C8.43438 9.09075 8.25 9.53587 8.25 10V10.7753Z"
-            fill="#1F2A37"
-            stroke="#1F2A37"
-            stroke-width="1.5"></path>
-        </svg>
-
-        <span class="font-medium text-customgray-800 md:block md:w-max"
-          >Create Report</span
-        >
-      </a> -->
-      <SearchForm />
+      <SearchForm client:only />
       <a
         class="w-full flex items-center justify-center gap-3 bg-primary-600 rounded-lg py-4 px-4 border border-transparent md:w-max md:px-6"
         href={localizePath("/create-report")}
@@ -81,7 +59,9 @@ import SearchForm from "@components/SearchForm.astro";
             fill="white"></path>
         </svg>
 
-        <span class="text-white font-medium md:block md:w-max">
+        <span
+          class="text-white font-medium md:block md:w-max transform -translate-y-0.5"
+        >
           {t("homepage.hero.cta_add_listing")}
         </span>
       </a>

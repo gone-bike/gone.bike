@@ -1,127 +1,198 @@
 ---
 import BaseLayout from "@layouts/Base.astro";
+import BaseContainer from "@components/base/BaseContainer.astro";
 
-import ListingEntry from "@components/listing/entry.astro";
+import weaviate from "@utils/weaviate";
+import search from "@utils/search";
 
+import type { SearchOnImage } from "@app-types/search";
 
-import i18next from 'i18next'
+import i18next from "i18next";
 import { t, changeLanguage } from "i18next";
 import { localizePath } from "astro-i18next";
 
+import "venobox/dist/venobox.min.css";
+import SearchBikes from "@components/bikes/SearchBikes.astro";
+import { Debug } from "astro/components";
+import BikesSearchList from "@components/bikes/BikesSearchList.astro";
+import BaseBreadcrumbs from "@components/base/BaseBreadcrumbs.astro";
+
 changeLanguage("en");
 
-import type { APIRoute } from 'astro';
-import type { APIContext } from 'astro';
-
-import config from '@utils/config'
-import weaviate from '@utils/weaviate';
-import search from '@utils/search'
-
-
 let request = Astro.request;
-let result = []
-let sid = Astro.params.sid
+let result: SearchOnImage.SearchWeaviteItem[] | [] = [];
+let sid = Astro.params.sid;
 // console.log(sid)
 try {
-
-
-
-  const query = weaviate.graphql.get()
-  .withClassName('Bike')
-  .withFields('report_id bike_brand bike_model theft_date filename_download _additional {certainty id}')
-  .withLimit(30)
-  .withOffset(0)
+  const query = weaviate.graphql
+    .get()
+    .withClassName("Bike")
+    .withFields(
+      "report_id bike_brand bike_model theft_date filename_download _additional {certainty id}"
+    )
+    .withLimit(30)
+    .withOffset(0);
 
   if (sid) {
-    let b64in = await search.load(sid)
-    if ( ! b64in ) {
-      return Astro.redirect('/',302);
+    let b64in = await search.load(sid);
+    if (!b64in) {
+      return Astro.redirect("/", 302);
     }
-    await search.extend(sid)
-    query
-      .withNearImage({ image: b64in })
+    await search.extend(sid);
+    query.withNearImage({ image: b64in });
   }
 
-  let operands = []
+  let operands = [];
 
-  let searchable = ['bike_brand','bike_model']
+  let searchable = ["bike_brand", "bike_model"];
   for (let e in searchable) {
-    e = searchable[e]
+    e = searchable[e];
     if (Astro.url.searchParams.get(e)) {
       operands.push({
-        operator: 'Equal',
+        operator: "Equal",
         path: [e],
-        valueString: Astro.url.searchParams.get(e),
-      })
+        valueString: Astro.url.searchParams.get(e)
+      });
     }
   }
 
   if (operands.length > 0) {
     query.withWhere({
-      operator: 'And',
+      operator: "And",
       operands: operands
-    })
+    });
   }
 
   const resImage = await query.do();
 
   result = resImage.data.Get.Bike;
-
 } catch (err) {
   throw err;
 }
 
+/**
+ * !remove then weavite ready
+ */
 
+/* const filters = getFiltersForSearch(Astro.url);
+
+const filterCriteria = {
+  status: "published",
+  ...filters
+};
+
+const list = await listing({
+  limit: config.PAGE_SIZE,
+  filter: filterCriteria
+} as QueryMany<Report>);
+
+const listWithMatchScore = list.map((item) => {
+  return {
+    ...item,
+    matchScore: Math.random()
+  };
+}); */
 ---
+
 <BaseLayout title="Search" lang={i18next.language} description="">
-  <div class="container mx-auto">
-    { sid && (
-      <h1>You searched for</h1>
-      <img src={`/photos/search/${sid}`} class="object-contain h-48 w-96"/>
-    )}
-    <div class="py-10 px-5 flex flex-wrap gap-6 justify-center">
-    { result.map( (e) =>  (
+  <!-- <Debug data={result} /> -->
+  <BaseBreadcrumbs class="my-2.5 xl:my-8" currentPage={"Search on image"} />
+  <BaseContainer>
+    <!-- <div class="container mx-auto"> -->
+    {
+      // <img src={`/photos/search/${sid}`} class="object-contain h-48 w-96" />
+      sid && (
+        <>
+          <h1 class="mt-8 text-3xl leading-tight font-bold text-center text-customgray-900 md:text-4xl xl:text-5xl">
+            You searched for
+          </h1>
+          <a
+            class="venobox flex justify-center w-max mx-auto"
+            data-gall="gallery02"
+            href={`/photos/search/${sid}`}
+          >
+            <img
+              class="h-48 object-contain aspect-[4/3] block mx-auto my-4"
+              src={`/photos/search/${sid}`}
+            />
+          </a>
+        </>
+      )
+    }
 
-      <div class=" max-w-xs min-w-xs rounded shadow-lg ">
-        <!--
-        <img class="object-cover	h-64 w-full" src={`/photos/${e._additional.id}/${e.filename_download}`} alt={t("components.listing_card.bike_brand_model_placeholder")}>
-        -->
-        <img
-          class="object-cover	h-64 w-full" src={`/photos/weaviate/${e._additional.id}`}
-          alt={t("components.listing_card.bike_brand_model_placeholder", {
-            bike_brand_name: e.bike_brand,
-            bike_model_name: e.bike_model
-          } )}
-        >
+    <SearchBikes type={"search"} />
 
-        <div class="p-5 flex justify-between flex-col">
-          <div class="h-32">
-            <span>Score: { e._additional.certainty }</span>
+    <BikesSearchList items={result} />
+    <!-- <BikesList items={listWithMatchScore} showMatch={true} /> -->
+    <!-- <div class="py-10 px-5 flex flex-wrap gap-6 justify-center">
+      {
+        result.length > 0 &&
+          result.map((e) => (
+            <div class=" max-w-xs min-w-xs rounded shadow-lg ">
+              <img
+                class="object-cover	h-64 w-full"
+                src={`/photos/${e._additional.id}/${e.filename_download}`}
+                alt={t("components.listing_card.bike_brand_model_placeholder")}
+              />
 
-            <a >
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                { t("components.listing_card.bike_brand_model_placeholder", {
+              <img
+                class="object-cover	h-64 w-full"
+                src={`/photos/weaviate/${e._additional.id}`}
+                alt={t("components.listing_card.bike_brand_model_placeholder", {
                   bike_brand_name: e.bike_brand,
                   bike_model_name: e.bike_model
-                  })
-                }
-              </h5>
-            </a>
-            <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased mb-2">
-              { e.theft_date }
-            </p>
-          </div>
-          <div class=" h-12">
-            <a href={localizePath("/report/[id]").replace('[id]',e.report_id)} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-              {t("components.listing_card.view_report_button.title")}
-            </a>
-          </div>
-        </div>
-      </div>
+                })}
+              />
 
+              <div class="p-5 flex justify-between flex-col">
+                <div class="h-32">
+                  <span>Score: {e._additional.certainty}</span>
 
-
-    ))}
-    </div>
-  </div>
+                  <a>
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                      {t(
+                        "components.listing_card.bike_brand_model_placeholder",
+                        {
+                          bike_brand_name: e.bike_brand,
+                          bike_model_name: e.bike_model
+                        }
+                      )}
+                    </h5>
+                  </a>
+                  <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased mb-2">
+                    {e.theft_date}
+                  </p>
+                </div>
+                <div class=" h-12">
+                  <a
+                    href={localizePath("/report/[id]").replace(
+                      "[id]",
+                      e.report_id
+                    )}
+                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 "
+                  >
+                    {t("components.listing_card.view_report_button.title")}
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))
+      }
+    </div> -->
+  </BaseContainer>
 </BaseLayout>
+
+<script>
+  // @ts-ignore
+  import VenoBox from "venobox";
+
+  new VenoBox({
+    // selector: '.my-image-links',
+    numeration: true,
+    infinigall: true,
+    spinner: "wander",
+    spinColor: "#1c64f2",
+    share: true,
+    shareStyle: "pill"
+  });
+</script>

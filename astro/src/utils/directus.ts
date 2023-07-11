@@ -72,3 +72,57 @@ const directus = new Directus<GoneBike>(config.DIRECTUS_URI, {
 export const initialPathImg = `${config.DIRECTUS_URI}/assets`;
 
 export default directus;
+
+/**
+ * filters for SearchForm
+ */
+export function getFiltersForSearch(url: URL) {
+  if (!url) return;
+
+  const { searchParams } = url;
+
+  const urlSearchParams = new URLSearchParams(searchParams);
+
+  const bikeBrandModelFilter =
+    urlSearchParams.has("bike_model") || urlSearchParams.has("bike_brand")
+      ? {
+          bike_brand_model: {
+            ...(urlSearchParams.has("bike_model") && {
+              name: {
+                _icontains: urlSearchParams.get("bike_model")
+              }
+            }),
+
+            ...(urlSearchParams.has("bike_brand") && {
+              bike_brand: {
+                name: {
+                  _icontains: urlSearchParams.get("bike_brand")?.toLowerCase()
+                }
+              }
+            })
+          }
+        }
+      : {};
+
+  const descriptionFilter = urlSearchParams.has("description")
+    ? {
+        description: {
+          _icontains: urlSearchParams.get("description")
+        }
+      }
+    : {};
+
+  const serialNumberFilter = urlSearchParams.has("serial_number")
+    ? {
+        serial_number: {
+          _eq: urlSearchParams.get("serial_number")
+        }
+      }
+    : {};
+
+  return {
+    ...bikeBrandModelFilter,
+    ...descriptionFilter,
+    ...serialNumberFilter
+  };
+}
