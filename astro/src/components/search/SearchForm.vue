@@ -35,7 +35,7 @@
       </div>
       <span class="mr-1 mb-1.5">
         {{
-          t("homepage.hero.create_report", "Create report") ?? "Create report"
+          t("homepage.hero.image_search", "Image search") ?? "Image search"
         }}</span
       >
     </label>
